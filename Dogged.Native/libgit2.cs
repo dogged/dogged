@@ -73,6 +73,15 @@ namespace Dogged.Native
         public static extern int git_libgit2_shutdown();
 
         /// <summary>
+        /// Checks if a repository is bare.
+        /// </summary>
+        /// <param name="repo">Repository to test</param>
+        /// <returns>1 if the repository is bare, 0 otherwise</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_repository_is_bare(
+            git_repository* repo);
+
+        /// <summary>
         /// Open a git repository.
         ///
         /// <para>

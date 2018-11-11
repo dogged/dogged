@@ -27,6 +27,62 @@ namespace Dogged
         };
 
         /// <summary>
+        /// Ensure that the given <paramref name="object"/> value is not null.
+        /// Used to validate method parameter values provided by callers.
+        /// </summary>
+        /// <param name="o">The object to validate.</param>
+        /// <param name="name">The name of the object to use in messages.</param>
+        public static void ArgumentNotNull(object o, string name)
+        {
+            if (o == null)
+            {
+                throw new ArgumentNullException(name);
+            }
+        }
+
+        /// <summary>
+        /// Ensure that the given native object <paramref name="wrapper"/>
+        /// has not been disposed.
+        /// </summary>
+        /// <param name="wrapper">The native object wrapper to validate.</param>
+        public unsafe static void NotDisposed(NativeDisposable wrapper)
+        {
+            if (wrapper.IsDisposed)
+            {
+                throw new ObjectDisposedException(wrapper.GetType().Name);
+            }
+        }
+
+        /// <summary>
+        /// Ensure that the given <paramref name="nativeObject"/> is not null,
+        /// indicating that it has not been disposed.
+        /// </summary>
+        /// <param name="nativeObject">The object to validate.</param>
+        /// <param name="name">The name of the object to use in messages.</param>
+        public unsafe static void NotDisposed(void* nativeObject, string name)
+        {
+            if (nativeObject == null)
+            {
+                throw new ObjectDisposedException(name);
+            }
+        }
+
+        /// <summary>
+        /// Safely executes the given native function call for a given
+        /// object, ensuring that the object is not disposed and that it
+        /// will be kept alive until the end of the call.
+        /// </summary>
+        /// <param name="call">The function to invoke.</param>
+        /// <param name="obj">The object to validate and keep alive.</param>
+        public static T NativeCall<T>(Func<T> call, NativeDisposable obj)
+        {
+            Ensure.NotDisposed(obj);
+            T ret = call();
+            GC.KeepAlive(obj);
+            return ret;
+        }
+
+        /// <summary>
         /// Ensure that the given return code from a native function indicates
         /// success; ie that it is non-negative.
         /// <param name="nativeReturnCode">The return code from a libgit2 function.</param>

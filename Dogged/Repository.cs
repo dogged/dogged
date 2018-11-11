@@ -8,9 +8,11 @@ namespace Dogged
     /// The representation of a Git repository, including its objects,
     /// references and the methods that operate on it.
     /// </summary>
-    public class Repository : IDisposable
+    public class Repository : NativeDisposable
     {
         private unsafe git_repository* nativeRepository;
+
+        private readonly LazyNative<bool> isBare;
 
         // Provide a strongly typed exception when a repository is not
         // found to open.
@@ -29,29 +31,36 @@ namespace Dogged
         public unsafe Repository(string path)
         {
             Ensure.NativeSuccess(libgit2.git_repository_open(out nativeRepository, path), exceptionMap);
+
+            isBare = new LazyNative<bool>(() => libgit2.git_repository_is_bare(nativeRepository) == 0 ? false : true, this);
         }
 
-        private unsafe void Dispose(bool disposing)
+        /// <summary>
+        /// Indicates whether the specified repository is bare.
+        /// </summary>
+        public unsafe bool IsBare
+        {
+            get
+            {
+                return isBare.Value;
+            }
+        }
+
+        internal unsafe override bool IsDisposed
+        {
+            get
+            {
+                return (nativeRepository == null);
+            }
+        }
+
+        internal unsafe override void Dispose(bool disposing)
         {
             if (nativeRepository != null)
             {
                 libgit2.git_repository_free(nativeRepository);
                 nativeRepository = null;
             }
-        }
-
-        /// <summary>
-        /// Frees the native resources associated with this repository.
-        /// </summary>
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        ~Repository()
-        {
-            Dispose(false);
         }
     }
 

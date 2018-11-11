@@ -42,5 +42,35 @@ namespace Dogged.Tests
                 }
             });
         }
+
+        [Fact]
+        public void CanIdentifyNonBareRepository()
+        {
+            using (Repository repo = SandboxRepository("testrepo"))
+            {
+                Assert.False(repo.IsBare);
+            }
+        }
+
+        [Fact]
+        public void CanIdentifyBareRepository()
+        {
+            using (Repository repo = SandboxRepository("testrepo.git"))
+            {
+                Assert.True(repo.IsBare);
+            }
+        }
+
+        [Fact]
+        public void AttemptsToAccessDisposedRepositoryThrow()
+        {
+            Repository repo;
+
+            using (repo = SandboxRepository("testrepo.git"))
+            {
+            }
+
+            Assert.Throws<ObjectDisposedException>(() => repo.IsBare);
+        }
     }
 }
