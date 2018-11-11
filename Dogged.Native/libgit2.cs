@@ -24,6 +24,15 @@ namespace Dogged.Native
         }
 
         /// <summary>
+        /// Returns the information (class and message) for the last error
+        /// that occurred on the current thread.  This information is
+        /// undefined if the last libgit2 function did not return an error.
+        /// </summary>
+        /// <returns>A pointer to a <see cref="git_error"/> that describes the error.</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe git_error* git_error_last();
+
+        /// <summary>
         /// Query compile time options for libgit2.  This will show the
         /// functionality that is built in to the library.
         /// </summary>
@@ -62,5 +71,43 @@ namespace Dogged.Native
         /// <returns>The number of remaining initializations of the library, or an error code.</returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern int git_libgit2_shutdown();
+
+        /// <summary>
+        /// Open a git repository.
+        ///
+        /// <para>
+        /// The <paramref name="path"/> argument must point to either a Git
+        /// repository folder, or an existing working tree.
+        /// </para>
+        ///
+        /// <para>
+        /// The method will automatically detect if <paramref name="path"/>
+        /// is a working tree or a bare repository.  It will fail if the
+        /// given path is neither.
+        /// </para>
+        /// </summary>
+        /// <param name="repo">Pointer to the repository that will be opened.</param>
+        /// <param name="path">The path to the repository</param>
+        /// <returns>0 on success or an error code.</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_repository_open(
+            out git_repository* repo,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path);
+
+        /// <summary>
+        /// Close a previously opened repository and free any native memory
+        /// that was allocated.
+        ///
+        /// <para>
+        /// Note that after a repository is free'd, all the objects it
+        /// has spawned will still exist until they are manually closed
+        /// by the user with `git_object_free`, but accessing any of
+        /// the attributes of an object without a backing repository
+        /// will result in undefined behavior.
+        /// </para>
+        /// </summary>
+        /// <param name="repo">The repository handle to close.</param>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe void git_repository_free(git_repository* repo);
     }
 }
