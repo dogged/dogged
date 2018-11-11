@@ -1,0 +1,34 @@
+<Project>
+
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+  </PropertyGroup>
+
+  <Target Name="DefineNativeLibrary">
+    <PropertyGroup>
+      <NativeLibraryPath>$(IntermediateOutputPath)NativeLibrary.g.cs</NativeLibraryPath>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="GenerateNativeLibraryCs" Inputs="$(libgit2_propsfile)" Outputs="$(NativeLibraryPath)" BeforeTargets="CoreCompile" DependsOnTargets="DefineNativeLibrary">
+    <PropertyGroup>
+      <NativeLibrarySourceLines>
+        namespace Dogged.Native
+        {
+          internal static class NativeLibrary
+          {
+            public const string Hash = "$(libgit2_hash)"%3b
+            public const string Filename = "$(libgit2_filename)"%3b
+          }
+        }
+      </NativeLibrarySourceLines>
+    </PropertyGroup>
+
+    <WriteLinesToFile File="$(NativeLibraryPath)" Lines="$(NativeLibrarySourceLines)" Overwrite="true" />
+
+    <ItemGroup>
+      <Compile Include="$(NativeLibraryPath)" />
+      <FileWrites Include="$(NativeLibraryPath)" />
+    </ItemGroup>
+  </Target>
+</Project>
