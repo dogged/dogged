@@ -25,6 +25,40 @@ namespace Dogged
             return new Index(nativeIndex);
         }
 
+        /// <summary>
+        /// Gets the number of entries in the index.
+        /// </summary>
+        public unsafe int Count
+        {
+            get
+            {
+                UIntPtr count = Ensure.NativeCall<UIntPtr>(() => libgit2.git_index_entrycount(nativeIndex), this);
+                return Ensure.CastToInt(count, "count");
+            }
+        }
+
+        /// <summary>
+        /// Gets the index entry at the specified index.
+        /// </summary>
+        public unsafe IndexEntry this[int position]
+        {
+            get
+            {
+                Ensure.NotDisposed(nativeIndex, "index");
+                Ensure.ArgumentConformsTo(() => position >= 0, "position", "position must not be negative");
+
+                git_index_entry* entry = libgit2.git_index_get_byindex(nativeIndex, (UIntPtr)position);
+                GC.KeepAlive(this);
+
+                if (entry == null)
+                {
+                    throw new IndexOutOfRangeException(string.Format("there is no index entry at position {0}", position));
+                }
+
+                return IndexEntry.FromNative(entry);
+            }
+        }
+
         internal unsafe override bool IsDisposed
         {
             get

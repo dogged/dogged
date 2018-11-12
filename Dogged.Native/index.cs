@@ -8,7 +8,22 @@ namespace Dogged.Native
     /// The repository has an index which acts as the staging area for
     /// changes to be committed and a cache of in-working tree files.
     /// </summary>
-    public struct git_index { };
+    public struct git_index
+    {
+        /// <summary>
+        /// Bitmask used to extract an index entry's stage from the flags
+        /// field.  Once extracted, this value should be shifted by the
+        /// <see cref="GIT_INDEX_ENTRY_STAGESHIFT"/> to get the entry's
+        /// stage.
+        /// </summary>
+        public const int GIT_INDEX_ENTRY_STAGEMASK = 0x3000;
+
+        /// <summary>
+        /// Bit shift quantity to use to shift the bitmasked stage value
+        /// from the flags to get the entry's stage.
+        /// </summary>
+        public const int GIT_INDEX_ENTRY_STAGESHIFT = 12;
+    }
 
     /// <summary>
     /// Time structure used for a git index entry.
@@ -105,5 +120,36 @@ namespace Dogged.Native
         /// Path of the file in the index.
         /// </summary>
         public byte* path;
+    }
+
+    public enum git_index_entry_flag_t
+    {
+        /// <summary>
+        /// Flag to indicate that there are extended flag entries for this
+        /// index entry.
+        /// </summary>
+        GIT_INDEX_ENTRY_EXTENDED = 0x4000,
+
+        /// <summary>
+        /// The working tree data should be assumed to be valid, and
+        /// should not be compared to the index; the working tree
+        /// should be assumed to be unchanged.
+        /// </summary>
+        GIT_INDEX_ENTRY_VALID = 0x8000,
+    }
+
+    public enum git_index_entry_extended_flag_t
+    {
+        /// <summary>
+        /// This path is intended to be added later.
+        /// </summary>
+        GIT_INDEX_ENTRY_INTENT_TO_ADD = (1 << 13),
+
+        /// <summary>
+        /// The working tree version is assumed to be up-to-date and
+        /// the index contents should be used regardless of what's on
+        /// disk.
+        /// </summary>
+        GIT_INDEX_ENTRY_SKIP_WORKTREE = (1 << 14),
     }
 }

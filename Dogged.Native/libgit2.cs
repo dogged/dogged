@@ -33,6 +33,29 @@ namespace Dogged.Native
         public static extern unsafe git_error* git_error_last();
 
         /// <summary>
+        /// Get a pointer to an entry in the index at the the given position.
+        ///
+        /// <para>
+        /// The entry is not modifiable and should not be freed.  Because the
+        /// `git_index_entry` struct is a publicly defined struct, you should
+        /// be able to make your own permanent copy of the data if necessary.
+        /// </para>
+        /// </summary>
+        /// <param name="index">The index to read the entry from</param>
+        /// <param name="n">The position of the index entry</param>
+        /// <returns>A pointer to the entry or NULL if out of bounds</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe git_index_entry* git_index_get_byindex(git_index* index, UIntPtr n);
+
+        /// <summary>
+        /// Get the count of entries currently in the index.
+        /// </summary>
+        /// <param name="index">The index to read the entry from</param>
+        /// <returns>Count of the current entries</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe UIntPtr git_index_entrycount(git_index* index);
+
+        /// <summary>
         /// Free an existing index object.
         /// </summary>
         /// <param name="index">The index to free</param>

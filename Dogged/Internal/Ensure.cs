@@ -69,6 +69,57 @@ namespace Dogged
         }
 
         /// <summary>
+        /// Ensures that the given unsigned long can be cast to an integer
+        /// without losing data.  Used to ensure that values from native
+        /// functions can be represented in managed int types.
+        /// </summary>
+        /// <param value="value">The value to test</param>
+        /// <param value="name">The name of the value to use for error messages</param>
+        public static int CastToInt(ulong value, string name)
+        {
+            if (value > int.MaxValue)
+            {
+                throw new InvalidCastException(string.Format("{0} is too large for an int", name));
+            }
+
+            return (int)value;
+        }
+
+        /// <summary>
+        /// Ensures that the given UIntPtr can be cast to an integer without
+        /// losing data.  Used to ensure that values from native functions
+        /// can be represented in managed int types.
+        /// </summary>
+        /// <param value="value">The value to test</param>
+        /// <param value="name">The name of the value to use for error messages</param>
+        public static int CastToInt(UIntPtr value, string name)
+        {
+            if ((ulong)value > int.MaxValue)
+            {
+                throw new InvalidCastException(string.Format("{0} is too large for an int", name));
+            }
+
+            return (int)value;
+        }
+
+        /// <summary>
+        /// Ensures that the given long can be cast to a UInt without losing
+        /// data.  Used to ensure that values from callers can be represented
+        /// by native unsigned int types.
+        /// </summary>
+        /// <param value="value">The value to test</param>
+        /// <param value="name">The name of the value to use for error messages</param>
+        public static uint CastToUInt(long value, string name)
+        {
+            if (value < 0 || value > uint.MaxValue)
+            {
+                throw new InvalidCastException(string.Format("{0} is out of range", name));
+            }
+
+            return (uint)value;
+        }
+
+        /// <summary>
         /// Ensure that the given native object <paramref name="wrapper"/>
         /// has not been disposed.
         /// </summary>
