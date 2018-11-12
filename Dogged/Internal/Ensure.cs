@@ -55,6 +55,20 @@ namespace Dogged
         }
 
         /// <summary>
+        /// Ensures that the given argument conforms to a format specified
+        /// by a <paramref name="validation"/> function.
+        /// </summary>
+        /// <param name="validation">The validation function to apply</param>
+        /// <param name="message">The message used when the argument does not conform</param>
+        public static void ArgumentConformsTo(Func<bool> validation, string name, string message)
+        {
+            if (!validation())
+            {
+                throw new ArgumentException(name, message);
+            }
+        }
+
+        /// <summary>
         /// Ensure that the given native object <paramref name="wrapper"/>
         /// has not been disposed.
         /// </summary>
