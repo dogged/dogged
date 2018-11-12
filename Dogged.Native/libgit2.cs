@@ -103,6 +103,32 @@ namespace Dogged.Native
         public static extern int git_libgit2_shutdown();
 
         /// <summary>
+        /// Retrieve and resolve the reference pointed to by HEAD.
+        ///
+        /// <para>
+        /// The returned <see cref="git_reference"/> will be owned by the
+        /// caller and <see cref="git_reference_free"/> must be called when
+        /// done to release the allocated memory.
+        /// </para>
+        /// </summary>
+        /// <param name="reference">Pointer to the reference that will be retrieved</param>
+        /// <param name="repo">The repository object</param>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_repository_head(
+            out git_reference* reference, git_repository* repo);
+
+        /// <summary>
+        /// Indicates if the repository's HEAD is detached.  A repository's
+        /// HEAD is detached when it points directly to a commit instead
+        /// of a branch.
+        /// </summary>
+        /// <param name="repo">The repository object</param>
+        /// <returns>1 if the HEAD is detached, 0 if it's not, or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_repository_head_detached(
+            git_repository* repo);
+
+        /// <summary>
         /// Checks if a repository is bare.
         /// </summary>
         /// <param name="repo">Repository to test</param>
@@ -167,5 +193,48 @@ namespace Dogged.Native
         /// <param name="repo">The repository handle to close.</param>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe void git_repository_free(git_repository* repo);
+
+        /// <summary>
+        /// Free the given reference.
+        /// </summary>
+        /// <param name="reference">The reference to free</param>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe void git_reference_free(git_reference* reference);
+
+        /// <summary>
+        /// Get the full name of a reference.
+        /// </summary>
+        /// <param name="reference">The reference to get the name of</param>
+        /// <returns>The full name of the reference</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        [return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.FromNative, MarshalTypeRef = typeof(Utf8Marshaler))]
+        public static extern unsafe string git_reference_name(git_reference* reference);
+
+        /// <summary>
+        /// Get the full name of the target of this reference.  This
+        /// function is only supported for symbolic references.
+        /// </summary>
+        /// <param name="reference">The reference to get the target of</param>
+        /// <returns>The target of the reference or NULL if the reference is not symbolic</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        [return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.FromNative, MarshalTypeRef = typeof(Utf8Marshaler))]
+        public static extern unsafe string git_reference_symbolic_target(git_reference* reference);
+
+        /// <summary>
+        /// Get the oid target of this reference.  This function is only
+        /// supported for direct references.
+        /// </summary>
+        /// <param name="reference">The reference to get the target of</param>
+        /// <returns>The target of the reference or NULL if the reference is not direct</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe git_oid* git_reference_target(git_reference* reference);
+
+        /// <summary>
+        /// Get the type of this reference.
+        /// </summary>
+        /// <param name="reference">The reference to get the type of</param>
+        /// <returns>The type of the reference</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe git_reference_t git_reference_type(git_reference* reference);
     }
 }

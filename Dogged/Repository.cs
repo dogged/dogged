@@ -47,6 +47,49 @@ namespace Dogged
         }
 
         /// <summary>
+        /// Indicates whether the HEAD is detached, meaning it points
+        /// directly at an object id instead of a branch.
+        /// </summary>
+        public unsafe bool IsHeadDetached
+        {
+            get
+            {
+                int ret = Ensure.NativeCall<int>(() => libgit2.git_repository_head_detached(nativeRepository), this);
+                return Ensure.NativeBoolean(ret);
+            }
+        }
+
+        /// <summary>
+        /// Retrieve and resolve the reference pointed to by `HEAD`.
+        /// The repository HEAD will be peeled to a direct reference.
+        /// </summary>
+        public unsafe DirectReference Head
+        {
+            get
+            {
+                git_reference* reference = null;
+                Ensure.NativeSuccess(() => libgit2.git_repository_head(out reference, nativeRepository), this);
+
+                try
+                {
+                    var head = Reference.FromNative(reference);
+
+                    if (!(head is DirectReference))
+                    {
+                        throw new DoggedException("unexpected reference type for HEAD");
+                    }
+
+                    return (DirectReference)head;
+                }
+                catch (Exception)
+                {
+                    libgit2.git_reference_free(reference);
+                    throw;
+                }
+            }
+        }
+
+        /// <summary>
         /// Describes the repository's index.
         /// </summary>
         public unsafe Index Index

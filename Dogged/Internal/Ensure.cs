@@ -162,6 +162,54 @@ namespace Dogged
         }
 
         /// <summary>
+        /// Ensures that the given native return code corresponds to a
+        /// boolean.  If the return code is negative, indicating native
+        /// function call failure, an exception will be thrown.  Otherwise,
+        /// the native return code will be converted to a managed boolean.
+        /// </summary>
+        /// <param name="nativeReturnCode">The result of a native function call</param>
+        /// <returns>A bool corresponding to the given native return code</returns>
+        public static bool NativeBoolean(int nativeReturnCode)
+        {
+            if (nativeReturnCode < 0)
+            {
+                HandleNativeError(nativeReturnCode, null);
+            }
+
+            return (nativeReturnCode != 0) ? true : false;
+        }
+
+        /// <summary>
+        /// Ensures that the given native pointer is not null.  This is
+        /// is useful for validating that a native function succeeds.
+        /// </summary>
+        /// <param name="nativeResult">The result of a native function call</param>
+        public static unsafe void NativePointerNotNull(void* nativeResult)
+        {
+            if (nativeResult == null)
+            {
+                throw new DoggedException(GetNativeErrorMessage());
+            }
+        }
+
+        /// <summary>
+        /// Ensures that the given native object is not null, returning
+        /// the value.  This is useful for validating that a native
+        /// function succeeds.
+        /// </summary>
+        /// <param name="nativeResult">The result of a native function call</param>
+        /// <returns>The native result provided</returns>
+        public static unsafe T NativeObjectNotNull<T>(T nativeResult)
+        {
+            if (nativeResult == null)
+            {
+                throw new DoggedException(GetNativeErrorMessage());
+            }
+
+            return nativeResult;
+        }
+
+        /// <summary>
         /// Ensure that the given return code from a native function indicates
         /// success; ie that it is non-negative.
         /// <param name="nativeReturnCode">The return code from a libgit2 function.</param>
@@ -205,18 +253,6 @@ namespace Dogged
         {
             Func<string, Exception> exceptionBuilder = (m) => new DoggedException(m);
             git_error_code code = (git_error_code)nativeReturnCode;
-            string message;
-
-            git_error* error = libgit2.git_error_last();
-
-            if (error == null || error->message == null)
-            {
-                message = "Unknown error in libgit2";
-            }
-            else
-            {
-                message = Utf8Converter.FromNative(error->message);
-            }
 
             if (customExceptions != null && customExceptions.ContainsKey(code))
             {
@@ -227,7 +263,21 @@ namespace Dogged
                 exceptionBuilder = defaultExceptions[code];
             }
 
-            throw exceptionBuilder(message);
+            throw exceptionBuilder(GetNativeErrorMessage());
+        }
+
+        private static unsafe string GetNativeErrorMessage()
+        {
+            git_error* error = libgit2.git_error_last();
+
+            if (error == null || error->message == null)
+            {
+                return "Unknown error in libgit2";
+            }
+            else
+            {
+               return Utf8Converter.FromNative(error->message);
+            }
         }
     }
 }

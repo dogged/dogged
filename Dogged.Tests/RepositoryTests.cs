@@ -62,6 +62,24 @@ namespace Dogged.Tests
         }
 
         [Fact]
+        public void CanGetRepositoryHead()
+        {
+            using (Repository repo = SandboxRepository("testrepo"))
+            {
+                // HEAD is not detached but git_repository_head gives us a peeled reference
+                Assert.False(repo.IsHeadDetached);
+
+                using (var head = repo.Head)
+                {
+                    Assert.NotNull(head);
+                    Assert.IsType<DirectReference>(head);
+                    Assert.Equal("refs/heads/master", head.Name);
+                    Assert.Equal(new ObjectId("099fabac3a9ea935598528c27f866e34089c2eff"), ((DirectReference)head).Target);
+                }
+            }
+        }
+
+        [Fact]
         public void AttemptsToAccessDisposedRepositoryThrow()
         {
             Repository repo;
@@ -72,6 +90,7 @@ namespace Dogged.Tests
 
             Assert.Throws<ObjectDisposedException>(() => repo.IsBare);
             Assert.Throws<ObjectDisposedException>(() => repo.Index);
+            Assert.Throws<ObjectDisposedException>(() => repo.Head);
         }
     }
 }
