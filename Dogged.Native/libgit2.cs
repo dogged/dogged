@@ -24,6 +24,26 @@ namespace Dogged.Native
         }
 
         /// <summary>
+        /// Look up a blob from the repository.
+        /// </summary>
+        /// <param name="obj">Pointer to the blob that was loaded from the repository</param>
+        /// <param name="repo">The repository that contains the blob</param>
+        /// <param name="id">The id of the blob to lookup</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_blob_lookup(out git_blob* obj, git_repository* repo, ref git_oid id);
+
+        /// <summary>
+        /// Look up a commit from the repository.
+        /// </summary>
+        /// <param name="obj">Pointer to the commit that was loaded from the repository</param>
+        /// <param name="repo">The repository that contains the commit</param>
+        /// <param name="id">The id of the commit to lookup</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_commit_lookup(out git_commit* obj, git_repository* repo, ref git_oid id);
+
+        /// <summary>
         /// Returns the information (class and message) for the last error
         /// that occurred on the current thread.  This information is
         /// undefined if the last libgit2 function did not return an error.
@@ -101,6 +121,32 @@ namespace Dogged.Native
         /// <returns>The number of remaining initializations of the library, or an error code.</returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern int git_libgit2_shutdown();
+
+        /// <summary>
+        /// Free a git object.
+        /// </summary>
+        /// <param name="obj">The object to free</param>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe void git_object_free(git_object* obj);
+
+        /// <summary>
+        /// Look up an object from the repository.
+        /// </summary>
+        /// <param name="obj">Pointer to the object that was loaded from the repository</param>
+        /// <param name="repo">The repository that contains the object</param>
+        /// <param name="id">The id of the object to lookup</param>
+        /// <param name="type">The type of the object to lookup</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_object_lookup(out git_object* obj, git_repository* repo, ref git_oid id, git_object_t type);
+
+        /// <summary>
+        /// Get the type of an object.
+        /// </summary>
+        /// <param name="obj">The object to query</param>
+        /// <returns>The type of the object</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe git_object_t git_object_type(git_object* obj);
 
         /// <summary>
         /// Retrieve and resolve the reference pointed to by HEAD.
@@ -236,5 +282,15 @@ namespace Dogged.Native
         /// <returns>The type of the reference</returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe git_reference_t git_reference_type(git_reference* reference);
+
+        /// <summary>
+        /// Look up a tree from the repository.
+        /// </summary>
+        /// <param name="obj">Pointer to the tree that was loaded from the repository</param>
+        /// <param name="repo">The repository that contains the tree</param>
+        /// <param name="id">The id of the tree to lookup</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_tree_lookup(out git_tree* obj, git_repository* repo, ref git_oid id);
     }
 }
