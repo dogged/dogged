@@ -10,7 +10,7 @@ namespace Dogged
     /// The repository has an index which acts as the staging area for
     /// changes to be committed and a cache of in-working tree files.
     /// </summary>
-    public class Index : NativeDisposable
+    public class Index : NativeDisposable, IEnumerable<IndexEntry>
     {
         private unsafe git_index* nativeIndex;
 
@@ -57,6 +57,25 @@ namespace Dogged
 
                 return IndexEntry.FromNative(entry);
             }
+        }
+
+        /// <summary>
+        /// Returns an enumerate that iterates through index entries.
+        /// </summary>
+        /// <returns>An enumerator of <see cref="IndexEntry"/> objects</returns>
+        public IEnumerator<IndexEntry> GetEnumerator()
+        {
+            int count = Count;
+
+            for (int i = 0; i < count; i++)
+            {
+                yield return this[i];
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
 
         internal unsafe override bool IsDisposed
