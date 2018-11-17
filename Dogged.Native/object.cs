@@ -15,7 +15,7 @@ namespace Dogged.Native
         /// <summary>
         /// The object is invalid.
         /// </summary>
-        GIT_OBJECT_BAD = -1,
+        GIT_OBJECT_INVALID = -1,
 
         /// <summary>
         /// A commit object.
@@ -67,4 +67,9 @@ namespace Dogged.Native
     /// A tree (directory listing) object.
     /// </summary>
     public struct git_tree { };
+
+    /// <summary>
+    /// An entry in a tree.
+    /// </summary>
+    public struct git_tree_entry { };
 }

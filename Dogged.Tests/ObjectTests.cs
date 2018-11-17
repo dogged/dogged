@@ -69,19 +69,6 @@ namespace Dogged.Tests
         }
 
         [Theory]
-        [InlineData("45dd856fdd4d89b884c340ba0e047752d9b085d6")]
-        public void CanLookupTree(string hex)
-        {
-            using (Repository repo = SandboxRepository("testrepo"))
-            using (Tree t = repo.Lookup<Tree>(new ObjectId(hex)))
-            {
-                Assert.NotNull(t);
-                Assert.Equal(ObjectType.Tree, t.Type);
-                Assert.Equal(new ObjectId(hex), t.Id);
-            }
-        }
-
-        [Theory]
         [InlineData("c0528fd6cc988c0a40ce0be11bc192fc8dc5346e")]
         [InlineData("a8233120f6ad708f843d861ce2b7228ec4e3dec6")]
         public void CanLookupBlob(string hex)
