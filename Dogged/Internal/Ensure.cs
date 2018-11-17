@@ -41,6 +41,20 @@ namespace Dogged
         }
 
         /// <summary>
+        /// Ensure that the given pointer is not null. Used to validate
+        /// values used or provided by native methods.
+        /// </summary>
+        /// <param name="o">The object to validate.</param>
+        /// <param name="name">The name of the object to use in messages.</param>
+        public unsafe static void ArgumentNotNull(void* o, string name)
+        {
+            if (o == null)
+            {
+                throw new ArgumentNullException(name);
+            }
+        }
+
+        /// <summary>
         /// Ensure that the given native object <paramref name="wrapper"/>
         /// has not been disposed.
         /// </summary>
@@ -104,6 +118,17 @@ namespace Dogged
             {
                 HandleNativeError(nativeReturnCode, customExceptions);
             }
+        }
+
+        /// <summary>
+        /// Invoke the given function and ensure that its return code
+        /// indicates success; ie that it is non-negative.
+        /// </summary>
+        /// <param name="call">The function call to invoke.</param>
+        /// <param name="obj">The object to validate and keep alive.</param>
+        public static void NativeSuccess(Func<int> call, NativeDisposable obj)
+        {
+            NativeSuccess(NativeCall<int>(call, obj));
         }
 
         /// <summary>

@@ -46,6 +46,19 @@ namespace Dogged
             }
         }
 
+        /// <summary>
+        /// Describes the repository's index.
+        /// </summary>
+        public unsafe Index Index
+        {
+            get
+            {
+                git_index* index = null;
+                Ensure.NativeSuccess(() => libgit2.git_repository_index(out index, nativeRepository), this);
+                return Index.FromNative(index);
+            }
+        }
+
         internal unsafe override bool IsDisposed
         {
             get

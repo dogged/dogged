@@ -71,6 +71,7 @@ namespace Dogged.Tests
             }
 
             Assert.Throws<ObjectDisposedException>(() => repo.IsBare);
+            Assert.Throws<ObjectDisposedException>(() => repo.Index);
         }
     }
 }

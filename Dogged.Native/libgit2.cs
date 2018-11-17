@@ -33,6 +33,13 @@ namespace Dogged.Native
         public static extern unsafe git_error* git_error_last();
 
         /// <summary>
+        /// Free an existing index object.
+        /// </summary>
+        /// <param name="index">The index to free</param>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe void git_index_free(git_index* index);
+
+        /// <summary>
         /// Query compile time options for libgit2.  This will show the
         /// functionality that is built in to the library.
         /// </summary>
@@ -80,6 +87,25 @@ namespace Dogged.Native
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe int git_repository_is_bare(
             git_repository* repo);
+
+        /// <summary>
+        /// Get the index file for this repository.
+        ///
+        /// <para>
+        /// If a custom index has not been set, the default index for the
+        /// repository will be returned (the one located in `.git/index`).
+        /// </para>
+        ///
+        /// <para>
+        /// The index must be freed once it's no longer being used by the
+        /// user.
+        /// </para>
+        /// </summary>
+        /// <param name="index">Pointer to the index that will be opened</param>
+        /// <param name="repo">The repository object</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_repository_index(out git_index* index, git_repository* repo);
 
         /// <summary>
         /// Open a git repository.
