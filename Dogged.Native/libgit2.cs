@@ -83,6 +83,33 @@ namespace Dogged.Native
         public static extern unsafe void git_index_free(git_index* index);
 
         /// <summary>
+        /// Create a new index iterator; this will take a snapshot of the
+        /// given index for iteration.
+        /// </summary>
+        /// <param name="iterator">Pointer to the iterator that was created</param>
+        /// <param name="index">The index to iterate over</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_index_iterator_new(out git_index_iterator* iterator, git_index* index);
+
+        /// <summary>
+        /// Get the next index entry in the iterator.  This entry is owned
+        /// by the iterator and should not be freed.
+        /// </summary>
+        /// <param name="entry">Pointer to the entry in the index</param>
+        /// <param name="iterator">The iterator to query</param>
+        /// <returns>0 on success, GIT_ITEROVER on successful completion of iteration, or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_index_iterator_next(out git_index_entry* entry, git_index_iterator* iterator);
+
+        /// <summary>
+        /// Free an existing index iterator.
+        /// </summary>
+        /// <param name="iterator">The iterator to free</param>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe void git_index_iterator_free(git_index_iterator* iterator);
+
+        /// <summary>
         /// Query compile time options for libgit2.  This will show the
         /// functionality that is built in to the library.
         /// </summary>

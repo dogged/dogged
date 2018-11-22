@@ -26,6 +26,11 @@ namespace Dogged.Native
     }
 
     /// <summary>
+    /// An object to contain the iteration of a snapshot of an index.
+    /// </summary>
+    public struct git_index_iterator { };
+
+    /// <summary>
     /// Time structure used for a git index entry.
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]

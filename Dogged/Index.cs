@@ -60,17 +60,16 @@ namespace Dogged
         }
 
         /// <summary>
-        /// Returns an enumerate that iterates through index entries.
+        /// Returns an enumerate that iterates through index entries.  This
+        /// will iterate over a snapshot of the index, so the underlying
+        /// index can safely be mutated during iteration.
         /// </summary>
         /// <returns>An enumerator of <see cref="IndexEntry"/> objects</returns>
-        public IEnumerator<IndexEntry> GetEnumerator()
+        public unsafe IEnumerator<IndexEntry> GetEnumerator()
         {
-            int count = Count;
-
-            for (int i = 0; i < count; i++)
-            {
-                yield return this[i];
-            }
+            git_index_iterator* iterator = null;
+            Ensure.NativeSuccess(() => libgit2.git_index_iterator_new(out iterator, nativeIndex), this);
+            return IndexEnumerator.FromNative(iterator);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -92,6 +91,88 @@ namespace Dogged
             {
                 libgit2.git_index_free(nativeIndex);
                 nativeIndex = null;
+            }
+        }
+    }
+
+    /// <summary>
+    /// An enumerator for <see cref="IndexEntry"/> objects.  This will
+    /// iterate over a snapshot of the index, so the underlying index
+    /// can safely be mutated during iteration.
+    /// </summary>
+    public class IndexEnumerator : NativeDisposable, IEnumerator<IndexEntry>
+    {
+        private unsafe git_index_iterator* nativeIterator;
+
+        private IndexEntry current;
+
+        private unsafe IndexEnumerator(git_index_iterator* nativeIterator)
+        {
+            Ensure.ArgumentNotNull(nativeIterator, "iterator");
+            this.nativeIterator = nativeIterator;
+        }
+
+        internal unsafe static IndexEnumerator FromNative(git_index_iterator* nativeIterator)
+        {
+            return new IndexEnumerator(nativeIterator);
+        }
+
+        public void Reset()
+        {
+            /*
+             * IEnumerator.Reset is not required to be implemented and may throw
+             * a NotSupportedException.
+             *
+             * https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerator.reset
+             */
+            throw new NotSupportedException("cannot reset an index iterator");
+        }
+
+        public unsafe bool MoveNext()
+        {
+            git_index_entry *entry = null;
+            int ret = Ensure.NativeCall(() => libgit2.git_index_iterator_next(out entry, nativeIterator), this);
+
+            if (ret == (int)git_error_code.GIT_ITEROVER)
+            {
+                return false;
+            }
+            Ensure.NativeSuccess(ret);
+
+            current = IndexEntry.FromNative(entry);
+            return true;
+        }
+
+        public IndexEntry Current
+        {
+            get
+            {
+                return current;
+            }
+        }
+
+        object IEnumerator.Current
+        {
+            get
+            {
+                return Current;
+            }
+        }
+
+        internal unsafe override bool IsDisposed
+        {
+            get
+            {
+                return (nativeIterator == null);
+            }
+        }
+
+        internal unsafe override void Dispose(bool disposing)
+        {
+            if (nativeIterator != null)
+            {
+                libgit2.git_index_iterator_free(nativeIterator);
+                nativeIterator = null;
             }
         }
     }

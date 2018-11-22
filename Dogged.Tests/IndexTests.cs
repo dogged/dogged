@@ -77,6 +77,26 @@ namespace Dogged.Tests
         }
 
         [Fact]
+        public void AttemptsToResetIndexEnumeratorThrows()
+        {
+            IndexEntry[] expected = new[] {
+                new IndexEntry(".gitmodules", FileMode.Blob, new ObjectId("51589c218bf77a8da9e9d8dbc097d76a742726c4")),
+                new IndexEntry("sub", FileMode.Commit, new ObjectId("b7a59b3f4ea13b985f8a1e0d3757d5cd3331add8"))
+            };
+
+            using (Repository repo = SandboxRepository("super"))
+            using (Index index = repo.Index)
+            using (IEnumerator<IndexEntry> enumerator = index.GetEnumerator())
+            {
+                Assert.True(enumerator.MoveNext());
+                Assert.Equal(expected[0], enumerator.Current);
+                Assert.True(enumerator.MoveNext());
+
+                Assert.Throws<NotSupportedException>(() => enumerator.Reset());
+            }
+        }
+
+        [Fact]
         public void AttemptsToAccessDisposedIndexThrow()
         {
             Index index;
