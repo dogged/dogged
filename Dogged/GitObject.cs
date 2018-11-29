@@ -9,9 +9,9 @@ namespace Dogged
     public abstract class GitObject : NativeDisposable
     {
         private unsafe git_object* nativeObject;
-        private readonly ObjectId id;
+        private ObjectId id;
 
-        internal unsafe GitObject(git_object* nativeObject, ObjectId id)
+        internal unsafe GitObject(git_object* nativeObject, ObjectId id = null)
         {
             Ensure.NativePointerNotNull(nativeObject);
 
@@ -27,11 +27,20 @@ namespace Dogged
         /// <summary>
         /// Returns the object id.
         /// </summary>
-        public ObjectId Id
+        public unsafe ObjectId Id
         {
             get
             {
                 Ensure.NotDisposed(this);
+
+                if (id == null)
+                {
+                    git_oid* oid = libgit2.git_object_id(nativeObject);
+                    Ensure.NativePointerNotNull(oid);
+
+                    id = ObjectId.FromNative(*oid);
+                }
+
                 return id;
             }
         }

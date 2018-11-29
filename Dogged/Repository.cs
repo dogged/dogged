@@ -90,6 +90,20 @@ namespace Dogged
         }
 
         /// <summary>
+        /// Get the commit pointed to by HEAD.
+        /// </summary>
+        public Commit HeadCommit
+        {
+            get
+            {
+                using (var head = Head)
+                {
+                    return Lookup<Commit>(head.Target);
+                }
+            }
+        }
+
+        /// <summary>
         /// Describes the repository's index.
         /// </summary>
         public unsafe Index Index

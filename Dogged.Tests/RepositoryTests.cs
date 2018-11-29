@@ -80,6 +80,16 @@ namespace Dogged.Tests
         }
 
         [Fact]
+        public void CanGetRepositoryHeadAsCommit()
+        {
+            using (Repository repo = SandboxRepository("testrepo"))
+            using (Commit commit = repo.HeadCommit)
+            {
+                Assert.Equal(new ObjectId("099fabac3a9ea935598528c27f866e34089c2eff"), commit.Id);
+            }
+        }
+
+        [Fact]
         public void AttemptsToAccessDisposedRepositoryThrow()
         {
             Repository repo;
