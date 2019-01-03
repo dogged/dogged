@@ -1,0 +1,15 @@
+assembly-versioning-scheme: MajorMinorPatch
+mode: ContinuousDeployment
+branches:
+  master:
+    tag: pre
+    increment: Minor
+  maint:
+    source-branches:
+    - master
+    regex: maint/
+    increment: Patch
+    tag: pre
+    is-release-branch: true
+ignore:
+  sha: []
