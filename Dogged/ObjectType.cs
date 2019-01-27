@@ -20,6 +20,11 @@ namespace Dogged
         /// <summary>
         /// A blob (file) object.
         /// </summary>
-        Blob = 3
+        Blob = 3,
+
+        /// <summary>
+        /// An annotated tag object.
+        /// </summary>
+        Tag = 4
     }
 }

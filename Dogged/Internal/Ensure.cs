@@ -103,6 +103,23 @@ namespace Dogged
         }
 
         /// <summary>
+        /// Ensures that the given UIntPtr can be cast to a long without
+        /// losing data.  Used to ensure that values from native functions
+        /// can be represented in managed long types.
+        /// </summary>
+        /// <param value="value">The value to test</param>
+        /// <param value="name">The name of the value to use for error messages</param>
+        public static long CastToLong(UIntPtr value, string name)
+        {
+            if ((ulong)value > long.MaxValue)
+            {
+                throw new InvalidCastException(string.Format("{0} is too large for a long", name));
+            }
+
+            return (long)value;
+        }
+
+        /// <summary>
         /// Ensures that the given long can be cast to a UInt without losing
         /// data.  Used to ensure that values from callers can be represented
         /// by native unsigned int types.
@@ -117,6 +134,14 @@ namespace Dogged
             }
 
             return (uint)value;
+        }
+
+        public static void EnumDefined(Type type, object value, string name)
+        {
+            if (!Enum.IsDefined(type, value))
+            {
+                throw new InvalidOperationException(string.Format("value {0} is out of range for {1}", value, type.Name));
+            }
         }
 
         /// <summary>

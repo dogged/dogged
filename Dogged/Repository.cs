@@ -184,6 +184,28 @@ namespace Dogged
             throw new InvalidOperationException("unknown object type");
         }
 
+        /// <summary>
+        /// Get the object database ("ODB") for this repository.
+        ///
+        /// <para>
+        /// If a custom ODB has not been set, the default database for the
+        /// repository will be returned (the one located in `.git/objects`).
+        /// </para>
+        ///
+        /// <para>
+        /// The ODB must be freed once it's no longer being used by the user.
+        /// </para>
+        /// </summary>
+        public unsafe ObjectDatabase ObjectDatabase
+        {
+            get
+            {
+                git_odb* odb = null;
+                Ensure.NativeSuccess(() => libgit2.git_repository_odb(out odb, nativeRepository), this);
+                return ObjectDatabase.FromNative(odb);
+            }
+        }
+
         internal unsafe override bool IsDisposed
         {
             get

@@ -222,6 +222,35 @@ namespace Dogged.Native
         public static extern unsafe git_object_t git_object_type(git_object* obj);
 
         /// <summary>
+        /// Close an open database object.
+        /// </summary>
+        /// <param name="odb">The database to close.  If null, no action is taken.</param>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe void git_odb_free(git_odb* odb);
+
+        /// <summary>
+        /// Read the header of an object from the database, without reading
+        /// its full contents.
+        ///
+        /// <para>
+        /// The header includes the length and the type of an object.
+        /// </para>
+        ///
+        /// <para>
+        /// Note that most backends do not support reading only the header
+        /// of an object, so the whole object will be read and then the
+        /// header will be returned.
+        /// </para>
+        /// </summary>
+        /// <param name="len_out">Pointer to store the length</param>
+        /// <param name="type_out">Pointer to store the type</param>
+        /// <param name="odb">Database to search for the object in</param>
+        /// <param name="id">ID of the objecft to read</param>
+        /// <returns>0 on success, GIT_ENOTFOUND if the object is not in the database, or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_odb_read_header(out UIntPtr len_out, out git_object_t type, git_odb* odb, ref git_oid id);
+
+        /// <summary>
         /// Retrieve and resolve the reference pointed to by HEAD.
         ///
         /// <para>
@@ -274,6 +303,24 @@ namespace Dogged.Native
         /// <returns>0 on success or an error code</returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe int git_repository_index(out git_index* index, git_repository* repo);
+
+        /// <summary>
+        /// Get the object database ("ODB") for this repository.
+        ///
+        /// <para>
+        /// If a custom ODB has not been set, the default database for the
+        /// repository will be returned (the one located in `.git/objects`).
+        /// </para>
+        ///
+        /// <para>
+        /// The ODB must be freed once it's no longer being used by the user.
+        /// </para>
+        /// </summary>
+        /// <param name="odb">Pointer to store the loaded ODB</param>
+        /// <param name="repo">A repository object</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_repository_odb(out git_odb* odb, git_repository* repo);
 
         /// <summary>
         /// Open a git repository.
