@@ -7,6 +7,15 @@
     <WarningsAsErrors />
 
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+
+    <PackageVersion>0.0.1</PackageVersion>
+    <PackageDescription>Git repository management; managed wrapper for libgit2</PackageDescription>
+    <PackageProjectUrl>https://github.com/ethomson/dogged</PackageProjectUrl>
+    <PackageIconUrl>https://dogged.app/logos/dogged.png</PackageIconUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Authors>ethomson</Authors>
+    <Copyright>Copyright (c) Edward Thomson and Dogged Contributors</Copyright>
+    <PackageTags>dogged;libgit2</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

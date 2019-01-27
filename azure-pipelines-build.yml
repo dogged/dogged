@@ -23,7 +23,7 @@ steps:
   inputs:
     testResultsFormat: VSTest
     testResultsFiles: '**/*.trx'
-- script: dotnet pack --no-build -c Release --output "$(Build.ArtifactStagingDirectory)" -p:Version=$(Build.BuildNumber)
+- script: dotnet pack --no-build -c Release --output "$(Build.ArtifactStagingDirectory)" -p:Version=$(Build.BuildNumber) -p:PackageVersion=$(Build.BuildNumber)
   displayName: 'Generate NuGet Package'
   condition: eq(variables['Agent.OS'], 'Windows_NT')
 - task: PublishBuildArtifacts@1
