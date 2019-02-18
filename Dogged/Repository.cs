@@ -28,11 +28,37 @@ namespace Dogged
         /// a working directory or a bare repository).
         /// </summary>
         /// <param name="path">The path to the repository or a repository's working tree.</param>
-        public unsafe Repository(string path)
+        public unsafe Repository(string path) : this()
         {
             Ensure.NativeSuccess(libgit2.git_repository_open(out nativeRepository, path), exceptionMap);
+        }
 
-            isBare = new LazyNative<bool>(() => libgit2.git_repository_is_bare(nativeRepository) == 0 ? false : true, this);
+        private unsafe Repository(git_repository* nativeRepository) : this()
+        {
+            Ensure.NativePointerNotNull(nativeRepository);
+            this.nativeRepository = nativeRepository;
+        }
+
+        private unsafe Repository()
+        {
+            isBare = new LazyNative<bool>(() => libgit2.git_repository_is_bare(this.nativeRepository) == 0 ? false : true, this);
+        }
+
+        /// <summary>
+        /// Clone a remote repository.
+        /// </summary>
+        /// <param name="remotePath">The remote repository to clone</param>
+        /// <param name="localPath">The local path to clone to</param>
+        /// <returns>The newly cloned repository</returns>
+        public unsafe static Repository Clone(string remotePath, string localPath)
+        {
+            Ensure.ArgumentNotNull(remotePath, "remotePath");
+            Ensure.ArgumentNotNull(localPath, "localPath");
+
+            git_repository* nativeRepository;
+            Ensure.NativeSuccess(libgit2.git_clone(out nativeRepository, remotePath, localPath, null));
+
+            return new Repository(nativeRepository);
         }
 
         /// <summary>
