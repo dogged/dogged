@@ -86,6 +86,26 @@ namespace Dogged
         }
 
         /// <summary>
+        /// Ensures that the given long can be cast to an integer without
+        /// losing data.
+        /// </summary>
+        /// <param value="value">The value to test</param>
+        /// <param value="name">The name of the value to use for error messages</param>
+        public static int CastToInt(long value, string name)
+        {
+            if (value < int.MinValue)
+            {
+                throw new InvalidCastException(string.Format("{0} is too small for an int", name));
+            }
+            else if (value > int.MaxValue)
+            {
+                throw new InvalidCastException(string.Format("{0} is too large for an int", name));
+            }
+
+            return (int)value;
+        }
+
+        /// <summary>
         /// Ensures that the given UIntPtr can be cast to an integer without
         /// losing data.  Used to ensure that values from native functions
         /// can be represented in managed int types.
