@@ -44,6 +44,30 @@ namespace Dogged.Tests
         }
 
         [Fact]
+        public void CanInitializeRepository()
+        {
+            string newPath = Path.Combine(TemporaryDirectory, "newrepo");
+
+            using (Repository repo = Repository.Init(newPath))
+            {
+                Assert.True(Directory.Exists(newPath));
+                Assert.True(Directory.Exists(Path.Combine(newPath, ".git")));
+            }
+        }
+
+        [Fact]
+        public void CanInitializeBareRepository()
+        {
+            string newPath = Path.Combine(TemporaryDirectory, "newrepo.git");
+
+            using (Repository repo = Repository.Init(newPath, true))
+            {
+                Assert.True(Directory.Exists(newPath));
+                Assert.True(File.Exists(Path.Combine(newPath, "HEAD")));
+            }
+        }
+
+        [Fact]
         public void CanIdentifyNonBareRepository()
         {
             using (Repository repo = SandboxRepository("testrepo"))

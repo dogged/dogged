@@ -45,6 +45,22 @@ namespace Dogged
         }
 
         /// <summary>
+        /// Creates a new Git repository in the given folder.
+        /// </summary>
+        /// <param name="path">The path to the repository</param>
+        /// <param name="bare">If true, a Git repository without a working directory is created at the given path. If false, the provided path will be considered as the working directory into which the .git directory will be created.</param>
+        /// <returns>The newly initialized repository</returns>
+        public unsafe static Repository Init(string path, bool bare = false)
+        {
+            Ensure.ArgumentNotNull(path, "path");
+
+            git_repository* nativeRepository;
+            Ensure.NativeSuccess(libgit2.git_repository_init(out nativeRepository, path, bare ? (uint)1 : 0));
+
+            return new Repository(nativeRepository);
+        }
+
+        /// <summary>
         /// Clone a remote repository.
         /// </summary>
         /// <param name="remotePath">The remote repository to clone</param>

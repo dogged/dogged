@@ -365,6 +365,19 @@ namespace Dogged.Native
             git_repository* repo);
 
         /// <summary>
+        /// Creates a new Git repository in the given folder.
+        /// </summary>
+        /// <param name="repo">Pointer to the repository that will be created.</param>
+        /// <param name="path">The path to the repository</param>
+        /// <param name="bare">If non-zero, a Git repository without a working directory is created at the given path. If zero, the provided path will be considered as the working directory into which the .git directory will be created.</param>
+        /// <returns>0 on success or an error code.</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_repository_init(
+            out git_repository* repo,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path,
+            uint bare);
+
+        /// <summary>
         /// Checks if a repository is bare.
         /// </summary>
         /// <param name="repo">Repository to test</param>
