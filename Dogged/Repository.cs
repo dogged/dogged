@@ -21,6 +21,14 @@ namespace Dogged
             { git_error_code.GIT_ENOTFOUND, (m) => new RepositoryNotFoundException(m) }
         };
 
+        private unsafe Repository(git_repository* nativeRepository)
+        {
+            Ensure.NativePointerNotNull(nativeRepository);
+            this.nativeRepository = nativeRepository;
+
+            isBare = new LazyNative<bool>(() => libgit2.git_repository_is_bare(this.nativeRepository) == 0 ? false : true, this);
+        }
+
         /// <summary>
         /// Opens the Git repository at the given <paramref name="path"/>.
         /// This can be either a path to the repository's working tree,
@@ -28,20 +36,14 @@ namespace Dogged
         /// a working directory or a bare repository).
         /// </summary>
         /// <param name="path">The path to the repository or a repository's working tree.</param>
-        public unsafe Repository(string path) : this()
+        public unsafe static Repository Open(string path)
         {
+            Ensure.ArgumentNotNull(path, "path");
+
+            git_repository *nativeRepository;
             Ensure.NativeSuccess(libgit2.git_repository_open(out nativeRepository, path), exceptionMap);
-        }
 
-        private unsafe Repository(git_repository* nativeRepository) : this()
-        {
-            Ensure.NativePointerNotNull(nativeRepository);
-            this.nativeRepository = nativeRepository;
-        }
-
-        private unsafe Repository()
-        {
-            isBare = new LazyNative<bool>(() => libgit2.git_repository_is_bare(this.nativeRepository) == 0 ? false : true, this);
+            return new Repository(nativeRepository);
         }
 
         /// <summary>

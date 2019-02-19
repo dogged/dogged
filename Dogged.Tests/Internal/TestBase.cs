@@ -34,7 +34,7 @@ namespace Dogged.Tests
 
         protected Repository SandboxRepository(string resource)
         {
-            return new Repository(SandboxResource(resource));
+            return Repository.Open(SandboxResource(resource));
         }
     }
 
