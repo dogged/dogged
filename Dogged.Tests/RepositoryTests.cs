@@ -16,7 +16,7 @@ namespace Dogged.Tests
         {
             string repositoryPath = SandboxResource("testrepo");
 
-            using (Repository repo = new Repository(repositoryPath))
+            using (Repository repo = Repository.Open(repositoryPath))
             {
             }
         }
@@ -26,7 +26,7 @@ namespace Dogged.Tests
         {
             string repositoryPath = SandboxResource("testrepo.git");
 
-            using (Repository repo = new Repository(repositoryPath))
+            using (Repository repo = Repository.Open(repositoryPath))
             {
             }
         }
@@ -37,7 +37,7 @@ namespace Dogged.Tests
             string nonexistentPath = Path.Combine(TemporaryDirectory, "nonexistent");
 
             Assert.Throws<RepositoryNotFoundException>(() => {
-                using (Repository repo = new Repository(nonexistentPath))
+                using (Repository repo = Repository.Open(nonexistentPath))
                 {
                 }
             });
