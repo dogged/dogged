@@ -25,5 +25,80 @@ namespace Dogged.Tests
                 Assert.Equal((size, type), odb.ReadHeader(new ObjectId(id)));
             }
         }
+
+        // Ensure the object is not in the testrepo repository but can be
+        // found by adding another repository's loose object directory as
+        // a custom backend.
+        [Fact]
+        public void CanAddLooseBackend()
+        {
+            using (Repository repo = SandboxRepository("testrepo"))
+            using (ObjectDatabase odb = repo.ObjectDatabase)
+            {
+                var oid = new ObjectId("e350052cc767cd1fcb37e84e9a89e701925be4ae");
+
+                Assert.Throws<NotFoundException>(() => odb.ReadHeader(oid));
+
+                var otherRepositoryPath = SandboxResource("submodules.git");
+                var path = Path.Combine(otherRepositoryPath, "objects");
+
+                var backend = ObjectDatabaseBackend.CreateLooseBackend(path);
+                odb.AddBackend(backend, 100);
+
+                Assert.Equal((195, ObjectType.Blob), odb.ReadHeader(oid));
+            }
+        }
+
+        // Ensure the object is not in the testrepo repository but can be
+        // found by adding another repository's packed object directory as
+        // a custom backend.
+        [Fact]
+        public void CanAddPackBackend()
+        {
+            using (Repository repo = SandboxRepository("testrepo"))
+            using (ObjectDatabase odb = repo.ObjectDatabase)
+            {
+                var oid1 = new ObjectId("739e3c4c51919baf6c4f55e7a74f5da2eba42ab0");
+                var oid2 = new ObjectId("0ddeaded9502971eefe1e41e34d0e536853ae20f");
+
+                Assert.Throws<NotFoundException>(() => odb.ReadHeader(oid1));
+                Assert.Throws<NotFoundException>(() => odb.ReadHeader(oid2));
+
+                var otherRepositoryPath = SandboxResource("duplicate.git");
+                var path = Path.Combine(otherRepositoryPath, "objects");
+
+                var backend = ObjectDatabaseBackend.CreatePackBackend(path);
+                odb.AddBackend(backend, 100);
+
+                Assert.Equal((7, ObjectType.Blob), odb.ReadHeader(oid1));
+                Assert.Equal((7, ObjectType.Blob), odb.ReadHeader(oid2));
+            }
+        }
+
+        // Ensure the object is not in the testrepo repository but can be
+        // found by adding a single packfile from another repository as a
+        // custom backend.
+        [Fact]
+        public void CanAddPackfileBackend()
+        {
+            using (Repository repo = SandboxRepository("testrepo"))
+            using (ObjectDatabase odb = repo.ObjectDatabase)
+            {
+                var oid1 = new ObjectId("739e3c4c51919baf6c4f55e7a74f5da2eba42ab0");
+                var oid2 = new ObjectId("0ddeaded9502971eefe1e41e34d0e536853ae20f");
+
+                Assert.Throws<NotFoundException>(() => odb.ReadHeader(oid1));
+                Assert.Throws<NotFoundException>(() => odb.ReadHeader(oid2));
+
+                var otherRepositoryPath = SandboxResource("duplicate.git");
+                var path = Path.Combine(otherRepositoryPath, "objects", "pack", "pack-b18eeacbd65cbd30a365d7564b45a468e8bd43d6.idx");
+
+                var backend = ObjectDatabaseBackend.CreatePackfileBackend(path);
+                odb.AddBackend(backend, 100);
+
+                Assert.Throws<NotFoundException>(() => odb.ReadHeader(oid1));
+                Assert.Equal((7, ObjectType.Blob), odb.ReadHeader(oid2));
+            }
+        }
     }
 }

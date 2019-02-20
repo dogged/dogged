@@ -310,6 +310,73 @@ namespace Dogged.Native
         public static extern unsafe git_object_t git_object_type(git_object* obj);
 
         /// <summary>
+        /// Add a custom backend to an existing object database.
+        ///
+        /// <para>
+        /// The backends are checked in relative ordering, based on the
+        /// value of the `priority` parameter.
+        /// </para>
+        /// </summary>
+        /// <param name="odb">Database to add the backend to</param>
+        /// <param name="backend">The object database backend to add</param>
+        /// <param name="priority">Value for ordering the backends queue</param>
+        /// <returns>0 on success or an error code.</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_odb_add_backend(
+            git_odb* odb,
+            git_odb_backend* backend,
+            int priority);
+
+        /// <summary>
+        /// Create a backend out of a single packfile.  This can be useful for
+        /// inspecting the contents of a single packfile.
+        /// </summary>
+        /// <param name="backend">Pointer to the odb backend that will be created.</param>
+        /// <param name="index_file">The path to the packfile's .idx file</param>
+        /// <returns>0 on success or an error code.</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_odb_backend_one_pack(
+            out git_odb_backend* backend,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string index_file);
+
+        /// <summary>
+        /// Create a backend for packfiles within a typical git object
+        /// directory that contains a "pack" directory that will be consulted
+        /// to find the packfiles to load.  Each packfile within that "pack"
+        /// directory will be consulted as storage for the object database.
+        /// </summary>
+        /// <param name="backend">Pointer to the odb backend that will be created.</param>
+        /// <param name="objects_dir">The path to the directory containing packfiles</param>
+        /// <returns>0 on success or an error code.</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_odb_backend_pack(
+            out git_odb_backend* backend,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string objects_dir);
+
+        /// <summary>
+        /// Create a backend for loose object files stored within a typical
+        /// git object directory containing a "fanout" of subdirectories,
+        /// named with the first two characters of the object's ID and
+        /// objects stored in files beneath that, each named with the
+        /// remaining 38 characters of their ID.
+        /// </summary>
+        /// <param name="backend">Pointer to the odb backend that will be created.</param>
+        /// <param name="objects_dir">The path to the directory containing packfiles</param>
+        /// <param name="compression_level">zlib compression level to use</param>
+        /// <param name="do_fsync">If non-zero, call fsync after writing</param>
+        /// <param name="dir_mode">POSIX open(2)-style permissions to use creating a directory or 0 for defaults</param>
+        /// <param name="file_mode">POSIX open(2)-style permissions to use creating a file or 0 for defaults</param>
+        /// <returns>0 on success or an error code.</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_odb_backend_loose(
+            out git_odb_backend* backend,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string objects_dir,
+            int compression_level,
+            int do_fsync,
+            uint dir_mode,
+            uint file_mode);
+
+        /// <summary>
         /// Close an open database object.
         /// </summary>
         /// <param name="odb">The database to close.  If null, no action is taken.</param>
