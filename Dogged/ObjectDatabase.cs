@@ -19,6 +19,22 @@ namespace Dogged
             this.nativeOdb = nativeOdb;
         }
 
+        /// <summary>
+        /// Add a custom backend to an existing object database.
+        ///
+        /// <para>
+        /// The backends are checked in relative ordering, based on the
+        /// value of the `priority` parameter.
+        /// </para>
+        /// </summary>
+        /// <param name="backend">The object database backend to add</param>
+        /// <param name="priority">Value for ordering the backends queue</param>
+        public unsafe void AddBackend(ObjectDatabaseBackend backend, int priority)
+        {
+            Ensure.ArgumentNotNull(backend, "backend");
+            Ensure.NativeSuccess(() => libgit2.git_odb_add_backend(nativeOdb, backend.NativeObject, priority), this);
+        }
+
         internal unsafe static ObjectDatabase FromNative(git_odb* nativeOdb)
         {
             return new ObjectDatabase(nativeOdb);
