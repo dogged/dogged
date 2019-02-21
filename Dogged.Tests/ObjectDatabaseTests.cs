@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using Xunit;
 
 using Dogged;
@@ -23,6 +24,20 @@ namespace Dogged.Tests
             using (ObjectDatabase odb = repo.ObjectDatabase)
             {
                 Assert.Equal((size, type), odb.ReadHeader(new ObjectId(id)));
+            }
+        }
+
+        [Theory]
+        [InlineData("Hello, world.\n", ObjectType.Blob, "f75ba05f340c51065cbea2e1fdbfe5fe13144c97")]
+        [InlineData("tree 0a890bd10328d68f6d85efd2535e3a4c588ee8e6\nauthor Edward Thomson <ethomson@edwardthomson.com> 1550772904 +0000\ncommitter Edward Thomson <ethomson@edwardthomson.com> 1550772904 +0000\n\nfoo\n", ObjectType.Commit, "dbc2318bd976cee438f9a752286ff9a8b421df2e")]
+        public void CanWrite(string contents, ObjectType type, string expectedId)
+        {
+            using (Repository repo = SandboxRepository("testrepo"))
+            using (ObjectDatabase odb = repo.ObjectDatabase)
+            {
+                var id = odb.Write(Encoding.UTF8.GetBytes(contents), type);
+
+                Assert.Equal(expectedId, id.ToString());
             }
         }
 

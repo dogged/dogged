@@ -156,6 +156,23 @@ namespace Dogged
             return (uint)value;
         }
 
+        /// <summary>
+        /// Ensures that the given long can be cast to a UIntPtr without losing
+        /// data.  Used to ensure that values from callers can be represented
+        /// by native size_t types.
+        /// </summary>
+        /// <param value="value">The value to test</param>
+        /// <param value="name">The name of the value to use for error messages</param>
+        public static UIntPtr CastToUIntPtr(long value, string name)
+        {
+            if (value < 0)
+            {
+                throw new InvalidCastException(string.Format("{0} is out of range", name));
+            }
+
+            return (UIntPtr)value;
+        }
+
         public static void EnumDefined(Type type, object value, string name)
         {
             if (!Enum.IsDefined(type, value))
