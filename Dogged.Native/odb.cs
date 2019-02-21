@@ -21,4 +21,11 @@ namespace Dogged.Native
     public struct git_odb
     {
     }
+
+    /// <summary>
+    /// An object that was read from the object database.
+    /// </summary>
+    public struct git_odb_object
+    {
+    }
 }

@@ -28,6 +28,38 @@ namespace Dogged.Tests
         }
 
         [Theory]
+        [InlineData("a71586c1dfe8a71c6cbf6c129f404c5642ff31bd", "my new file\n", 12, ObjectType.Blob)]
+        [InlineData("099fabac3a9ea935598528c27f866e34089c2eff", "tree 45dd856fdd4d89b884c340ba0e047752d9b085d6\nparent a65fedf39aefe402d3bb6e24df4d4f5fe4547750\nauthor Ben Straub <bstraub@github.com> 1342477396 -0700\ncommitter Ben Straub <bstraub@github.com> 1342477396 -0700\n\nAdd a symlink\n", 224, ObjectType.Commit)]
+        public void CanRead(string id, string contents, long size, ObjectType type)
+        {
+            using (Repository repo = SandboxRepository("testrepo"))
+            using (ObjectDatabase odb = repo.ObjectDatabase)
+            using (ObjectDatabaseObject obj = odb.Read(new ObjectId(id)))
+            {
+                var contentBytes = Encoding.UTF8.GetBytes(contents);
+
+                Assert.Equal(id, obj.Id.ToString());
+                Assert.Equal(type, obj.Type);
+                Assert.Equal(size, obj.Size);
+                Assert.True(new ReadOnlySpan<byte>(contentBytes).SequenceEqual(obj.Data));
+            }
+        }
+
+        [Fact]
+        public void AttemptingToAccessDisposedObjectDatabaseObjecetThrows()
+        {
+            ObjectDatabaseObject obj;
+
+            using (Repository repo = SandboxRepository("testrepo"))
+            using (ObjectDatabase odb = repo.ObjectDatabase)
+            using (obj = odb.Read(new ObjectId("a71586c1dfe8a71c6cbf6c129f404c5642ff31bd")))
+            {
+            }
+
+            Assert.Throws<ObjectDisposedException>(() => obj.Id);
+        }
+
+        [Theory]
         [InlineData("Hello, world.\n", ObjectType.Blob, "f75ba05f340c51065cbea2e1fdbfe5fe13144c97")]
         [InlineData("tree 0a890bd10328d68f6d85efd2535e3a4c588ee8e6\nauthor Edward Thomson <ethomson@edwardthomson.com> 1550772904 +0000\ncommitter Edward Thomson <ethomson@edwardthomson.com> 1550772904 +0000\n\nfoo\n", ObjectType.Commit, "dbc2318bd976cee438f9a752286ff9a8b421df2e")]
         public void CanWrite(string contents, ObjectType type, string expectedId)

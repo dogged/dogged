@@ -401,6 +401,64 @@ namespace Dogged.Native
         public static extern unsafe void git_odb_free(git_odb* odb);
 
         /// <summary>
+        /// Return the data of an ODB object.  This is the uncompressed,
+        /// raw data as read from the ODB, without the leading header.
+        /// </summary>
+        /// <param name="obj">The object to read its contents</param>
+        /// <returns>The raw content of the object</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe byte* git_odb_object_data(git_odb_object *obj);
+
+        /// <summary>
+        /// Return the OID of an ODB object; this is the OID from which the
+        // object was read from.
+        /// </summary>
+        /// <param name="object">The object to lookup the ID of</param>
+        /// <returns>A pointer to the object ID</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe git_oid* git_odb_object_id(git_odb_object* obj);
+
+        /// <summary>
+        /// Return the size of an ODB object.  This is the real size of the
+        /// data buffer, not the actual size of the object.
+        /// </summary>
+        /// <param name="obj">The object to query</param>
+        /// <returns>The size of the object</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe UIntPtr git_odb_object_size(git_odb_object* obj);
+
+        /// <summary>
+        /// Return the type of an ODB object.
+        /// </summary>
+        /// <param name="obj">The object to query</param>
+        /// <returns>The type of object</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe git_object_t git_odb_object_type(git_odb_object* obj);
+
+        /// <summary>
+        /// Free an ODB object.  This method must always be called once a
+        /// git_odb_object is no longer needed, otherwise memory will leak.
+        /// </summary>
+        /// <param name="obj">Object to close</param>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe void git_odb_object_free(git_odb_object* obj);
+
+        /// <summary>
+        /// Read an object from the database.
+        ///
+        /// <para>
+        /// This method queries all available ODB backends
+        /// trying to read the given OID.
+        /// </para>
+        /// </summary>
+        /// <param name="obj">Point to store the read object</param>
+        /// <param name="odb">The database to read from</param>
+        /// <param name="id">The object ID to read</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_odb_read(out git_odb_object* obj, git_odb* odb, ref git_oid id);
+
+        /// <summary>
         /// Read the header of an object from the database, without reading
         /// its full contents.
         ///
