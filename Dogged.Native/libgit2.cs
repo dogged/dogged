@@ -377,6 +377,23 @@ namespace Dogged.Native
             uint file_mode);
 
         /// <summary>
+        /// List all objects available in the database.
+        ///
+        /// <para>
+        /// The callback will be called for each object available in the
+        /// database. Note that the objects are likely to be returned in the index
+        /// order, which would make accessing the objects in that order inefficient.
+        /// Return a non-zero value from the callback to stop looping.
+        /// </para>
+        /// </summary>
+        /// <param name="odb">The database to iterate.</param>
+        /// <param name="cb">The callback to invoke for each object</param>
+        /// <param name="payload">Custom data to pass back to the callback</param>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_odb_foreach(git_odb* odb, git_odb_foreach_cb cb, IntPtr payload);
+
+        /// <summary>
         /// Close an open database object.
         /// </summary>
         /// <param name="odb">The database to close.  If null, no action is taken.</param>

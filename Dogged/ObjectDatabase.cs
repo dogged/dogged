@@ -63,6 +63,47 @@ namespace Dogged
             return (Ensure.CastToLong(size, "size"), (ObjectType)type);
         }
 
+        /// <summary>
+        /// Iterate over each object in the database, calling the given
+        /// action for each.  Return true from the action to continue
+        /// iterating; return false to stop.
+        /// </summary>
+        /// <param name="action">The action to invoke</param>
+        public unsafe void ForEachObject(Func<ObjectId, bool> action)
+        {
+            Exception caught = null;
+
+            git_odb_foreach_cb cb = (id, payload) => {
+                try
+                {
+                    if (action.Invoke(ObjectId.FromNative(id)))
+                    {
+                        return 0;
+                    }
+                }
+                catch (Exception e)
+                {
+                    caught = e;
+                }
+
+                return (int)git_error_code.GIT_EUSER;
+            };
+
+            int ret = Ensure.NativeCall(() => libgit2.git_odb_foreach(nativeOdb, cb, IntPtr.Zero), this);
+
+            if (ret == (int)git_error_code.GIT_EUSER)
+            {
+                if (caught != null)
+                {
+                    throw caught;
+                }
+
+                return;
+            }
+
+            Ensure.NativeSuccess(ret);
+        }
+
         internal unsafe override bool IsDisposed
         {
             get
