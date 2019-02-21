@@ -43,13 +43,13 @@ namespace Dogged
         private readonly git_oid oid = new git_oid();
         private string hex;
 
-        private unsafe ObjectId(git_oid oid)
+        private unsafe ObjectId(byte* id)
         {
-            Ensure.ArgumentNotNull(oid, "oid");
+            Ensure.ArgumentNotNull(id, "id");
 
             fixed(byte* dest = this.oid.id)
             {
-                Buffer.MemoryCopy(oid.id, dest, git_oid.GIT_OID_RAWSZ, git_oid.GIT_OID_RAWSZ);
+                Buffer.MemoryCopy(id, dest, git_oid.GIT_OID_RAWSZ, git_oid.GIT_OID_RAWSZ);
             }
         }
 
@@ -81,7 +81,14 @@ namespace Dogged
 
         internal unsafe static ObjectId FromNative(git_oid nativeOid)
         {
-            return new ObjectId(nativeOid);
+            Ensure.ArgumentNotNull(nativeOid, "nativeOid");
+            return new ObjectId(nativeOid.id);
+        }
+
+        internal unsafe static ObjectId FromNative(git_oid* nativeOid)
+        {
+            Ensure.ArgumentNotNull(nativeOid, "nativeOid");
+            return new ObjectId(nativeOid->id);
         }
 
         internal git_oid ToNative()

@@ -26,6 +26,62 @@ namespace Dogged.Tests
             }
         }
 
+        [Fact]
+        public void CanIterateObjects()
+        {
+            int count = 0;
+
+            using (Repository repo = SandboxRepository("testrepo"))
+            using (ObjectDatabase odb = repo.ObjectDatabase)
+            {
+                odb.ForEachObject((id) => {
+                    count++;
+                    return true;
+                });
+            }
+
+            Assert.Equal(1703, count);
+        }
+
+        [Fact]
+        public void CanStopObjectIteration()
+        {
+            int count = 0;
+
+            using (Repository repo = SandboxRepository("testrepo"))
+            using (ObjectDatabase odb = repo.ObjectDatabase)
+            {
+                odb.ForEachObject((id) => {
+                    return (++count == 5) ? false : true;
+                });
+            }
+
+            Assert.Equal(5, count);
+        }
+
+        [Fact]
+        public void CanThrowDuringObjectIteration()
+        {
+            int count = 0;
+
+            using (Repository repo = SandboxRepository("testrepo"))
+            using (ObjectDatabase odb = repo.ObjectDatabase)
+            {
+                Assert.Throws<InvalidTimeZoneException>(() => {
+                    odb.ForEachObject((id) => {
+                        if (++count == 5)
+                        {
+                            throw new InvalidTimeZoneException();
+                        }
+
+                        return true;
+                    });
+                });
+            }
+
+            Assert.Equal(5, count);
+        }
+
         // Ensure the object is not in the testrepo repository but can be
         // found by adding another repository's loose object directory as
         // a custom backend.
