@@ -64,6 +64,27 @@ namespace Dogged
         }
 
         /// <summary>
+        /// Write an object directly into the object database.
+        /// </summary>
+        /// <param nam="data">The raw bytes to write</param>
+        /// <param name="type">The type of object to write</param>
+        /// <returns>The id of the object written to the database</returns>
+        public unsafe ObjectId Write(byte[] data, ObjectType type)
+        {
+            git_oid id;
+            UIntPtr length = Ensure.CastToUIntPtr(data.LongLength, "data.Length");
+
+            Ensure.NativeSuccess(() => {
+                fixed (byte* ptr = data)
+                {
+                    return libgit2.git_odb_write(ref id, nativeOdb, ptr, length, (git_object_t)type);
+                }
+            }, this);
+
+            return ObjectId.FromNative(id);
+        }
+
+        /// <summary>
         /// Iterate over each object in the database, calling the given
         /// action for each.  Return true from the action to continue
         /// iterating; return false to stop.

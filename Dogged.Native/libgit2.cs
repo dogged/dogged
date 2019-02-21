@@ -423,6 +423,30 @@ namespace Dogged.Native
         public static extern unsafe int git_odb_read_header(out UIntPtr len_out, out git_object_t type, git_odb* odb, ref git_oid id);
 
         /// <summary>
+        /// Write an object directly into the object database.
+        ///
+        /// <para>
+        /// This method writes a full object straight into the ODB.
+        /// For most cases, it is preferred to write objects through a write
+        /// stream, which is both faster and less memory intensive, specially
+        /// for big objects.
+        /// </para>
+        ///
+        /// <para>
+        /// This method is provided for compatibility with custom backends
+        /// which are not able to support streaming writes
+        /// </para>
+        /// </summary>
+        /// <param name="id">Pointer to store the OID result of the write</param>
+        /// <param name="odb">Object database to store the object</param>
+        /// <param name="data">Buffer with the data to store</param>
+        /// <param name="len">Size of the buffer</param>
+        /// <param name="type">Type of the data to store</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_odb_write(ref git_oid id, git_odb* odb, byte* data, UIntPtr len, git_object_t type);
+
+        /// <summary>
         /// Retrieve and resolve the reference pointed to by HEAD.
         ///
         /// <para>
