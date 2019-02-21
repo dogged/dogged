@@ -64,6 +64,21 @@ namespace Dogged
         }
 
         /// <summary>
+        /// Read a git object directly from the database.
+        /// </summary>
+        /// <param name="id">The object ID to read</param>
+        public unsafe ObjectDatabaseObject Read(ObjectId id)
+        {
+            Ensure.ArgumentNotNull(id, "id");
+
+            git_oid oid = id.ToNative();
+            git_odb_object* obj = null;
+
+            Ensure.NativeSuccess(() => libgit2.git_odb_read(out obj, nativeOdb, ref oid), this);
+            return ObjectDatabaseObject.FromNative(obj);
+        }
+
+        /// <summary>
         /// Write an object directly into the object database.
         /// </summary>
         /// <param nam="data">The raw bytes to write</param>
