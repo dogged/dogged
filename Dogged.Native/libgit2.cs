@@ -149,6 +149,29 @@ namespace Dogged.Native
         public static extern unsafe git_error* git_error_last();
 
         /// <summary>
+        /// Set the error message string for this thread.
+        ///
+        /// <para>
+        /// This function is public so that custom ODB backends and the like can
+        /// relay an error message through libgit2.  Most regular users of libgit2
+        /// will never need to call this function -- actually, calling it in most
+        /// circumstances (for example, calling from within a callback function)
+        /// will just end up having the value overwritten by libgit2 internals.
+        /// </para>
+        ///
+        /// <para>
+        /// This error message is stored in thread-local storage and only applies
+        /// to the particular thread that this libgit2 call is made from.
+        /// </para>
+        /// </summary>
+        /// <param name="error_class">One of the git_error_t enum descibing the general subsystem that is responsible for the error</param>
+        /// <param name="message">The error message describing the problem</param>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe void git_error_set_str(
+            git_error_t error_class,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string message);
+
+        /// <summary>
         /// Get a pointer to an entry in the index for the given path at the
         /// given stage level.
         ///

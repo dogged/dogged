@@ -3,6 +3,7 @@ using System.IO;
 using Xunit;
 
 using Dogged.Native;
+using Dogged.Native.Services;
 
 namespace Dogged.Native.Tests
 {
@@ -23,6 +24,18 @@ namespace Dogged.Native.Tests
         {
             git_feature_t features = libgit2.git_libgit2_features();
             Assert.Equal(git_feature_t.GIT_FEATURE_THREADS, (features & git_feature_t.GIT_FEATURE_THREADS));
+        }
+
+        [Fact]
+        public unsafe void CanGetAndSetErrorMessage()
+        {
+            libgit2.git_error_set_str((git_error_t)42, "Hello, world.");
+
+            git_error *error = libgit2.git_error_last();
+
+            Assert.True((IntPtr)error != IntPtr.Zero);
+            Assert.Equal(42, (int)error->category);
+            Assert.Equal("Hello, world.", Utf8Converter.FromNative(error->message));
         }
     }
 }
