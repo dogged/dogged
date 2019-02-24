@@ -80,6 +80,20 @@ namespace Dogged
         }
 
         /// <summary>
+        /// Create a custom repository that is not bound to an on-disk
+        /// repository or working directory.  To use it, you can can configure
+        /// custom backends.
+        /// </summary>
+        /// <returns>The newly created repository</returns>
+        public unsafe static Repository CreateCustomRepository()
+        {
+            git_repository* nativeRepository;
+            Ensure.NativeSuccess(libgit2.git_repository_new(out nativeRepository));
+
+            return new Repository(nativeRepository);
+        }
+
+        /// <summary>
         /// Indicates whether the specified repository is bare.
         /// </summary>
         public unsafe bool IsBare
@@ -247,6 +261,10 @@ namespace Dogged
                 git_odb* odb = null;
                 Ensure.NativeSuccess(() => libgit2.git_repository_odb(out odb, nativeRepository), this);
                 return ObjectDatabase.FromNative(odb);
+            }
+            set
+            {
+                libgit2.git_repository_set_odb(nativeRepository, value.NativeOdb);
             }
         }
 
