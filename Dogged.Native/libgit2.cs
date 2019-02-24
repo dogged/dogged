@@ -363,6 +363,26 @@ namespace Dogged.Native
             [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string index_file);
 
         /// <summary>
+        /// Allocate a buffer for object data from a custom backend.
+        /// </summary>
+        /// <param name="backend">The ODB backend</param>
+        /// <param name="len">The size of the buffer</param>
+        /// <returns>A pointer to the allocated byte array</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe byte* git_odb_backend_data_alloc(git_odb_backend* backend, UIntPtr len);
+
+        /// <summary>
+        /// Frees custom allocated ODB data.  This should only be called when
+        /// memory allocated using git_odb_backend_data_alloc is not returned
+        /// to libgit2 because the backend encountered an error in the read
+        /// function after allocation and did not return this data to libgit2.
+        /// </summary>
+        /// <param name="backend">The ODB backend that is freeing this memory</param>
+        /// <param name="data">The buffer to free</param>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe void git_odb_backend_data_free(git_odb_backend* backend, byte* data);
+
+        /// <summary>
         /// Create a backend for packfiles within a typical git object
         /// directory that contains a "pack" directory that will be consulted
         /// to find the packfiles to load.  Each packfile within that "pack"

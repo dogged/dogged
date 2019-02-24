@@ -9,7 +9,9 @@ namespace Dogged
     /// </summary>
     public class ObjectDatabaseBackend
     {
-        private unsafe ObjectDatabaseBackend(git_odb_backend* nativeObjectDatabaseBackend)
+        protected unsafe ObjectDatabaseBackend() { }
+
+        internal unsafe ObjectDatabaseBackend(git_odb_backend* nativeObjectDatabaseBackend)
         {
             Ensure.ArgumentNotNull(nativeObjectDatabaseBackend, "nativeObjectDatabaseBackend");
             NativeObject = nativeObjectDatabaseBackend;
@@ -18,7 +20,7 @@ namespace Dogged
         internal unsafe git_odb_backend* NativeObject
         {
             get;
-            private set;
+            set;
         }
 
         /// <summary>

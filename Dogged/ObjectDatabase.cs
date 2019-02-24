@@ -48,6 +48,7 @@ namespace Dogged
         public unsafe void AddBackend(ObjectDatabaseBackend backend, int priority)
         {
             Ensure.ArgumentNotNull(backend, "backend");
+            Ensure.NativePointerNotNull(backend.NativeObject);
             Ensure.NativeSuccess(() => libgit2.git_odb_add_backend(nativeOdb, backend.NativeObject, priority), this);
         }
 
