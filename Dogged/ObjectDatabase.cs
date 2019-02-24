@@ -13,10 +13,26 @@ namespace Dogged
     {
         private unsafe git_odb* nativeOdb;
 
+        public unsafe ObjectDatabase()
+        {
+            git_odb *nativeOdb;
+
+            Ensure.NativeSuccess(libgit2.git_odb_new(out nativeOdb));
+            this.nativeOdb = nativeOdb;
+        }
+
         private unsafe ObjectDatabase(git_odb* nativeOdb)
         {
             Ensure.ArgumentNotNull(nativeOdb, "odb");
             this.nativeOdb = nativeOdb;
+        }
+
+        internal unsafe git_odb* NativeOdb
+        {
+            get
+            {
+                return nativeOdb;
+            }
         }
 
         /// <summary>

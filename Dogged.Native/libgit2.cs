@@ -401,6 +401,19 @@ namespace Dogged.Native
         public static extern unsafe void git_odb_free(git_odb* odb);
 
         /// <summary>
+        /// Create a new object database with no backends.
+        ///
+        /// <para>
+        /// Before the ODB can be used for read/writing, a custom database
+        /// backend must be manually added using `git_odb_add_backend()`
+        /// </para>
+        /// </summary>
+        /// <param name="odb">Pointer to the object database that will be created.</param>
+        /// <returns>0 on success or an error code.</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_odb_new(out git_odb *odb);
+
+        /// <summary>
         /// Return the data of an ODB object.  This is the uncompressed,
         /// raw data as read from the ODB, without the leading header.
         /// </summary>
@@ -572,6 +585,19 @@ namespace Dogged.Native
         public static extern unsafe int git_repository_index(out git_index* index, git_repository* repo);
 
         /// <summary>
+        /// Create a new repository with neither backends nor config object
+        ///
+        /// <para>
+        /// Note that this is only useful if you wish to associate the repository
+        /// with a non-filesystem-backed object database and config store.
+        /// </para>
+        /// </summary>
+        /// <param name="repo">Pointer to the repository that will be created.</param>
+        /// <returns>0 on success or an error code.</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_repository_new(out git_repository *repo);
+
+        /// <summary>
         /// Get the object database ("ODB") for this repository.
         ///
         /// <para>
@@ -610,6 +636,25 @@ namespace Dogged.Native
         public static extern unsafe int git_repository_open(
             out git_repository* repo,
             [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path);
+
+        /// <summary>
+        /// Set the Object Database for this repository
+        ///
+        /// <para>
+        /// The ODB will be used for all object-related operations
+        /// involving this repository.
+        /// </para>
+        ///
+        /// <para>
+        /// The repository will keep a reference to the ODB; the user
+        /// must still free the ODB object after setting it to the
+        /// repository, or it will leak.
+        /// </para>
+        /// </summary>
+        /// <param name="repo">The repository to configure</param>
+        /// <param name="odb">The object database to set</param>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe void git_repository_set_odb(git_repository* repo, git_odb* odb);
 
         /// <summary>
         /// Close a previously opened repository and free any native memory
