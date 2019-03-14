@@ -60,6 +60,50 @@ namespace Dogged
         }
 
         /// <summary>
+        /// Gets the index entry at the specified path.
+        /// </summary>
+        public unsafe IndexEntry this[string path]
+        {
+            get
+            {
+                return this[path, 0];
+            }
+        }
+
+        /// <summary>
+        /// Gets the index entry at the specified path and at the given
+        /// stage level.
+        ///
+        /// <para>
+        /// A "stage level" is a construct for handling conflicted files
+        /// during a merge; generally, files are in stage level 0
+        /// (sometimes called the "main index"); if a file is in conflict
+        /// after a merge, there will be no entry at stage level 0, instead
+        /// there will be entries at stages 1-3 representing the conflicting
+        /// contents of the common ancestor, the file in "our" branch and
+        /// the file in "their" branch.
+        /// </para>
+        /// </summary>
+        public unsafe IndexEntry this[string path, int stage]
+        {
+            get
+            {
+                Ensure.NotDisposed(nativeIndex, "index");
+                Ensure.ArgumentNotNull(path, "path");
+
+                git_index_entry* entry = libgit2.git_index_get_bypath(nativeIndex, path, stage);
+                GC.KeepAlive(this);
+
+                if (entry == null)
+                {
+                    throw new KeyNotFoundException(string.Format("there is no index entry for path {0}", path));
+                }
+
+                return IndexEntry.FromNative(entry);
+            }
+        }
+
+        /// <summary>
         /// Returns an enumerate that iterates through index entries.  This
         /// will iterate over a snapshot of the index, so the underlying
         /// index can safely be mutated during iteration.

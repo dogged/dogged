@@ -61,6 +61,33 @@ namespace Dogged.Tests
         }
 
         [Fact]
+        public void CanGetIndexEntryByPath()
+        {
+            using (Repository repo = SandboxRepository("testrepo"))
+            using (Index index = repo.Index)
+            {
+                IndexEntry entry = index[".HEADER"];
+
+                Assert.Equal(FileMode.Blob, entry.Mode);
+                Assert.Equal(new ObjectId("fd8430bc864cfcd5f10e5590f8a447e01b942bfe"), entry.Id);
+                Assert.Equal(".HEADER", entry.Path);
+            }
+        }
+
+        [Fact]
+        public void AccessingAnInvalidPathThrows()
+        {
+            using (Repository repo = SandboxRepository("testrepo"))
+            using (Index index = repo.Index)
+            {
+                Assert.Throws<ArgumentNullException>(() => index[null]);
+
+                Assert.Throws<KeyNotFoundException>(() => index["foo"]);
+                Assert.Throws<KeyNotFoundException>(() => index["bar"]);
+            }
+        }
+
+        [Fact]
         public void EnumerateIndexEntries()
         {
             IndexEntry[] expected = new[] {

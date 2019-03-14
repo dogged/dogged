@@ -91,6 +91,36 @@ namespace Dogged.Native
         public static extern unsafe git_error* git_error_last();
 
         /// <summary>
+        /// Get a pointer to an entry in the index for the given path at the
+        /// given stage level.
+        ///
+        /// <para>
+        /// A "stage level" is a construct for handling conflicted files
+        /// during a merge; generally, files are in stage level 0
+        /// (sometimes called the "main index"); if a file is in conflict
+        /// after a merge, there will be no entry at stage level 0, instead
+        /// there will be entries at stages 1-3 representing the conflicting
+        /// contents of the common ancestor, the file in "our" branch and
+        /// the file in "their" branch.
+        /// </para>
+        ///
+        /// <para>
+        /// The entry is not modifiable and should not be freed.  Because the
+        /// `git_index_entry` struct is a publicly defined struct, you should
+        /// be able to make your own permanent copy of the data if necessary.
+        /// </para>
+        /// </summary>
+        /// <param name="index">The index to read the entry from</param>
+        /// <param name="path">The path for the index entry</param>
+        /// <param name="stage">The stage level to query</param>
+        /// <returns>A pointer to the entry or NULL if out of bounds</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe git_index_entry* git_index_get_bypath(
+            git_index* index,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path,
+            int stage);
+
+        /// <summary>
         /// Get a pointer to an entry in the index at the the given position.
         ///
         /// <para>
