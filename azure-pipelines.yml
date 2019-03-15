@@ -6,7 +6,7 @@ jobs:
 - job: windows_amd64
   displayName: 'Windows (amd64)'
   pool:
-    vmImage: 'VS2017-Win2016'
+    vmImage: 'windows-2019'
   steps:
   - template: azure-pipelines-build.yml
 
