@@ -1,4 +1,8 @@
 steps:
+- task: DotNetCoreInstaller@0
+  displayName: 'Install .NET Core 3'
+  inputs:
+    version: '3.0.100-preview3-010431'
 - script: choco install gitversion.portable
   displayName: 'Install Dependencies (Windows)'
   condition: eq(variables['Agent.OS'], 'Windows_NT')
