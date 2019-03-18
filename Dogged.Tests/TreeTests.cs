@@ -40,7 +40,7 @@ namespace Dogged.Tests
         public void CanLookupTree(string hex)
         {
             using (Repository repo = SandboxRepository("testrepo"))
-            using (Tree t = repo.Lookup<Tree>(new ObjectId(hex)))
+            using (Tree t = repo.Objects.Lookup<Tree>(new ObjectId(hex)))
             {
                 Assert.NotNull(t);
                 Assert.Equal(ObjectType.Tree, t.Type);
@@ -52,7 +52,7 @@ namespace Dogged.Tests
         public void CanGetTreeEntryByIndex()
         {
             using (Repository repo = SandboxRepository("testrepo"))
-            using (Tree t = repo.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6")))
+            using (Tree t = repo.Objects.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6")))
             {
                 Assert.Equal(4, t.Count);
 
@@ -73,7 +73,7 @@ namespace Dogged.Tests
         public void CanLookupTreeEntryByName()
         {
             using (Repository repo = SandboxRepository("testrepo"))
-            using (Tree t = repo.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6")))
+            using (Tree t = repo.Objects.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6")))
             {
                 foreach (var expected in entries)
                 {
@@ -92,7 +92,7 @@ namespace Dogged.Tests
         public void CanIterateTreeEntries()
         {
             using (Repository repo = SandboxRepository("testrepo"))
-            using (Tree t = repo.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6")))
+            using (Tree t = repo.Objects.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6")))
             {
                 int i = 0;
 
@@ -112,7 +112,7 @@ namespace Dogged.Tests
         public void AttemptToGetInvalidTreeEntryThrows()
         {
             using (Repository repo = SandboxRepository("testrepo"))
-            using (Tree t = repo.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6")))
+            using (Tree t = repo.Objects.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6")))
             {
                 Assert.Throws<ArgumentException>(() => t[-1]);
                 Assert.Throws<IndexOutOfRangeException>(() => t[4]);
@@ -125,7 +125,7 @@ namespace Dogged.Tests
             Tree tree;
 
             using (Repository repo = SandboxRepository("testrepo"))
-            using (tree = repo.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6")))
+            using (tree = repo.Objects.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6")))
             {
             }
 
@@ -141,7 +141,7 @@ namespace Dogged.Tests
             List<TreeEntry> entries = new List<TreeEntry>();
 
             using (Repository repo = SandboxRepository("testrepo"))
-            using (Tree t = repo.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6")))
+            using (Tree t = repo.Objects.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6")))
             {
                 foreach (var entry in t)
                 {

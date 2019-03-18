@@ -15,7 +15,7 @@ namespace Dogged.Tests
         public void CanLookupHeadCommit()
         {
             using (Repository repo = SandboxRepository("testrepo"))
-            using (Commit head = repo.Lookup<Commit>(repo.Head.Target))
+            using (Commit head = repo.Objects.Lookup<Commit>(repo.Head.Target))
             {
                 Assert.NotNull(head);
                 Assert.Equal(ObjectType.Commit, head.Type);
@@ -31,7 +31,7 @@ namespace Dogged.Tests
         public void CanLookupObject(string hex, ObjectType type)
         {
             using (Repository repo = SandboxRepository("testrepo"))
-            using (GitObject o = repo.Lookup(new ObjectId(hex)))
+            using (GitObject o = repo.Objects.Lookup(new ObjectId(hex)))
             {
                 Assert.NotNull(o);
                 Assert.Equal(type, o.Type);
@@ -47,7 +47,7 @@ namespace Dogged.Tests
         public void CanLookupObjectWithGeneric(string hex, ObjectType type)
         {
             using (Repository repo = SandboxRepository("testrepo"))
-            using (GitObject o = repo.Lookup<GitObject>(new ObjectId(hex)))
+            using (GitObject o = repo.Objects.Lookup<GitObject>(new ObjectId(hex)))
             {
                 Assert.NotNull(o);
                 Assert.Equal(type, o.Type);
@@ -60,7 +60,7 @@ namespace Dogged.Tests
         public void CanLookupCommit(string hex)
         {
             using (Repository repo = SandboxRepository("testrepo"))
-            using (Commit c = repo.Lookup<Commit>(new ObjectId(hex)))
+            using (Commit c = repo.Objects.Lookup<Commit>(new ObjectId(hex)))
             {
                 Assert.NotNull(c);
                 Assert.Equal(ObjectType.Commit, c.Type);
@@ -74,7 +74,7 @@ namespace Dogged.Tests
         public void CanLookupBlob(string hex)
         {
             using (Repository repo = SandboxRepository("testrepo"))
-            using (Blob b = repo.Lookup<Blob>(new ObjectId(hex)))
+            using (Blob b = repo.Objects.Lookup<Blob>(new ObjectId(hex)))
             {
                 Assert.NotNull(b);
                 Assert.Equal(ObjectType.Blob, b.Type);
@@ -91,7 +91,7 @@ namespace Dogged.Tests
             GitObject obj;
 
             using (Repository repo = SandboxRepository("testrepo"))
-            using (obj = repo.Lookup(new ObjectId(hex)))
+            using (obj = repo.Objects.Lookup(new ObjectId(hex)))
             {
             }
 

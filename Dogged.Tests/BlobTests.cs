@@ -16,7 +16,7 @@ namespace Dogged.Tests
             ObjectId id = new ObjectId("a8233120f6ad708f843d861ce2b7228ec4e3dec6");
 
             using (Repository repo = SandboxRepository("testrepo"))
-            using (Blob b = repo.Lookup<Blob>(id))
+            using (Blob b = repo.Objects.Lookup<Blob>(id))
             {
                 Assert.NotNull(b);
                 Assert.Equal(ObjectType.Blob, b.Type);
@@ -34,7 +34,7 @@ namespace Dogged.Tests
             Blob blob;
 
             using (Repository repo = SandboxRepository("testrepo"))
-            using (blob = repo.Lookup<Blob>(new ObjectId("a8233120f6ad708f843d861ce2b7228ec4e3dec6")))
+            using (blob = repo.Objects.Lookup<Blob>(new ObjectId("a8233120f6ad708f843d861ce2b7228ec4e3dec6")))
             {
             }
 

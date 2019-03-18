@@ -16,7 +16,7 @@ namespace Dogged.Tests
             ObjectId id = new ObjectId("be3563ae3f795b2b4353bcce3a527ad0a4f7f644");
 
             using (Repository repo = SandboxRepository("testrepo"))
-            using (Commit c = repo.Lookup<Commit>(id))
+            using (Commit c = repo.Objects.Lookup<Commit>(id))
             {
                 Assert.NotNull(c);
                 Assert.Equal(ObjectType.Commit, c.Type);
@@ -36,7 +36,7 @@ namespace Dogged.Tests
             Commit commit;
 
             using (Repository repo = SandboxRepository("testrepo"))
-            using (commit = repo.Lookup<Commit>(new ObjectId("be3563ae3f795b2b4353bcce3a527ad0a4f7f644")))
+            using (commit = repo.Objects.Lookup<Commit>(new ObjectId("be3563ae3f795b2b4353bcce3a527ad0a4f7f644")))
             {
             }
 
@@ -53,7 +53,7 @@ namespace Dogged.Tests
             Tree tree;
 
             using (Repository repo = SandboxRepository("testrepo"))
-            using (Commit commit = repo.Lookup<Commit>(new ObjectId("be3563ae3f795b2b4353bcce3a527ad0a4f7f644")))
+            using (Commit commit = repo.Objects.Lookup<Commit>(new ObjectId("be3563ae3f795b2b4353bcce3a527ad0a4f7f644")))
             {
                 tree = commit.Tree;
             }
