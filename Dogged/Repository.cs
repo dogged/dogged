@@ -14,6 +14,8 @@ namespace Dogged
 
         private readonly LazyNative<bool> isBare;
 
+        private readonly Lazy<ObjectCollection> objects;
+
         // Provide a strongly typed exception when a repository is not
         // found to open.
         private static readonly Dictionary<git_error_code, Func<string, Exception>> exceptionMap = new Dictionary<git_error_code, Func<string, Exception>>
@@ -27,6 +29,8 @@ namespace Dogged
             this.nativeRepository = nativeRepository;
 
             isBare = new LazyNative<bool>(() => libgit2.git_repository_is_bare(this.nativeRepository) == 0 ? false : true, this);
+
+            objects = new Lazy<ObjectCollection>(() => new ObjectCollection(this));
         }
 
         /// <summary>
@@ -93,6 +97,14 @@ namespace Dogged
             return new Repository(nativeRepository);
         }
 
+        internal unsafe git_repository* NativeRepository
+        {
+            get
+            {
+                return nativeRepository;
+            }
+        }
+
         /// <summary>
         /// Indicates whether the specified repository is bare.
         /// </summary>
@@ -156,7 +168,7 @@ namespace Dogged
             {
                 using (var head = Head)
                 {
-                    return Lookup<Commit>(head.Target);
+                    return Objects.Lookup<Commit>(head.Target);
                 }
             }
         }
@@ -175,75 +187,21 @@ namespace Dogged
         }
 
         /// <summary>
-        /// Lookup and return the git object in the repository as specified
-        /// by the given ID.
+        /// An accessor for Git objects.
         /// </summary>
-        /// <param name="id">The object id to lookup</param>
-        /// <returns>The Git object specified by the given ID</returns>
-        public unsafe GitObject Lookup(ObjectId id)
+        public ObjectCollection Objects
         {
-            Ensure.ArgumentNotNull(id, "id");
-
-            git_oid oid = id.ToNative();
-            git_object* obj = null;
-
-            Ensure.NativeSuccess(() => libgit2.git_object_lookup(out obj, nativeRepository, ref oid, git_object_t.GIT_OBJECT_ANY), this);
-            Ensure.NativePointerNotNull(obj);
-
-            switch (libgit2.git_object_type(obj))
+            get
             {
-                case git_object_t.GIT_OBJECT_COMMIT:
-                    return Commit.FromNative((git_commit*)obj, id);
-                case git_object_t.GIT_OBJECT_TREE:
-                    return Tree.FromNative((git_tree*)obj, id);
-                case git_object_t.GIT_OBJECT_BLOB:
-                    return Blob.FromNative((git_blob*)obj, id);
+                return objects.Value;
             }
-
-            libgit2.git_object_free(obj);
-            throw new InvalidOperationException("unknown object type");
         }
 
         /// <summary>
-        /// Lookup and return the git object in the repository as specified
-        /// by the given ID.
-        /// </summary>
-        /// <param name="id">The object id to lookup</param>
-        /// <returns>The Git object specified by the given ID</returns>
-        public unsafe T Lookup<T>(ObjectId id) where T : GitObject
-        {
-            Ensure.ArgumentNotNull(id, "id");
-
-            git_oid oid = id.ToNative();
-
-            if (typeof(T) == typeof(Commit))
-            {
-                git_commit* obj = null;
-                Ensure.NativeSuccess(() => libgit2.git_commit_lookup(out obj, nativeRepository, ref oid), this);
-                return (T)(object)Commit.FromNative(obj, id);
-            }
-            else if (typeof(T) == typeof(Tree))
-            {
-                git_tree* obj = null;
-                Ensure.NativeSuccess(() => libgit2.git_tree_lookup(out obj, nativeRepository, ref oid), this);
-                return (T)(object)Tree.FromNative(obj, id);
-            }
-            else if (typeof(T) == typeof(Blob))
-            {
-                git_blob* obj = null;
-                Ensure.NativeSuccess(() => libgit2.git_blob_lookup(out obj, nativeRepository, ref oid), this);
-                return (T)(object)Blob.FromNative(obj, id);
-            }
-            else if (typeof(T) == typeof(GitObject))
-            {
-                return (T)(object)Lookup(id);
-            }
-
-            throw new InvalidOperationException("unknown object type");
-        }
-
-        /// <summary>
-        /// Get the object database ("ODB") for this repository.
+        /// Get the object database ("ODB") for this repository.  This
+        /// provides "raw" access to reading and writing object data;
+        /// for most uses, you want the <see cref="Repository.Objects">
+        /// collection.
         ///
         /// <para>
         /// If a custom ODB has not been set, the default database for the
