@@ -680,6 +680,20 @@ namespace Dogged.Native
         public static extern unsafe void git_reference_free(git_reference* reference);
 
         /// <summary>
+        /// Lookup a reference by name in a repository.  The returned
+        /// reference must be freed by the user.
+        /// </summary>
+        /// <param name="reference">Pointer to the reference that was loaded from the repository</param>
+        /// <param name="repo">The repository that contains the reference</param>
+        /// <param name="name">The name of the reference to lookup</param>
+        /// <returns>0 on success, GIT_ENOTFOUND if no reference exists by that name, GIT_EINVALIDSPEC if the given name is invalid or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_reference_lookup(
+            out git_reference* reference,
+            git_repository* repo,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string name);
+
+        /// <summary>
         /// Get the full name of a reference.
         /// </summary>
         /// <param name="reference">The reference to get the name of</param>
