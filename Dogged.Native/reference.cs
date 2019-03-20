@@ -33,4 +33,9 @@ namespace Dogged.Native
         /// </summary>
         GIT_REFERENCE_ALL = GIT_REFERENCE_DIRECT | GIT_REFERENCE_SYMBOLIC
     };
+
+    /// <summary>
+    /// An object to contain the iteration of a reference collection.
+    /// </summary>
+    public struct git_reference_iterator { };
 }
