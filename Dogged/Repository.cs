@@ -15,6 +15,7 @@ namespace Dogged
         private readonly LazyNative<bool> isBare;
 
         private readonly Lazy<ObjectCollection> objects;
+        private readonly Lazy<ReferenceCollection> references;
 
         // Provide a strongly typed exception when a repository is not
         // found to open.
@@ -31,6 +32,7 @@ namespace Dogged
             isBare = new LazyNative<bool>(() => libgit2.git_repository_is_bare(this.nativeRepository) == 0 ? false : true, this);
 
             objects = new Lazy<ObjectCollection>(() => new ObjectCollection(this));
+            references = new Lazy<ReferenceCollection>(() => new ReferenceCollection(this));
         }
 
         /// <summary>
@@ -194,6 +196,17 @@ namespace Dogged
             get
             {
                 return objects.Value;
+            }
+        }
+
+        /// <summary>
+        /// An accessor for references.
+        /// </summary>
+        public ReferenceCollection References
+        {
+            get
+            {
+                return references.Value;
             }
         }
 

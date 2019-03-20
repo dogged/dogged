@@ -33,6 +33,7 @@ namespace Dogged
                     return SymbolicReference.FromNative(nativeReference);
             }
 
+            libgit2.git_reference_free(nativeReference);
             throw new InvalidOperationException("unknown reference type");
         }
 
