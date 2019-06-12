@@ -17,9 +17,14 @@ steps:
   displayName: 'Restore'
 - script: dotnet build --no-restore --configuration Release
   displayName: 'Build'
-- script: |
+- bash: |
     dotnet test Dogged.Tests/Dogged.Tests.csproj --no-build --configuration Release --logger "trx;LogFileName=Dogged.Tests.trx"
+    ret=$(($ret + $?))
+
     dotnet test Dogged.Native.Tests/Dogged.Native.Tests.csproj --no-build --configuration Release --logger "trx;LogFileName=Dogged.Native.Tests.trx"
+    ret=$(($ret + $?))
+
+    exit $ret
   displayName: 'Test'
 - task: PublishTestResults@2
   displayName: 'Publish Test Results'
