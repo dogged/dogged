@@ -23,6 +23,13 @@ namespace Dogged.Native
             nativeInitializer = new NativeInitializer();
         }
 
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_blob_filtered_content(
+            git_buf content,
+            git_blob* blob,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path,
+            int check_for_binary_data);
+
         /// <summary>
         /// Determine if the blob content is binary or not.
 
@@ -69,6 +76,9 @@ namespace Dogged.Native
         /// <returns>Raw size of the blob in bytes</returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe long git_blob_rawsize(git_blob* blob);
+
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe void git_buf_dispose(git_buf buf);
 
         /// <summary>
         /// Clone a remote repository.
@@ -637,6 +647,10 @@ namespace Dogged.Native
             out git_repository* repo,
             [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path);
 
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        [return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.FromNative, MarshalTypeRef = typeof(Utf8Marshaler))]
+        public static extern unsafe string git_repository_path(git_repository* repository);
+
         /// <summary>
         /// Set the Object Database for this repository
         ///
@@ -671,6 +685,10 @@ namespace Dogged.Native
         /// <param name="repo">The repository handle to close.</param>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe void git_repository_free(git_repository* repo);
+
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        [return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.FromNative, MarshalTypeRef = typeof(Utf8Marshaler))]
+        public static extern unsafe string git_repository_workdir(git_repository* repository);
 
         /// <summary>
         /// Create an iterator for the repository's references.

@@ -60,6 +60,16 @@ namespace Dogged
             }
         }
 
+        public unsafe GitBuffer GetFilteredContent(string path)
+        {
+            GitBuffer buf = new GitBuffer();
+            git_buf nativeBuffer = buf.NativeBuffer;
+
+            Ensure.NativeSuccess(() => libgit2.git_blob_filtered_content(nativeBuffer, NativeBlob, path, 0), this);
+
+            return buf;
+        }
+
         public bool IsBinary
         {
             get

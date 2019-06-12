@@ -12,6 +12,9 @@ namespace Dogged
     {
         private unsafe git_repository* nativeRepository;
 
+        private readonly LazyNative<string> path;
+        private readonly LazyNative<string> workdir;
+
         private readonly LazyNative<bool> isBare;
 
         private readonly Lazy<ObjectCollection> objects;
@@ -28,6 +31,9 @@ namespace Dogged
         {
             Ensure.NativePointerNotNull(nativeRepository);
             this.nativeRepository = nativeRepository;
+
+            path = new LazyNative<string>(() => libgit2.git_repository_path(this.nativeRepository), this);
+            workdir = new LazyNative<string>(() => libgit2.git_repository_workdir(this.nativeRepository), this);
 
             isBare = new LazyNative<bool>(() => libgit2.git_repository_is_bare(this.nativeRepository) == 0 ? false : true, this);
 
@@ -104,6 +110,22 @@ namespace Dogged
             get
             {
                 return nativeRepository;
+            }
+        }
+
+        public unsafe string Path
+        {
+            get
+            {
+                return path.Value;
+            }
+        }
+
+        public unsafe string Workdir
+        {
+            get
+            {
+                return workdir.Value;
             }
         }
 
