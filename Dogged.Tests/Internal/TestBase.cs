@@ -8,6 +8,17 @@ namespace Dogged.Tests
     [Collection("Temporary Directory")]
     public abstract class TestBase
     {
+        public TestBase()
+        {
+            var dummyConfigPath = Path.Combine(TemporaryDirectory, "__config__");
+            Directory.CreateDirectory(dummyConfigPath);
+
+            GlobalOptions.SetSearchPath(ConfigurationLevel.ProgramData, dummyConfigPath);
+            GlobalOptions.SetSearchPath(ConfigurationLevel.Global, dummyConfigPath);
+            GlobalOptions.SetSearchPath(ConfigurationLevel.XDG, dummyConfigPath);
+            GlobalOptions.SetSearchPath(ConfigurationLevel.System, dummyConfigPath);
+        }
+
         private const string resourceDirectory = "Resources";
         protected string TemporaryDirectory
         {
