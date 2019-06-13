@@ -272,6 +272,18 @@ namespace Dogged.Native
         public static extern int git_libgit2_init();
 
         /// <summary>
+        /// Get or set a global configuration option for libgit2.
+        /// </summary>
+        /// <param name="option">The option value to get or set</param>
+        /// <param name="...">The options to set</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_libgit2_opts(git_libgit2_opt_t option, git_config_level_t level, git_buf buf);
+
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_libgit2_opts(git_libgit2_opt_t option, git_config_level_t level, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path);
+
+        /// <summary>
         /// Shutdown the global state.
         ///
         /// <para>
