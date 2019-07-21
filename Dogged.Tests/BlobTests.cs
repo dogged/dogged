@@ -41,16 +41,41 @@ namespace Dogged.Tests
                 {
                     Assert.Equal(10, buf.Length);
                     Assert.True(buf.Content.SequenceEqual(new ReadOnlySpan<byte>(new byte[] { 0x68, 0x65, 0x79, 0x20, 0x74, 0x68, 0x65, 0x72, 0x65, 0x0a })));
+                    Assert.Equal(10, buf.Content.Length);
                 }
 
                 string attributesPath = string.Format("{0}/.gitattributes", repo.Workdir);
-                Console.WriteLine(attributesPath);
                 File.WriteAllLines(attributesPath, new string[] { "* text eol=crlf" });
 
                 using (GitBuffer buf = b.GetFilteredContent("foo.txt"))
                 {
                     Assert.Equal(11, buf.Length);
                     Assert.True(buf.Content.SequenceEqual(new ReadOnlySpan<byte>(new byte[] { 0x68, 0x65, 0x79, 0x20, 0x74, 0x68, 0x65, 0x72, 0x65, 0x0d, 0x0a })));
+                    Assert.Equal(11, buf.Content.Length);
+                }
+            }
+        }
+
+        [Fact]
+        public void CanGetFilteredContentInBareRepo()
+        {
+            ObjectId id = new ObjectId("799770d1cff46753a57db7a066159b5610da6e3a");
+
+            using (Repository repo = SandboxRepository("crlf.git"))
+            using (Blob b = repo.Objects.Lookup<Blob>(id))
+            {
+                using (GitBuffer buf = b.GetFilteredContent("file.bin"))
+                {
+                    Assert.Equal(15, buf.Length);
+                    Assert.True(buf.Content.SequenceEqual(new ReadOnlySpan<byte>(new byte[] { 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a })));
+                    Assert.Equal(15, buf.Content.Length);
+                }
+
+                using (GitBuffer buf = b.GetFilteredContent("file.crlf"))
+                {
+                    Assert.Equal(20, buf.Length);
+                    Assert.True(buf.Content.SequenceEqual(new ReadOnlySpan<byte>(new byte[] { 0x6c, 0x66, 0x0d, 0x0a, 0x6c, 0x66, 0x0d, 0x0a, 0x6c, 0x66, 0x0d, 0x0a, 0x6c, 0x66, 0x0d, 0x0a, 0x6c, 0x66, 0x0d, 0x0a })));
+                    Assert.Equal(20, buf.Content.Length);
                 }
             }
         }
