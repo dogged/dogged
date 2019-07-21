@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dogged.Native.Binaries" Version="[0.4.0-pre1]" />
+    <PackageReference Include="Dogged.Native.Binaries" Version="[0.4.0-pre4]" />
   </ItemGroup>
 
   <Import Project="..\Targets\GenerateNativeLibrary.targets" />

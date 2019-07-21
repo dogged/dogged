@@ -24,11 +24,11 @@ namespace Dogged.Native
         }
 
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern unsafe int git_blob_filtered_content(
+        public static extern unsafe int git_blob_filter(
             git_buf content,
             git_blob* blob,
             [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path,
-            int check_for_binary_data);
+            git_blob_filter_options* options);
 
         /// <summary>
         /// Determine if the blob content is binary or not.

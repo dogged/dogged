@@ -60,22 +60,34 @@ namespace Dogged.Tests
         public void CanGetFilteredContentInBareRepo()
         {
             ObjectId id = new ObjectId("799770d1cff46753a57db7a066159b5610da6e3a");
+            BlobFilterOptions options = new BlobFilterOptions() {
+                Flags = BlobFilterFlags.CheckForBinary |
+                        BlobFilterFlags.NoSystemAttributes |
+                        BlobFilterFlags.AttributesFromHead
+            };
 
             using (Repository repo = SandboxRepository("crlf.git"))
             using (Blob b = repo.Objects.Lookup<Blob>(id))
             {
-                using (GitBuffer buf = b.GetFilteredContent("file.bin"))
+                using (GitBuffer buf = b.GetFilteredContent("file.bin", options))
                 {
                     Assert.Equal(15, buf.Length);
                     Assert.True(buf.Content.SequenceEqual(new ReadOnlySpan<byte>(new byte[] { 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a })));
                     Assert.Equal(15, buf.Content.Length);
                 }
 
-                using (GitBuffer buf = b.GetFilteredContent("file.crlf"))
+                using (GitBuffer buf = b.GetFilteredContent("file.crlf", options))
                 {
                     Assert.Equal(20, buf.Length);
                     Assert.True(buf.Content.SequenceEqual(new ReadOnlySpan<byte>(new byte[] { 0x6c, 0x66, 0x0d, 0x0a, 0x6c, 0x66, 0x0d, 0x0a, 0x6c, 0x66, 0x0d, 0x0a, 0x6c, 0x66, 0x0d, 0x0a, 0x6c, 0x66, 0x0d, 0x0a })));
                     Assert.Equal(20, buf.Content.Length);
+                }
+
+                using (GitBuffer buf = b.GetFilteredContent("file.lf", options))
+                {
+                    Assert.Equal(15, buf.Length);
+                    Assert.True(buf.Content.SequenceEqual(new ReadOnlySpan<byte>(new byte[] { 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a })));
+                    Assert.Equal(15, buf.Content.Length);
                 }
             }
         }

@@ -62,10 +62,21 @@ namespace Dogged
 
         public unsafe GitBuffer GetFilteredContent(string path)
         {
+            return GetFilteredContent(path, new BlobFilterOptions());
+        }
+
+        public unsafe GitBuffer GetFilteredContent(string path, BlobFilterOptions options)
+        {
+            Ensure.ArgumentNotNull(path, "path");
+            Ensure.ArgumentNotNull(options, "options");
+
             GitBuffer buf = new GitBuffer();
             git_buf nativeBuffer = buf.NativeBuffer;
 
-            Ensure.NativeSuccess(() => libgit2.git_blob_filtered_content(nativeBuffer, NativeBlob, path, 0), this);
+            Ensure.NativeSuccess(() => {
+                git_blob_filter_options nativeOptions = options.ToNative();
+                return libgit2.git_blob_filter(nativeBuffer, NativeBlob, path, &nativeOptions);
+            }, this);
 
             return buf;
         }
