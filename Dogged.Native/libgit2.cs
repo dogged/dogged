@@ -47,7 +47,7 @@ namespace Dogged.Native
         /// <summary>
         /// Look up a blob from the repository.
         /// </summary>
-        /// <param name="obj">Pointer to the blob that was loaded from the repository</param>
+        /// <param name="blob">Pointer to the blob that was loaded from the repository</param>
         /// <param name="repo">The repository that contains the blob</param>
         /// <param name="id">The id of the blob to lookup</param>
         /// <returns>0 on success or an error code</returns>
@@ -118,6 +118,83 @@ namespace Dogged.Native
         /// <returns>A pointer to a signature for the committer</returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe git_signature* git_commit_committer(git_commit* commit);
+
+        /// <summary>
+        /// Apply a filter list to the contents of a blob.
+        /// </summary>
+        /// <param name="outputBuffer">Buffer to store the result of the filtering</param>
+        /// <param name="filters">A loaded git_filter_list (or null)</param>
+        /// <param name="blob">The blob to filter</param>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_filter_list_apply_to_blob(git_buf outputBuffer, git_filter_list* filters, git_blob* blob);
+
+        /// <summary>
+        /// Apply filter list to a data buffer.
+        ///
+        /// <para>
+        /// If the `inputBuffer` buffer holds data allocated by libgit2 (i.e.
+        /// `inputBuffer->asize` is not zero), then it will be overwritten when
+        /// applying the filters.  If not, then it will be left untouched.
+        /// </para>
+        ///
+        /// <para>
+        /// If there are no filters to apply (or `filters` is NULL), then the
+        /// `outputBuffer` buffer will reference the `inputBuffer` buffer data
+        /// (with `asize` set to zero) instead of allocating data.  This keeps
+        /// allocations to a minimum, but it means you have to be careful about
+        /// freeing the `inputBuffer` data since `outputBuffer` may be pointing
+        /// to it!
+        /// </para>
+        /// </summary>
+        /// <param name="outputBuffer">Buffer to store the result of the filtering</param>
+        /// <param name="filters">A loaded git_filter_list (or null)</param>
+        /// <param name="inputBuffer">Buffer containing the data to filter</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_filter_list_apply_to_data(git_buf outputBuffer, git_filter_list* filters, git_buf inputBuffer);
+
+        /// <summary>
+        /// Apply a filter list to the contents of a file on disk.
+        /// </summary>
+        /// <param name="outputBuffer">Buffer to store the result of the filtering</param>
+        /// <param name="filters">A loaded git_filter_list (or null)</param>
+        /// <param name="repo">The repository to perform the filtering in</param>
+        /// <param name="path">The path of the file to filter; a relative path will be taken as relative to the workdir</param>
+        /// <param name="blob">The blob to filter</param>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_filter_list_apply_to_file(git_buf outputBuffer, git_filter_list* filters, git_repository* repo, string path);
+
+        /// <summary>
+        /// Free a git filter list.
+        /// </summary>
+        ///
+        /// <param name="filters">The filter list to free</param>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe void git_filter_list_free(git_filter_list* filters);
+
+        /// <summary>
+        /// Load the filter list for a given path.
+        ///
+        /// <para>
+        /// This will return 0 (success) but set the output git_filter_list
+        /// to NULL if no filters are requested for the given file.
+        /// </para>
+        /// </summary>
+        /// <param name="filters">Output newly created git_filter_list (or NULL)</param>
+        /// <param name="repo">Repository object that contains path</param>
+        /// <param name="blob">The blob to which the filter will be applied (if known)</param>
+        /// <param name="path">Relative path of the file to be filtered</param>
+        /// <param name="mode">Filtering direction (WT->ODB or ODB->WT)</param>
+        /// <param name="flags">Combination of `git_filter_flag_t` flags</param>
+        /// <returns>0 on success (which could still return NULL if no filters are needed for the requested file) or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_filter_list_load(
+            out git_filter_list* filters,
+            git_repository* repo,
+            git_blob* blob,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path,
+            git_filter_mode_t mode,
+            uint flags);
 
         /// <summary>
         /// Look up a commit from the repository.
