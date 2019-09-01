@@ -1,0 +1,52 @@
+name: CI
+
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v1
+      name: 'Checkout'
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '2.1.801'
+      name: 'Setup .NET Core 2'
+    - uses: ethomson/setup-gitversion@master
+      name: 'Install GitVersion'
+    - run: |
+        $version = gitversion /UpdateAssemblyInfo | ConvertFrom-Json
+        Write-Output ("##[set-env name=BUILD_NUMBER]" + $version.LegacySemVer)
+      name: 'Update Version'
+      shell: pwsh
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '3.0.100-preview3-010431'
+      name: 'Setup .NET Core 3'
+    - run: |
+        dotnet restore
+        dotnet build --no-restore --configuration Release
+      name: Build
+    - run: |
+        dotnet test Dogged.Tests/Dogged.Tests.csproj --no-build --configuration Release --logger "trx;LogFileName=Dogged.Tests.trx"
+        ret=$(($ret + $?))
+        dotnet test Dogged.Native.Tests/Dogged.Native.Tests.csproj --no-build --configuration Release --logger "trx;LogFileName=Dogged.Native.Tests.trx"
+        ret=$(($ret + $?))
+        exit $ret
+      shell: bash
+      name: Test
+    - run: |
+        mkdir ${{ github.workspace }}\package
+        dotnet pack --no-build -c Release --output "${{ github.workspace }}\package" "-p:Version=${env:BUILD_NUMBER}" "-p:PackageVersion=${env:BUILD_NUMBER}"
+      shell: pwsh
+      name: Package
+      if: matrix.os == 'windows-latest'
+    - uses: actions/upload-artifact@v1
+      with:
+        name: nuget
+        path: ${{ github.workspace }}/package
+      if: matrix.os == 'windows-latest'
+      name: 'Upload Package'
