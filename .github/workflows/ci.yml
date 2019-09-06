@@ -31,6 +31,7 @@ jobs:
         dotnet build --no-restore --configuration Release
       name: Build
     - run: |
+        set +e
         dotnet test Dogged.Tests/Dogged.Tests.csproj --no-build --configuration Release --logger "trx;LogFileName=Dogged.Tests.trx"
         ret=$(($ret + $?))
         dotnet test Dogged.Native.Tests/Dogged.Native.Tests.csproj --no-build --configuration Release --logger "trx;LogFileName=Dogged.Native.Tests.trx"
