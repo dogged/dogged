@@ -1,6 +1,6 @@
 <h1><img src="http://dogged.app/logos/dogged-withtype.png" alt="Dogged" width="350" height="75"></h1>
 
-[![Build Status](https://dev.azure.com/ethomson/dogged/_apis/build/status/ethomson.dogged?branchName=master)](https://dev.azure.com/ethomson/dogged/_build/latest?definitionId=48?branchName=master)
+[![Build Status](https://github.com/ethomson/dogged/workflows/CI/badge.svg)](https://github.com/ethomson/dogged/actions)
 
 [Dogged](https://github.com/ethomson/dogged) and is a .NET wrapper around
 [libgit2](https://github.com/libgit2/libgit2).  It was inspired by the
