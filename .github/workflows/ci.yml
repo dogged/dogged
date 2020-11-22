@@ -49,15 +49,15 @@ jobs:
         exit $ret
       shell: bash
       name: Test
-#    - run: |
-#        mkdir ${{ github.workspace }}\package
-#        dotnet pack --no-build -c Release --output "${{ github.workspace }}\package" "-p:Version=${{ env.BUILD_VERSION }}" "-p:PackageVersion=${{ env.BUILD_VERSION }}"
-#      shell: pwsh
-#      name: Package
-#      if: matrix.os == 'windows-latest' && matrix.dotnet.framework == 'netcoreapp3.1'
-#    - uses: actions/upload-artifact@v1
-#      with:
-#        name: nuget
-#        path: ${{ github.workspace }}/package
-#      if: matrix.os == 'windows-latest'
-#      name: 'Upload Package'
+    - run: |
+        mkdir ${{ github.workspace }}\package
+        dotnet pack --no-build -c Release --output "${{ github.workspace }}\package" "-p:Version=${{ env.BUILD_NUMBER }}" "-p:PackageVersion=${{ env.BUILD_NUMBER }}"
+      shell: pwsh
+      name: Package
+      if: matrix.os == 'windows-latest'
+    - uses: actions/upload-artifact@v1
+      with:
+        name: nuget
+        path: ${{ github.workspace }}/package
+      if: matrix.os == 'windows-latest'
+      name: 'Upload Package'
