@@ -2,14 +2,18 @@ assembly-versioning-scheme: MajorMinorPatch
 mode: ContinuousDeployment
 branches:
   master:
+    regex: ^main$
     tag: pre
     increment: Minor
   maint:
     source-branches:
     - master
-    regex: maint/
+    regex: ^maint/
     increment: Patch
     tag: pre
     is-release-branch: true
+  pull-request:
+    source-branches: [ master ]
+    tag: pr
 ignore:
   sha: []
