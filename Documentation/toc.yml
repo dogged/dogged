@@ -1,0 +1,8 @@
+- name: Dogged API
+  href: api/dogged
+  homepage: api/dogged/dogged.html
+- name: Dogged.Native API
+  href: api/dogged.native
+  homepage: api/dogged.native/dogged.native.html
+#- name: Examples
+#  href: examples/
