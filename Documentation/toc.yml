@@ -6,3 +6,5 @@
   homepage: api/dogged.native/dogged.native.html
 #- name: Examples
 #  href: examples/
+- name: Edit on GitHub
+  href: https://github.com/ethomson/dogged
