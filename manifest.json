@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.Services.Utf8Converter.html",
-          "hash": "5QyONHiThtkb8HoEDyTsOQ=="
+          "hash": "D5tzh+8t8RimAlu+MwNPug=="
         }
       },
       "is_incremental": false,
@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_blob.html",
-          "hash": "oL7cvgyAUzOmHqWofAIM6A=="
+          "hash": "o1FslzB8M+wC/3F08iSS/Q=="
         }
       },
       "is_incremental": false,
@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_blob_filter_flag_t.html",
-          "hash": "X1WEsdSHtaqAZTnKZfRM8w=="
+          "hash": "J5FTeBQaOM8JnSe8dsQgrQ=="
         }
       },
       "is_incremental": false,
@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_blob_filter_options.html",
-          "hash": "Iauo4cBiSjiFEovOAotVVw=="
+          "hash": "/cs+txxK9bD+Ajy9r7AurQ=="
         }
       },
       "is_incremental": false,
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_buf.html",
-          "hash": "auX/w+3Aqq4rVSYKeV7qvg=="
+          "hash": "WLzpwZlmQ223Z+d4AI64/Q=="
         }
       },
       "is_incremental": false,
@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_clone_options.html",
-          "hash": "p3Gz8TllibcySClvt/YkVw=="
+          "hash": "EcfX5yCRplI6NQy4hnXUfA=="
         }
       },
       "is_incremental": false,
@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_commit.html",
-          "hash": "Ad5UOtmjzk7OyMuUAWqdDw=="
+          "hash": "srBjN18cdyUNdT/DGO8CuA=="
         }
       },
       "is_incremental": false,
@@ -105,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_config_level_t.html",
-          "hash": "BwjDBKTEbB1muxmB5d2ikw=="
+          "hash": "XVBe6GzzFsSpfvsujzdv6w=="
         }
       },
       "is_incremental": false,
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_error.html",
-          "hash": "b+KPzpQ46FGC17BC8y7Jmg=="
+          "hash": "2b/PIrXwBvAuzw9hLZNprA=="
         }
       },
       "is_incremental": false,
@@ -129,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_error_code.html",
-          "hash": "JUM33tQJti+GoRwrRkPCLQ=="
+          "hash": "G64DBlnqM6QSVmKzWJhsNw=="
         }
       },
       "is_incremental": false,
@@ -141,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_error_t.html",
-          "hash": "X1q8KD0juKHQgPElDgI4mQ=="
+          "hash": "t3kV5IcGL7xr/of5xrCZtw=="
         }
       },
       "is_incremental": false,
@@ -153,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_feature_t.html",
-          "hash": "7uy1meE5bann1Jmi/fvaLw=="
+          "hash": "GrS0riEMkXOTMjyvGrzOVQ=="
         }
       },
       "is_incremental": false,
@@ -165,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_filemode_t.html",
-          "hash": "5N8E6K4GK47k3nQobIDwQA=="
+          "hash": "xxofqp/AXjKaGciKsvW/DQ=="
         }
       },
       "is_incremental": false,
@@ -177,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_filter_flags_t.html",
-          "hash": "KVAvwxtSL9/VaF8uZkWTxQ=="
+          "hash": "C9ZLJwqt7FlI5OTzzNpcQg=="
         }
       },
       "is_incremental": false,
@@ -189,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_filter_list.html",
-          "hash": "hH1z0ZhMWA8D4WryQdFjqg=="
+          "hash": "xo3y1can311q2GmpeXUG7w=="
         }
       },
       "is_incremental": false,
@@ -201,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_filter_mode_t.html",
-          "hash": "zHB+E0FZo5DqXoEKpAqyGw=="
+          "hash": "ue5rG3icbw/0m9gAIbu5mA=="
         }
       },
       "is_incremental": false,
@@ -213,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_index.html",
-          "hash": "+JvPr2ylkxhQ59DH/4F6LA=="
+          "hash": "bGtPyaws/lyM/936lYM5VA=="
         }
       },
       "is_incremental": false,
@@ -225,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_index_entry.html",
-          "hash": "ybdH0q9clFjPn2RDn6aJqQ=="
+          "hash": "q2gsYOcaTrIkFn4VIoVdlg=="
         }
       },
       "is_incremental": false,
@@ -237,7 +237,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_index_entry_extended_flag_t.html",
-          "hash": "8VOFm0CyhgfC+FooxZUZsg=="
+          "hash": "5zKfxS3ioSdhxcF0guzXnA=="
         }
       },
       "is_incremental": false,
@@ -249,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_index_entry_flag_t.html",
-          "hash": "zoWdc/Eypko4czIp54Me0Q=="
+          "hash": "9QPGFkAO7Z2rVpjjs1XCMQ=="
         }
       },
       "is_incremental": false,
@@ -261,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_index_iterator.html",
-          "hash": "BvE7M/HcxuRfr9OFsnY0xA=="
+          "hash": "f+EQ+kd5jkT5B9nNpCGwAg=="
         }
       },
       "is_incremental": false,
@@ -273,7 +273,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_index_time.html",
-          "hash": "LMQKJ0IhLI+BHgfiPp4PCA=="
+          "hash": "FqdHT30h5e5Wl7GfjZEg5g=="
         }
       },
       "is_incremental": false,
@@ -285,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_libgit2_opt_t.html",
-          "hash": "5Xf4iL4qGmw2Uw6Fi41EIQ=="
+          "hash": "9HX9EcohGOpJnSTRBHb5Ig=="
         }
       },
       "is_incremental": false,
@@ -297,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_object.html",
-          "hash": "ZWzaMaF/V4wMbWW3Z2MKvA=="
+          "hash": "1/FUcdyTa2RyNNFmcuRGHw=="
         }
       },
       "is_incremental": false,
@@ -309,7 +309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_object_t.html",
-          "hash": "X29w8mb7lCne0Mw9O8jD6Q=="
+          "hash": "7D0EIBAYBnTi0G5bN194jA=="
         }
       },
       "is_incremental": false,
@@ -321,7 +321,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_odb.html",
-          "hash": "jPgZrHgxaTT1Gm9H/tpM7g=="
+          "hash": "ZHKloPXM21YNiEUSmT8fMA=="
         }
       },
       "is_incremental": false,
@@ -333,7 +333,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_odb_backend.html",
-          "hash": "RHU6+frI8S3ilnl4ck/deA=="
+          "hash": "Vd6SbFoCKdZgP+YVA+jLxQ=="
         }
       },
       "is_incremental": false,
@@ -345,7 +345,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_odb_foreach_cb.html",
-          "hash": "jiVfy52P7o26u8KyW2jCGg=="
+          "hash": "7KDjopiPdJmkGqm1fO1YTA=="
         }
       },
       "is_incremental": false,
@@ -357,7 +357,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_odb_object.html",
-          "hash": "mT9SlU+0KV1vYJWyA/qERg=="
+          "hash": "FkcmLm4oxKipfiZ75l9zwQ=="
         }
       },
       "is_incremental": false,
@@ -369,7 +369,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_oid.html",
-          "hash": "b09e5ixgPyCmsc1ms5obZA=="
+          "hash": "eg91CUwdXJD+RX2ZuGiuQQ=="
         }
       },
       "is_incremental": false,
@@ -381,7 +381,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_reference.html",
-          "hash": "e8/Vvl6iReXNGYSIrguwvQ=="
+          "hash": "1I9n3XwltQrmaAdhFtLZKQ=="
         }
       },
       "is_incremental": false,
@@ -393,7 +393,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_reference_iterator.html",
-          "hash": "TgffktqO8nhb7+fImckGaQ=="
+          "hash": "eTN5giiDr59lbazRIX/tTQ=="
         }
       },
       "is_incremental": false,
@@ -405,7 +405,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_reference_t.html",
-          "hash": "lth1OYeeLI+JbhqkhdZSBA=="
+          "hash": "E4UajnmpVZCAeZqXwnbDUQ=="
         }
       },
       "is_incremental": false,
@@ -417,7 +417,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_repository.html",
-          "hash": "KBkEc+GehkegV6Y1oLELrw=="
+          "hash": "2H0BzumhJQWBNmXay2878w=="
         }
       },
       "is_incremental": false,
@@ -429,7 +429,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_signature.html",
-          "hash": "yxWuFj0N9ylhxlKTSsSfEg=="
+          "hash": "ZHn/zUGuoZx2Zih0SedMUg=="
         }
       },
       "is_incremental": false,
@@ -441,7 +441,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_time.html",
-          "hash": "P6LpfXzYaevYh9EVirKwdA=="
+          "hash": "XCNpf4vQomgufMSaDVVlvA=="
         }
       },
       "is_incremental": false,
@@ -453,7 +453,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_tree.html",
-          "hash": "u/N6ZmjWLQ0Gi9ZHFQKZvA=="
+          "hash": "KoNH5ChSj/VJdqOoYqo2YA=="
         }
       },
       "is_incremental": false,
@@ -465,7 +465,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.git_tree_entry.html",
-          "hash": "oAifIdd2JPAQnqmCgDKWVg=="
+          "hash": "oRhm4VUdpHLKO9Xvk56MCA=="
         }
       },
       "is_incremental": false,
@@ -477,7 +477,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.libgit2.html",
-          "hash": "8iTBnOU5s5lS6DMB68R4Rg=="
+          "hash": "kdwaw8YADVQEUcG57U7Qcw=="
         }
       },
       "is_incremental": false,
@@ -513,7 +513,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.BareRepositoryException.html",
-          "hash": "d7ddOCAHItthO3tyb//Vfg=="
+          "hash": "nSUDxHzyUEZlFJvAqf4ZVQ=="
         }
       },
       "is_incremental": false,
@@ -525,7 +525,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.Blob.html",
-          "hash": "aEae3p8joTeiA8DxLdiQPQ=="
+          "hash": "WjVTagjHh2uCOBbvL7BSEQ=="
         }
       },
       "is_incremental": false,
@@ -537,7 +537,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.CannotBePeeledException.html",
-          "hash": "lZROUeEuZdUBv+owJjsBdQ=="
+          "hash": "jpA3AHAZQ/vWz28RnhHNOw=="
         }
       },
       "is_incremental": false,
@@ -549,7 +549,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.CheckoutConflictException.html",
-          "hash": "gn+bmFvF0BbzcAw9O0AweQ=="
+          "hash": "LwsprNQwMcqwdIvJvUf0iA=="
         }
       },
       "is_incremental": false,
@@ -561,7 +561,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.Commit.html",
-          "hash": "/i2qg/V0XFAANbTk5EDezg=="
+          "hash": "Xr1Rxmef/ftap+EJA7vxcA=="
         }
       },
       "is_incremental": false,
@@ -573,7 +573,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.CompressionLevel.html",
-          "hash": "erkcysFH8NZW0PWYJMw29g=="
+          "hash": "OZGH1pPaIB9/8JCV+Nrjtw=="
         }
       },
       "is_incremental": false,
@@ -585,7 +585,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.ConfigurationLevel.html",
-          "hash": "coWGBLHObk1xukOiUw8YMg=="
+          "hash": "2dvHle2ZK9coCDnoY3Rqvw=="
         }
       },
       "is_incremental": false,
@@ -597,7 +597,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.DirectReference.html",
-          "hash": "nonlzFeyQ0SM2XieN85DmA=="
+          "hash": "rti0QsTGnUcW78vLWMz/HQ=="
         }
       },
       "is_incremental": false,
@@ -609,7 +609,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.DoggedException.html",
-          "hash": "daSaHbi2BvEMd9i2+uisxg=="
+          "hash": "aDJm183RdqDh37/W/4et1Q=="
         }
       },
       "is_incremental": false,
@@ -621,7 +621,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.FileMode.html",
-          "hash": "744zLBJZXb4vTPBCZABXBQ=="
+          "hash": "Hivr9Sm2m+QDfVT2bEIoXw=="
         }
       },
       "is_incremental": false,
@@ -633,7 +633,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.GitBuffer.html",
-          "hash": "Yw13L/rCudkgtAvyADcNoQ=="
+          "hash": "VtBak4PJdR/6rTbO6rjKHA=="
         }
       },
       "is_incremental": false,
@@ -645,7 +645,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.GitObject.html",
-          "hash": "MgSZUTtIx2ctGU3hYMGbAw=="
+          "hash": "zI4vsIOZilL0xjHE6mnbvg=="
         }
       },
       "is_incremental": false,
@@ -657,7 +657,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.GlobalOptions.html",
-          "hash": "5wP04I6uR0uqr9jtw+aJ8w=="
+          "hash": "8lhs+OROxB9KIvzBISdymw=="
         }
       },
       "is_incremental": false,
@@ -669,7 +669,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.Index.html",
-          "hash": "i0KS+ozWSRUEqgPlrU41jA=="
+          "hash": "uwlAQ5tMg1WmqqEWfS/36A=="
         }
       },
       "is_incremental": false,
@@ -681,7 +681,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.IndexEntry.html",
-          "hash": "WmW5rA1fIQQGu5EgwEc5lA=="
+          "hash": "T+m1fqPirjXHZvDaXHmYJQ=="
         }
       },
       "is_incremental": false,
@@ -693,7 +693,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.IndexEntryFlags.html",
-          "hash": "RnQALVod3Ads9PeCdsEbFA=="
+          "hash": "lVXCwIMKA2ik0u+ofMqzxA=="
         }
       },
       "is_incremental": false,
@@ -705,7 +705,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.IndexEntryStage.html",
-          "hash": "+92R5ATUITVNaImXB9/6pw=="
+          "hash": "AXupnkcN60WDg1xL/C6TPw=="
         }
       },
       "is_incremental": false,
@@ -717,7 +717,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.IndexEntryTime.html",
-          "hash": "9VHYJU4Zt+Cp3mf9ymt6zA=="
+          "hash": "6YOoNb2N6lENTR1H0gmmhA=="
         }
       },
       "is_incremental": false,
@@ -729,7 +729,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.IndexEnumerator.html",
-          "hash": "wZa5IlwgPHee1hasqimGWQ=="
+          "hash": "P6pRDnL+I6CPPaC3zSxRLA=="
         }
       },
       "is_incremental": false,
@@ -741,7 +741,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.InvalidSpecificationException.html",
-          "hash": "njGqS0fAWAQB12tyAoZuXw=="
+          "hash": "g6QtO+oJpmWyfOvhEivCIg=="
         }
       },
       "is_incremental": false,
@@ -753,7 +753,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.ItemExistsException.html",
-          "hash": "A39ZkIqioW7aUP84rrahFQ=="
+          "hash": "Mv5aqeKJ9yrJUplDCqY8Zw=="
         }
       },
       "is_incremental": false,
@@ -765,7 +765,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.LockedFileException.html",
-          "hash": "txZrZSRu0mvnuKNz9HkQlA=="
+          "hash": "qOzsZSmd+3b6TqpWitjftg=="
         }
       },
       "is_incremental": false,
@@ -777,7 +777,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.NativeDisposable.html",
-          "hash": "eHFwTDtcfEOBEEg59adk3w=="
+          "hash": "qUJiiTtZrEUp5prQHgRtgA=="
         }
       },
       "is_incremental": false,
@@ -789,7 +789,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.NativeException.html",
-          "hash": "P+sF1vJNOWMFVuWecS8GwQ=="
+          "hash": "R5iV0VesG/9WqSnnX0YlKg=="
         }
       },
       "is_incremental": false,
@@ -801,7 +801,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.NonFastForwardException.html",
-          "hash": "lVnf6wO3nU1Scfeo+nsMvw=="
+          "hash": "woIt9leG/dnD+SJySkIcng=="
         }
       },
       "is_incremental": false,
@@ -813,7 +813,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.NotFoundException.html",
-          "hash": "jlWepa4ZxTGJSKphcAkfPw=="
+          "hash": "3oMksE/VZrZbU5kaBj9mTA=="
         }
       },
       "is_incremental": false,
@@ -825,7 +825,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.ObjectCollection.html",
-          "hash": "5LSniGdm5TXtmDE4EYAnyQ=="
+          "hash": "Ou81hq/kBe2MAKpyCf+/+w=="
         }
       },
       "is_incremental": false,
@@ -837,7 +837,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.ObjectDatabase.html",
-          "hash": "s6EG7MaHshrTHOfX1Qz1cg=="
+          "hash": "I2iHzoD11ZNDvoHICIZ4AA=="
         }
       },
       "is_incremental": false,
@@ -849,7 +849,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.ObjectDatabaseBackend.html",
-          "hash": "mxl9zFU/5CBrNbl3iKDBtw=="
+          "hash": "hhKCsJkSkzx+MORT1F+yiQ=="
         }
       },
       "is_incremental": false,
@@ -861,7 +861,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.ObjectDatabaseObject.html",
-          "hash": "JLslBAjwIrXzB052kO10gw=="
+          "hash": "UeqdC9vJb0CLzujR4YCXEQ=="
         }
       },
       "is_incremental": false,
@@ -873,7 +873,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.ObjectId.html",
-          "hash": "6HV4G2LN8HD0X2g5kiUKYw=="
+          "hash": "169mvq80LCogCWqsCpF6bg=="
         }
       },
       "is_incremental": false,
@@ -885,7 +885,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.ObjectType.html",
-          "hash": "WnKXABlfS8nBjmzk+bb6PA=="
+          "hash": "zFUNQZOKdj0mQ/69esWRQg=="
         }
       },
       "is_incremental": false,
@@ -897,7 +897,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.Reference.html",
-          "hash": "KFeslsPPbKCZR8pTpjfziQ=="
+          "hash": "FoeepR01U3XQycOfUVR4ig=="
         }
       },
       "is_incremental": false,
@@ -909,7 +909,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.ReferenceCollection.html",
-          "hash": "ZV2X2o2yCUKWSVHGCXUeyA=="
+          "hash": "iSssY/qSy7eNVvb7Kry2lw=="
         }
       },
       "is_incremental": false,
@@ -921,7 +921,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.ReferenceEnumerator.html",
-          "hash": "EeuUQ8Q+41l+XX2IifysKQ=="
+          "hash": "5XKVYBd4x8Zda9yxpDINEQ=="
         }
       },
       "is_incremental": false,
@@ -933,7 +933,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.Repository.html",
-          "hash": "OlmdtMTY1D71EMz0hhAq8Q=="
+          "hash": "OGenppg1hwFyBbN+cvBQXg=="
         }
       },
       "is_incremental": false,
@@ -945,7 +945,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.RepositoryNotFoundException.html",
-          "hash": "YP2qO/jfvQo8AgXsHB0pdg=="
+          "hash": "ua3h1n+73AjJNirAQybeMg=="
         }
       },
       "is_incremental": false,
@@ -957,7 +957,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.Signature.html",
-          "hash": "PatF5+dMCnLqt4fQtXVVZw=="
+          "hash": "dogsHz9uouBvkgff3j/SXw=="
         }
       },
       "is_incremental": false,
@@ -969,7 +969,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.SymbolicReference.html",
-          "hash": "6TKwAWsTurWeHTCxISBxow=="
+          "hash": "Xp/i4wpTJJgCsXmiZHYKwQ=="
         }
       },
       "is_incremental": false,
@@ -981,7 +981,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.Tree.html",
-          "hash": "xlqj23lNetPLvmWBbTFKxA=="
+          "hash": "6NCDa7IQQV0Gu1jr25jlHw=="
         }
       },
       "is_incremental": false,
@@ -993,7 +993,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.TreeEntry.html",
-          "hash": "ZKJeQ+w9F9KLijBpcozURg=="
+          "hash": "fqgVcYU+q9MnDt7wfW6Q3w=="
         }
       },
       "is_incremental": false,
@@ -1005,7 +1005,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.UnmergedIndexEntriesException.html",
-          "hash": "+RTNp5eEtfAh6YcIiTEt+w=="
+          "hash": "7gPtmyZe0uev7iFkijTdYg=="
         }
       },
       "is_incremental": false,
@@ -1017,7 +1017,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.UserCancelledException.html",
-          "hash": "qWqOR87oEAodhSxBevyBYA=="
+          "hash": "gRASz/jTtSUCM2SVwtcpUw=="
         }
       },
       "is_incremental": false,
@@ -1056,7 +1056,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "hyfCScHweFbA+BvXceC6hQ=="
+          "hash": "1Mhr+uzoeYU7ZIVXDiSVHQ=="
         }
       },
       "is_incremental": false,
@@ -1068,7 +1068,7 @@
       "output": {
         ".html": {
           "relative_path": "examples/index.html",
-          "hash": "8ovvuTu+PtZFPisBeLqWdA=="
+          "hash": "VjB/8vDLNuYau5OGye433A=="
         }
       },
       "is_incremental": false,
@@ -1106,7 +1106,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "6RUmiW/QfPAHAcw+k9gfSQ=="
+          "hash": "2/XirLUAjZ3runMQX7hQQA=="
         }
       },
       "is_incremental": false,
