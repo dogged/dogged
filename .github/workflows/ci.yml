@@ -14,7 +14,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v1
-      name: 'Checkout'
+      name: 'Check out source'
     - uses: gittools/actions/gitversion/setup@v0.9.6
       with:
         versionSpec: '5.x'
@@ -61,3 +61,56 @@ jobs:
         path: ${{ github.workspace }}/package
       if: matrix.os == 'windows-latest'
       name: 'Upload Package'
+
+  documentation:
+    runs-on: windows-latest
+    steps:
+    - name: 'Check out source'
+      uses: actions/checkout@v2
+
+    # Check out the `docs` branch into the `Documentation/_site` directory
+    - name: 'Check out documentation branch'
+      uses: actions/checkout@v2
+      with:
+        ref: 'docs'
+        path: 'Documentation/_site'
+
+    - name: 'Install DocFX'
+      run: choco install docfx
+
+    - name: 'Generate documentation'
+      run: docfx
+      working-directory: Documentation
+
+    - name: 'Upload documentation'
+      uses: actions/upload-artifact@v1
+      with:
+        name: docs
+        path: ${{ github.workspace }}/Documentation/_site
+
+    # Check for changes; this avoids publishing a new change to the
+    # dist branch when we made a change to (for example) a unit test.
+    # If there were changes made in the publish step above, then this
+    # will set the variable `has_changes` to `1` for subsequent steps.
+    - name: Check for changes
+      id: status
+      run: |
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "::set-output name=has_changes::1"
+        fi
+      shell: bash
+      working-directory: Documentation/_site
+      if: github.event_name == 'push'
+
+    # Commit the changes to the dist branch and push the changes up to
+    # GitHub.  (Replace the name and email address with your own.)
+    # This step only runs if the previous step set `has_changes` to `1`.
+    - name: Publish documentation
+      run: |
+        git add --verbose .
+        git config user.name 'CI User'
+        git config user.email 'noreply@dogged.app'
+        git commit -m 'Update from CI'
+        git push origin docs
+      if: steps.status.outputs.has_changes == '1'
+      working-directory: Documentation/_site
