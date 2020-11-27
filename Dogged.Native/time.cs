@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Dogged
+namespace Dogged.Native
 {
     /// <summary>
     /// The timestamp for a commit.
