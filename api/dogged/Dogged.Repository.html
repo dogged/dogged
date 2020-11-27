@@ -1,0 +1,717 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Repository
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Repository
+   ">
+    <meta name="generator" content="docfx 2.56.5.0">
+    
+    <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+    <link rel="icon" href="../../favicon-32x32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="../../favicon-32x32.png" type="image/png" sizes="32x32">
+    <link rel="shortcut icon" href="../../favicon-16x16.png" type="image/png" sizes="16x16">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Dogged.Repository">
+  
+  
+  <h1 id="Dogged_Repository" data-uid="Dogged.Repository" class="text-break">Class Repository
+  </h1>
+  <div class="markdown level0 summary"><p>The representation of a Git repository, including its objects,
+references and the methods that operate on it.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Dogged.NativeDisposable.html">NativeDisposable</a></div>
+    <div class="level2"><span class="xref">Repository</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Dogged.NativeDisposable.html#Dogged_NativeDisposable_Dispose">NativeDisposable.Dispose()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Dogged.html">Dogged</a></h6>
+  <h6><strong>Assembly</strong>: Dogged.dll</h6>
+  <h5 id="Dogged_Repository_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Repository : NativeDisposable</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ethomson/dogged/new/9709f373ac0d154107ea350f7931151b07a5af04/apiSpec/new?filename=Dogged_Repository_Head.md&amp;value=---%0Auid%3A%20Dogged.Repository.Head%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ethomson/dogged/blob/9709f373ac0d154107ea350f7931151b07a5af04/Dogged/Repository.cs/#L160">View Source</a>
+  </span>
+  <a id="Dogged_Repository_Head_" data-uid="Dogged.Repository.Head*"></a>
+  <h4 id="Dogged_Repository_Head" data-uid="Dogged.Repository.Head">Head</h4>
+  <div class="markdown level1 summary"><p>Retrieve and resolve the reference pointed to by <code>HEAD</code>.
+The repository HEAD will be peeled to a direct reference.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DirectReference Head { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.DirectReference.html">DirectReference</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ethomson/dogged/new/9709f373ac0d154107ea350f7931151b07a5af04/apiSpec/new?filename=Dogged_Repository_HeadCommit.md&amp;value=---%0Auid%3A%20Dogged.Repository.HeadCommit%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ethomson/dogged/blob/9709f373ac0d154107ea350f7931151b07a5af04/Dogged/Repository.cs/#L189">View Source</a>
+  </span>
+  <a id="Dogged_Repository_HeadCommit_" data-uid="Dogged.Repository.HeadCommit*"></a>
+  <h4 id="Dogged_Repository_HeadCommit" data-uid="Dogged.Repository.HeadCommit">HeadCommit</h4>
+  <div class="markdown level1 summary"><p>Get the commit pointed to by HEAD.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Commit HeadCommit { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Commit.html">Commit</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ethomson/dogged/new/9709f373ac0d154107ea350f7931151b07a5af04/apiSpec/new?filename=Dogged_Repository_Index.md&amp;value=---%0Auid%3A%20Dogged.Repository.Index%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ethomson/dogged/blob/9709f373ac0d154107ea350f7931151b07a5af04/Dogged/Repository.cs/#L203">View Source</a>
+  </span>
+  <a id="Dogged_Repository_Index_" data-uid="Dogged.Repository.Index*"></a>
+  <h4 id="Dogged_Repository_Index" data-uid="Dogged.Repository.Index">Index</h4>
+  <div class="markdown level1 summary"><p>Describes the repository's index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Index Index { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Index.html">Index</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ethomson/dogged/new/9709f373ac0d154107ea350f7931151b07a5af04/apiSpec/new?filename=Dogged_Repository_IsBare.md&amp;value=---%0Auid%3A%20Dogged.Repository.IsBare%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ethomson/dogged/blob/9709f373ac0d154107ea350f7931151b07a5af04/Dogged/Repository.cs/#L135">View Source</a>
+  </span>
+  <a id="Dogged_Repository_IsBare_" data-uid="Dogged.Repository.IsBare*"></a>
+  <h4 id="Dogged_Repository_IsBare" data-uid="Dogged.Repository.IsBare">IsBare</h4>
+  <div class="markdown level1 summary"><p>Indicates whether the specified repository is bare.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsBare { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ethomson/dogged/new/9709f373ac0d154107ea350f7931151b07a5af04/apiSpec/new?filename=Dogged_Repository_IsHeadDetached.md&amp;value=---%0Auid%3A%20Dogged.Repository.IsHeadDetached%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ethomson/dogged/blob/9709f373ac0d154107ea350f7931151b07a5af04/Dogged/Repository.cs/#L147">View Source</a>
+  </span>
+  <a id="Dogged_Repository_IsHeadDetached_" data-uid="Dogged.Repository.IsHeadDetached*"></a>
+  <h4 id="Dogged_Repository_IsHeadDetached" data-uid="Dogged.Repository.IsHeadDetached">IsHeadDetached</h4>
+  <div class="markdown level1 summary"><p>Indicates whether the HEAD is detached, meaning it points
+directly at an object id instead of a branch.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsHeadDetached { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ethomson/dogged/new/9709f373ac0d154107ea350f7931151b07a5af04/apiSpec/new?filename=Dogged_Repository_ObjectDatabase.md&amp;value=---%0Auid%3A%20Dogged.Repository.ObjectDatabase%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ethomson/dogged/blob/9709f373ac0d154107ea350f7931151b07a5af04/Dogged/Repository.cs/#L250">View Source</a>
+  </span>
+  <a id="Dogged_Repository_ObjectDatabase_" data-uid="Dogged.Repository.ObjectDatabase*"></a>
+  <h4 id="Dogged_Repository_ObjectDatabase" data-uid="Dogged.Repository.ObjectDatabase">ObjectDatabase</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ObjectDatabase ObjectDatabase { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.ObjectDatabase.html">ObjectDatabase</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ethomson/dogged/new/9709f373ac0d154107ea350f7931151b07a5af04/apiSpec/new?filename=Dogged_Repository_Objects.md&amp;value=---%0Auid%3A%20Dogged.Repository.Objects%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ethomson/dogged/blob/9709f373ac0d154107ea350f7931151b07a5af04/Dogged/Repository.cs/#L216">View Source</a>
+  </span>
+  <a id="Dogged_Repository_Objects_" data-uid="Dogged.Repository.Objects*"></a>
+  <h4 id="Dogged_Repository_Objects" data-uid="Dogged.Repository.Objects">Objects</h4>
+  <div class="markdown level1 summary"><p>An accessor for Git objects.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ObjectCollection Objects { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.ObjectCollection.html">ObjectCollection</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ethomson/dogged/new/9709f373ac0d154107ea350f7931151b07a5af04/apiSpec/new?filename=Dogged_Repository_Path.md&amp;value=---%0Auid%3A%20Dogged.Repository.Path%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ethomson/dogged/blob/9709f373ac0d154107ea350f7931151b07a5af04/Dogged/Repository.cs/#L116">View Source</a>
+  </span>
+  <a id="Dogged_Repository_Path_" data-uid="Dogged.Repository.Path*"></a>
+  <h4 id="Dogged_Repository_Path" data-uid="Dogged.Repository.Path">Path</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Path { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ethomson/dogged/new/9709f373ac0d154107ea350f7931151b07a5af04/apiSpec/new?filename=Dogged_Repository_References.md&amp;value=---%0Auid%3A%20Dogged.Repository.References%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ethomson/dogged/blob/9709f373ac0d154107ea350f7931151b07a5af04/Dogged/Repository.cs/#L227">View Source</a>
+  </span>
+  <a id="Dogged_Repository_References_" data-uid="Dogged.Repository.References*"></a>
+  <h4 id="Dogged_Repository_References" data-uid="Dogged.Repository.References">References</h4>
+  <div class="markdown level1 summary"><p>An accessor for references.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ReferenceCollection References { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.ReferenceCollection.html">ReferenceCollection</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ethomson/dogged/new/9709f373ac0d154107ea350f7931151b07a5af04/apiSpec/new?filename=Dogged_Repository_Workdir.md&amp;value=---%0Auid%3A%20Dogged.Repository.Workdir%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ethomson/dogged/blob/9709f373ac0d154107ea350f7931151b07a5af04/Dogged/Repository.cs/#L124">View Source</a>
+  </span>
+  <a id="Dogged_Repository_Workdir_" data-uid="Dogged.Repository.Workdir*"></a>
+  <h4 id="Dogged_Repository_Workdir" data-uid="Dogged.Repository.Workdir">Workdir</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Workdir { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ethomson/dogged/new/9709f373ac0d154107ea350f7931151b07a5af04/apiSpec/new?filename=Dogged_Repository_Clone_System_String_System_String_.md&amp;value=---%0Auid%3A%20Dogged.Repository.Clone(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ethomson/dogged/blob/9709f373ac0d154107ea350f7931151b07a5af04/Dogged/Repository.cs/#L83">View Source</a>
+  </span>
+  <a id="Dogged_Repository_Clone_" data-uid="Dogged.Repository.Clone*"></a>
+  <h4 id="Dogged_Repository_Clone_System_String_System_String_" data-uid="Dogged.Repository.Clone(System.String,System.String)">Clone(String, String)</h4>
+  <div class="markdown level1 summary"><p>Clone a remote repository.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Repository Clone(string remotePath, string localPath)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">remotePath</span></td>
+        <td><p>The remote repository to clone</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">localPath</span></td>
+        <td><p>The local path to clone to</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Repository.html">Repository</a></td>
+        <td><p>The newly cloned repository</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ethomson/dogged/new/9709f373ac0d154107ea350f7931151b07a5af04/apiSpec/new?filename=Dogged_Repository_CreateCustomRepository.md&amp;value=---%0Auid%3A%20Dogged.Repository.CreateCustomRepository%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ethomson/dogged/blob/9709f373ac0d154107ea350f7931151b07a5af04/Dogged/Repository.cs/#L100">View Source</a>
+  </span>
+  <a id="Dogged_Repository_CreateCustomRepository_" data-uid="Dogged.Repository.CreateCustomRepository*"></a>
+  <h4 id="Dogged_Repository_CreateCustomRepository" data-uid="Dogged.Repository.CreateCustomRepository">CreateCustomRepository()</h4>
+  <div class="markdown level1 summary"><p>Create a custom repository that is not bound to an on-disk
+repository or working directory.  To use it, you can can configure
+custom backends.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Repository CreateCustomRepository()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Repository.html">Repository</a></td>
+        <td><p>The newly created repository</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ethomson/dogged/new/9709f373ac0d154107ea350f7931151b07a5af04/apiSpec/new?filename=Dogged_Repository_Init_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Dogged.Repository.Init(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ethomson/dogged/blob/9709f373ac0d154107ea350f7931151b07a5af04/Dogged/Repository.cs/#L67">View Source</a>
+  </span>
+  <a id="Dogged_Repository_Init_" data-uid="Dogged.Repository.Init*"></a>
+  <h4 id="Dogged_Repository_Init_System_String_System_Boolean_" data-uid="Dogged.Repository.Init(System.String,System.Boolean)">Init(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Creates a new Git repository in the given folder.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Repository Init(string path, bool bare = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>The path to the repository</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">bare</span></td>
+        <td><p>If true, a Git repository without a working directory is created at the given path. If false, the provided path will be considered as the working directory into which the .git directory will be created.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Repository.html">Repository</a></td>
+        <td><p>The newly initialized repository</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ethomson/dogged/new/9709f373ac0d154107ea350f7931151b07a5af04/apiSpec/new?filename=Dogged_Repository_LoadFilterList_Dogged_Blob_System_String_FilterMode_FilterFlags_.md&amp;value=---%0Auid%3A%20Dogged.Repository.LoadFilterList(Dogged.Blob%2CSystem.String%2CFilterMode%2CFilterFlags)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ethomson/dogged/blob/9709f373ac0d154107ea350f7931151b07a5af04/Dogged/Repository.cs/#L264">View Source</a>
+  </span>
+  <a id="Dogged_Repository_LoadFilterList_" data-uid="Dogged.Repository.LoadFilterList*"></a>
+  <h4 id="Dogged_Repository_LoadFilterList_Dogged_Blob_System_String_FilterMode_FilterFlags_" data-uid="Dogged.Repository.LoadFilterList(Dogged.Blob,System.String,FilterMode,FilterFlags)">LoadFilterList(Blob, String, FilterMode, FilterFlags)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FilterList LoadFilterList(Blob blob, string path, FilterMode mode, FilterFlags flags)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Blob.html">Blob</a></td>
+        <td><span class="parametername">blob</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">FilterMode</span></td>
+        <td><span class="parametername">mode</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">FilterFlags</span></td>
+        <td><span class="parametername">flags</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">FilterList</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ethomson/dogged/new/9709f373ac0d154107ea350f7931151b07a5af04/apiSpec/new?filename=Dogged_Repository_Open_System_String_.md&amp;value=---%0Auid%3A%20Dogged.Repository.Open(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ethomson/dogged/blob/9709f373ac0d154107ea350f7931151b07a5af04/Dogged/Repository.cs/#L51">View Source</a>
+  </span>
+  <a id="Dogged_Repository_Open_" data-uid="Dogged.Repository.Open*"></a>
+  <h4 id="Dogged_Repository_Open_System_String_" data-uid="Dogged.Repository.Open(System.String)">Open(String)</h4>
+  <div class="markdown level1 summary"><p>Opens the Git repository at the given <code data-dev-comment-type="paramref" class="paramref">path</code>.
+This can be either a path to the repository's working tree,
+or to the actual repository folder (the &quot;.git&quot; folder beneath
+a working directory or a bare repository).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Repository Open(string path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>The path to the repository or a repository's working tree.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Repository.html">Repository</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ethomson/dogged/new/9709f373ac0d154107ea350f7931151b07a5af04/apiSpec/new?filename=Dogged_Repository.md&amp;value=---%0Auid%3A%20Dogged.Repository%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/ethomson/dogged/blob/9709f373ac0d154107ea350f7931151b07a5af04/Dogged/Repository.cs/#L11" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

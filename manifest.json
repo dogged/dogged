@@ -1,0 +1,1187 @@
+{
+  "homepages": [],
+  "source_base_path": "D:/a/dogged/dogged/Documentation",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.Services.Utf8Converter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.Services.Utf8Converter.html",
+          "hash": "5QyONHiThtkb8HoEDyTsOQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.Services.html",
+          "hash": "PS395K24+Gre/Ci9K/jOQg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_blob.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_blob.html",
+          "hash": "oL7cvgyAUzOmHqWofAIM6A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_blob_filter_flag_t.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_blob_filter_flag_t.html",
+          "hash": "X1WEsdSHtaqAZTnKZfRM8w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_blob_filter_options.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_blob_filter_options.html",
+          "hash": "Iauo4cBiSjiFEovOAotVVw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_buf.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_buf.html",
+          "hash": "auX/w+3Aqq4rVSYKeV7qvg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_clone_options.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_clone_options.html",
+          "hash": "p3Gz8TllibcySClvt/YkVw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_commit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_commit.html",
+          "hash": "Ad5UOtmjzk7OyMuUAWqdDw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_config_level_t.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_config_level_t.html",
+          "hash": "BwjDBKTEbB1muxmB5d2ikw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_error.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_error.html",
+          "hash": "b+KPzpQ46FGC17BC8y7Jmg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_error_code.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_error_code.html",
+          "hash": "JUM33tQJti+GoRwrRkPCLQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_error_t.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_error_t.html",
+          "hash": "X1q8KD0juKHQgPElDgI4mQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_feature_t.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_feature_t.html",
+          "hash": "7uy1meE5bann1Jmi/fvaLw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_filemode_t.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_filemode_t.html",
+          "hash": "5N8E6K4GK47k3nQobIDwQA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_filter_flags_t.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_filter_flags_t.html",
+          "hash": "KVAvwxtSL9/VaF8uZkWTxQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_filter_list.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_filter_list.html",
+          "hash": "hH1z0ZhMWA8D4WryQdFjqg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_filter_mode_t.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_filter_mode_t.html",
+          "hash": "zHB+E0FZo5DqXoEKpAqyGw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_index.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_index.html",
+          "hash": "+JvPr2ylkxhQ59DH/4F6LA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_index_entry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_index_entry.html",
+          "hash": "ybdH0q9clFjPn2RDn6aJqQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_index_entry_extended_flag_t.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_index_entry_extended_flag_t.html",
+          "hash": "8VOFm0CyhgfC+FooxZUZsg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_index_entry_flag_t.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_index_entry_flag_t.html",
+          "hash": "zoWdc/Eypko4czIp54Me0Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_index_iterator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_index_iterator.html",
+          "hash": "BvE7M/HcxuRfr9OFsnY0xA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_index_time.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_index_time.html",
+          "hash": "LMQKJ0IhLI+BHgfiPp4PCA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_libgit2_opt_t.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_libgit2_opt_t.html",
+          "hash": "5Xf4iL4qGmw2Uw6Fi41EIQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_object.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_object.html",
+          "hash": "ZWzaMaF/V4wMbWW3Z2MKvA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_object_t.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_object_t.html",
+          "hash": "X29w8mb7lCne0Mw9O8jD6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_odb.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_odb.html",
+          "hash": "jPgZrHgxaTT1Gm9H/tpM7g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_odb_backend.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_odb_backend.html",
+          "hash": "RHU6+frI8S3ilnl4ck/deA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_odb_foreach_cb.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_odb_foreach_cb.html",
+          "hash": "jiVfy52P7o26u8KyW2jCGg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_odb_object.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_odb_object.html",
+          "hash": "mT9SlU+0KV1vYJWyA/qERg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_oid.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_oid.html",
+          "hash": "b09e5ixgPyCmsc1ms5obZA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_reference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_reference.html",
+          "hash": "e8/Vvl6iReXNGYSIrguwvQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_reference_iterator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_reference_iterator.html",
+          "hash": "TgffktqO8nhb7+fImckGaQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_reference_t.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_reference_t.html",
+          "hash": "lth1OYeeLI+JbhqkhdZSBA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_repository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_repository.html",
+          "hash": "KBkEc+GehkegV6Y1oLELrw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_signature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_signature.html",
+          "hash": "yxWuFj0N9ylhxlKTSsSfEg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_time.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_time.html",
+          "hash": "P6LpfXzYaevYh9EVirKwdA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_tree.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_tree.html",
+          "hash": "u/N6ZmjWLQ0Gi9ZHFQKZvA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.git_tree_entry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.git_tree_entry.html",
+          "hash": "oAifIdd2JPAQnqmCgDKWVg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.libgit2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.libgit2.html",
+          "hash": "8iTBnOU5s5lS6DMB68R4Rg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged.native/Dogged.Native.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/Dogged.Native.html",
+          "hash": "/pcR8Kiz0kE90pPlBJ1VDg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/dogged.native/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged.native/toc.html",
+          "hash": "zFkS44c88LoxaA7fgENrtg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.BareRepositoryException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.BareRepositoryException.html",
+          "hash": "d7ddOCAHItthO3tyb//Vfg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.Blob.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.Blob.html",
+          "hash": "aEae3p8joTeiA8DxLdiQPQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.CannotBePeeledException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.CannotBePeeledException.html",
+          "hash": "lZROUeEuZdUBv+owJjsBdQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.CheckoutConflictException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.CheckoutConflictException.html",
+          "hash": "gn+bmFvF0BbzcAw9O0AweQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.Commit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.Commit.html",
+          "hash": "/i2qg/V0XFAANbTk5EDezg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.CompressionLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.CompressionLevel.html",
+          "hash": "erkcysFH8NZW0PWYJMw29g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.ConfigurationLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.ConfigurationLevel.html",
+          "hash": "coWGBLHObk1xukOiUw8YMg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.DirectReference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.DirectReference.html",
+          "hash": "nonlzFeyQ0SM2XieN85DmA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.DoggedException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.DoggedException.html",
+          "hash": "daSaHbi2BvEMd9i2+uisxg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.FileMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.FileMode.html",
+          "hash": "744zLBJZXb4vTPBCZABXBQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.GitBuffer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.GitBuffer.html",
+          "hash": "Yw13L/rCudkgtAvyADcNoQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.GitObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.GitObject.html",
+          "hash": "MgSZUTtIx2ctGU3hYMGbAw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.GlobalOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.GlobalOptions.html",
+          "hash": "5wP04I6uR0uqr9jtw+aJ8w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.Index.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.Index.html",
+          "hash": "i0KS+ozWSRUEqgPlrU41jA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.IndexEntry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.IndexEntry.html",
+          "hash": "WmW5rA1fIQQGu5EgwEc5lA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.IndexEntryFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.IndexEntryFlags.html",
+          "hash": "RnQALVod3Ads9PeCdsEbFA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.IndexEntryStage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.IndexEntryStage.html",
+          "hash": "+92R5ATUITVNaImXB9/6pw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.IndexEntryTime.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.IndexEntryTime.html",
+          "hash": "9VHYJU4Zt+Cp3mf9ymt6zA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.IndexEnumerator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.IndexEnumerator.html",
+          "hash": "wZa5IlwgPHee1hasqimGWQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.InvalidSpecificationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.InvalidSpecificationException.html",
+          "hash": "njGqS0fAWAQB12tyAoZuXw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.ItemExistsException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.ItemExistsException.html",
+          "hash": "A39ZkIqioW7aUP84rrahFQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.LockedFileException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.LockedFileException.html",
+          "hash": "txZrZSRu0mvnuKNz9HkQlA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.NativeDisposable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.NativeDisposable.html",
+          "hash": "eHFwTDtcfEOBEEg59adk3w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.NativeException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.NativeException.html",
+          "hash": "P+sF1vJNOWMFVuWecS8GwQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.NonFastForwardException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.NonFastForwardException.html",
+          "hash": "lVnf6wO3nU1Scfeo+nsMvw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.NotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.NotFoundException.html",
+          "hash": "jlWepa4ZxTGJSKphcAkfPw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.ObjectCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.ObjectCollection.html",
+          "hash": "5LSniGdm5TXtmDE4EYAnyQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.ObjectDatabase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.ObjectDatabase.html",
+          "hash": "s6EG7MaHshrTHOfX1Qz1cg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.ObjectDatabaseBackend.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.ObjectDatabaseBackend.html",
+          "hash": "mxl9zFU/5CBrNbl3iKDBtw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.ObjectDatabaseObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.ObjectDatabaseObject.html",
+          "hash": "JLslBAjwIrXzB052kO10gw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.ObjectId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.ObjectId.html",
+          "hash": "6HV4G2LN8HD0X2g5kiUKYw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.ObjectType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.ObjectType.html",
+          "hash": "WnKXABlfS8nBjmzk+bb6PA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.Reference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.Reference.html",
+          "hash": "KFeslsPPbKCZR8pTpjfziQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.ReferenceCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.ReferenceCollection.html",
+          "hash": "ZV2X2o2yCUKWSVHGCXUeyA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.ReferenceEnumerator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.ReferenceEnumerator.html",
+          "hash": "EeuUQ8Q+41l+XX2IifysKQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.Repository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.Repository.html",
+          "hash": "OlmdtMTY1D71EMz0hhAq8Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.RepositoryNotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.RepositoryNotFoundException.html",
+          "hash": "YP2qO/jfvQo8AgXsHB0pdg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.Signature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.Signature.html",
+          "hash": "PatF5+dMCnLqt4fQtXVVZw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.SymbolicReference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.SymbolicReference.html",
+          "hash": "6TKwAWsTurWeHTCxISBxow=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.Tree.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.Tree.html",
+          "hash": "xlqj23lNetPLvmWBbTFKxA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.TreeEntry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.TreeEntry.html",
+          "hash": "ZKJeQ+w9F9KLijBpcozURg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.UnmergedIndexEntriesException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.UnmergedIndexEntriesException.html",
+          "hash": "+RTNp5eEtfAh6YcIiTEt+w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.UserCancelledException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.UserCancelledException.html",
+          "hash": "qWqOR87oEAodhSxBevyBYA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/dogged/Dogged.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/Dogged.html",
+          "hash": "hmx0TGg+B/OcQo15hu9t8w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/dogged/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/dogged/toc.html",
+          "hash": "Wj5PY19NxUAYgG2TPGuZVA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "hyfCScHweFbA+BvXceC6hQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "examples/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "examples/index.html",
+          "hash": "8ovvuTu+PtZFPisBeLqWdA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "examples/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "examples/toc.html",
+          "hash": "jWxBu9P1UuWLsCf6dtwZIg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/logo.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "6RUmiW/QfPAHAcw+k9gfSQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "I74UyCAPmcz5X2exlDxFQw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 85,
+          "skipped_file_count": 0
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Enum git_error_code
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Enum git_error_code
+   ">
+    <meta name="generator" content="docfx 2.56.5.0">
+    
+    <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+    <link rel="icon" href="../../favicon-32x32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="../../favicon-32x32.png" type="image/png" sizes="32x32">
+    <link rel="shortcut icon" href="../../favicon-16x16.png" type="image/png" sizes="16x16">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Dogged.Native.git_error_code">
+  
+  
+  <h1 id="Dogged_Native_git_error_code" data-uid="Dogged.Native.git_error_code" class="text-break">Enum git_error_code
+  </h1>
+  <div class="markdown level0 summary"><p>The return codes from a libgit2 function; GIT_OK is used when the
+function call succeeded, otherwise a negative value is returned.
+Most functions return GIT_ERROR on fatal error, but may return a
+more detailed error code to allow callers to respond.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Dogged.Native.html">Dogged.Native</a></h6>
+  <h6><strong>Assembly</strong>: Dogged.Native.dll</h6>
+  <h5 id="Dogged_Native_git_error_code_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public enum git_error_code : int</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    <thead>
+    <tbody>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_EAMBIGUOUS">GIT_EAMBIGUOUS</td>
+        <td><p>More than one object matches.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_EAPPLIED">GIT_EAPPLIED</td>
+        <td><p>Patch/merge has already been applied.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_EAPPLYFAIL">GIT_EAPPLYFAIL</td>
+        <td><p>Patch application failed.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_EAUTH">GIT_EAUTH</td>
+        <td><p>Authentication error.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_EBAREREPO">GIT_EBAREREPO</td>
+        <td><p>Operation not allowed on bare repository.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_EBUFS">GIT_EBUFS</td>
+        <td><p>Output buffer too short to hold data.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_ECERTIFICATE">GIT_ECERTIFICATE</td>
+        <td><p>Server certificate is invalid.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_ECONFLICT">GIT_ECONFLICT</td>
+        <td><p>Checkout conflicts prevented operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_EDIRECTORY">GIT_EDIRECTORY</td>
+        <td><p>The operation is not valid for a directory.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_EEOF">GIT_EEOF</td>
+        <td><p>Unexpected EOF.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_EEXISTS">GIT_EEXISTS</td>
+        <td><p>Object exists preventing operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_EINDEXDIRTY">GIT_EINDEXDIRTY</td>
+        <td><p>Unsaved changes in the index would be overwritten.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_EINVALID">GIT_EINVALID</td>
+        <td><p>Invalid operation or input.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_EINVALIDSPEC">GIT_EINVALIDSPEC</td>
+        <td><p>Name/ref spec was not in a valid format.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_ELOCKED">GIT_ELOCKED</td>
+        <td><p>Lock file prevented operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_EMERGECONFLICT">GIT_EMERGECONFLICT</td>
+        <td><p>A merge conflict exists and cannot continue.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_EMISMATCH">GIT_EMISMATCH</td>
+        <td><p>Hashsum mismatch in object.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_EMODIFIED">GIT_EMODIFIED</td>
+        <td><p>Reference value does not match expected.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_ENONFASTFORWARD">GIT_ENONFASTFORWARD</td>
+        <td><p>Reference was not fast-forwardable.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_ENOTFOUND">GIT_ENOTFOUND</td>
+        <td><p>Requested object could not be found.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_EPEEL">GIT_EPEEL</td>
+        <td><p>The requested peel operation is not possible.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_ERROR">GIT_ERROR</td>
+        <td><p>An error occured; call <see cref="!:git_error_last"></see> for more information.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_EUNBORNBRANCH">GIT_EUNBORNBRANCH</td>
+        <td><p>HEAD refers to branch with no commits.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_EUNCOMMITTED">GIT_EUNCOMMITTED</td>
+        <td><p>Uncommitted changes in index prevented operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_EUNMERGED">GIT_EUNMERGED</td>
+        <td><p>Merge in progress prevented operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_EUSER">GIT_EUSER</td>
+        <td><p>GIT_EUSER is a special error that is never generated by libgit2
+code.  You can return it from a callback (e.g to stop an iteration)
+to know that it was generated by the callback and not by libgit2.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_ITEROVER">GIT_ITEROVER</td>
+        <td><p>Signals end of iteration with iterator.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_OK">GIT_OK</td>
+        <td><p>No error.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_PASSTHROUGH">GIT_PASSTHROUGH</td>
+        <td><p>A user-configured callback refused to act.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_error_code_GIT_RETRY">GIT_RETRY</td>
+        <td><p>Internal only.</p>
+</td>
+      </tr>
+    </tbody>
+  </thead></thead></table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ethomson/dogged/new/9709f373ac0d154107ea350f7931151b07a5af04/apiSpec/new?filename=Dogged_Native_git_error_code.md&amp;value=---%0Auid%3A%20Dogged.Native.git_error_code%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/ethomson/dogged/blob/9709f373ac0d154107ea350f7931151b07a5af04/Dogged.Native/error.cs/#L12" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,3921 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class libgit2
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class libgit2
+   ">
+    <meta name="generator" content="docfx 2.56.5.0">
+    
+    <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+    <link rel="icon" href="../../favicon-32x32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="../../favicon-32x32.png" type="image/png" sizes="32x32">
+    <link rel="shortcut icon" href="../../favicon-16x16.png" type="image/png" sizes="16x16">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Dogged.Native.libgit2">
+  
+  
+  <h1 id="Dogged_Native_libgit2" data-uid="Dogged.Native.libgit2" class="text-break">Class libgit2
+  </h1>
+  <div class="markdown level0 summary"><p>The native libgit2 functions.  Upon the first invocation of any
+of these functions, the native library will be loaded and the
+<a class="xref" href="Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_libgit2_init">git_libgit2_init()</a> function will be called to set up
+the native library.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">libgit2</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Dogged.Native.html">Dogged.Native</a></h6>
+  <h6><strong>Assembly</strong>: Dogged.Native.dll</h6>
+  <h5 id="Dogged_Native_libgit2_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class libgit2 : object</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Dogged_Native_libgit2_git_blob_filter_" data-uid="Dogged.Native.libgit2.git_blob_filter*"></a>
+  <h4 id="Dogged_Native_libgit2_git_blob_filter_Dogged_Native_git_buf_Dogged_Native_git_blob__System_String_Dogged_Native_git_blob_filter_options__" data-uid="Dogged.Native.libgit2.git_blob_filter(Dogged.Native.git_buf,Dogged.Native.git_blob*,System.String,Dogged.Native.git_blob_filter_options*)">git_blob_filter(git_buf, git_blob*, String, git_blob_filter_options*)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_blob_filter(git_buf content, git_blob*blob, string path, git_blob_filter_options*options)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_buf.html">git_buf</a></td>
+        <td><span class="parametername">content</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_blob.html">git_blob</a>*</td>
+        <td><span class="parametername">blob</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_blob_filter_options.html">git_blob_filter_options</a>*</td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_blob_is_binary_" data-uid="Dogged.Native.libgit2.git_blob_is_binary*"></a>
+  <h4 id="Dogged_Native_libgit2_git_blob_is_binary_Dogged_Native_git_blob__" data-uid="Dogged.Native.libgit2.git_blob_is_binary(Dogged.Native.git_blob*)">git_blob_is_binary(git_blob*)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_blob_is_binary(git_blob*blob)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_blob.html">git_blob</a>*</td>
+        <td><span class="parametername">blob</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_blob_lookup_" data-uid="Dogged.Native.libgit2.git_blob_lookup*"></a>
+  <h4 id="Dogged_Native_libgit2_git_blob_lookup_Dogged_Native_git_blob___Dogged_Native_git_repository__Dogged_Native_git_oid__" data-uid="Dogged.Native.libgit2.git_blob_lookup(Dogged.Native.git_blob*@,Dogged.Native.git_repository*,Dogged.Native.git_oid@)">git_blob_lookup(out git_blob*, git_repository*, ref git_oid)</h4>
+  <div class="markdown level1 summary"><p>Look up a blob from the repository.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_blob_lookup(out git_blob*blob, git_repository*repo, ref git_oid id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_blob.html">git_blob</a>*</td>
+        <td><span class="parametername">blob</span></td>
+        <td><p>Pointer to the blob that was loaded from the repository</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repo</span></td>
+        <td><p>The repository that contains the blob</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_oid.html">git_oid</a></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The id of the blob to lookup</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_blob_rawcontent_" data-uid="Dogged.Native.libgit2.git_blob_rawcontent*"></a>
+  <h4 id="Dogged_Native_libgit2_git_blob_rawcontent_Dogged_Native_git_blob__" data-uid="Dogged.Native.libgit2.git_blob_rawcontent(Dogged.Native.git_blob*)">git_blob_rawcontent(git_blob*)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte *git_blob_rawcontent(git_blob*blob)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_blob.html">git_blob</a>*</td>
+        <td><span class="parametername">blob</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>*</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_blob_rawsize_" data-uid="Dogged.Native.libgit2.git_blob_rawsize*"></a>
+  <h4 id="Dogged_Native_libgit2_git_blob_rawsize_Dogged_Native_git_blob__" data-uid="Dogged.Native.libgit2.git_blob_rawsize(Dogged.Native.git_blob*)">git_blob_rawsize(git_blob*)</h4>
+  <div class="markdown level1 summary"><p>Get the size in bytes of the contents of a blob.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static long git_blob_rawsize(git_blob*blob)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_blob.html">git_blob</a>*</td>
+        <td><span class="parametername">blob</span></td>
+        <td><p>The blob to examine</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><p>Raw size of the blob in bytes</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_buf_dispose_" data-uid="Dogged.Native.libgit2.git_buf_dispose*"></a>
+  <h4 id="Dogged_Native_libgit2_git_buf_dispose_Dogged_Native_git_buf_" data-uid="Dogged.Native.libgit2.git_buf_dispose(Dogged.Native.git_buf)">git_buf_dispose(git_buf)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void git_buf_dispose(git_buf buf)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_buf.html">git_buf</a></td>
+        <td><span class="parametername">buf</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_clone_" data-uid="Dogged.Native.libgit2.git_clone*"></a>
+  <h4 id="Dogged_Native_libgit2_git_clone_Dogged_Native_git_repository___System_String_System_String_Dogged_Native_git_clone_options__" data-uid="Dogged.Native.libgit2.git_clone(Dogged.Native.git_repository*@,System.String,System.String,Dogged.Native.git_clone_options*)">git_clone(out git_repository*, String, String, git_clone_options*)</h4>
+  <div class="markdown level1 summary"><p>Clone a remote repository.</p>
+<p>
+By default this creates its repository and initial remote to match
+git&apos;s defaults. You can use the options in the callback to
+customize how these are created.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_clone(out git_repository*repo, string remotePath, string localPath, git_clone_options*options)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repo</span></td>
+        <td><p>Pointer to the repository that will be cloned.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">remotePath</span></td>
+        <td><p>The remote repository to clone</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">localPath</span></td>
+        <td><p>The local path to clone to</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_clone_options.html">git_clone_options</a>*</td>
+        <td><span class="parametername">options</span></td>
+        <td><p>Configuration options for the clone.  If null, defaults will be used.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_commit_author_" data-uid="Dogged.Native.libgit2.git_commit_author*"></a>
+  <h4 id="Dogged_Native_libgit2_git_commit_author_Dogged_Native_git_commit__" data-uid="Dogged.Native.libgit2.git_commit_author(Dogged.Native.git_commit*)">git_commit_author(git_commit*)</h4>
+  <div class="markdown level1 summary"><p>Get the signature for the commit's author.  This data is owned
+by the commit and should not be freed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static git_signature*git_commit_author(git_commit*commit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_commit.html">git_commit</a>*</td>
+        <td><span class="parametername">commit</span></td>
+        <td><p>The commit to examine</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_signature.html">git_signature</a>*</td>
+        <td><p>A pointer to a signature for the author</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_commit_committer_" data-uid="Dogged.Native.libgit2.git_commit_committer*"></a>
+  <h4 id="Dogged_Native_libgit2_git_commit_committer_Dogged_Native_git_commit__" data-uid="Dogged.Native.libgit2.git_commit_committer(Dogged.Native.git_commit*)">git_commit_committer(git_commit*)</h4>
+  <div class="markdown level1 summary"><p>Get the signature for the commit's committer.  This data is owned
+by the commit and should not be freed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static git_signature*git_commit_committer(git_commit*commit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_commit.html">git_commit</a>*</td>
+        <td><span class="parametername">commit</span></td>
+        <td><p>The commit to examine</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_signature.html">git_signature</a>*</td>
+        <td><p>A pointer to a signature for the committer</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_commit_lookup_" data-uid="Dogged.Native.libgit2.git_commit_lookup*"></a>
+  <h4 id="Dogged_Native_libgit2_git_commit_lookup_Dogged_Native_git_commit___Dogged_Native_git_repository__Dogged_Native_git_oid__" data-uid="Dogged.Native.libgit2.git_commit_lookup(Dogged.Native.git_commit*@,Dogged.Native.git_repository*,Dogged.Native.git_oid@)">git_commit_lookup(out git_commit*, git_repository*, ref git_oid)</h4>
+  <div class="markdown level1 summary"><p>Look up a commit from the repository.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_commit_lookup(out git_commit*obj, git_repository*repo, ref git_oid id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_commit.html">git_commit</a>*</td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>Pointer to the commit that was loaded from the repository</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repo</span></td>
+        <td><p>The repository that contains the commit</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_oid.html">git_oid</a></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The id of the commit to lookup</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_commit_tree_" data-uid="Dogged.Native.libgit2.git_commit_tree*"></a>
+  <h4 id="Dogged_Native_libgit2_git_commit_tree_Dogged_Native_git_tree___Dogged_Native_git_commit__" data-uid="Dogged.Native.libgit2.git_commit_tree(Dogged.Native.git_tree*@,Dogged.Native.git_commit*)">git_commit_tree(out git_tree*, git_commit*)</h4>
+  <div class="markdown level1 summary"><p>Get the tree that the given commit points to.  This tree must be
+freed when it is no longer needed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_commit_tree(out git_tree*tree, git_commit*commit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_tree.html">git_tree</a>*</td>
+        <td><span class="parametername">tree</span></td>
+        <td><p>A pointer to the tree</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_commit.html">git_commit</a>*</td>
+        <td><span class="parametername">commit</span></td>
+        <td><p>The commit to examine</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_commit_tree_id_" data-uid="Dogged.Native.libgit2.git_commit_tree_id*"></a>
+  <h4 id="Dogged_Native_libgit2_git_commit_tree_id_Dogged_Native_git_commit__" data-uid="Dogged.Native.libgit2.git_commit_tree_id(Dogged.Native.git_commit*)">git_commit_tree_id(git_commit*)</h4>
+  <div class="markdown level1 summary"><p>Get the object id of the tree that the given commit points to.
+This differs from <a class="xref" href="Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_commit_tree_Dogged_Native_git_tree___Dogged_Native_git_commit__">git_commit_tree(out git_tree*, git_commit*)</a> in that no
+attempts are made to lookup the tree or validate it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static git_oid*git_commit_tree_id(git_commit*commit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_commit.html">git_commit</a>*</td>
+        <td><span class="parametername">commit</span></td>
+        <td><p>The commit to examine</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_oid.html">git_oid</a>*</td>
+        <td><p>A pointer to the tree's object id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_error_last_" data-uid="Dogged.Native.libgit2.git_error_last*"></a>
+  <h4 id="Dogged_Native_libgit2_git_error_last" data-uid="Dogged.Native.libgit2.git_error_last">git_error_last()</h4>
+  <div class="markdown level1 summary"><p>Returns the information (class and message) for the last error
+that occurred on the current thread.  This information is
+undefined if the last libgit2 function did not return an error.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static git_error*git_error_last()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_error.html">git_error</a>*</td>
+        <td><p>A pointer to a <a class="xref" href="Dogged.Native.git_error.html">git_error</a> that describes the error.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_filter_list_apply_to_blob_" data-uid="Dogged.Native.libgit2.git_filter_list_apply_to_blob*"></a>
+  <h4 id="Dogged_Native_libgit2_git_filter_list_apply_to_blob_Dogged_Native_git_buf_Dogged_Native_git_filter_list__Dogged_Native_git_blob__" data-uid="Dogged.Native.libgit2.git_filter_list_apply_to_blob(Dogged.Native.git_buf,Dogged.Native.git_filter_list*,Dogged.Native.git_blob*)">git_filter_list_apply_to_blob(git_buf, git_filter_list*, git_blob*)</h4>
+  <div class="markdown level1 summary"><p>Apply a filter list to the contents of a blob.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_filter_list_apply_to_blob(git_buf outputBuffer, git_filter_list*filters, git_blob*blob)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_buf.html">git_buf</a></td>
+        <td><span class="parametername">outputBuffer</span></td>
+        <td><p>Buffer to store the result of the filtering</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_filter_list.html">git_filter_list</a>*</td>
+        <td><span class="parametername">filters</span></td>
+        <td><p>A loaded git_filter_list (or null)</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_blob.html">git_blob</a>*</td>
+        <td><span class="parametername">blob</span></td>
+        <td><p>The blob to filter</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_filter_list_apply_to_data_" data-uid="Dogged.Native.libgit2.git_filter_list_apply_to_data*"></a>
+  <h4 id="Dogged_Native_libgit2_git_filter_list_apply_to_data_Dogged_Native_git_buf_Dogged_Native_git_filter_list__Dogged_Native_git_buf_" data-uid="Dogged.Native.libgit2.git_filter_list_apply_to_data(Dogged.Native.git_buf,Dogged.Native.git_filter_list*,Dogged.Native.git_buf)">git_filter_list_apply_to_data(git_buf, git_filter_list*, git_buf)</h4>
+  <div class="markdown level1 summary"><p>Apply filter list to a data buffer.</p>
+<p>
+If the `inputBuffer` buffer holds data allocated by libgit2 (i.e.
+`inputBuffer->asize` is not zero), then it will be overwritten when
+applying the filters.  If not, then it will be left untouched.
+</p>
+<p>
+If there are no filters to apply (or `filters` is NULL), then the
+`outputBuffer` buffer will reference the `inputBuffer` buffer data
+(with `asize` set to zero) instead of allocating data.  This keeps
+allocations to a minimum, but it means you have to be careful about
+freeing the `inputBuffer` data since `outputBuffer` may be pointing
+to it!
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_filter_list_apply_to_data(git_buf outputBuffer, git_filter_list*filters, git_buf inputBuffer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_buf.html">git_buf</a></td>
+        <td><span class="parametername">outputBuffer</span></td>
+        <td><p>Buffer to store the result of the filtering</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_filter_list.html">git_filter_list</a>*</td>
+        <td><span class="parametername">filters</span></td>
+        <td><p>A loaded git_filter_list (or null)</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_buf.html">git_buf</a></td>
+        <td><span class="parametername">inputBuffer</span></td>
+        <td><p>Buffer containing the data to filter</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_filter_list_apply_to_file_" data-uid="Dogged.Native.libgit2.git_filter_list_apply_to_file*"></a>
+  <h4 id="Dogged_Native_libgit2_git_filter_list_apply_to_file_Dogged_Native_git_buf_Dogged_Native_git_filter_list__Dogged_Native_git_repository__System_String_" data-uid="Dogged.Native.libgit2.git_filter_list_apply_to_file(Dogged.Native.git_buf,Dogged.Native.git_filter_list*,Dogged.Native.git_repository*,System.String)">git_filter_list_apply_to_file(git_buf, git_filter_list*, git_repository*, String)</h4>
+  <div class="markdown level1 summary"><p>Apply a filter list to the contents of a file on disk.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_filter_list_apply_to_file(git_buf outputBuffer, git_filter_list*filters, git_repository*repo, string path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_buf.html">git_buf</a></td>
+        <td><span class="parametername">outputBuffer</span></td>
+        <td><p>Buffer to store the result of the filtering</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_filter_list.html">git_filter_list</a>*</td>
+        <td><span class="parametername">filters</span></td>
+        <td><p>A loaded git_filter_list (or null)</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repo</span></td>
+        <td><p>The repository to perform the filtering in</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>The path of the file to filter; a relative path will be taken as relative to the workdir</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_filter_list_free_" data-uid="Dogged.Native.libgit2.git_filter_list_free*"></a>
+  <h4 id="Dogged_Native_libgit2_git_filter_list_free_Dogged_Native_git_filter_list__" data-uid="Dogged.Native.libgit2.git_filter_list_free(Dogged.Native.git_filter_list*)">git_filter_list_free(git_filter_list*)</h4>
+  <div class="markdown level1 summary"><p>Free a git filter list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void git_filter_list_free(git_filter_list*filters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_filter_list.html">git_filter_list</a>*</td>
+        <td><span class="parametername">filters</span></td>
+        <td><p>The filter list to free</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_filter_list_load_" data-uid="Dogged.Native.libgit2.git_filter_list_load*"></a>
+  <h4 id="Dogged_Native_libgit2_git_filter_list_load_Dogged_Native_git_filter_list___Dogged_Native_git_repository__Dogged_Native_git_blob__System_String_Dogged_Native_git_filter_mode_t_System_UInt32_" data-uid="Dogged.Native.libgit2.git_filter_list_load(Dogged.Native.git_filter_list*@,Dogged.Native.git_repository*,Dogged.Native.git_blob*,System.String,Dogged.Native.git_filter_mode_t,System.UInt32)">git_filter_list_load(out git_filter_list*, git_repository*, git_blob*, String, git_filter_mode_t, UInt32)</h4>
+  <div class="markdown level1 summary"><p>Load the filter list for a given path.</p>
+<p>
+This will return 0 (success) but set the output git_filter_list
+to NULL if no filters are requested for the given file.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_filter_list_load(out git_filter_list*filters, git_repository*repo, git_blob*blob, string path, git_filter_mode_t mode, uint flags)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_filter_list.html">git_filter_list</a>*</td>
+        <td><span class="parametername">filters</span></td>
+        <td><p>Output newly created git_filter_list (or NULL)</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repo</span></td>
+        <td><p>Repository object that contains path</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_blob.html">git_blob</a>*</td>
+        <td><span class="parametername">blob</span></td>
+        <td><p>The blob to which the filter will be applied (if known)</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>Relative path of the file to be filtered</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_filter_mode_t.html">git_filter_mode_t</a></td>
+        <td><span class="parametername">mode</span></td>
+        <td><p>Filtering direction (WT-&gt;ODB or ODB-&gt;WT)</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">flags</span></td>
+        <td><p>Combination of <code>git_filter_flag_t</code> flags</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success (which could still return NULL if no filters are needed for the requested file) or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_index_entrycount_" data-uid="Dogged.Native.libgit2.git_index_entrycount*"></a>
+  <h4 id="Dogged_Native_libgit2_git_index_entrycount_Dogged_Native_git_index__" data-uid="Dogged.Native.libgit2.git_index_entrycount(Dogged.Native.git_index*)">git_index_entrycount(git_index*)</h4>
+  <div class="markdown level1 summary"><p>Get the count of entries currently in the index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UIntPtr git_index_entrycount(git_index*index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_index.html">git_index</a>*</td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index to read the entry from</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UIntPtr</span></td>
+        <td><p>Count of the current entries</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_index_free_" data-uid="Dogged.Native.libgit2.git_index_free*"></a>
+  <h4 id="Dogged_Native_libgit2_git_index_free_Dogged_Native_git_index__" data-uid="Dogged.Native.libgit2.git_index_free(Dogged.Native.git_index*)">git_index_free(git_index*)</h4>
+  <div class="markdown level1 summary"><p>Free an existing index object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void git_index_free(git_index*index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_index.html">git_index</a>*</td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index to free</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_index_get_byindex_" data-uid="Dogged.Native.libgit2.git_index_get_byindex*"></a>
+  <h4 id="Dogged_Native_libgit2_git_index_get_byindex_Dogged_Native_git_index__UIntPtr_" data-uid="Dogged.Native.libgit2.git_index_get_byindex(Dogged.Native.git_index*,UIntPtr)">git_index_get_byindex(git_index*, UIntPtr)</h4>
+  <div class="markdown level1 summary"><p>Get a pointer to an entry in the index at the the given position.</p>
+<p>
+The entry is not modifiable and should not be freed.  Because the
+`git_index_entry` struct is a publicly defined struct, you should
+be able to make your own permanent copy of the data if necessary.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static git_index_entry*git_index_get_byindex(git_index*index, UIntPtr n)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_index.html">git_index</a>*</td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index to read the entry from</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">UIntPtr</span></td>
+        <td><span class="parametername">n</span></td>
+        <td><p>The position of the index entry</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_index_entry.html">git_index_entry</a>*</td>
+        <td><p>A pointer to the entry or NULL if out of bounds</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_index_get_bypath_" data-uid="Dogged.Native.libgit2.git_index_get_bypath*"></a>
+  <h4 id="Dogged_Native_libgit2_git_index_get_bypath_Dogged_Native_git_index__System_String_System_Int32_" data-uid="Dogged.Native.libgit2.git_index_get_bypath(Dogged.Native.git_index*,System.String,System.Int32)">git_index_get_bypath(git_index*, String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Get a pointer to an entry in the index for the given path at the
+given stage level.</p>
+<p>
+A &quot;stage level&quot; is a construct for handling conflicted files
+during a merge; generally, files are in stage level 0
+(sometimes called the &quot;main index&quot;); if a file is in conflict
+after a merge, there will be no entry at stage level 0, instead
+there will be entries at stages 1-3 representing the conflicting
+contents of the common ancestor, the file in &quot;our&quot; branch and
+the file in &quot;their&quot; branch.
+</p>
+<p>
+The entry is not modifiable and should not be freed.  Because the
+`git_index_entry` struct is a publicly defined struct, you should
+be able to make your own permanent copy of the data if necessary.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static git_index_entry*git_index_get_bypath(git_index*index, string path, int stage)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_index.html">git_index</a>*</td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index to read the entry from</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>The path for the index entry</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">stage</span></td>
+        <td><p>The stage level to query</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_index_entry.html">git_index_entry</a>*</td>
+        <td><p>A pointer to the entry or NULL if out of bounds</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_index_iterator_free_" data-uid="Dogged.Native.libgit2.git_index_iterator_free*"></a>
+  <h4 id="Dogged_Native_libgit2_git_index_iterator_free_Dogged_Native_git_index_iterator__" data-uid="Dogged.Native.libgit2.git_index_iterator_free(Dogged.Native.git_index_iterator*)">git_index_iterator_free(git_index_iterator*)</h4>
+  <div class="markdown level1 summary"><p>Free an existing index iterator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void git_index_iterator_free(git_index_iterator*iterator)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_index_iterator.html">git_index_iterator</a>*</td>
+        <td><span class="parametername">iterator</span></td>
+        <td><p>The iterator to free</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_index_iterator_new_" data-uid="Dogged.Native.libgit2.git_index_iterator_new*"></a>
+  <h4 id="Dogged_Native_libgit2_git_index_iterator_new_Dogged_Native_git_index_iterator___Dogged_Native_git_index__" data-uid="Dogged.Native.libgit2.git_index_iterator_new(Dogged.Native.git_index_iterator*@,Dogged.Native.git_index*)">git_index_iterator_new(out git_index_iterator*, git_index*)</h4>
+  <div class="markdown level1 summary"><p>Create a new index iterator; this will take a snapshot of the
+given index for iteration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_index_iterator_new(out git_index_iterator*iterator, git_index*index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_index_iterator.html">git_index_iterator</a>*</td>
+        <td><span class="parametername">iterator</span></td>
+        <td><p>Pointer to the iterator that was created</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_index.html">git_index</a>*</td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index to iterate over</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_index_iterator_next_" data-uid="Dogged.Native.libgit2.git_index_iterator_next*"></a>
+  <h4 id="Dogged_Native_libgit2_git_index_iterator_next_Dogged_Native_git_index_entry___Dogged_Native_git_index_iterator__" data-uid="Dogged.Native.libgit2.git_index_iterator_next(Dogged.Native.git_index_entry*@,Dogged.Native.git_index_iterator*)">git_index_iterator_next(out git_index_entry*, git_index_iterator*)</h4>
+  <div class="markdown level1 summary"><p>Get the next index entry in the iterator.  This entry is owned
+by the iterator and should not be freed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_index_iterator_next(out git_index_entry*entry, git_index_iterator*iterator)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_index_entry.html">git_index_entry</a>*</td>
+        <td><span class="parametername">entry</span></td>
+        <td><p>Pointer to the entry in the index</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_index_iterator.html">git_index_iterator</a>*</td>
+        <td><span class="parametername">iterator</span></td>
+        <td><p>The iterator to query</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success, GIT_ITEROVER on successful completion of iteration, or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_libgit2_features_" data-uid="Dogged.Native.libgit2.git_libgit2_features*"></a>
+  <h4 id="Dogged_Native_libgit2_git_libgit2_features" data-uid="Dogged.Native.libgit2.git_libgit2_features">git_libgit2_features()</h4>
+  <div class="markdown level1 summary"><p>Query compile time options for libgit2.  This will show the
+functionality that is built in to the library.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static git_feature_t git_libgit2_features()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_feature_t.html">git_feature_t</a></td>
+        <td><p>A combination of <a class="xref" href="Dogged.Native.git_feature_t.html">git_feature_t</a> values.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_libgit2_init_" data-uid="Dogged.Native.libgit2.git_libgit2_init*"></a>
+  <h4 id="Dogged_Native_libgit2_git_libgit2_init" data-uid="Dogged.Native.libgit2.git_libgit2_init">git_libgit2_init()</h4>
+  <div class="markdown level1 summary"><p>Initialize the native library's global state.</p>
+<p>
+This function must be called before any other libgit2
+function in order to set up global state and threading.
+</p>
+<p>
+This function may be called multiple times - it will return
+the number of times the initialization has been called (including
+this one) that have not subsequently been shutdown.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_libgit2_init()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The number of initializations of the library, or an error code.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_libgit2_opts_" data-uid="Dogged.Native.libgit2.git_libgit2_opts*"></a>
+  <h4 id="Dogged_Native_libgit2_git_libgit2_opts_Dogged_Native_git_libgit2_opt_t_Dogged_Native_git_config_level_t_Dogged_Native_git_buf_" data-uid="Dogged.Native.libgit2.git_libgit2_opts(Dogged.Native.git_libgit2_opt_t,Dogged.Native.git_config_level_t,Dogged.Native.git_buf)">git_libgit2_opts(git_libgit2_opt_t, git_config_level_t, git_buf)</h4>
+  <div class="markdown level1 summary"><p>Get or set a global configuration option for libgit2.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_libgit2_opts(git_libgit2_opt_t option, git_config_level_t level, git_buf buf)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_libgit2_opt_t.html">git_libgit2_opt_t</a></td>
+        <td><span class="parametername">option</span></td>
+        <td><p>The option value to get or set</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_config_level_t.html">git_config_level_t</a></td>
+        <td><span class="parametername">level</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_buf.html">git_buf</a></td>
+        <td><span class="parametername">buf</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_libgit2_opts_" data-uid="Dogged.Native.libgit2.git_libgit2_opts*"></a>
+  <h4 id="Dogged_Native_libgit2_git_libgit2_opts_Dogged_Native_git_libgit2_opt_t_Dogged_Native_git_config_level_t_System_String_" data-uid="Dogged.Native.libgit2.git_libgit2_opts(Dogged.Native.git_libgit2_opt_t,Dogged.Native.git_config_level_t,System.String)">git_libgit2_opts(git_libgit2_opt_t, git_config_level_t, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_libgit2_opts(git_libgit2_opt_t option, git_config_level_t level, string path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_libgit2_opt_t.html">git_libgit2_opt_t</a></td>
+        <td><span class="parametername">option</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_config_level_t.html">git_config_level_t</a></td>
+        <td><span class="parametername">level</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_libgit2_shutdown_" data-uid="Dogged.Native.libgit2.git_libgit2_shutdown*"></a>
+  <h4 id="Dogged_Native_libgit2_git_libgit2_shutdown" data-uid="Dogged.Native.libgit2.git_libgit2_shutdown">git_libgit2_shutdown()</h4>
+  <div class="markdown level1 summary"><p>Shutdown the global state.</p>
+<p>
+Clean up the global state and threading context after calling
+it as many times as <a class="xref" href="Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_libgit2_init">git_libgit2_init()</a> was called -
+it will return the number of remainining initializations that
+have not been shutdown (after this one).
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_libgit2_shutdown()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The number of remaining initializations of the library, or an error code.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_object_free_" data-uid="Dogged.Native.libgit2.git_object_free*"></a>
+  <h4 id="Dogged_Native_libgit2_git_object_free_Dogged_Native_git_object__" data-uid="Dogged.Native.libgit2.git_object_free(Dogged.Native.git_object*)">git_object_free(git_object*)</h4>
+  <div class="markdown level1 summary"><p>Free a git object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void git_object_free(git_object*obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_object.html">git_object</a>*</td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>The object to free</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_object_id_" data-uid="Dogged.Native.libgit2.git_object_id*"></a>
+  <h4 id="Dogged_Native_libgit2_git_object_id_Dogged_Native_git_object__" data-uid="Dogged.Native.libgit2.git_object_id(Dogged.Native.git_object*)">git_object_id(git_object*)</h4>
+  <div class="markdown level1 summary"><p>Gets the object id of the given object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static git_oid*git_object_id(git_object*obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_object.html">git_object</a>*</td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>The object to examine</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_oid.html">git_oid</a>*</td>
+        <td><p>A pointer to the object's id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_object_lookup_" data-uid="Dogged.Native.libgit2.git_object_lookup*"></a>
+  <h4 id="Dogged_Native_libgit2_git_object_lookup_Dogged_Native_git_object___Dogged_Native_git_repository__Dogged_Native_git_oid__Dogged_Native_git_object_t_" data-uid="Dogged.Native.libgit2.git_object_lookup(Dogged.Native.git_object*@,Dogged.Native.git_repository*,Dogged.Native.git_oid@,Dogged.Native.git_object_t)">git_object_lookup(out git_object*, git_repository*, ref git_oid, git_object_t)</h4>
+  <div class="markdown level1 summary"><p>Look up an object from the repository.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_object_lookup(out git_object*obj, git_repository*repo, ref git_oid id, git_object_t type)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_object.html">git_object</a>*</td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>Pointer to the object that was loaded from the repository</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repo</span></td>
+        <td><p>The repository that contains the object</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_oid.html">git_oid</a></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The id of the object to lookup</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_object_t.html">git_object_t</a></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>The type of the object to lookup</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_object_type_" data-uid="Dogged.Native.libgit2.git_object_type*"></a>
+  <h4 id="Dogged_Native_libgit2_git_object_type_Dogged_Native_git_object__" data-uid="Dogged.Native.libgit2.git_object_type(Dogged.Native.git_object*)">git_object_type(git_object*)</h4>
+  <div class="markdown level1 summary"><p>Get the type of an object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static git_object_t git_object_type(git_object*obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_object.html">git_object</a>*</td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>The object to query</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_object_t.html">git_object_t</a></td>
+        <td><p>The type of the object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_odb_add_backend_" data-uid="Dogged.Native.libgit2.git_odb_add_backend*"></a>
+  <h4 id="Dogged_Native_libgit2_git_odb_add_backend_Dogged_Native_git_odb__Dogged_Native_git_odb_backend__System_Int32_" data-uid="Dogged.Native.libgit2.git_odb_add_backend(Dogged.Native.git_odb*,Dogged.Native.git_odb_backend*,System.Int32)">git_odb_add_backend(git_odb*, git_odb_backend*, Int32)</h4>
+  <div class="markdown level1 summary"><p>Add a custom backend to an existing object database.</p>
+<p>
+The backends are checked in relative ordering, based on the
+value of the `priority` parameter.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_odb_add_backend(git_odb*odb, git_odb_backend*backend, int priority)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_odb.html">git_odb</a>*</td>
+        <td><span class="parametername">odb</span></td>
+        <td><p>Database to add the backend to</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_odb_backend.html">git_odb_backend</a>*</td>
+        <td><span class="parametername">backend</span></td>
+        <td><p>The object database backend to add</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">priority</span></td>
+        <td><p>Value for ordering the backends queue</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_odb_backend_loose_" data-uid="Dogged.Native.libgit2.git_odb_backend_loose*"></a>
+  <h4 id="Dogged_Native_libgit2_git_odb_backend_loose_Dogged_Native_git_odb_backend___System_String_System_Int32_System_Int32_System_UInt32_System_UInt32_" data-uid="Dogged.Native.libgit2.git_odb_backend_loose(Dogged.Native.git_odb_backend*@,System.String,System.Int32,System.Int32,System.UInt32,System.UInt32)">git_odb_backend_loose(out git_odb_backend*, String, Int32, Int32, UInt32, UInt32)</h4>
+  <div class="markdown level1 summary"><p>Create a backend for loose object files stored within a typical
+git object directory containing a &quot;fanout&quot; of subdirectories,
+named with the first two characters of the object's ID and
+objects stored in files beneath that, each named with the
+remaining 38 characters of their ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_odb_backend_loose(out git_odb_backend*backend, string objects_dir, int compression_level, int do_fsync, uint dir_mode, uint file_mode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_odb_backend.html">git_odb_backend</a>*</td>
+        <td><span class="parametername">backend</span></td>
+        <td><p>Pointer to the odb backend that will be created.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">objects_dir</span></td>
+        <td><p>The path to the directory containing packfiles</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">compression_level</span></td>
+        <td><p>zlib compression level to use</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">do_fsync</span></td>
+        <td><p>If non-zero, call fsync after writing</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">dir_mode</span></td>
+        <td><p>POSIX open(2)-style permissions to use creating a directory or 0 for defaults</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">file_mode</span></td>
+        <td><p>POSIX open(2)-style permissions to use creating a file or 0 for defaults</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_odb_backend_one_pack_" data-uid="Dogged.Native.libgit2.git_odb_backend_one_pack*"></a>
+  <h4 id="Dogged_Native_libgit2_git_odb_backend_one_pack_Dogged_Native_git_odb_backend___System_String_" data-uid="Dogged.Native.libgit2.git_odb_backend_one_pack(Dogged.Native.git_odb_backend*@,System.String)">git_odb_backend_one_pack(out git_odb_backend*, String)</h4>
+  <div class="markdown level1 summary"><p>Create a backend out of a single packfile.  This can be useful for
+inspecting the contents of a single packfile.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_odb_backend_one_pack(out git_odb_backend*backend, string index_file)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_odb_backend.html">git_odb_backend</a>*</td>
+        <td><span class="parametername">backend</span></td>
+        <td><p>Pointer to the odb backend that will be created.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">index_file</span></td>
+        <td><p>The path to the packfile's .idx file</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_odb_backend_pack_" data-uid="Dogged.Native.libgit2.git_odb_backend_pack*"></a>
+  <h4 id="Dogged_Native_libgit2_git_odb_backend_pack_Dogged_Native_git_odb_backend___System_String_" data-uid="Dogged.Native.libgit2.git_odb_backend_pack(Dogged.Native.git_odb_backend*@,System.String)">git_odb_backend_pack(out git_odb_backend*, String)</h4>
+  <div class="markdown level1 summary"><p>Create a backend for packfiles within a typical git object
+directory that contains a &quot;pack&quot; directory that will be consulted
+to find the packfiles to load.  Each packfile within that &quot;pack&quot;
+directory will be consulted as storage for the object database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_odb_backend_pack(out git_odb_backend*backend, string objects_dir)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_odb_backend.html">git_odb_backend</a>*</td>
+        <td><span class="parametername">backend</span></td>
+        <td><p>Pointer to the odb backend that will be created.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">objects_dir</span></td>
+        <td><p>The path to the directory containing packfiles</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_odb_foreach_" data-uid="Dogged.Native.libgit2.git_odb_foreach*"></a>
+  <h4 id="Dogged_Native_libgit2_git_odb_foreach_Dogged_Native_git_odb__Dogged_Native_git_odb_foreach_cb_IntPtr_" data-uid="Dogged.Native.libgit2.git_odb_foreach(Dogged.Native.git_odb*,Dogged.Native.git_odb_foreach_cb,IntPtr)">git_odb_foreach(git_odb*, git_odb_foreach_cb, IntPtr)</h4>
+  <div class="markdown level1 summary"><p>List all objects available in the database.</p>
+<p>
+The callback will be called for each object available in the
+database. Note that the objects are likely to be returned in the index
+order, which would make accessing the objects in that order inefficient.
+Return a non-zero value from the callback to stop looping.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_odb_foreach(git_odb*odb, git_odb_foreach_cb cb, IntPtr payload)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_odb.html">git_odb</a>*</td>
+        <td><span class="parametername">odb</span></td>
+        <td><p>The database to iterate.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_odb_foreach_cb.html">git_odb_foreach_cb</a></td>
+        <td><span class="parametername">cb</span></td>
+        <td><p>The callback to invoke for each object</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">IntPtr</span></td>
+        <td><span class="parametername">payload</span></td>
+        <td><p>Custom data to pass back to the callback</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success, non-zero callback return value, or error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_odb_free_" data-uid="Dogged.Native.libgit2.git_odb_free*"></a>
+  <h4 id="Dogged_Native_libgit2_git_odb_free_Dogged_Native_git_odb__" data-uid="Dogged.Native.libgit2.git_odb_free(Dogged.Native.git_odb*)">git_odb_free(git_odb*)</h4>
+  <div class="markdown level1 summary"><p>Close an open database object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void git_odb_free(git_odb*odb)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_odb.html">git_odb</a>*</td>
+        <td><span class="parametername">odb</span></td>
+        <td><p>The database to close.  If null, no action is taken.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_odb_new_" data-uid="Dogged.Native.libgit2.git_odb_new*"></a>
+  <h4 id="Dogged_Native_libgit2_git_odb_new_Dogged_Native_git_odb___" data-uid="Dogged.Native.libgit2.git_odb_new(Dogged.Native.git_odb*@)">git_odb_new(out git_odb*)</h4>
+  <div class="markdown level1 summary"><p>Create a new object database with no backends.</p>
+<p>
+Before the ODB can be used for read/writing, a custom database
+backend must be manually added using `git_odb_add_backend()`
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_odb_new(out git_odb*odb)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_odb.html">git_odb</a>*</td>
+        <td><span class="parametername">odb</span></td>
+        <td><p>Pointer to the object database that will be created.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_odb_object_data_" data-uid="Dogged.Native.libgit2.git_odb_object_data*"></a>
+  <h4 id="Dogged_Native_libgit2_git_odb_object_data_Dogged_Native_git_odb_object__" data-uid="Dogged.Native.libgit2.git_odb_object_data(Dogged.Native.git_odb_object*)">git_odb_object_data(git_odb_object*)</h4>
+  <div class="markdown level1 summary"><p>Return the data of an ODB object.  This is the uncompressed,
+raw data as read from the ODB, without the leading header.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte *git_odb_object_data(git_odb_object*obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_odb_object.html">git_odb_object</a>*</td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>The object to read its contents</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>*</td>
+        <td><p>The raw content of the object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_odb_object_free_" data-uid="Dogged.Native.libgit2.git_odb_object_free*"></a>
+  <h4 id="Dogged_Native_libgit2_git_odb_object_free_Dogged_Native_git_odb_object__" data-uid="Dogged.Native.libgit2.git_odb_object_free(Dogged.Native.git_odb_object*)">git_odb_object_free(git_odb_object*)</h4>
+  <div class="markdown level1 summary"><p>Free an ODB object.  This method must always be called once a
+git_odb_object is no longer needed, otherwise memory will leak.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void git_odb_object_free(git_odb_object*obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_odb_object.html">git_odb_object</a>*</td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>Object to close</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_odb_object_id_" data-uid="Dogged.Native.libgit2.git_odb_object_id*"></a>
+  <h4 id="Dogged_Native_libgit2_git_odb_object_id_Dogged_Native_git_odb_object__" data-uid="Dogged.Native.libgit2.git_odb_object_id(Dogged.Native.git_odb_object*)">git_odb_object_id(git_odb_object*)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static git_oid*git_odb_object_id(git_odb_object*obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_odb_object.html">git_odb_object</a>*</td>
+        <td><span class="parametername">obj</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_oid.html">git_oid</a>*</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_odb_object_size_" data-uid="Dogged.Native.libgit2.git_odb_object_size*"></a>
+  <h4 id="Dogged_Native_libgit2_git_odb_object_size_Dogged_Native_git_odb_object__" data-uid="Dogged.Native.libgit2.git_odb_object_size(Dogged.Native.git_odb_object*)">git_odb_object_size(git_odb_object*)</h4>
+  <div class="markdown level1 summary"><p>Return the size of an ODB object.  This is the real size of the
+data buffer, not the actual size of the object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UIntPtr git_odb_object_size(git_odb_object*obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_odb_object.html">git_odb_object</a>*</td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>The object to query</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UIntPtr</span></td>
+        <td><p>The size of the object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_odb_object_type_" data-uid="Dogged.Native.libgit2.git_odb_object_type*"></a>
+  <h4 id="Dogged_Native_libgit2_git_odb_object_type_Dogged_Native_git_odb_object__" data-uid="Dogged.Native.libgit2.git_odb_object_type(Dogged.Native.git_odb_object*)">git_odb_object_type(git_odb_object*)</h4>
+  <div class="markdown level1 summary"><p>Return the type of an ODB object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static git_object_t git_odb_object_type(git_odb_object*obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_odb_object.html">git_odb_object</a>*</td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>The object to query</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_object_t.html">git_object_t</a></td>
+        <td><p>The type of object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_odb_read_" data-uid="Dogged.Native.libgit2.git_odb_read*"></a>
+  <h4 id="Dogged_Native_libgit2_git_odb_read_Dogged_Native_git_odb_object___Dogged_Native_git_odb__Dogged_Native_git_oid__" data-uid="Dogged.Native.libgit2.git_odb_read(Dogged.Native.git_odb_object*@,Dogged.Native.git_odb*,Dogged.Native.git_oid@)">git_odb_read(out git_odb_object*, git_odb*, ref git_oid)</h4>
+  <div class="markdown level1 summary"><p>Read an object from the database.</p>
+<p>
+This method queries all available ODB backends
+trying to read the given OID.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_odb_read(out git_odb_object*obj, git_odb*odb, ref git_oid id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_odb_object.html">git_odb_object</a>*</td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>Point to store the read object</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_odb.html">git_odb</a>*</td>
+        <td><span class="parametername">odb</span></td>
+        <td><p>The database to read from</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_oid.html">git_oid</a></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The object ID to read</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_odb_read_header_" data-uid="Dogged.Native.libgit2.git_odb_read_header*"></a>
+  <h4 id="Dogged_Native_libgit2_git_odb_read_header_UIntPtr__Dogged_Native_git_object_t__Dogged_Native_git_odb__Dogged_Native_git_oid__" data-uid="Dogged.Native.libgit2.git_odb_read_header(UIntPtr@,Dogged.Native.git_object_t@,Dogged.Native.git_odb*,Dogged.Native.git_oid@)">git_odb_read_header(out UIntPtr, out git_object_t, git_odb*, ref git_oid)</h4>
+  <div class="markdown level1 summary"><p>Read the header of an object from the database, without reading
+its full contents.</p>
+<p>
+The header includes the length and the type of an object.
+</p>
+<p>
+Note that most backends do not support reading only the header
+of an object, so the whole object will be read and then the
+header will be returned.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_odb_read_header(out UIntPtr len_out, out git_object_t type, git_odb*odb, ref git_oid id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UIntPtr</span></td>
+        <td><span class="parametername">len_out</span></td>
+        <td><p>Pointer to store the length</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_object_t.html">git_object_t</a></td>
+        <td><span class="parametername">type</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_odb.html">git_odb</a>*</td>
+        <td><span class="parametername">odb</span></td>
+        <td><p>Database to search for the object in</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_oid.html">git_oid</a></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>ID of the objecft to read</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success, GIT_ENOTFOUND if the object is not in the database, or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_odb_write_" data-uid="Dogged.Native.libgit2.git_odb_write*"></a>
+  <h4 id="Dogged_Native_libgit2_git_odb_write_Dogged_Native_git_oid__Dogged_Native_git_odb__System_Byte__UIntPtr_Dogged_Native_git_object_t_" data-uid="Dogged.Native.libgit2.git_odb_write(Dogged.Native.git_oid@,Dogged.Native.git_odb*,System.Byte*,UIntPtr,Dogged.Native.git_object_t)">git_odb_write(ref git_oid, git_odb*, Byte*, UIntPtr, git_object_t)</h4>
+  <div class="markdown level1 summary"><p>Write an object directly into the object database.</p>
+<p>
+This method writes a full object straight into the ODB.
+For most cases, it is preferred to write objects through a write
+stream, which is both faster and less memory intensive, specially
+for big objects.
+</p>
+<p>
+This method is provided for compatibility with custom backends
+which are not able to support streaming writes
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_odb_write(ref git_oid id, git_odb*odb, byte *data, UIntPtr len, git_object_t type)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_oid.html">git_oid</a></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>Pointer to store the OID result of the write</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_odb.html">git_odb</a>*</td>
+        <td><span class="parametername">odb</span></td>
+        <td><p>Object database to store the object</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>*</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>Buffer with the data to store</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">UIntPtr</span></td>
+        <td><span class="parametername">len</span></td>
+        <td><p>Size of the buffer</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_object_t.html">git_object_t</a></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>Type of the data to store</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_reference_free_" data-uid="Dogged.Native.libgit2.git_reference_free*"></a>
+  <h4 id="Dogged_Native_libgit2_git_reference_free_Dogged_Native_git_reference__" data-uid="Dogged.Native.libgit2.git_reference_free(Dogged.Native.git_reference*)">git_reference_free(git_reference*)</h4>
+  <div class="markdown level1 summary"><p>Free the given reference.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void git_reference_free(git_reference*reference)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_reference.html">git_reference</a>*</td>
+        <td><span class="parametername">reference</span></td>
+        <td><p>The reference to free</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_reference_iterator_free_" data-uid="Dogged.Native.libgit2.git_reference_iterator_free*"></a>
+  <h4 id="Dogged_Native_libgit2_git_reference_iterator_free_Dogged_Native_git_reference_iterator__" data-uid="Dogged.Native.libgit2.git_reference_iterator_free(Dogged.Native.git_reference_iterator*)">git_reference_iterator_free(git_reference_iterator*)</h4>
+  <div class="markdown level1 summary"><p>Free the given reference iterator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void git_reference_iterator_free(git_reference_iterator*iterator)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_reference_iterator.html">git_reference_iterator</a>*</td>
+        <td><span class="parametername">iterator</span></td>
+        <td><p>The iterator to free</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_reference_iterator_new_" data-uid="Dogged.Native.libgit2.git_reference_iterator_new*"></a>
+  <h4 id="Dogged_Native_libgit2_git_reference_iterator_new_Dogged_Native_git_reference_iterator___Dogged_Native_git_repository__" data-uid="Dogged.Native.libgit2.git_reference_iterator_new(Dogged.Native.git_reference_iterator*@,Dogged.Native.git_repository*)">git_reference_iterator_new(out git_reference_iterator*, git_repository*)</h4>
+  <div class="markdown level1 summary"><p>Create an iterator for the repository's references.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_reference_iterator_new(out git_reference_iterator*iterator, git_repository*repository)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_reference_iterator.html">git_reference_iterator</a>*</td>
+        <td><span class="parametername">iterator</span></td>
+        <td><p>Pointer to the iterator that was created</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repository</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_reference_lookup_" data-uid="Dogged.Native.libgit2.git_reference_lookup*"></a>
+  <h4 id="Dogged_Native_libgit2_git_reference_lookup_Dogged_Native_git_reference___Dogged_Native_git_repository__System_String_" data-uid="Dogged.Native.libgit2.git_reference_lookup(Dogged.Native.git_reference*@,Dogged.Native.git_repository*,System.String)">git_reference_lookup(out git_reference*, git_repository*, String)</h4>
+  <div class="markdown level1 summary"><p>Lookup a reference by name in a repository.  The returned
+reference must be freed by the user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_reference_lookup(out git_reference*reference, git_repository*repo, string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_reference.html">git_reference</a>*</td>
+        <td><span class="parametername">reference</span></td>
+        <td><p>Pointer to the reference that was loaded from the repository</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repo</span></td>
+        <td><p>The repository that contains the reference</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the reference to lookup</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success, GIT_ENOTFOUND if no reference exists by that name, GIT_EINVALIDSPEC if the given name is invalid or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_reference_name_" data-uid="Dogged.Native.libgit2.git_reference_name*"></a>
+  <h4 id="Dogged_Native_libgit2_git_reference_name_Dogged_Native_git_reference__" data-uid="Dogged.Native.libgit2.git_reference_name(Dogged.Native.git_reference*)">git_reference_name(git_reference*)</h4>
+  <div class="markdown level1 summary"><p>Get the full name of a reference.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string git_reference_name(git_reference*reference)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_reference.html">git_reference</a>*</td>
+        <td><span class="parametername">reference</span></td>
+        <td><p>The reference to get the name of</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The full name of the reference</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_reference_next_" data-uid="Dogged.Native.libgit2.git_reference_next*"></a>
+  <h4 id="Dogged_Native_libgit2_git_reference_next_Dogged_Native_git_reference___Dogged_Native_git_reference_iterator__" data-uid="Dogged.Native.libgit2.git_reference_next(Dogged.Native.git_reference*@,Dogged.Native.git_reference_iterator*)">git_reference_next(out git_reference*, git_reference_iterator*)</h4>
+  <div class="markdown level1 summary"><p>Get the next reference from the iterator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_reference_next(out git_reference*reference, git_reference_iterator*iterator)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_reference.html">git_reference</a>*</td>
+        <td><span class="parametername">reference</span></td>
+        <td><p>Pointer to the reference that is next in iteration</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_reference_iterator.html">git_reference_iterator</a>*</td>
+        <td><span class="parametername">iterator</span></td>
+        <td><p>The iterator for the repository's references</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_reference_symbolic_target_" data-uid="Dogged.Native.libgit2.git_reference_symbolic_target*"></a>
+  <h4 id="Dogged_Native_libgit2_git_reference_symbolic_target_Dogged_Native_git_reference__" data-uid="Dogged.Native.libgit2.git_reference_symbolic_target(Dogged.Native.git_reference*)">git_reference_symbolic_target(git_reference*)</h4>
+  <div class="markdown level1 summary"><p>Get the full name of the target of this reference.  This
+function is only supported for symbolic references.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string git_reference_symbolic_target(git_reference*reference)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_reference.html">git_reference</a>*</td>
+        <td><span class="parametername">reference</span></td>
+        <td><p>The reference to get the target of</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The target of the reference or NULL if the reference is not symbolic</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_reference_target_" data-uid="Dogged.Native.libgit2.git_reference_target*"></a>
+  <h4 id="Dogged_Native_libgit2_git_reference_target_Dogged_Native_git_reference__" data-uid="Dogged.Native.libgit2.git_reference_target(Dogged.Native.git_reference*)">git_reference_target(git_reference*)</h4>
+  <div class="markdown level1 summary"><p>Get the oid target of this reference.  This function is only
+supported for direct references.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static git_oid*git_reference_target(git_reference*reference)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_reference.html">git_reference</a>*</td>
+        <td><span class="parametername">reference</span></td>
+        <td><p>The reference to get the target of</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_oid.html">git_oid</a>*</td>
+        <td><p>The target of the reference or NULL if the reference is not direct</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_reference_type_" data-uid="Dogged.Native.libgit2.git_reference_type*"></a>
+  <h4 id="Dogged_Native_libgit2_git_reference_type_Dogged_Native_git_reference__" data-uid="Dogged.Native.libgit2.git_reference_type(Dogged.Native.git_reference*)">git_reference_type(git_reference*)</h4>
+  <div class="markdown level1 summary"><p>Get the type of this reference.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static git_reference_t git_reference_type(git_reference*reference)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_reference.html">git_reference</a>*</td>
+        <td><span class="parametername">reference</span></td>
+        <td><p>The reference to get the type of</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_reference_t.html">git_reference_t</a></td>
+        <td><p>The type of the reference</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_repository_free_" data-uid="Dogged.Native.libgit2.git_repository_free*"></a>
+  <h4 id="Dogged_Native_libgit2_git_repository_free_Dogged_Native_git_repository__" data-uid="Dogged.Native.libgit2.git_repository_free(Dogged.Native.git_repository*)">git_repository_free(git_repository*)</h4>
+  <div class="markdown level1 summary"><p>Close a previously opened repository and free any native memory
+that was allocated.</p>
+<p>
+Note that after a repository is free&apos;d, all the objects it
+has spawned will still exist until they are manually closed
+by the user with `git_object_free`, but accessing any of
+the attributes of an object without a backing repository
+will result in undefined behavior.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void git_repository_free(git_repository*repo)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repo</span></td>
+        <td><p>The repository handle to close.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_repository_head_" data-uid="Dogged.Native.libgit2.git_repository_head*"></a>
+  <h4 id="Dogged_Native_libgit2_git_repository_head_Dogged_Native_git_reference___Dogged_Native_git_repository__" data-uid="Dogged.Native.libgit2.git_repository_head(Dogged.Native.git_reference*@,Dogged.Native.git_repository*)">git_repository_head(out git_reference*, git_repository*)</h4>
+  <div class="markdown level1 summary"><p>Retrieve and resolve the reference pointed to by HEAD.</p>
+<p>
+The returned <a class="xref" href="Dogged.Native.git_reference.html">git_reference</a> will be owned by the
+caller and <a class="xref" href="Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_reference_free_Dogged_Native_git_reference__">git_reference_free(git_reference*)</a> must be called when
+done to release the allocated memory.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_repository_head(out git_reference*reference, git_repository*repo)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_reference.html">git_reference</a>*</td>
+        <td><span class="parametername">reference</span></td>
+        <td><p>Pointer to the reference that will be retrieved</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repo</span></td>
+        <td><p>The repository object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_repository_head_detached_" data-uid="Dogged.Native.libgit2.git_repository_head_detached*"></a>
+  <h4 id="Dogged_Native_libgit2_git_repository_head_detached_Dogged_Native_git_repository__" data-uid="Dogged.Native.libgit2.git_repository_head_detached(Dogged.Native.git_repository*)">git_repository_head_detached(git_repository*)</h4>
+  <div class="markdown level1 summary"><p>Indicates if the repository's HEAD is detached.  A repository's
+HEAD is detached when it points directly to a commit instead
+of a branch.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_repository_head_detached(git_repository*repo)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repo</span></td>
+        <td><p>The repository object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>1 if the HEAD is detached, 0 if it's not, or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_repository_index_" data-uid="Dogged.Native.libgit2.git_repository_index*"></a>
+  <h4 id="Dogged_Native_libgit2_git_repository_index_Dogged_Native_git_index___Dogged_Native_git_repository__" data-uid="Dogged.Native.libgit2.git_repository_index(Dogged.Native.git_index*@,Dogged.Native.git_repository*)">git_repository_index(out git_index*, git_repository*)</h4>
+  <div class="markdown level1 summary"><p>Get the index file for this repository.</p>
+<p>
+If a custom index has not been set, the default index for the
+repository will be returned (the one located in `.git/index`).
+</p>
+<p>
+The index must be freed once it&apos;s no longer being used by the
+user.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_repository_index(out git_index*index, git_repository*repo)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_index.html">git_index</a>*</td>
+        <td><span class="parametername">index</span></td>
+        <td><p>Pointer to the index that will be opened</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repo</span></td>
+        <td><p>The repository object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_repository_init_" data-uid="Dogged.Native.libgit2.git_repository_init*"></a>
+  <h4 id="Dogged_Native_libgit2_git_repository_init_Dogged_Native_git_repository___System_String_System_UInt32_" data-uid="Dogged.Native.libgit2.git_repository_init(Dogged.Native.git_repository*@,System.String,System.UInt32)">git_repository_init(out git_repository*, String, UInt32)</h4>
+  <div class="markdown level1 summary"><p>Creates a new Git repository in the given folder.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_repository_init(out git_repository*repo, string path, uint bare)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repo</span></td>
+        <td><p>Pointer to the repository that will be created.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>The path to the repository</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">bare</span></td>
+        <td><p>If non-zero, a Git repository without a working directory is created at the given path. If zero, the provided path will be considered as the working directory into which the .git directory will be created.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_repository_is_bare_" data-uid="Dogged.Native.libgit2.git_repository_is_bare*"></a>
+  <h4 id="Dogged_Native_libgit2_git_repository_is_bare_Dogged_Native_git_repository__" data-uid="Dogged.Native.libgit2.git_repository_is_bare(Dogged.Native.git_repository*)">git_repository_is_bare(git_repository*)</h4>
+  <div class="markdown level1 summary"><p>Checks if a repository is bare.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_repository_is_bare(git_repository*repo)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repo</span></td>
+        <td><p>Repository to test</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>1 if the repository is bare, 0 otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_repository_new_" data-uid="Dogged.Native.libgit2.git_repository_new*"></a>
+  <h4 id="Dogged_Native_libgit2_git_repository_new_Dogged_Native_git_repository___" data-uid="Dogged.Native.libgit2.git_repository_new(Dogged.Native.git_repository*@)">git_repository_new(out git_repository*)</h4>
+  <div class="markdown level1 summary"><p>Create a new repository with neither backends nor config object</p>
+<p>
+Note that this is only useful if you wish to associate the repository
+with a non-filesystem-backed object database and config store.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_repository_new(out git_repository*repo)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repo</span></td>
+        <td><p>Pointer to the repository that will be created.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_repository_odb_" data-uid="Dogged.Native.libgit2.git_repository_odb*"></a>
+  <h4 id="Dogged_Native_libgit2_git_repository_odb_Dogged_Native_git_odb___Dogged_Native_git_repository__" data-uid="Dogged.Native.libgit2.git_repository_odb(Dogged.Native.git_odb*@,Dogged.Native.git_repository*)">git_repository_odb(out git_odb*, git_repository*)</h4>
+  <div class="markdown level1 summary"><p>Get the object database (&quot;ODB&quot;) for this repository.</p>
+<p>
+If a custom ODB has not been set, the default database for the
+repository will be returned (the one located in `.git/objects`).
+</p>
+<p>
+The ODB must be freed once it&apos;s no longer being used by the user.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_repository_odb(out git_odb*odb, git_repository*repo)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_odb.html">git_odb</a>*</td>
+        <td><span class="parametername">odb</span></td>
+        <td><p>Pointer to store the loaded ODB</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repo</span></td>
+        <td><p>A repository object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_repository_open_" data-uid="Dogged.Native.libgit2.git_repository_open*"></a>
+  <h4 id="Dogged_Native_libgit2_git_repository_open_Dogged_Native_git_repository___System_String_" data-uid="Dogged.Native.libgit2.git_repository_open(Dogged.Native.git_repository*@,System.String)">git_repository_open(out git_repository*, String)</h4>
+  <div class="markdown level1 summary"><p>Open a git repository.</p>
+<p>
+The <code data-dev-comment-type="paramref" class="paramref">path</code> argument must point to either a Git
+repository folder, or an existing working tree.
+</p>
+<p>
+The method will automatically detect if <code data-dev-comment-type="paramref" class="paramref">path</code>
+is a working tree or a bare repository.  It will fail if the
+given path is neither.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_repository_open(out git_repository*repo, string path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repo</span></td>
+        <td><p>Pointer to the repository that will be opened.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>The path to the repository</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_repository_path_" data-uid="Dogged.Native.libgit2.git_repository_path*"></a>
+  <h4 id="Dogged_Native_libgit2_git_repository_path_Dogged_Native_git_repository__" data-uid="Dogged.Native.libgit2.git_repository_path(Dogged.Native.git_repository*)">git_repository_path(git_repository*)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string git_repository_path(git_repository*repository)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repository</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_repository_set_odb_" data-uid="Dogged.Native.libgit2.git_repository_set_odb*"></a>
+  <h4 id="Dogged_Native_libgit2_git_repository_set_odb_Dogged_Native_git_repository__Dogged_Native_git_odb__" data-uid="Dogged.Native.libgit2.git_repository_set_odb(Dogged.Native.git_repository*,Dogged.Native.git_odb*)">git_repository_set_odb(git_repository*, git_odb*)</h4>
+  <div class="markdown level1 summary"><p>Set the Object Database for this repository</p>
+<p>
+The ODB will be used for all object-related operations
+involving this repository.
+</p>
+<p>
+The repository will keep a reference to the ODB; the user
+must still free the ODB object after setting it to the
+repository, or it will leak.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void git_repository_set_odb(git_repository*repo, git_odb*odb)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repo</span></td>
+        <td><p>The repository to configure</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_odb.html">git_odb</a>*</td>
+        <td><span class="parametername">odb</span></td>
+        <td><p>The object database to set</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_repository_workdir_" data-uid="Dogged.Native.libgit2.git_repository_workdir*"></a>
+  <h4 id="Dogged_Native_libgit2_git_repository_workdir_Dogged_Native_git_repository__" data-uid="Dogged.Native.libgit2.git_repository_workdir(Dogged.Native.git_repository*)">git_repository_workdir(git_repository*)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string git_repository_workdir(git_repository*repository)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repository</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_tree_entry_byindex_" data-uid="Dogged.Native.libgit2.git_tree_entry_byindex*"></a>
+  <h4 id="Dogged_Native_libgit2_git_tree_entry_byindex_Dogged_Native_git_tree__UIntPtr_" data-uid="Dogged.Native.libgit2.git_tree_entry_byindex(Dogged.Native.git_tree*,UIntPtr)">git_tree_entry_byindex(git_tree*, UIntPtr)</h4>
+  <div class="markdown level1 summary"><p>Get a pointer to an entry in the tree at the the given index.</p>
+<p>
+The entry is not modifiable and should not be freed; it will be
+freed when the owning tree is freed.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static git_tree_entry*git_tree_entry_byindex(git_tree*tree, UIntPtr n)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_tree.html">git_tree</a>*</td>
+        <td><span class="parametername">tree</span></td>
+        <td><p>The tree to query</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">UIntPtr</span></td>
+        <td><span class="parametername">n</span></td>
+        <td><p>The index in the tree to return</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_tree_entry.html">git_tree_entry</a>*</td>
+        <td><p>A tree entry for the given index</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_tree_entry_byname_" data-uid="Dogged.Native.libgit2.git_tree_entry_byname*"></a>
+  <h4 id="Dogged_Native_libgit2_git_tree_entry_byname_Dogged_Native_git_tree__System_String_" data-uid="Dogged.Native.libgit2.git_tree_entry_byname(Dogged.Native.git_tree*,System.String)">git_tree_entry_byname(git_tree*, String)</h4>
+  <div class="markdown level1 summary"><p>Get a pointer to an entry in the tree for the the given filename.</p>
+<p>
+The entry is not modifiable and should not be freed; it will be
+freed when the owning tree is freed.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static git_tree_entry*git_tree_entry_byname(git_tree*tree, string filename)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_tree.html">git_tree</a>*</td>
+        <td><span class="parametername">tree</span></td>
+        <td><p>The tree to query</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filename</span></td>
+        <td><p>The filename in the tree to return</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_tree_entry.html">git_tree_entry</a>*</td>
+        <td><p>A tree entry for the given index</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_tree_entry_filemode_" data-uid="Dogged.Native.libgit2.git_tree_entry_filemode*"></a>
+  <h4 id="Dogged_Native_libgit2_git_tree_entry_filemode_Dogged_Native_git_tree_entry__" data-uid="Dogged.Native.libgit2.git_tree_entry_filemode(Dogged.Native.git_tree_entry*)">git_tree_entry_filemode(git_tree_entry*)</h4>
+  <div class="markdown level1 summary"><p>Get the file mode of the given tree entry.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static uint git_tree_entry_filemode(git_tree_entry*entry)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_tree_entry.html">git_tree_entry</a>*</td>
+        <td><span class="parametername">entry</span></td>
+        <td><p>The tree entry to query</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The file mode of the tree entry</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_tree_entry_id_" data-uid="Dogged.Native.libgit2.git_tree_entry_id*"></a>
+  <h4 id="Dogged_Native_libgit2_git_tree_entry_id_Dogged_Native_git_tree_entry__" data-uid="Dogged.Native.libgit2.git_tree_entry_id(Dogged.Native.git_tree_entry*)">git_tree_entry_id(git_tree_entry*)</h4>
+  <div class="markdown level1 summary"><p>Get the object id of the given tree entry.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static git_oid*git_tree_entry_id(git_tree_entry*entry)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_tree_entry.html">git_tree_entry</a>*</td>
+        <td><span class="parametername">entry</span></td>
+        <td><p>The tree entry to query</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_oid.html">git_oid</a>*</td>
+        <td><p>The object id of the tree entry</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_tree_entry_name_" data-uid="Dogged.Native.libgit2.git_tree_entry_name*"></a>
+  <h4 id="Dogged_Native_libgit2_git_tree_entry_name_Dogged_Native_git_tree_entry__" data-uid="Dogged.Native.libgit2.git_tree_entry_name(Dogged.Native.git_tree_entry*)">git_tree_entry_name(git_tree_entry*)</h4>
+  <div class="markdown level1 summary"><p>Get the filename of the given tree entry.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string git_tree_entry_name(git_tree_entry*entry)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_tree_entry.html">git_tree_entry</a>*</td>
+        <td><span class="parametername">entry</span></td>
+        <td><p>The tree entry to query</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The filename of the tree entry</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_tree_entrycount_" data-uid="Dogged.Native.libgit2.git_tree_entrycount*"></a>
+  <h4 id="Dogged_Native_libgit2_git_tree_entrycount_Dogged_Native_git_tree__" data-uid="Dogged.Native.libgit2.git_tree_entrycount(Dogged.Native.git_tree*)">git_tree_entrycount(git_tree*)</h4>
+  <div class="markdown level1 summary"><p>Get the number of entries in the tree.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UIntPtr git_tree_entrycount(git_tree*tree)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_tree.html">git_tree</a>*</td>
+        <td><span class="parametername">tree</span></td>
+        <td><p>The tree to query</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UIntPtr</span></td>
+        <td><p>The number of entries in the tree</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_tree_lookup_" data-uid="Dogged.Native.libgit2.git_tree_lookup*"></a>
+  <h4 id="Dogged_Native_libgit2_git_tree_lookup_Dogged_Native_git_tree___Dogged_Native_git_repository__Dogged_Native_git_oid__" data-uid="Dogged.Native.libgit2.git_tree_lookup(Dogged.Native.git_tree*@,Dogged.Native.git_repository*,Dogged.Native.git_oid@)">git_tree_lookup(out git_tree*, git_repository*, ref git_oid)</h4>
+  <div class="markdown level1 summary"><p>Look up a tree from the repository.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_tree_lookup(out git_tree*obj, git_repository*repo, ref git_oid id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_tree.html">git_tree</a>*</td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>Pointer to the tree that was loaded from the repository</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repo</span></td>
+        <td><p>The repository that contains the tree</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_oid.html">git_oid</a></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The id of the tree to lookup</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ethomson/dogged/new/9709f373ac0d154107ea350f7931151b07a5af04/apiSpec/new?filename=Dogged_Native_libgit2.md&amp;value=---%0Auid%3A%20Dogged.Native.libgit2%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/ethomson/dogged/blob/9709f373ac0d154107ea350f7931151b07a5af04/Dogged.Native/libgit2.cs/#L12" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

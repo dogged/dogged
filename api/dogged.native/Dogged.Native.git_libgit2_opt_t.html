@@ -1,0 +1,436 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Enum git_libgit2_opt_t
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Enum git_libgit2_opt_t
+   ">
+    <meta name="generator" content="docfx 2.56.5.0">
+    
+    <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+    <link rel="icon" href="../../favicon-32x32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="../../favicon-32x32.png" type="image/png" sizes="32x32">
+    <link rel="shortcut icon" href="../../favicon-16x16.png" type="image/png" sizes="16x16">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Dogged.Native.git_libgit2_opt_t">
+  
+  
+  <h1 id="Dogged_Native_git_libgit2_opt_t" data-uid="Dogged.Native.git_libgit2_opt_t" class="text-break">Enum git_libgit2_opt_t
+  </h1>
+  <div class="markdown level0 summary"><p>Global library options.  These are used to select which global
+option to seet or get and are used as the first argument when
+calling <see cref="!:git_libgit2_opts"></see>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Dogged.Native.html">Dogged.Native</a></h6>
+  <h6><strong>Assembly</strong>: Dogged.Native.dll</h6>
+  <h5 id="Dogged_Native_git_libgit2_opt_t_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public enum git_libgit2_opt_t : int</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    <thead>
+    <tbody>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_DISABLE_PACK_KEEP_FILE_CHECKS">GIT_OPT_DISABLE_PACK_KEEP_FILE_CHECKS</td>
+        <td><p>This will cause .keep file existence checks to be skipped when
+accessing packfiles, which can help performance with remote
+filesystems.</p>
+<p>
+opts(GIT_OPT_DISABLE_PACK_KEEP_FILE_CHECKS, int enabled);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_ENABLE_CACHING">GIT_OPT_ENABLE_CACHING</td>
+        <td><p>Enable or disable caching completely.</p>
+<p>
+Because caches are repository-specific, disabling the cache
+cannot immediately clear all cached objects, but each cache
+will be cleared on the next attempt to update anything in it.
+</p>
+<p>
+opts(GIT_OPT_ENABLE_CACHING, int enabled);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_ENABLE_FSYNC_GITDIR">GIT_OPT_ENABLE_FSYNC_GITDIR</td>
+        <td><p>Enable synchronized writes of files in the gitdir using <code>fsync</code>
+(or the platform equivalent) to ensure that new object data
+is written to permanent storage, not simply cached.  This
+defaults to disabled.</p>
+<p>
+opts(GIT_OPT_ENABLE_FSYNC_GITDIR, int enabled);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_ENABLE_OFS_DELTA">GIT_OPT_ENABLE_OFS_DELTA</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_ENABLE_STRICT_HASH_VERIFICATION">GIT_OPT_ENABLE_STRICT_HASH_VERIFICATION</td>
+        <td><p>Enable strict verification of object hashsums when reading
+objects from disk. This may impact performance due to an
+additional checksum calculation on each object. This defaults
+to enabled.</p>
+<p>
+opts(GIT_OPT_ENABLE_STRICT_HASH_VERIFICATION, int enabled);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_ENABLE_STRICT_OBJECT_CREATION">GIT_OPT_ENABLE_STRICT_OBJECT_CREATION</td>
+        <td><p>Enable strict input validation when creating new objects
+to ensure that all inputs to the new objects are valid.  For
+example, when this is enabled, the parent(s) and tree inputs
+will be validated when creating a new commit.  This defaults
+to enabled.</p>
+<p>
+opts(GIT_OPT_ENABLE_STRICT_OBJECT_CREATION, int enabled);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_ENABLE_STRICT_SYMBOLIC_REF_CREATION">GIT_OPT_ENABLE_STRICT_SYMBOLIC_REF_CREATION</td>
+        <td><p>Validate the target of a symbolic ref when creating it.  For
+example, <code>foobar</code> is not a valid ref, therefore <code>foobar</code> is
+not a valid target for a symbolic ref by default, whereas
+<code>refs/heads/foobar</code> is.  Disabling this bypasses validation
+so that an arbitrary strings such as <code>foobar</code> can be used
+for a symbolic ref target.  This defaults to enabled.</p>
+<p>
+opts(GIT_OPT_ENABLE_STRICT_SYMBOLIC_REF_CREATION, int enabled);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_ENABLE_UNSAVED_INDEX_SAFETY">GIT_OPT_ENABLE_UNSAVED_INDEX_SAFETY</td>
+        <td><p>Ensure that there are no unsaved changes in the index before
+beginning any operation that reloads the index from disk (eg,
+checkout).  If there are unsaved changes, the instruction will
+fail.  (Using the FORCE flag to checkout will still overwrite
+these changes.)</p>
+<p>
+opts(GIT_OPT_ENABLE_UNSAVED_INDEX_SAFETY, int enabled);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_GET_CACHED_MEMORY">GIT_OPT_GET_CACHED_MEMORY</td>
+        <td><p>Get the current bytes in cache and the maximum that would be
+allowed in the cache.</p>
+<p>
+opts(GIT_OPT_GET_CACHED_MEMORY, ssize_t *current, ssize_t *allowed);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_GET_MWINDOW_MAPPED_LIMIT">GIT_OPT_GET_MWINDOW_MAPPED_LIMIT</td>
+        <td><p>Get the maximum memory that will be mapped in total by the
+library.</p>
+<p>
+opts(GIT_OPT_GET_MWINDOW_MAPPED_LIMIT, size_t *):
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_GET_MWINDOW_SIZE">GIT_OPT_GET_MWINDOW_SIZE</td>
+        <td><p>Get the maximum mmap window size.</p>
+<p>
+opts(GIT_OPT_GET_MWINDOW_SIZE, size_t *):
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_GET_PACK_MAX_OBJECTS">GIT_OPT_GET_PACK_MAX_OBJECTS</td>
+        <td><p>Get the maximum number of objects libgit2 will allow in a pack
+file when downloading a pack file from a remote. This can be
+used to limit maximum memory usage when fetching from an untrusted
+remote.</p>
+<p>
+opts(GIT_OPT_GET_PACK_MAX_OBJECTS, size_t *out);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_GET_SEARCH_PATH">GIT_OPT_GET_SEARCH_PATH</td>
+        <td><p>Get the search path for a given level of config data.  &quot;level&quot;
+must be one of <code>GIT_CONFIG_LEVEL_SYSTEM</code>,
+<code>GIT_CONFIG_LEVEL_GLOBAL</code>, <code>GIT_CONFIG_LEVEL_XDG</code>, or
+<code>GIT_CONFIG_LEVEL_PROGRAMDATA</code>.  The search path is written
+to the given buffer.</p>
+<p>
+opts(GIT_OPT_GET_SEARCH_PATH, int level, git_buf *buf);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_GET_TEMPLATE_PATH">GIT_OPT_GET_TEMPLATE_PATH</td>
+        <td><p>Get the default template path.</p>
+<p>
+opts(GIT_OPT_GET_TEMPLATE_PATH, git_buf *out);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_GET_USER_AGENT">GIT_OPT_GET_USER_AGENT</td>
+        <td><p>Gets the value of the User-Agent header.</p>
+<p>
+opts(GIT_OPT_GET_USER_AGENT, git_buf *);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_GET_WINDOWS_SHAREMODE">GIT_OPT_GET_WINDOWS_SHAREMODE</td>
+        <td><p>Get the share mode used when opening files on Windows.</p>
+<p>
+opts(GIT_OPT_GET_WINDOWS_SHAREMODE, unsigned long *value);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_SET_ALLOCATOR">GIT_OPT_SET_ALLOCATOR</td>
+        <td><p>Set the memory allocator to a different memory allocator.
+This allocator will then be used to make all memory allocations
+for libgit2 operations.  If the given <code>allocator</code> is NULL, then
+the system default will be restored.</p>
+<p>
+opts(GIT_OPT_SET_ALLOCATOR, git_allocator *allocator);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_SET_CACHE_MAX_SIZE">GIT_OPT_SET_CACHE_MAX_SIZE</td>
+        <td><p>Set the maximum total data size that will be cached in memory
+across all repositories before libgit2 starts evicting objects
+from the cache.  This is a soft limit, in that the library might
+briefly exceed it, but will start aggressively evicting objects
+from cache when that happens.  The default cache size is 256MB.</p>
+<p>
+opts(GIT_OPT_SET_CACHE_MAX_SIZE, ssize_t max_storage_bytes);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_SET_CACHE_OBJECT_LIMIT">GIT_OPT_SET_CACHE_OBJECT_LIMIT</td>
+        <td><p>Set the maximum data size for the given type of object to be
+considered eligible for caching in memory.  Setting to value to
+zero means that that type of object will not be cached.</p>
+<p>
+Defaults to 0 for `GIT_OBJECT_BLOB` (meaning that blobs are not
+cached) and 4096 for `GIT_OBJECT_COMMIT`, `GIT_OBJECT_TREE`,
+and `GIT_OBJECT_TAG`.
+</p>
+<p>
+opts(GIT_OPT_SET_CACHE_OBJECT_LIMIT, git_object_t type, size_t size);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_SET_MWINDOW_MAPPED_LIMIT">GIT_OPT_SET_MWINDOW_MAPPED_LIMIT</td>
+        <td><p>Set the maximum amount of memory that can be mapped at any
+time by the library.</p>
+<p>
+opts(GIT_OPT_SET_MWINDOW_MAPPED_LIMIT, size_t):
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_SET_MWINDOW_SIZE">GIT_OPT_SET_MWINDOW_SIZE</td>
+        <td><p>Set the maximum mmap window size.</p>
+<p>
+opts(GIT_OPT_SET_MWINDOW_SIZE, size_t);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_SET_PACK_MAX_OBJECTS">GIT_OPT_SET_PACK_MAX_OBJECTS</td>
+        <td><p>Set the maximum number of objects libgit2 will allow in a pack
+file when downloading a pack file from a remote.</p>
+<p>
+opts(GIT_OPT_SET_PACK_MAX_OBJECTS, size_t objects);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_SET_SEARCH_PATH">GIT_OPT_SET_SEARCH_PATH</td>
+        <td><p>Set the search path for a level of config data.  The search
+path applies to shared attributes and ignore files, too.
+Pass the level as one of <code>GIT_CONFIG_LEVEL_SYSTEM</code>,
+<code>GIT_CONFIG_LEVEL_GLOBAL</code>, <code>GIT_CONFIG_LEVEL_XDG</code>, or
+<code>GIT_CONFIG_LEVEL_PROGRAMDATA</code>.</p>
+<p>
+Path directories must be delimited by GIT_PATH_LIST_SEPARATOR.
+Pass NULL to reset to the default (generally based on
+environment variables).  Use the magic path `$PATH` to include
+the old value of the path (if you want to prepend or append,
+for instance).
+</p>
+<p>
+opts(GIT_OPT_SET_SEARCH_PATH, int level, const char *path);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_SET_SSL_CERT_LOCATIONS">GIT_OPT_SET_SSL_CERT_LOCATIONS</td>
+        <td><p>Set the SSL certificate-authority locations.  The file is the
+location of a file containing several certificates concatenated
+together.  The path is the location of a directory holding
+serveral certificates, on per file.  Either parameter may be
+<code>NULL</code>, but not both.</p>
+<p>
+opts(GIT_OPT_SET_SSL_CERT_LOCATIONS, const char *file, const char *path);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_SET_SSL_CIPHERS">GIT_OPT_SET_SSL_CIPHERS</td>
+        <td><p>Set the SSL ciphers use for HTTPS connections.</p>
+<p>
+opts(GIT_OPT_SET_SSL_CIPHERS, const char *ciphers);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_SET_TEMPLATE_PATH">GIT_OPT_SET_TEMPLATE_PATH</td>
+        <td><p>Set the default template path.</p>
+<p>
+opts(GIT_OPT_GET_TEMPLATE_PATH, git_buf *out);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_SET_USER_AGENT">GIT_OPT_SET_USER_AGENT</td>
+        <td><p>Set the value of the User-Agent header.  This value will be
+appended to &quot;git/1.0&quot;, for compatibility with other git
+clients.</p>
+<p>
+opts(GIT_OPT_SET_USER_AGENT, const char *user_agent);
+</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_libgit2_opt_t_GIT_OPT_SET_WINDOWS_SHAREMODE">GIT_OPT_SET_WINDOWS_SHAREMODE</td>
+        <td><p>Set the share mode used when opening files on Windows.
+For more information, see the documentation for CreateFile.
+The default is: FILE_SHARE_READ | FILE_SHARE_WRITE.  This is
+ignored and unused on non-Windows platforms.</p>
+<p>
+opts(GIT_OPT_SET_WINDOWS_SHAREMODE, unsigned long value);
+</p>
+</td>
+      </tr>
+    </tbody>
+  </thead></thead></table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ethomson/dogged/new/9709f373ac0d154107ea350f7931151b07a5af04/apiSpec/new?filename=Dogged_Native_git_libgit2_opt_t.md&amp;value=---%0Auid%3A%20Dogged.Native.git_libgit2_opt_t%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/ethomson/dogged/blob/9709f373ac0d154107ea350f7931151b07a5af04/Dogged.Native/opt.cs/#L10" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
