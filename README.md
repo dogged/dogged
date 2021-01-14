@@ -1,4 +1,4 @@
-<h1><img src="http://dogged.app/logos/dogged-withtype.png" alt="Dogged" width="350" height="75"></h1>
+<h1><img src="http://dogged.app/images/logo.png" alt="Dogged" width="350" height="75"></h1>
 
 [![Build Status](https://github.com/ethomson/dogged/workflows/CI/badge.svg)](https://github.com/ethomson/dogged/actions)
 
