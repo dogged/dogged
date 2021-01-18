@@ -52,6 +52,52 @@ namespace Dogged
             }
         }
 
+        public unsafe GitObject Peel()
+        {
+            Ensure.NotDisposed(NativeReference, "reference");
+
+            git_object* obj = null;
+
+            Ensure.NativeSuccess(() => libgit2.git_reference_peel(out obj, NativeReference, git_object_t.GIT_OBJECT_ANY), this);
+            Ensure.NativePointerNotNull(obj);
+
+            try
+            {
+                return GitObject.FromNative(obj);
+            }
+            catch (Exception)
+            {
+                libgit2.git_object_free(obj);
+                throw;
+            }
+        }
+
+        public unsafe T Peel<T>() where T : GitObject
+        {
+            Ensure.NotDisposed(NativeReference, "reference");
+
+            git_object_t type = GitObject.GetType<T>();
+            git_object* obj = null;
+
+            if (type == git_object_t.GIT_OBJECT_INVALID)
+            {
+                throw new InvalidOperationException("unknown object type");
+            }
+
+            Ensure.NativeSuccess(() => libgit2.git_reference_peel(out obj, NativeReference, type), this);
+            Ensure.NativePointerNotNull(obj);
+
+            try
+            {
+                return GitObject.FromNative<T>(obj);
+            }
+            catch (Exception)
+            {
+                libgit2.git_object_free(obj);
+                throw;
+            }
+        }
+
         internal unsafe override bool IsDisposed
         {
             get

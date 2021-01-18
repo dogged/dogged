@@ -26,12 +26,7 @@ namespace Dogged
             }, this);
         }
 
-        internal unsafe static Tree FromNative(git_tree* nativeTree)
-        {
-            return new Tree(nativeTree);
-        }
-
-        internal unsafe static Tree FromNative(git_tree* nativeTree, ObjectId id)
+        internal unsafe static Tree FromNative(git_tree* nativeTree, ObjectId id = null)
         {
             return new Tree(nativeTree, id);
         }

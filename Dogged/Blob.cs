@@ -19,7 +19,7 @@ namespace Dogged
             isBinary = new LazyNative<bool>(() => libgit2.git_blob_is_binary(nativeBlob) == 0 ? false : true, this);
         }
 
-        internal unsafe static Blob FromNative(git_blob* nativeBlob, ObjectId id)
+        internal unsafe static Blob FromNative(git_blob* nativeBlob, ObjectId id = null)
         {
             return new Blob(nativeBlob, id);
         }

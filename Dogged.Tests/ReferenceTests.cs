@@ -86,5 +86,45 @@ namespace Dogged.Tests
                 }
             }
         }
+
+        [Fact]
+        public void CanPeelSymbolicReference()
+        {
+            using (Repository repo = SandboxRepository("testrepo"))
+            {
+                using (var reference = repo.References.Lookup("HEAD"))
+                {
+                    var commit = reference.Peel<Commit>();
+                    Assert.IsType<Commit>(commit);
+                    Assert.Equal(new ObjectId("099fabac3a9ea935598528c27f866e34089c2eff"), commit.Id);
+                }
+            }
+        }
+
+        [Fact]
+        public void CanPeelAnnotatedTag()
+        {
+            using (Repository repo = SandboxRepository("testrepo.git"))
+            {
+                using (var reference = repo.References.Lookup("refs/tags/annotated_tag_to_blob"))
+                {
+                    var blob = reference.Peel<Blob>();
+                    Assert.IsType<Blob>(blob);
+                    Assert.Equal(new ObjectId("1385f264afb75a56a5bec74243be9b367ba4ca08"), blob.Id);
+                }
+            }
+        }
+
+        [Fact]
+        public void CannotPeelAnnotatedTagToWrongType()
+        {
+            using (Repository repo = SandboxRepository("testrepo.git"))
+            {
+                using (var reference = repo.References.Lookup("refs/tags/annotated_tag_to_blob"))
+                {
+                    Assert.Throws<CannotBePeeledException>(() => reference.Peel<Commit>());
+                }
+            }
+        }
     }
 }

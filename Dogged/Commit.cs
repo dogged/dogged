@@ -30,7 +30,7 @@ namespace Dogged
             }, this);
         }
 
-        internal unsafe static Commit FromNative(git_commit* nativeCommit, ObjectId id)
+        internal unsafe static Commit FromNative(git_commit* nativeCommit, ObjectId id = null)
         {
             return new Commit(nativeCommit, id);
         }
