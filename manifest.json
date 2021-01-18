@@ -477,7 +477,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.libgit2.html",
-          "hash": "ObIjUK6jnQpjT8TjXa5nPg=="
+          "hash": "nKn5xnJO1cMckHEOy3AkCg=="
         }
       },
       "is_incremental": false,
@@ -597,7 +597,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.DirectReference.html",
-          "hash": "X5sQeKxtXcAg0FlsCBQvhA=="
+          "hash": "EHFPUYTuVf5m9b0S0KAC+g=="
         }
       },
       "is_incremental": false,
@@ -825,7 +825,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.ObjectCollection.html",
-          "hash": "GOs992F86Ab+O7SEwfOD8Q=="
+          "hash": "AFc24r6tJGFFpcNV2+TyZw=="
         }
       },
       "is_incremental": false,
@@ -897,7 +897,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.Reference.html",
-          "hash": "9G8d8HZcJXbEtDEcp+FfVg=="
+          "hash": "qb0QT9WyXAsJPwFn+Kl2yQ=="
         }
       },
       "is_incremental": false,
@@ -969,7 +969,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.SymbolicReference.html",
-          "hash": "u7iATjiVRTYXOvGmleuAXw=="
+          "hash": "wTD8cLBV0oNWywC1bNleCQ=="
         }
       },
       "is_incremental": false,
@@ -981,7 +981,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.Tree.html",
-          "hash": "U6S/cSVrQTT/mcWffjde3w=="
+          "hash": "KRSkBza3eHB8gl+rWeLi0w=="
         }
       },
       "is_incremental": false,

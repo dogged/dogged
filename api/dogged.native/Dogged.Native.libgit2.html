@@ -2799,6 +2799,64 @@ reference must be freed by the user.</p>
   </table>
   
   
+  <a id="Dogged_Native_libgit2_git_reference_peel_" data-uid="Dogged.Native.libgit2.git_reference_peel*"></a>
+  <h4 id="Dogged_Native_libgit2_git_reference_peel_Dogged_Native_git_object___Dogged_Native_git_reference__Dogged_Native_git_object_t_" data-uid="Dogged.Native.libgit2.git_reference_peel(Dogged.Native.git_object*@,Dogged.Native.git_reference*,Dogged.Native.git_object_t)">git_reference_peel(out git_object*, git_reference*, git_object_t)</h4>
+  <div class="markdown level1 summary"><p>Recursively peel reference until object of the specified type
+is found.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_reference_peel(out git_object*obj, git_reference*reference, git_object_t type)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_object.html">git_object</a>*</td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>Pointer to the object that was peeled</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_reference.html">git_reference</a>*</td>
+        <td><span class="parametername">reference</span></td>
+        <td><p>The reference to peel</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_object_t.html">git_object_t</a></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>The type of object to peel to</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="Dogged_Native_libgit2_git_reference_symbolic_target_" data-uid="Dogged.Native.libgit2.git_reference_symbolic_target*"></a>
   <h4 id="Dogged_Native_libgit2_git_reference_symbolic_target_Dogged_Native_git_reference__" data-uid="Dogged.Native.libgit2.git_reference_symbolic_target(Dogged.Native.git_reference*)">git_reference_symbolic_target(git_reference*)</h4>
   <div class="markdown level1 summary"><p>Get the full name of the target of this reference.  This

@@ -2805,6 +2805,21 @@ references:
   commentId: Overload:Dogged.Native.libgit2.git_reference_next
   fullName: Dogged.Native.libgit2.git_reference_next
   nameWithType: libgit2.git_reference_next
+- uid: Dogged.Native.libgit2.git_reference_peel(Dogged.Native.git_object*@,Dogged.Native.git_reference*,Dogged.Native.git_object_t)
+  name: git_reference_peel(out git_object*, git_reference*, git_object_t)
+  href: api/dogged.native/Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_reference_peel_Dogged_Native_git_object___Dogged_Native_git_reference__Dogged_Native_git_object_t_
+  commentId: M:Dogged.Native.libgit2.git_reference_peel(Dogged.Native.git_object*@,Dogged.Native.git_reference*,Dogged.Native.git_object_t)
+  name.vb: git_reference_peel(ByRef git_object*, git_reference*, git_object_t)
+  fullName: Dogged.Native.libgit2.git_reference_peel(out Dogged.Native.git_object*, Dogged.Native.git_reference*, Dogged.Native.git_object_t)
+  fullName.vb: Dogged.Native.libgit2.git_reference_peel(ByRef Dogged.Native.git_object*, Dogged.Native.git_reference*, Dogged.Native.git_object_t)
+  nameWithType: libgit2.git_reference_peel(out git_object*, git_reference*, git_object_t)
+  nameWithType.vb: libgit2.git_reference_peel(ByRef git_object*, git_reference*, git_object_t)
+- uid: Dogged.Native.libgit2.git_reference_peel*
+  name: git_reference_peel
+  href: api/dogged.native/Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_reference_peel_
+  commentId: Overload:Dogged.Native.libgit2.git_reference_peel
+  fullName: Dogged.Native.libgit2.git_reference_peel
+  nameWithType: libgit2.git_reference_peel
 - uid: Dogged.Native.libgit2.git_reference_symbolic_target(Dogged.Native.git_reference*)
   name: git_reference_symbolic_target(git_reference*)
   href: api/dogged.native/Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_reference_symbolic_target_Dogged_Native_git_reference__
@@ -3531,6 +3546,28 @@ references:
   isSpec: "True"
   fullName: Dogged.Reference.Name
   nameWithType: Reference.Name
+- uid: Dogged.Reference.Peel
+  name: Peel()
+  href: api/dogged/Dogged.Reference.html#Dogged_Reference_Peel
+  commentId: M:Dogged.Reference.Peel
+  fullName: Dogged.Reference.Peel()
+  nameWithType: Reference.Peel()
+- uid: Dogged.Reference.Peel*
+  name: Peel
+  href: api/dogged/Dogged.Reference.html#Dogged_Reference_Peel_
+  commentId: Overload:Dogged.Reference.Peel
+  isSpec: "True"
+  fullName: Dogged.Reference.Peel
+  nameWithType: Reference.Peel
+- uid: Dogged.Reference.Peel``1
+  name: Peel<T>()
+  href: api/dogged/Dogged.Reference.html#Dogged_Reference_Peel__1
+  commentId: M:Dogged.Reference.Peel``1
+  name.vb: Peel(Of T)()
+  fullName: Dogged.Reference.Peel<T>()
+  fullName.vb: Dogged.Reference.Peel(Of T)()
+  nameWithType: Reference.Peel<T>()
+  nameWithType.vb: Reference.Peel(Of T)()
 - uid: Dogged.ReferenceCollection
   name: ReferenceCollection
   href: api/dogged/Dogged.ReferenceCollection.html
