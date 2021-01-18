@@ -34,18 +34,15 @@ namespace Dogged
             Ensure.NativeSuccess(() => libgit2.git_object_lookup(out obj, repository.NativeRepository, ref oid, git_object_t.GIT_OBJECT_ANY), repository);
             Ensure.NativePointerNotNull(obj);
 
-            switch (libgit2.git_object_type(obj))
+            try
             {
-                case git_object_t.GIT_OBJECT_COMMIT:
-                    return Commit.FromNative((git_commit*)obj, id);
-                case git_object_t.GIT_OBJECT_TREE:
-                    return Tree.FromNative((git_tree*)obj, id);
-                case git_object_t.GIT_OBJECT_BLOB:
-                    return Blob.FromNative((git_blob*)obj, id);
+                return GitObject.FromNative(obj, id);
             }
-
-            libgit2.git_object_free(obj);
-            throw new InvalidOperationException("unknown object type");
+            catch (Exception)
+            {
+                libgit2.git_object_free(obj);
+                throw;
+            }
         }
 
         /// <summary>

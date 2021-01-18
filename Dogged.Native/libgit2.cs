@@ -835,6 +835,17 @@ namespace Dogged.Native
         public static extern unsafe int git_reference_next(out git_reference* reference, git_reference_iterator* iterator);
 
         /// <summary>
+        /// Recursively peel reference until object of the specified type
+        /// is found.
+        /// </summary>
+        /// <param name="obj">Pointer to the object that was peeled</param>
+        /// <param name="reference">The reference to peel</param>
+        /// <param name="type">The type of object to peel to</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_reference_peel(out git_object* obj, git_reference* reference, git_object_t type);
+
+        /// <summary>
         /// Get the full name of the target of this reference.  This
         /// function is only supported for symbolic references.
         /// </summary>
