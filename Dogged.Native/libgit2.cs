@@ -23,6 +23,9 @@ namespace Dogged.Native
             nativeInitializer = new NativeInitializer();
         }
 
+        // blob - a file in the repository
+        #region git_blob
+
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe int git_blob_filter(
             git_buf content,
@@ -77,8 +80,18 @@ namespace Dogged.Native
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe long git_blob_rawsize(git_blob* blob);
 
+        #endregion
+
+        // buf - a string returned by libgit2
+        #region git_buf
+
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe void git_buf_dispose(git_buf buf);
+
+        #endregion
+
+        // clone - download a remote repository to a local folder
+        #region git_clone
 
         /// <summary>
         /// Clone a remote repository.
@@ -101,6 +114,11 @@ namespace Dogged.Native
             [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string localPath,
             git_clone_options* options);
 
+        #endregion
+
+        // commit
+        #region git_commit
+
         /// <summary>
         /// Get the signature for the commit's author.  This data is owned
         /// by the commit and should not be freed.
@@ -118,6 +136,55 @@ namespace Dogged.Native
         /// <returns>A pointer to a signature for the committer</returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe git_signature* git_commit_committer(git_commit* commit);
+
+        /// <summary>
+        /// Look up a commit from the repository.
+        /// </summary>
+        /// <param name="obj">Pointer to the commit that was loaded from the repository</param>
+        /// <param name="repo">The repository that contains the commit</param>
+        /// <param name="id">The id of the commit to lookup</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_commit_lookup(out git_commit* obj, git_repository* repo, ref git_oid id);
+
+        /// <summary>
+        /// Get the tree that the given commit points to.  This tree must be
+        /// freed when it is no longer needed.
+        /// </summary>
+        /// <param name="tree">A pointer to the tree</param>
+        /// <param name="commit">The commit to examine</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_commit_tree(out git_tree* tree, git_commit* commit);
+
+        /// <summary>
+        /// Get the object id of the tree that the given commit points to.
+        /// This differs from <see cref="git_commit_tree"/> in that no
+        /// attempts are made to lookup the tree or validate it.
+        /// </summary>
+        /// <param name="commit">The commit to examine</param>
+        /// <returns>A pointer to the tree's object id</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe git_oid* git_commit_tree_id(git_commit* commit);
+
+        #endregion
+
+        // Error handling
+        #region git_error
+
+        /// <summary>
+        /// Returns the information (class and message) for the last error
+        /// that occurred on the current thread.  This information is
+        /// undefined if the last libgit2 function did not return an error.
+        /// </summary>
+        /// <returns>A pointer to a <see cref="git_error"/> that describes the error.</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe git_error* git_error_last();
+
+        #endregion
+
+        // filter_list
+        #region git_filter_list
 
         /// <summary>
         /// Apply a filter list to the contents of a blob.
@@ -196,44 +263,10 @@ namespace Dogged.Native
             git_filter_mode_t mode,
             uint flags);
 
-        /// <summary>
-        /// Look up a commit from the repository.
-        /// </summary>
-        /// <param name="obj">Pointer to the commit that was loaded from the repository</param>
-        /// <param name="repo">The repository that contains the commit</param>
-        /// <param name="id">The id of the commit to lookup</param>
-        /// <returns>0 on success or an error code</returns>
-        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern unsafe int git_commit_lookup(out git_commit* obj, git_repository* repo, ref git_oid id);
+        #endregion
 
-        /// <summary>
-        /// Get the tree that the given commit points to.  This tree must be
-        /// freed when it is no longer needed.
-        /// </summary>
-        /// <param name="tree">A pointer to the tree</param>
-        /// <param name="commit">The commit to examine</param>
-        /// <returns>0 on success or an error code</returns>
-        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern unsafe int git_commit_tree(out git_tree* tree, git_commit* commit);
-
-        /// <summary>
-        /// Get the object id of the tree that the given commit points to.
-        /// This differs from <see cref="git_commit_tree"/> in that no
-        /// attempts are made to lookup the tree or validate it.
-        /// </summary>
-        /// <param name="commit">The commit to examine</param>
-        /// <returns>A pointer to the tree's object id</returns>
-        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern unsafe git_oid* git_commit_tree_id(git_commit* commit);
-
-        /// <summary>
-        /// Returns the information (class and message) for the last error
-        /// that occurred on the current thread.  This information is
-        /// undefined if the last libgit2 function did not return an error.
-        /// </summary>
-        /// <returns>A pointer to a <see cref="git_error"/> that describes the error.</returns>
-        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern unsafe git_error* git_error_last();
+        // index - the cache, staging area, or index
+        #region git_index
 
         /// <summary>
         /// Get a pointer to an entry in the index for the given path at the
@@ -322,6 +355,11 @@ namespace Dogged.Native
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe void git_index_iterator_free(git_index_iterator* iterator);
 
+        #endregion
+
+        // libgit2 - library-specific functionality
+        #region git_libgit2
+
         /// <summary>
         /// Query compile time options for libgit2.  This will show the
         /// functionality that is built in to the library.
@@ -374,6 +412,11 @@ namespace Dogged.Native
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern int git_libgit2_shutdown();
 
+        #endregion
+
+        // object - the base class for blobs, trees and commits
+        #region git_object
+
         /// <summary>
         /// Free a git object.
         /// </summary>
@@ -407,6 +450,11 @@ namespace Dogged.Native
         /// <returns>The type of the object</returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe git_object_t git_object_type(git_object* obj);
+
+        #endregion
+
+        // odb - the object database
+        #region git_odb
 
         /// <summary>
         /// Add a custom backend to an existing object database.
@@ -616,6 +664,11 @@ namespace Dogged.Native
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe int git_odb_write(ref git_oid id, git_odb* odb, byte* data, UIntPtr len, git_object_t type);
 
+        #endregion
+
+        // repository
+        #region git_repository
+
         /// <summary>
         /// Retrieve and resolve the reference pointed to by HEAD.
         ///
@@ -779,6 +832,11 @@ namespace Dogged.Native
         [return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.FromNative, MarshalTypeRef = typeof(Utf8Marshaler))]
         public static extern unsafe string git_repository_workdir(git_repository* repository);
 
+        #endregion
+
+        // reference - a branch or tag
+        #region git_reference
+
         /// <summary>
         /// Create an iterator for the repository's references.
         /// </summary>
@@ -872,6 +930,11 @@ namespace Dogged.Native
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe git_reference_t git_reference_type(git_reference* reference);
 
+        #endregion
+
+        // tree - a folder in a repository that contains blobs or other trees
+        #region git_tree
+
         /// <summary>
         /// Get a pointer to an entry in the tree at the the given index.
         ///
@@ -945,4 +1008,6 @@ namespace Dogged.Native
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe int git_tree_lookup(out git_tree* obj, git_repository* repo, ref git_oid id);
     }
+
+    #endregion
 }
