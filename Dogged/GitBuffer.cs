@@ -60,8 +60,10 @@ namespace Dogged
 
         internal unsafe override void Dispose(bool disposing)
         {
-            libgit2.git_buf_dispose(nativeObject);
-            disposed = true;
+            if (!disposed) {
+                libgit2.git_buf_dispose(nativeObject);
+                disposed = true;
+            }
         }
     }
 }
