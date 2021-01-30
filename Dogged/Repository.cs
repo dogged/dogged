@@ -48,6 +48,7 @@ namespace Dogged
         /// a working directory or a bare repository).
         /// </summary>
         /// <param name="path">The path to the repository or a repository's working tree.</param>
+        /// <returns>The repository</returns>
         public unsafe static Repository Open(string path)
         {
             Ensure.ArgumentNotNull(path, "path");
@@ -56,6 +57,26 @@ namespace Dogged
             Ensure.NativeSuccess(libgit2.git_repository_open(out nativeRepository, path), exceptionMap);
 
             return new Repository(nativeRepository);
+        }
+
+        /// <summary>
+        /// Discover the git repository that the given path is beneath.
+        /// Walks up parent paths until the repository working directory is
+        /// found and returns the Repository.
+        /// </summary>
+        /// <param name="path">The path to start discovery at.</param>
+        /// <param name="acrossFilesystems">Whether to traverse filesystem boundaries (false by default)</param>
+        /// <returns>The newly repository, or null if none was discovered</returns>
+        public unsafe static string Discover(string path, bool acrossFilesystems = false)
+        {
+            Ensure.ArgumentNotNull(path, "path");
+
+            git_repository *nativeRepository = null;
+
+            using (var buf = new GitBuffer()) {
+                Ensure.NativeSuccess(libgit2.git_repository_discover(buf.NativeBuffer, path, acrossFilesystems ? 1 : 0, null), exceptionMap);
+                return buf.ToString();
+            }
         }
 
         /// <summary>

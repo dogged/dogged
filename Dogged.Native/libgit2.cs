@@ -669,6 +669,13 @@ namespace Dogged.Native
         // repository
         #region git_repository
 
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_repository_discover(
+            git_buf path,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string start_path,
+            int across_fs,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string ceiling_dirs);
+
         /// <summary>
         /// Retrieve and resolve the reference pointed to by HEAD.
         ///
