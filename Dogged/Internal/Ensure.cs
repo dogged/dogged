@@ -274,20 +274,10 @@ namespace Dogged
         /// <summary>
         /// Ensure that the given return code from a native function indicates
         /// success; ie that it is non-negative.
-        /// <param name="nativeReturnCode">The return code from a libgit2 function.</param>
-        /// </summary>
-        public static void NativeSuccess(int nativeReturnCode)
-        {
-            NativeSuccess(nativeReturnCode, null);
-        }
-
-        /// <summary>
-        /// Ensure that the given return code from a native function indicates
-        /// success; ie that it is non-negative.
         /// </summary>
         /// <param name="nativeReturnCode">The return code from a libgit2 function.</param>
         /// <param name="customExceptions">Any custom exceptions that should be thrown for a particular libgit2 error code.</param>
-        public static void NativeSuccess(int nativeReturnCode, Dictionary<git_error_code, Func<string, Exception>> customExceptions)
+        public static void NativeSuccess(int nativeReturnCode, Dictionary<git_error_code, Func<string, Exception>> customExceptions = null)
         {
             if (nativeReturnCode < 0)
             {
@@ -301,7 +291,8 @@ namespace Dogged
         /// </summary>
         /// <param name="call">The function call to invoke.</param>
         /// <param name="obj">The object to validate and keep alive.</param>
-        public static void NativeSuccess(Func<int> call, NativeDisposable obj)
+        /// <param name="customExceptions">Any custom exceptions that should be thrown for a particular libgit2 error code.</param>
+        public static void NativeSuccess(Func<int> call, NativeDisposable obj, Dictionary<git_error_code, Func<string, Exception>> customExceptions = null)
         {
             NativeSuccess(NativeCall<int>(call, obj));
         }

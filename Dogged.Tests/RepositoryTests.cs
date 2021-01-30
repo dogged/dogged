@@ -44,6 +44,34 @@ namespace Dogged.Tests
         }
 
         [Fact]
+        public void CanDiscoverRepositoryPath()
+        {
+            string resourcePath = SandboxResource("userdiff");
+            string repositoryPath, workdirPath;
+
+            using (var repository = Repository.Open(resourcePath))
+            {
+                repositoryPath = repository.Path;
+                workdirPath = repository.Workdir;
+            }
+
+            Assert.Equal(repositoryPath, Repository.Discover(repositoryPath));
+            Assert.Equal(repositoryPath, Repository.Discover(workdirPath));
+            Assert.Equal(repositoryPath, Repository.Discover(Path.Combine(workdirPath, "before")));
+            Assert.Equal(repositoryPath, Repository.Discover(Path.Combine(workdirPath, "after")));
+            Assert.Equal(repositoryPath, Repository.Discover(Path.Combine(workdirPath, "expected", "driver")));
+            Assert.Equal(repositoryPath, Repository.Discover(Path.Combine(workdirPath, "expected", "nodriver")));
+        }
+
+        [Fact]
+        public void DiscoveryNotFoundFailsWithWellTypedException()
+        {
+            Assert.Throws<RepositoryNotFoundException>(() => {
+                Repository.Discover(TemporaryDirectory);
+            });
+        }
+
+        [Fact]
         public void CanInitializeRepository()
         {
             string newPath = Path.Combine(TemporaryDirectory, "newrepo");

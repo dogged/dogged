@@ -1,5 +1,6 @@
 using System;
 using Dogged.Native;
+using Dogged.Native.Services;
 
 namespace Dogged
 {
@@ -42,6 +43,11 @@ namespace Dogged
                 var size = Ensure.CastToInt(nativeObject.size, "size");
                 return new ReadOnlySpan<byte>(nativeObject.ptr, size);
             }
+        }
+
+        public unsafe override string ToString()
+        {
+            return Utf8Converter.FromNative(nativeObject.ptr);
         }
 
         internal unsafe override bool IsDisposed
