@@ -350,6 +350,19 @@ references:
   isSpec: "True"
   fullName: Dogged.GitBuffer.Length
   nameWithType: GitBuffer.Length
+- uid: Dogged.GitBuffer.ToString
+  name: ToString()
+  href: api/dogged/Dogged.GitBuffer.html#Dogged_GitBuffer_ToString
+  commentId: M:Dogged.GitBuffer.ToString
+  fullName: Dogged.GitBuffer.ToString()
+  nameWithType: GitBuffer.ToString()
+- uid: Dogged.GitBuffer.ToString*
+  name: ToString
+  href: api/dogged/Dogged.GitBuffer.html#Dogged_GitBuffer_ToString_
+  commentId: Overload:Dogged.GitBuffer.ToString
+  isSpec: "True"
+  fullName: Dogged.GitBuffer.ToString
+  nameWithType: GitBuffer.ToString
 - uid: Dogged.GitObject
   name: GitObject
   href: api/dogged/Dogged.GitObject.html
@@ -2856,6 +2869,18 @@ references:
   commentId: Overload:Dogged.Native.libgit2.git_reference_type
   fullName: Dogged.Native.libgit2.git_reference_type
   nameWithType: libgit2.git_reference_type
+- uid: Dogged.Native.libgit2.git_repository_discover(Dogged.Native.git_buf,System.String,System.Int32,System.String)
+  name: git_repository_discover(git_buf, String, Int32, String)
+  href: api/dogged.native/Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_repository_discover_Dogged_Native_git_buf_System_String_System_Int32_System_String_
+  commentId: M:Dogged.Native.libgit2.git_repository_discover(Dogged.Native.git_buf,System.String,System.Int32,System.String)
+  fullName: Dogged.Native.libgit2.git_repository_discover(Dogged.Native.git_buf, System.String, System.Int32, System.String)
+  nameWithType: libgit2.git_repository_discover(git_buf, String, Int32, String)
+- uid: Dogged.Native.libgit2.git_repository_discover*
+  name: git_repository_discover
+  href: api/dogged.native/Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_repository_discover_
+  commentId: Overload:Dogged.Native.libgit2.git_repository_discover
+  fullName: Dogged.Native.libgit2.git_repository_discover
+  nameWithType: libgit2.git_repository_discover
 - uid: Dogged.Native.libgit2.git_repository_free(Dogged.Native.git_repository*)
   name: git_repository_free(git_repository*)
   href: api/dogged.native/Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_repository_free_Dogged_Native_git_repository__
@@ -3677,6 +3702,19 @@ references:
   isSpec: "True"
   fullName: Dogged.Repository.CreateCustomRepository
   nameWithType: Repository.CreateCustomRepository
+- uid: Dogged.Repository.Discover(System.String,System.Boolean)
+  name: Discover(String, Boolean)
+  href: api/dogged/Dogged.Repository.html#Dogged_Repository_Discover_System_String_System_Boolean_
+  commentId: M:Dogged.Repository.Discover(System.String,System.Boolean)
+  fullName: Dogged.Repository.Discover(System.String, System.Boolean)
+  nameWithType: Repository.Discover(String, Boolean)
+- uid: Dogged.Repository.Discover*
+  name: Discover
+  href: api/dogged/Dogged.Repository.html#Dogged_Repository_Discover_
+  commentId: Overload:Dogged.Repository.Discover
+  isSpec: "True"
+  fullName: Dogged.Repository.Discover
+  nameWithType: Repository.Discover
 - uid: Dogged.Repository.Head
   name: Head
   href: api/dogged/Dogged.Repository.html#Dogged_Repository_Head

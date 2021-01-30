@@ -477,7 +477,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged.native/Dogged.Native.libgit2.html",
-          "hash": "AkLQw3AJ+Cz+mjAS7IksvA=="
+          "hash": "vHoaGPTy72dKQUKP8AQI0Q=="
         }
       },
       "is_incremental": false,
@@ -633,7 +633,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.GitBuffer.html",
-          "hash": "Ne8Z57qJoY4En4/flrVbkA=="
+          "hash": "NEWdrCM0r8Pf5sJJWhB5Xw=="
         }
       },
       "is_incremental": false,
@@ -933,7 +933,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.Repository.html",
-          "hash": "A+4+68q9FS68QjeBBLx4vw=="
+          "hash": "INMM1k+YoXHOeVXAB02y/w=="
         }
       },
       "is_incremental": false,
@@ -945,7 +945,7 @@
       "output": {
         ".html": {
           "relative_path": "api/dogged/Dogged.RepositoryNotFoundException.html",
-          "hash": "Mqkaghl0+CMkzdnTrcCAqQ=="
+          "hash": "HADeHODiJRRU2H8Ln7v1jQ=="
         }
       },
       "is_incremental": false,
