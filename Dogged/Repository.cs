@@ -261,15 +261,6 @@ namespace Dogged
             }
         }
 
-        public unsafe FilterList LoadFilterList(Blob blob, string path, FilterMode mode, FilterFlags flags)
-        {
-            Ensure.ArgumentNotNull(path, "path");
-            git_filter_list* filters = null;
-
-            Ensure.NativeSuccess(() => libgit2.git_filter_list_load(out filters, nativeRepository, (blob != null) ? (git_blob*)blob.NativeObject : null, path, (git_filter_mode_t)mode, (uint)flags), this);
-            return (filters != null) ? FilterList.FromNative(this, filters) : null;
-        }
-
         internal unsafe override bool IsDisposed
         {
             get
