@@ -3755,19 +3755,6 @@ references:
   isSpec: "True"
   fullName: Dogged.Repository.IsHeadDetached
   nameWithType: Repository.IsHeadDetached
-- uid: Dogged.Repository.LoadFilterList(Dogged.Blob,System.String,FilterMode,FilterFlags)
-  name: LoadFilterList(Blob, String, FilterMode, FilterFlags)
-  href: api/dogged/Dogged.Repository.html#Dogged_Repository_LoadFilterList_Dogged_Blob_System_String_FilterMode_FilterFlags_
-  commentId: M:Dogged.Repository.LoadFilterList(Dogged.Blob,System.String,FilterMode,FilterFlags)
-  fullName: Dogged.Repository.LoadFilterList(Dogged.Blob, System.String, FilterMode, FilterFlags)
-  nameWithType: Repository.LoadFilterList(Blob, String, FilterMode, FilterFlags)
-- uid: Dogged.Repository.LoadFilterList*
-  name: LoadFilterList
-  href: api/dogged/Dogged.Repository.html#Dogged_Repository_LoadFilterList_
-  commentId: Overload:Dogged.Repository.LoadFilterList
-  isSpec: "True"
-  fullName: Dogged.Repository.LoadFilterList
-  nameWithType: Repository.LoadFilterList
 - uid: Dogged.Repository.ObjectDatabase
   name: ObjectDatabase
   href: api/dogged/Dogged.Repository.html#Dogged_Repository_ObjectDatabase
