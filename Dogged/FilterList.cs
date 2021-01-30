@@ -43,6 +43,21 @@ public class FilterList : NativeDisposable
     private Repository repository;
     private unsafe git_filter_list* nativeFilterList;
 
+    public unsafe static FilterList Load(Repository repository, string path, Blob blob, FilterMode mode, FilterFlags flags)
+    {
+        Ensure.ArgumentNotNull(repository, "repository");
+        Ensure.ArgumentNotNull(path, "path");
+        git_filter_list* filters = null;
+
+        Ensure.NativeSuccess(() => libgit2.git_filter_list_load(out filters, repository.NativeRepository, (blob != null) ? (git_blob*)blob.NativeObject : null, path, (git_filter_mode_t)mode, (uint)flags), repository);
+        return (filters != null) ? FilterList.FromNative(repository, filters) : null;
+    }
+
+    public unsafe static FilterList Load(Repository repository, string path, FilterMode mode, FilterFlags flags)
+    {
+        return Load(repository, path, null, mode, flags);
+    }
+
     private unsafe FilterList(Repository repository, git_filter_list* nativeFilterList)
     {
         Ensure.ArgumentNotNull(repository, "repository");

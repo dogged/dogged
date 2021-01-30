@@ -22,8 +22,8 @@ namespace Dogged.Tests
             using (Repository repo = SandboxRepository("testrepo"))
             using (Blob b = repo.Objects.Lookup<Blob>(id))
             {
-                Assert.Null(repo.LoadFilterList(b, "foo.txt", FilterMode.ToWorktree, flags));
-                Assert.Null(repo.LoadFilterList(b, "foo.txt", FilterMode.ToObjectDatabase, flags));
+                Assert.Null(FilterList.Load(repo, "foo.txt", b, FilterMode.ToWorktree, flags));
+                Assert.Null(FilterList.Load(repo, "foo.txt", b, FilterMode.ToObjectDatabase, flags));
             }
         }
 
@@ -39,7 +39,7 @@ namespace Dogged.Tests
                 File.WriteAllLines(attributesPath, new string[] { "* text eol=crlf" });
 
                 using (Blob b = repo.Objects.Lookup<Blob>(id))
-                using (FilterList cleanFilter = repo.LoadFilterList(b, "foo.txt", FilterMode.ToObjectDatabase, flags))
+                using (FilterList cleanFilter = FilterList.Load(repo, "foo.txt", b, FilterMode.ToObjectDatabase, flags))
                 {
                     using (GitBuffer inputBuffer = b.GetFilteredContent("foo.txt"))
                     {
@@ -73,7 +73,7 @@ namespace Dogged.Tests
                 File.WriteAllBytes(filePath, new byte[] { 0x68, 0x65, 0x79, 0x20, 0x74, 0x68, 0x65, 0x72, 0x65, 0x0d, 0x0a });
 
                 using (Blob b = repo.Objects.Lookup<Blob>(id))
-                using (FilterList cleanFilter = repo.LoadFilterList(b, "foo.txt", FilterMode.ToObjectDatabase, flags))
+                using (FilterList cleanFilter = FilterList.Load(repo, "foo.txt", b, FilterMode.ToObjectDatabase, flags))
                 {
                     using (GitBuffer outputBuffer = cleanFilter.Apply("foo.txt"))
                     {
@@ -97,7 +97,7 @@ namespace Dogged.Tests
                 File.WriteAllLines(attributesPath, new string[] { "* text eol=crlf" });
 
                 using (Blob b = repo.Objects.Lookup<Blob>(id))
-                using (FilterList smudgeFilter = repo.LoadFilterList(b, "foo.txt", FilterMode.ToWorktree, flags))
+                using (FilterList smudgeFilter = FilterList.Load(repo, "foo.txt", b, FilterMode.ToWorktree, flags))
                 using (GitBuffer outputBuffer = smudgeFilter.Apply(b))
                 {
                     Assert.Equal(11, outputBuffer.Length);
@@ -118,7 +118,7 @@ namespace Dogged.Tests
 
             using (Repository repo = SandboxRepository("crlf.git"))
             using (Blob b = repo.Objects.Lookup<Blob>(id))
-            using (FilterList cleanFilter = repo.LoadFilterList(b, "file.crlf", FilterMode.ToObjectDatabase, flags))
+            using (FilterList cleanFilter = FilterList.Load(repo, "file.crlf", b, FilterMode.ToObjectDatabase, flags))
             {
                 using (GitBuffer inputBuffer = b.GetFilteredContent("file.crlf", blobFilterOptions))
                 {
@@ -145,7 +145,7 @@ namespace Dogged.Tests
 
             using (Repository repo = SandboxRepository("crlf.git"))
             using (Blob b = repo.Objects.Lookup<Blob>(id))
-            using (FilterList smudgeFilter = repo.LoadFilterList(b, "file.crlf", FilterMode.ToWorktree, flags))
+            using (FilterList smudgeFilter = FilterList.Load(repo, "file.crlf", b, FilterMode.ToWorktree, flags))
             using (GitBuffer outputBuffer = smudgeFilter.Apply(b))
             {
                 Assert.Equal(20, outputBuffer.Length);
