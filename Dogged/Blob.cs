@@ -74,7 +74,7 @@ namespace Dogged
             git_buf nativeBuffer = buf.NativeBuffer;
 
             Ensure.NativeSuccess(() => {
-                git_blob_filter_options nativeOptions = options.ToNative();
+                git_blob_filter_options nativeOptions = options.NativeOptions;
                 return libgit2.git_blob_filter(nativeBuffer, NativeBlob, path, &nativeOptions);
             }, this);
 

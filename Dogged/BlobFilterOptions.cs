@@ -1,6 +1,8 @@
-using System;
 using Dogged.Native;
 
+/// <summary>
+/// Flags to control the functionality of blob content filtering.
+/// </summary>
 public enum BlobFilterFlags
 {
     /// <summary>
@@ -21,24 +23,41 @@ public enum BlobFilterFlags
     AttributesFromHead = git_blob_filter_flag_t.GIT_BLOB_FILTER_ATTTRIBUTES_FROM_HEAD,
 }
 
+/// <summary>
+/// The options used when applying filter options to a file.
+/// </summary>
 public class BlobFilterOptions
 {
+    private git_blob_filter_options nativeOptions;
+
+    /// <summary>
+    /// Create an options structure for blob content filtering.
+    /// </summary>
     public BlobFilterOptions()
     {
-        Flags = BlobFilterFlags.CheckForBinary;
+        nativeOptions = git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_INIT;
     }
 
+    /// <summary>
+    /// Flags to control the functionality of blob content filtering.
+    /// </summary>
     public BlobFilterFlags Flags
     {
-        get;
-        set;
+        get
+        {
+            return (BlobFilterFlags)nativeOptions.flags;
+        }
+        set
+        {
+            nativeOptions.flags = (git_blob_filter_flag_t)((int)value);
+        }
     }
 
-    internal git_blob_filter_options ToNative()
+    internal git_blob_filter_options NativeOptions
     {
-        return new git_blob_filter_options {
-            version = 1,
-            flags = (git_blob_filter_flag_t)((int)Flags)
-        };
+        get
+        {
+            return nativeOptions;
+        }
     }
 }
