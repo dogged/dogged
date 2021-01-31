@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class NativeDisposable
+    <title>Class git_revspec
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class NativeDisposable
+    <meta name="title" content="Class git_revspec
    ">
     <meta name="generator" content="docfx 2.56.6.0">
     
@@ -72,69 +72,116 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Dogged.NativeDisposable">
+            <article class="content wrap" id="_content" data-uid="Dogged.Native.git_revspec">
   
   
-  <h1 id="Dogged_NativeDisposable" data-uid="Dogged.NativeDisposable" class="text-break">Class NativeDisposable
+  <h1 id="Dogged_Native_git_revspec" data-uid="Dogged.Native.git_revspec" class="text-break">Class git_revspec
   </h1>
-  <div class="markdown level0 summary"><p>Disposable pattern for objects that manage the lifecycle of
-native resources.</p>
-</div>
+  <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">NativeDisposable</span></div>
-      <div class="level2"><a class="xref" href="Dogged.GitBuffer.html">GitBuffer</a></div>
-      <div class="level2"><a class="xref" href="Dogged.GitObject.html">GitObject</a></div>
-      <div class="level2"><a class="xref" href="Dogged.Index.html">Index</a></div>
-      <div class="level2"><a class="xref" href="Dogged.IndexEnumerator.html">IndexEnumerator</a></div>
-      <div class="level2"><a class="xref" href="Dogged.ObjectDatabase.html">ObjectDatabase</a></div>
-      <div class="level2"><a class="xref" href="Dogged.ObjectDatabaseObject.html">ObjectDatabaseObject</a></div>
-      <div class="level2"><a class="xref" href="Dogged.Reference.html">Reference</a></div>
-      <div class="level2"><a class="xref" href="Dogged.ReferenceEnumerator.html">ReferenceEnumerator</a></div>
-      <div class="level2"><a class="xref" href="Dogged.Repository.html">Repository</a></div>
-      <div class="level2"><a class="xref" href="Dogged.RevisionSpec.html">RevisionSpec</a></div>
+    <div class="level1"><span class="xref">git_revspec</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Dogged.html">Dogged</a></h6>
-  <h6><strong>Assembly</strong>: Dogged.dll</h6>
-  <h5 id="Dogged_NativeDisposable_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Dogged.Native.html">Dogged.Native</a></h6>
+  <h6><strong>Assembly</strong>: Dogged.Native.dll</h6>
+  <h5 id="Dogged_Native_git_revspec_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class NativeDisposable : IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public class git_revspec : object</code></pre>
   </div>
-  <h3 id="methods">Methods
+  <h3 id="fields">Fields
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dogged/dogged/new/main/apiSpec/new?filename=Dogged_NativeDisposable_Dispose.md&amp;value=---%0Auid%3A%20Dogged.NativeDisposable.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dogged/dogged/new/main/apiSpec/new?filename=Dogged_Native_git_revspec_flags.md&amp;value=---%0Auid%3A%20Dogged.Native.git_revspec.flags%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dogged/dogged/blob/main/Dogged/Internal/NativeDisposable.cs/#L19">View Source</a>
+    <a href="https://github.com/dogged/dogged/blob/main/Dogged.Native/revspec.cs/#L43">View Source</a>
   </span>
-  <a id="Dogged_NativeDisposable_Dispose_" data-uid="Dogged.NativeDisposable.Dispose*"></a>
-  <h4 id="Dogged_NativeDisposable_Dispose" data-uid="Dogged.NativeDisposable.Dispose">Dispose()</h4>
-  <div class="markdown level1 summary"><p>Disposes the native resources associated with this object.</p>
+  <h4 id="Dogged_Native_git_revspec_flags" data-uid="Dogged.Native.git_revspec.flags">flags</h4>
+  <div class="markdown level1 summary"><p>The intent of the revspec (i.e. <code>git_revspec_t</code> type)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+    <pre><code class="lang-csharp hljs">public uint flags</code></pre>
   </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dogged/dogged/new/main/apiSpec/new?filename=Dogged_NativeDisposable_Finalize.md&amp;value=---%0Auid%3A%20Dogged.NativeDisposable.Finalize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dogged/dogged/new/main/apiSpec/new?filename=Dogged_Native_git_revspec_from.md&amp;value=---%0Auid%3A%20Dogged.Native.git_revspec.from%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dogged/dogged/blob/main/Dogged/Internal/NativeDisposable.cs/#L25">View Source</a>
+    <a href="https://github.com/dogged/dogged/blob/main/Dogged.Native/revspec.cs/#L33">View Source</a>
   </span>
-  <a id="Dogged_NativeDisposable_Finalize_" data-uid="Dogged.NativeDisposable.Finalize*"></a>
-  <h4 id="Dogged_NativeDisposable_Finalize" data-uid="Dogged.NativeDisposable.Finalize">Finalize()</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="Dogged_Native_git_revspec_from" data-uid="Dogged.Native.git_revspec.from">from</h4>
+  <div class="markdown level1 summary"><p>The left element of the revspec; must be freed by the user.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected void Finalize()</code></pre>
+    <pre><code class="lang-csharp hljs">public git_object*from</code></pre>
   </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_object.html">git_object</a>*</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/dogged/dogged/new/main/apiSpec/new?filename=Dogged_Native_git_revspec_to.md&amp;value=---%0Auid%3A%20Dogged.Native.git_revspec.to%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/dogged/dogged/blob/main/Dogged.Native/revspec.cs/#L38">View Source</a>
+  </span>
+  <h4 id="Dogged_Native_git_revspec_to" data-uid="Dogged.Native.git_revspec.to">to</h4>
+  <div class="markdown level1 summary"><p>The right element of the revspec; must be freed by the user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public git_object*to</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_object.html">git_object</a>*</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -143,10 +190,10 @@ native resources.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/dogged/dogged/new/main/apiSpec/new?filename=Dogged_NativeDisposable.md&amp;value=---%0Auid%3A%20Dogged.NativeDisposable%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/dogged/dogged/new/main/apiSpec/new?filename=Dogged_Native_git_revspec.md&amp;value=---%0Auid%3A%20Dogged.Native.git_revspec%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/dogged/dogged/blob/main/Dogged/Internal/NativeDisposable.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/dogged/dogged/blob/main/Dogged.Native/revspec.cs/#L27" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

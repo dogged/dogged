@@ -1548,6 +1548,58 @@ have not been shutdown (after this one).
   </table>
   
   
+  <a id="Dogged_Native_libgit2_git_object_dup_" data-uid="Dogged.Native.libgit2.git_object_dup*"></a>
+  <h4 id="Dogged_Native_libgit2_git_object_dup_Dogged_Native_git_object___Dogged_Native_git_object__" data-uid="Dogged.Native.libgit2.git_object_dup(Dogged.Native.git_object*@,Dogged.Native.git_object*)">git_object_dup(out git_object*, git_object*)</h4>
+  <div class="markdown level1 summary"><p>Create an in-memory copy of a Git object.  This copy must be
+explicitly free'd or it will leak.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_object_dup(out git_object*dest, git_object*source)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_object.html">git_object</a>*</td>
+        <td><span class="parametername">dest</span></td>
+        <td><p>Pointer to store the copy of the object</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_object.html">git_object</a>*</td>
+        <td><span class="parametername">source</span></td>
+        <td><p>Original object to copy</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success or an error code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="Dogged_Native_libgit2_git_object_free_" data-uid="Dogged.Native.libgit2.git_object_free*"></a>
   <h4 id="Dogged_Native_libgit2_git_object_free_Dogged_Native_git_object__" data-uid="Dogged.Native.libgit2.git_object_free(Dogged.Native.git_object*)">git_object_free(git_object*)</h4>
   <div class="markdown level1 summary"><p>Free a git object.</p>
@@ -3641,6 +3693,71 @@ repository, or it will leak.
       <tr>
         <td><span class="xref">System.String</span></td>
         <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Dogged_Native_libgit2_git_revparse_" data-uid="Dogged.Native.libgit2.git_revparse*"></a>
+  <h4 id="Dogged_Native_libgit2_git_revparse_Dogged_Native_git_revspec_Dogged_Native_git_repository__System_String_" data-uid="Dogged.Native.libgit2.git_revparse(Dogged.Native.git_revspec,Dogged.Native.git_repository*,System.String)">git_revparse(git_revspec, git_repository*, String)</h4>
+  <div class="markdown level1 summary"><p>Parse a revision string for <code>from</code>, <code>to</code>, and intent.</p>
+<p>
+ See `man gitrevisions` or
+http://git-scm.com/docs/git-rev-parse.html#_specifying_revisions
+for information on the syntax accepted.
+</p>
+<p>
+The contents of the revspec object must be freed by the user.
+</p>
+<param name="revspec">Pointer to an user-allocated git_revspec struct where the result of the rev-parse will be stored
+<param name="repo">the repository to search in
+<param name="spec">the revision spec to parse
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int git_revparse(git_revspec revspec, git_repository*repo, string spec)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_revspec.html">git_revspec</a></td>
+        <td><span class="parametername">revspec</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Dogged.Native.git_repository.html">git_repository</a>*</td>
+        <td><span class="parametername">repo</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">spec</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 on success, GIT_INVALIDSPEC, GIT_ENOTFOUND, GIT_EAMBIGUOUS or an error code</p>
+</td>
       </tr>
     </tbody>
   </table>

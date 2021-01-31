@@ -922,6 +922,32 @@ references:
   commentId: F:Dogged.Native.git_blob_filter_options.flags
   fullName: Dogged.Native.git_blob_filter_options.flags
   nameWithType: git_blob_filter_options.flags
+- uid: Dogged.Native.git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_INIT
+  name: GIT_BLOB_FILTER_OPTIONS_INIT
+  href: api/dogged.native/Dogged.Native.git_blob_filter_options.html#Dogged_Native_git_blob_filter_options_GIT_BLOB_FILTER_OPTIONS_INIT
+  commentId: P:Dogged.Native.git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_INIT
+  fullName: Dogged.Native.git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_INIT
+  nameWithType: git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_INIT
+- uid: Dogged.Native.git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_INIT*
+  name: GIT_BLOB_FILTER_OPTIONS_INIT
+  href: api/dogged.native/Dogged.Native.git_blob_filter_options.html#Dogged_Native_git_blob_filter_options_GIT_BLOB_FILTER_OPTIONS_INIT_
+  commentId: Overload:Dogged.Native.git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_INIT
+  isSpec: "True"
+  fullName: Dogged.Native.git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_INIT
+  nameWithType: git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_INIT
+- uid: Dogged.Native.git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_VERSION
+  name: GIT_BLOB_FILTER_OPTIONS_VERSION
+  href: api/dogged.native/Dogged.Native.git_blob_filter_options.html#Dogged_Native_git_blob_filter_options_GIT_BLOB_FILTER_OPTIONS_VERSION
+  commentId: P:Dogged.Native.git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_VERSION
+  fullName: Dogged.Native.git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_VERSION
+  nameWithType: git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_VERSION
+- uid: Dogged.Native.git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_VERSION*
+  name: GIT_BLOB_FILTER_OPTIONS_VERSION
+  href: api/dogged.native/Dogged.Native.git_blob_filter_options.html#Dogged_Native_git_blob_filter_options_GIT_BLOB_FILTER_OPTIONS_VERSION_
+  commentId: Overload:Dogged.Native.git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_VERSION
+  isSpec: "True"
+  fullName: Dogged.Native.git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_VERSION
+  nameWithType: git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_VERSION
 - uid: Dogged.Native.git_blob_filter_options.version
   name: version
   href: api/dogged.native/Dogged.Native.git_blob_filter_options.html#Dogged_Native_git_blob_filter_options_version
@@ -2050,6 +2076,54 @@ references:
   commentId: T:Dogged.Native.git_repository
   fullName: Dogged.Native.git_repository
   nameWithType: git_repository
+- uid: Dogged.Native.git_revspec
+  name: git_revspec
+  href: api/dogged.native/Dogged.Native.git_revspec.html
+  commentId: T:Dogged.Native.git_revspec
+  fullName: Dogged.Native.git_revspec
+  nameWithType: git_revspec
+- uid: Dogged.Native.git_revspec.flags
+  name: flags
+  href: api/dogged.native/Dogged.Native.git_revspec.html#Dogged_Native_git_revspec_flags
+  commentId: F:Dogged.Native.git_revspec.flags
+  fullName: Dogged.Native.git_revspec.flags
+  nameWithType: git_revspec.flags
+- uid: Dogged.Native.git_revspec.from
+  name: from
+  href: api/dogged.native/Dogged.Native.git_revspec.html#Dogged_Native_git_revspec_from
+  commentId: F:Dogged.Native.git_revspec.from
+  fullName: Dogged.Native.git_revspec.from
+  nameWithType: git_revspec.from
+- uid: Dogged.Native.git_revspec.to
+  name: to
+  href: api/dogged.native/Dogged.Native.git_revspec.html#Dogged_Native_git_revspec_to
+  commentId: F:Dogged.Native.git_revspec.to
+  fullName: Dogged.Native.git_revspec.to
+  nameWithType: git_revspec.to
+- uid: Dogged.Native.git_revspec_t
+  name: git_revspec_t
+  href: api/dogged.native/Dogged.Native.git_revspec_t.html
+  commentId: T:Dogged.Native.git_revspec_t
+  fullName: Dogged.Native.git_revspec_t
+  nameWithType: git_revspec_t
+- uid: Dogged.Native.git_revspec_t.GIT_REVSPEC_MERGE_BASE
+  name: GIT_REVSPEC_MERGE_BASE
+  href: api/dogged.native/Dogged.Native.git_revspec_t.html#Dogged_Native_git_revspec_t_GIT_REVSPEC_MERGE_BASE
+  commentId: F:Dogged.Native.git_revspec_t.GIT_REVSPEC_MERGE_BASE
+  fullName: Dogged.Native.git_revspec_t.GIT_REVSPEC_MERGE_BASE
+  nameWithType: git_revspec_t.GIT_REVSPEC_MERGE_BASE
+- uid: Dogged.Native.git_revspec_t.GIT_REVSPEC_RANGE
+  name: GIT_REVSPEC_RANGE
+  href: api/dogged.native/Dogged.Native.git_revspec_t.html#Dogged_Native_git_revspec_t_GIT_REVSPEC_RANGE
+  commentId: F:Dogged.Native.git_revspec_t.GIT_REVSPEC_RANGE
+  fullName: Dogged.Native.git_revspec_t.GIT_REVSPEC_RANGE
+  nameWithType: git_revspec_t.GIT_REVSPEC_RANGE
+- uid: Dogged.Native.git_revspec_t.GIT_REVSPEC_SINGLE
+  name: GIT_REVSPEC_SINGLE
+  href: api/dogged.native/Dogged.Native.git_revspec_t.html#Dogged_Native_git_revspec_t_GIT_REVSPEC_SINGLE
+  commentId: F:Dogged.Native.git_revspec_t.GIT_REVSPEC_SINGLE
+  fullName: Dogged.Native.git_revspec_t.GIT_REVSPEC_SINGLE
+  nameWithType: git_revspec_t.GIT_REVSPEC_SINGLE
 - uid: Dogged.Native.git_signature
   name: git_signature
   href: api/dogged.native/Dogged.Native.git_signature.html
@@ -2485,6 +2559,21 @@ references:
   commentId: Overload:Dogged.Native.libgit2.git_libgit2_shutdown
   fullName: Dogged.Native.libgit2.git_libgit2_shutdown
   nameWithType: libgit2.git_libgit2_shutdown
+- uid: Dogged.Native.libgit2.git_object_dup(Dogged.Native.git_object*@,Dogged.Native.git_object*)
+  name: git_object_dup(out git_object*, git_object*)
+  href: api/dogged.native/Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_object_dup_Dogged_Native_git_object___Dogged_Native_git_object__
+  commentId: M:Dogged.Native.libgit2.git_object_dup(Dogged.Native.git_object*@,Dogged.Native.git_object*)
+  name.vb: git_object_dup(ByRef git_object*, git_object*)
+  fullName: Dogged.Native.libgit2.git_object_dup(out Dogged.Native.git_object*, Dogged.Native.git_object*)
+  fullName.vb: Dogged.Native.libgit2.git_object_dup(ByRef Dogged.Native.git_object*, Dogged.Native.git_object*)
+  nameWithType: libgit2.git_object_dup(out git_object*, git_object*)
+  nameWithType.vb: libgit2.git_object_dup(ByRef git_object*, git_object*)
+- uid: Dogged.Native.libgit2.git_object_dup*
+  name: git_object_dup
+  href: api/dogged.native/Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_object_dup_
+  commentId: Overload:Dogged.Native.libgit2.git_object_dup
+  fullName: Dogged.Native.libgit2.git_object_dup
+  nameWithType: libgit2.git_object_dup
 - uid: Dogged.Native.libgit2.git_object_free(Dogged.Native.git_object*)
   name: git_object_free(git_object*)
   href: api/dogged.native/Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_object_free_Dogged_Native_git_object__
@@ -3043,6 +3132,18 @@ references:
   commentId: Overload:Dogged.Native.libgit2.git_repository_workdir
   fullName: Dogged.Native.libgit2.git_repository_workdir
   nameWithType: libgit2.git_repository_workdir
+- uid: Dogged.Native.libgit2.git_revparse(Dogged.Native.git_revspec,Dogged.Native.git_repository*,System.String)
+  name: git_revparse(git_revspec, git_repository*, String)
+  href: api/dogged.native/Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_revparse_Dogged_Native_git_revspec_Dogged_Native_git_repository__System_String_
+  commentId: M:Dogged.Native.libgit2.git_revparse(Dogged.Native.git_revspec,Dogged.Native.git_repository*,System.String)
+  fullName: Dogged.Native.libgit2.git_revparse(Dogged.Native.git_revspec, Dogged.Native.git_repository*, System.String)
+  nameWithType: libgit2.git_revparse(git_revspec, git_repository*, String)
+- uid: Dogged.Native.libgit2.git_revparse*
+  name: git_revparse
+  href: api/dogged.native/Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_revparse_
+  commentId: Overload:Dogged.Native.libgit2.git_revparse
+  fullName: Dogged.Native.libgit2.git_revparse
+  nameWithType: libgit2.git_revparse
 - uid: Dogged.Native.libgit2.git_tree_entry_byindex(Dogged.Native.git_tree*,UIntPtr)
   name: git_tree_entry_byindex(git_tree*, UIntPtr)
   href: api/dogged.native/Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_tree_entry_byindex_Dogged_Native_git_tree__UIntPtr_
@@ -3890,6 +3991,88 @@ references:
   isSpec: "True"
   fullName: Dogged.RepositoryNotFoundException.RepositoryNotFoundException
   nameWithType: RepositoryNotFoundException.RepositoryNotFoundException
+- uid: Dogged.RevisionSpec
+  name: RevisionSpec
+  href: api/dogged/Dogged.RevisionSpec.html
+  commentId: T:Dogged.RevisionSpec
+  fullName: Dogged.RevisionSpec
+  nameWithType: RevisionSpec
+- uid: Dogged.RevisionSpec.From
+  name: From
+  href: api/dogged/Dogged.RevisionSpec.html#Dogged_RevisionSpec_From
+  commentId: P:Dogged.RevisionSpec.From
+  fullName: Dogged.RevisionSpec.From
+  nameWithType: RevisionSpec.From
+- uid: Dogged.RevisionSpec.From*
+  name: From
+  href: api/dogged/Dogged.RevisionSpec.html#Dogged_RevisionSpec_From_
+  commentId: Overload:Dogged.RevisionSpec.From
+  isSpec: "True"
+  fullName: Dogged.RevisionSpec.From
+  nameWithType: RevisionSpec.From
+- uid: Dogged.RevisionSpec.Parse(Dogged.Repository,System.String)
+  name: Parse(Repository, String)
+  href: api/dogged/Dogged.RevisionSpec.html#Dogged_RevisionSpec_Parse_Dogged_Repository_System_String_
+  commentId: M:Dogged.RevisionSpec.Parse(Dogged.Repository,System.String)
+  fullName: Dogged.RevisionSpec.Parse(Dogged.Repository, System.String)
+  nameWithType: RevisionSpec.Parse(Repository, String)
+- uid: Dogged.RevisionSpec.Parse*
+  name: Parse
+  href: api/dogged/Dogged.RevisionSpec.html#Dogged_RevisionSpec_Parse_
+  commentId: Overload:Dogged.RevisionSpec.Parse
+  isSpec: "True"
+  fullName: Dogged.RevisionSpec.Parse
+  nameWithType: RevisionSpec.Parse
+- uid: Dogged.RevisionSpec.To
+  name: To
+  href: api/dogged/Dogged.RevisionSpec.html#Dogged_RevisionSpec_To
+  commentId: P:Dogged.RevisionSpec.To
+  fullName: Dogged.RevisionSpec.To
+  nameWithType: RevisionSpec.To
+- uid: Dogged.RevisionSpec.To*
+  name: To
+  href: api/dogged/Dogged.RevisionSpec.html#Dogged_RevisionSpec_To_
+  commentId: Overload:Dogged.RevisionSpec.To
+  isSpec: "True"
+  fullName: Dogged.RevisionSpec.To
+  nameWithType: RevisionSpec.To
+- uid: Dogged.RevisionSpec.Type
+  name: Type
+  href: api/dogged/Dogged.RevisionSpec.html#Dogged_RevisionSpec_Type
+  commentId: P:Dogged.RevisionSpec.Type
+  fullName: Dogged.RevisionSpec.Type
+  nameWithType: RevisionSpec.Type
+- uid: Dogged.RevisionSpec.Type*
+  name: Type
+  href: api/dogged/Dogged.RevisionSpec.html#Dogged_RevisionSpec_Type_
+  commentId: Overload:Dogged.RevisionSpec.Type
+  isSpec: "True"
+  fullName: Dogged.RevisionSpec.Type
+  nameWithType: RevisionSpec.Type
+- uid: Dogged.RevisionSpecType
+  name: RevisionSpecType
+  href: api/dogged/Dogged.RevisionSpecType.html
+  commentId: T:Dogged.RevisionSpecType
+  fullName: Dogged.RevisionSpecType
+  nameWithType: RevisionSpecType
+- uid: Dogged.RevisionSpecType.MergeBase
+  name: MergeBase
+  href: api/dogged/Dogged.RevisionSpecType.html#Dogged_RevisionSpecType_MergeBase
+  commentId: F:Dogged.RevisionSpecType.MergeBase
+  fullName: Dogged.RevisionSpecType.MergeBase
+  nameWithType: RevisionSpecType.MergeBase
+- uid: Dogged.RevisionSpecType.Range
+  name: Range
+  href: api/dogged/Dogged.RevisionSpecType.html#Dogged_RevisionSpecType_Range
+  commentId: F:Dogged.RevisionSpecType.Range
+  fullName: Dogged.RevisionSpecType.Range
+  nameWithType: RevisionSpecType.Range
+- uid: Dogged.RevisionSpecType.Single
+  name: Single
+  href: api/dogged/Dogged.RevisionSpecType.html#Dogged_RevisionSpecType_Single
+  commentId: F:Dogged.RevisionSpecType.Single
+  fullName: Dogged.RevisionSpecType.Single
+  nameWithType: RevisionSpecType.Single
 - uid: Dogged.Signature
   name: Signature
   href: api/dogged/Dogged.Signature.html
