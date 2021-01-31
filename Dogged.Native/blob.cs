@@ -26,10 +26,47 @@ namespace Dogged.Native
         GIT_BLOB_FILTER_ATTTRIBUTES_FROM_HEAD = (1 << 2),
     }
 
+    /// <summary>
+    /// The options used when applying filter options to a file.
+    /// Initialize with `GIT_BLOB_FILTER_OPTIONS_INIT`.
+    /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public unsafe struct git_blob_filter_options
     {
+        /// <summary>
+        /// Version of the options.
+        /// </summary>
         public int version;
+
+        /// <summary>
+        /// Flags to control the filtering process, see
+        /// `git_blob_filter_flag_t` above.
+        /// </summary>
         public git_blob_filter_flag_t flags;
+
+        /// <summary>
+        /// Current version of the options structure.
+        /// </summary>
+        public static int GIT_BLOB_FILTER_OPTIONS_VERSION
+        {
+            get
+            {
+                return 1;
+            }
+        }
+
+        /// <summary>
+        /// The default values for our options structure.
+        /// </summary>
+        public static git_blob_filter_options GIT_BLOB_FILTER_OPTIONS_INIT
+        {
+            get
+            {
+                return new git_blob_filter_options() {
+                    version = GIT_BLOB_FILTER_OPTIONS_VERSION,
+                    flags = git_blob_filter_flag_t.GIT_BLOB_FILTER_CHECK_FOR_BINARY
+                };
+            }
+        }
     }
 }

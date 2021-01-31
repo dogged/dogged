@@ -65,6 +65,27 @@ namespace Dogged
             throw new InvalidOperationException("unknown object type");
         }
 
+        internal unsafe static GitObject DuplicateNative(git_object* obj, ObjectId id = null)
+        {
+            // git_object_dup will increase its internal refcount
+            // on the object, so that the caller can dispose it
+            // independently of this object.
+            git_object* dup = null;
+
+            Ensure.NativeSuccess(libgit2.git_object_dup(out dup, obj));
+            Ensure.NativePointerNotNull(dup);
+
+            try
+            {
+                return GitObject.FromNative(dup);
+            }
+            catch (Exception)
+            {
+                libgit2.git_object_free(dup);
+                throw;
+            }
+        }
+
         internal unsafe static GitObject FromNative(git_object* obj, ObjectId id = null)
         {
             switch (libgit2.git_object_type(obj))
