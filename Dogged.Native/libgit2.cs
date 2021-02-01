@@ -964,14 +964,38 @@ namespace Dogged.Native
         /// <para>
         /// The contents of the revspec object must be freed by the user.
         /// </para>
-        /// <param name="revspec">Pointer to an user-allocated git_revspec struct where the result of the rev-parse will be stored</param>
-        /// <param name="repo">the repository to search in</param>
-        /// <param name="spec">the revision spec to parse</param>
         /// </summary>
+        /// <param name="revspec">Pointer to an user-allocated git_revspec struct where the result of the rev-parse will be stored</param>
+        /// <param name="repo">The repository to search in</param>
+        /// <param name="spec">The revision spec to parse</param>
         /// <returns>0 on success, GIT_INVALIDSPEC, GIT_ENOTFOUND, GIT_EAMBIGUOUS or an error code</returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe int git_revparse(
             git_revspec revspec,
+            git_repository* repo,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string spec);
+
+        /// <summary>
+        /// Find a single object, as specified by a revision string.
+        ///
+        /// <para>
+        /// See `man gitrevisions`, or
+        /// http://git-scm.com/docs/git-rev-parse.html#_specifying_revisions
+        /// for information on the syntax accepted.
+        /// </para>
+        ///
+        /// <para>
+        /// The returned object should be released with `git_object_free` when
+        /// no longer needed.
+        /// </para>
+        /// </summary>
+        /// <param name="obj">Pointer to output object</param>
+        /// <param name="repo">The repository to search in</param>
+        /// <param name="spec">The textual specification for an object</param>
+        /// <returns>0 on success, GIT_ENOTFOUND, GIT_EAMBIGUOUS, GIT_EINVALIDSPEC or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_revparse_single(
+            out git_object* obj,
             git_repository* repo,
             [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string spec);
 

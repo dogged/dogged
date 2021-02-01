@@ -1,3 +1,4 @@
+using System;
 using Dogged.Native;
 
 namespace Dogged
@@ -37,6 +38,23 @@ namespace Dogged
 
             Ensure.NativeSuccess(() => libgit2.git_revparse(obj.nativeObject, repository.NativeRepository, spec), repository);
             return obj;
+        }
+
+        public unsafe static GitObject ParseSingle(Repository repository, string spec)
+        {
+            git_object* obj = null;
+
+            Ensure.NativeSuccess(() => libgit2.git_revparse_single(out obj, repository.NativeRepository, spec), repository);
+
+            try
+            {
+                return GitObject.FromNative(obj);
+            }
+            catch (Exception)
+            {
+                libgit2.git_object_free(obj);
+                throw;
+            }
         }
 
         public unsafe GitObject From

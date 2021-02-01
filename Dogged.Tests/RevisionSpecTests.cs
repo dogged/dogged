@@ -62,5 +62,30 @@ namespace Dogged.Tests
                 Assert.Throws<InvalidSpecificationException>(() => RevisionSpec.Parse(repo, spec));
             }
         }
+
+        [Theory]
+        [InlineData("HEAD", "a65fedf39aefe402d3bb6e24df4d4f5fe4547750")]
+        [InlineData("be3563a", "be3563ae3f795b2b4353bcce3a527ad0a4f7f644")]
+        [InlineData("HEAD~3", "4a202b346bb0fb0db7eff3cffeb3c70babbd2045")]
+        [InlineData("be3563a^1", "9fd738e8f7967c078dceed8190330fc8648ee56a")]
+        public void CanRevparseSingle(string spec, string expected)
+        {
+            using (var repo = SandboxRepository("testrepo.git"))
+            using (var obj = RevisionSpec.ParseSingle(repo, spec))
+            {
+                Assert.Equal(new ObjectId(expected), obj.Id);
+            }
+        }
+
+        [Theory]
+        [InlineData("..")]
+        [InlineData("be3563a^1.be3563a")]
+        public void ThrowsOnInvalidRevspec(string spec)
+        {
+            using (var repo = SandboxRepository("testrepo.git"))
+            {
+                Assert.Throws<InvalidSpecificationException>(() => RevisionSpec.ParseSingle(repo, spec));
+            }
+        }
     }
 }
