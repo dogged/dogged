@@ -60,10 +60,16 @@ jobs:
       if: matrix.os == 'windows-latest'
     - uses: actions/upload-artifact@v2
       with:
-        name: nuget
-        path: ${{ github.workspace }}/package/*
+        name: Dogged-${{ env.BUILD_NUMBER }}.nupkg
+        path: ${{ github.workspace }}/package/Dogged.${{ env.BUILD_NUMBER }}.nupkg
       if: matrix.os == 'windows-latest'
-      name: 'Upload Package'
+      name: 'Upload Dogged Package'
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Dogged.Native-${{ env.BUILD_NUMBER }}.nupkg
+        path: ${{ github.workspace }}/package/Dogged.Native.${{ env.BUILD_NUMBER }}.nupkg
+      if: matrix.os == 'windows-latest'
+      name: 'Upload Dogged.Native Package'
 
   documentation:
     runs-on: windows-latest
