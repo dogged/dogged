@@ -58,10 +58,10 @@ jobs:
       shell: pwsh
       name: Package
       if: matrix.os == 'windows-latest'
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v2
       with:
         name: nuget
-        path: ${{ github.workspace }}/package
+        path: ${{ github.workspace }}/package/*
       if: matrix.os == 'windows-latest'
       name: 'Upload Package'
 
