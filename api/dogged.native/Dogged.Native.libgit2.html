@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class libgit2
    ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="generator" content="docfx 2.58.2.0">
     
     <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
     <link rel="icon" href="../../favicon-32x32.png" type="image/png" sizes="32x32">
@@ -104,7 +104,7 @@ the native library.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_blob_filter(git_buf content, git_blob*blob, string path, git_blob_filter_options*options)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_blob_filter(git_buf content, git_blob*blob, string path, git_blob_filter_options*options)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -161,7 +161,7 @@ the native library.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_blob_is_binary(git_blob*blob)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_blob_is_binary(git_blob*blob)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -204,7 +204,7 @@ the native library.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_blob_lookup(out git_blob*blob, git_repository*repo, ref git_oid id)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_blob_lookup(out git_blob*blob, git_repository*repo, ref git_oid id)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -260,7 +260,7 @@ the native library.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static byte *git_blob_rawcontent(git_blob*blob)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern byte *git_blob_rawcontent(git_blob*blob)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -303,7 +303,7 @@ the native library.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static long git_blob_rawsize(git_blob*blob)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern long git_blob_rawsize(git_blob*blob)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -347,7 +347,7 @@ the native library.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void git_buf_dispose(git_buf buf)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern void git_buf_dispose(git_buf buf)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -380,7 +380,7 @@ customize how these are created.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_clone(out git_repository*repo, string remotePath, string localPath, git_clone_options*options)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_clone(out git_repository*repo, string remotePath, string localPath, git_clone_options*options)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -444,7 +444,7 @@ by the commit and should not be freed.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static git_signature*git_commit_author(git_commit*commit)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern git_signature*git_commit_author(git_commit*commit)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -490,7 +490,7 @@ by the commit and should not be freed.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static git_signature*git_commit_committer(git_commit*commit)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern git_signature*git_commit_committer(git_commit*commit)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -535,7 +535,7 @@ by the commit and should not be freed.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_commit_lookup(out git_commit*obj, git_repository*repo, ref git_oid id)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_commit_lookup(out git_commit*obj, git_repository*repo, ref git_oid id)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -593,7 +593,7 @@ freed when it is no longer needed.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_commit_tree(out git_tree*tree, git_commit*commit)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_commit_tree(out git_tree*tree, git_commit*commit)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -646,7 +646,7 @@ attempts are made to lookup the tree or validate it.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static git_oid*git_commit_tree_id(git_commit*commit)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern git_oid*git_commit_tree_id(git_commit*commit)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -693,7 +693,7 @@ undefined if the last libgit2 function did not return an error.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static git_error*git_error_last()</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern git_error*git_error_last()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -720,7 +720,7 @@ undefined if the last libgit2 function did not return an error.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_filter_list_apply_to_blob(git_buf outputBuffer, git_filter_list*filters, git_blob*blob)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_filter_list_apply_to_blob(git_buf outputBuffer, git_filter_list*filters, git_blob*blob)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -789,7 +789,7 @@ to it!
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_filter_list_apply_to_data(git_buf outputBuffer, git_filter_list*filters, git_buf inputBuffer)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_filter_list_apply_to_data(git_buf outputBuffer, git_filter_list*filters, git_buf inputBuffer)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -846,7 +846,7 @@ to it!
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_filter_list_apply_to_file(git_buf outputBuffer, git_filter_list*filters, git_repository*repo, string path)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_filter_list_apply_to_file(git_buf outputBuffer, git_filter_list*filters, git_repository*repo, string path)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -908,7 +908,7 @@ to it!
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void git_filter_list_free(git_filter_list*filters)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern void git_filter_list_free(git_filter_list*filters)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -941,7 +941,7 @@ to NULL if no filters are requested for the given file.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_filter_list_load(out git_filter_list*filters, git_repository*repo, git_blob*blob, string path, git_filter_mode_t mode, uint flags)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_filter_list_load(out git_filter_list*filters, git_repository*repo, git_blob*blob, string path, git_filter_mode_t mode, uint flags)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1016,7 +1016,7 @@ to NULL if no filters are requested for the given file.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static UIntPtr git_index_entrycount(git_index*index)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern UIntPtr git_index_entrycount(git_index*index)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1061,7 +1061,7 @@ to NULL if no filters are requested for the given file.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void git_index_free(git_index*index)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern void git_index_free(git_index*index)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1095,7 +1095,7 @@ be able to make your own permanent copy of the data if necessary.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static git_index_entry*git_index_get_byindex(git_index*index, UIntPtr n)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern git_index_entry*git_index_get_byindex(git_index*index, UIntPtr n)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1161,7 +1161,7 @@ be able to make your own permanent copy of the data if necessary.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static git_index_entry*git_index_get_bypath(git_index*index, string path, int stage)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern git_index_entry*git_index_get_bypath(git_index*index, string path, int stage)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1218,7 +1218,7 @@ be able to make your own permanent copy of the data if necessary.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void git_index_iterator_free(git_index_iterator*iterator)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern void git_index_iterator_free(git_index_iterator*iterator)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1248,7 +1248,7 @@ given index for iteration.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_index_iterator_new(out git_index_iterator*iterator, git_index*index)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_index_iterator_new(out git_index_iterator*iterator, git_index*index)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1300,7 +1300,7 @@ by the iterator and should not be freed.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_index_iterator_next(out git_index_entry*entry, git_index_iterator*iterator)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_index_iterator_next(out git_index_entry*entry, git_index_iterator*iterator)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1352,7 +1352,7 @@ functionality that is built in to the library.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static git_feature_t git_libgit2_features()</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern git_feature_t git_libgit2_features()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1388,7 +1388,7 @@ this one) that have not subsequently been shutdown.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_libgit2_init()</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_libgit2_init()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1415,7 +1415,7 @@ this one) that have not subsequently been shutdown.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_libgit2_opts(git_libgit2_opt_t option, git_config_level_t level, git_buf buf)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_libgit2_opts(git_libgit2_opt_t option, git_config_level_t level, git_buf buf)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1469,7 +1469,7 @@ this one) that have not subsequently been shutdown.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_libgit2_opts(git_libgit2_opt_t option, git_config_level_t level, string path)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_libgit2_opts(git_libgit2_opt_t option, git_config_level_t level, string path)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1528,7 +1528,7 @@ have not been shutdown (after this one).
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_libgit2_shutdown()</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_libgit2_shutdown()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1556,7 +1556,7 @@ explicitly free'd or it will leak.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_object_dup(out git_object*dest, git_object*source)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_object_dup(out git_object*dest, git_object*source)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1607,7 +1607,7 @@ explicitly free'd or it will leak.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void git_object_free(git_object*obj)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern void git_object_free(git_object*obj)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1636,7 +1636,7 @@ explicitly free'd or it will leak.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static git_oid*git_object_id(git_object*obj)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern git_oid*git_object_id(git_object*obj)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1681,7 +1681,7 @@ explicitly free'd or it will leak.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_object_lookup(out git_object*obj, git_repository*repo, ref git_oid id, git_object_t type)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_object_lookup(out git_object*obj, git_repository*repo, ref git_oid id, git_object_t type)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1744,7 +1744,7 @@ explicitly free'd or it will leak.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static git_object_t git_object_type(git_object*obj)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern git_object_t git_object_type(git_object*obj)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1793,7 +1793,7 @@ value of the `priority` parameter.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_odb_add_backend(git_odb*odb, git_odb_backend*backend, int priority)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_odb_add_backend(git_odb*odb, git_odb_backend*backend, int priority)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1854,7 +1854,7 @@ remaining 38 characters of their ID.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_odb_backend_loose(out git_odb_backend*backend, string objects_dir, int compression_level, int do_fsync, uint dir_mode, uint file_mode)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_odb_backend_loose(out git_odb_backend*backend, string objects_dir, int compression_level, int do_fsync, uint dir_mode, uint file_mode)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1930,7 +1930,7 @@ inspecting the contents of a single packfile.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_odb_backend_one_pack(out git_odb_backend*backend, string index_file)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_odb_backend_one_pack(out git_odb_backend*backend, string index_file)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1984,7 +1984,7 @@ directory will be consulted as storage for the object database.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_odb_backend_pack(out git_odb_backend*backend, string objects_dir)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_odb_backend_pack(out git_odb_backend*backend, string objects_dir)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2041,7 +2041,7 @@ Return a non-zero value from the callback to stop looping.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_odb_foreach(git_odb*odb, git_odb_foreach_cb cb, IntPtr payload)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_odb_foreach(git_odb*odb, git_odb_foreach_cb cb, IntPtr payload)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2098,7 +2098,7 @@ Return a non-zero value from the callback to stop looping.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void git_odb_free(git_odb*odb)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern void git_odb_free(git_odb*odb)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2131,7 +2131,7 @@ backend must be manually added using `git_odb_add_backend()`
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_odb_new(out git_odb*odb)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_odb_new(out git_odb*odb)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2177,7 +2177,7 @@ raw data as read from the ODB, without the leading header.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static byte *git_odb_object_data(git_odb_object*obj)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern byte *git_odb_object_data(git_odb_object*obj)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2223,7 +2223,7 @@ git_odb_object is no longer needed, otherwise memory will leak.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void git_odb_object_free(git_odb_object*obj)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern void git_odb_object_free(git_odb_object*obj)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2251,7 +2251,7 @@ git_odb_object is no longer needed, otherwise memory will leak.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static git_oid*git_odb_object_id(git_odb_object*obj)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern git_oid*git_odb_object_id(git_odb_object*obj)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2295,7 +2295,7 @@ data buffer, not the actual size of the object.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static UIntPtr git_odb_object_size(git_odb_object*obj)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern UIntPtr git_odb_object_size(git_odb_object*obj)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2340,7 +2340,7 @@ data buffer, not the actual size of the object.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static git_object_t git_odb_object_type(git_odb_object*obj)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern git_object_t git_odb_object_type(git_odb_object*obj)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2389,7 +2389,7 @@ trying to read the given OID.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_odb_read(out git_odb_object*obj, git_odb*odb, ref git_oid id)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_odb_read(out git_odb_object*obj, git_odb*odb, ref git_oid id)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2455,7 +2455,7 @@ header will be returned.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_odb_read_header(out UIntPtr len_out, out git_object_t type, git_odb*odb, ref git_oid id)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_odb_read_header(out UIntPtr len_out, out git_object_t type, git_odb*odb, ref git_oid id)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2527,7 +2527,7 @@ which are not able to support streaming writes
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_odb_write(ref git_oid id, git_odb*odb, byte *data, UIntPtr len, git_object_t type)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_odb_write(ref git_oid id, git_odb*odb, byte *data, UIntPtr len, git_object_t type)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2596,7 +2596,7 @@ which are not able to support streaming writes
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void git_reference_free(git_reference*reference)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern void git_reference_free(git_reference*reference)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2625,7 +2625,7 @@ which are not able to support streaming writes
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void git_reference_iterator_free(git_reference_iterator*iterator)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern void git_reference_iterator_free(git_reference_iterator*iterator)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2654,7 +2654,7 @@ which are not able to support streaming writes
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_reference_iterator_new(out git_reference_iterator*iterator, git_repository*repository)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_reference_iterator_new(out git_reference_iterator*iterator, git_repository*repository)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2705,7 +2705,7 @@ reference must be freed by the user.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_reference_lookup(out git_reference*reference, git_repository*repo, string name)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_reference_lookup(out git_reference*reference, git_repository*repo, string name)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2762,7 +2762,7 @@ reference must be freed by the user.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string git_reference_name(git_reference*reference)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern string git_reference_name(git_reference*reference)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2807,7 +2807,7 @@ reference must be freed by the user.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_reference_next(out git_reference*reference, git_reference_iterator*iterator)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_reference_next(out git_reference*reference, git_reference_iterator*iterator)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2859,7 +2859,7 @@ is found.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_reference_peel(out git_object*obj, git_reference*reference, git_object_t type)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_reference_peel(out git_object*obj, git_reference*reference, git_object_t type)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2917,7 +2917,7 @@ function is only supported for symbolic references.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string git_reference_symbolic_target(git_reference*reference)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern string git_reference_symbolic_target(git_reference*reference)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2963,7 +2963,7 @@ supported for direct references.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static git_oid*git_reference_target(git_reference*reference)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern git_oid*git_reference_target(git_reference*reference)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3008,7 +3008,7 @@ supported for direct references.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static git_reference_t git_reference_type(git_reference*reference)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern git_reference_t git_reference_type(git_reference*reference)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3052,7 +3052,7 @@ supported for direct references.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_repository_discover(git_buf path, string start_path, int across_fs, string ceiling_dirs)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_repository_discover(git_buf path, string start_path, int across_fs, string ceiling_dirs)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3118,7 +3118,7 @@ will result in undefined behavior.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void git_repository_free(git_repository*repo)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern void git_repository_free(git_repository*repo)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3152,7 +3152,7 @@ done to release the allocated memory.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_repository_head(out git_reference*reference, git_repository*repo)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_repository_head(out git_reference*reference, git_repository*repo)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3204,7 +3204,7 @@ of a branch.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_repository_head_detached(git_repository*repo)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_repository_head_detached(git_repository*repo)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3257,7 +3257,7 @@ user.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_repository_index(out git_index*index, git_repository*repo)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_repository_index(out git_index*index, git_repository*repo)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3308,7 +3308,7 @@ user.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_repository_init(out git_repository*repo, string path, uint bare)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_repository_init(out git_repository*repo, string path, uint bare)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3365,7 +3365,7 @@ user.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_repository_is_bare(git_repository*repo)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_repository_is_bare(git_repository*repo)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3414,7 +3414,7 @@ with a non-filesystem-backed object database and config store.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_repository_new(out git_repository*repo)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_repository_new(out git_repository*repo)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3466,7 +3466,7 @@ The ODB must be freed once it&apos;s no longer being used by the user.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_repository_odb(out git_odb*odb, git_repository*repo)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_repository_odb(out git_odb*odb, git_repository*repo)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3526,7 +3526,7 @@ given path is neither.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_repository_open(out git_repository*repo, string path)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_repository_open(out git_repository*repo, string path)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3576,7 +3576,7 @@ given path is neither.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string git_repository_path(git_repository*repository)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern string git_repository_path(git_repository*repository)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3628,7 +3628,7 @@ repository, or it will leak.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void git_repository_set_odb(git_repository*repo, git_odb*odb)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern void git_repository_set_odb(git_repository*repo, git_odb*odb)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3662,7 +3662,7 @@ repository, or it will leak.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string git_repository_workdir(git_repository*repository)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern string git_repository_workdir(git_repository*repository)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3716,7 +3716,7 @@ The contents of the revspec object must be freed by the user.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_revparse(git_revspec revspec, git_repository*repo, string spec)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_revparse(git_revspec revspec, git_repository*repo, string spec)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3774,7 +3774,7 @@ freed when the owning tree is freed.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static git_tree_entry*git_tree_entry_byindex(git_tree*tree, UIntPtr n)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern git_tree_entry*git_tree_entry_byindex(git_tree*tree, UIntPtr n)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3829,7 +3829,7 @@ freed when the owning tree is freed.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static git_tree_entry*git_tree_entry_byname(git_tree*tree, string filename)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern git_tree_entry*git_tree_entry_byname(git_tree*tree, string filename)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3880,7 +3880,7 @@ freed when the owning tree is freed.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static uint git_tree_entry_filemode(git_tree_entry*entry)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern uint git_tree_entry_filemode(git_tree_entry*entry)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3925,7 +3925,7 @@ freed when the owning tree is freed.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static git_oid*git_tree_entry_id(git_tree_entry*entry)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern git_oid*git_tree_entry_id(git_tree_entry*entry)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3970,7 +3970,7 @@ freed when the owning tree is freed.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string git_tree_entry_name(git_tree_entry*entry)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern string git_tree_entry_name(git_tree_entry*entry)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -4015,7 +4015,7 @@ freed when the owning tree is freed.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static UIntPtr git_tree_entrycount(git_tree*tree)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern UIntPtr git_tree_entrycount(git_tree*tree)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -4060,7 +4060,7 @@ freed when the owning tree is freed.
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int git_tree_lookup(out git_tree*obj, git_repository*repo, ref git_oid id)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int git_tree_lookup(out git_tree*obj, git_repository*repo, ref git_oid id)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
