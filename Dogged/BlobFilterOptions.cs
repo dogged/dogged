@@ -1,3 +1,4 @@
+using Dogged;
 using Dogged.Native;
 
 /// <summary>
@@ -21,6 +22,12 @@ public enum BlobFilterFlags
     /// in the HEAD commit.
     /// </summary>
     AttributesFromHead = git_blob_filter_flag_t.GIT_BLOB_FILTER_ATTTRIBUTES_FROM_HEAD,
+
+    /// <summary>
+    /// When set, filters will be loaded from a `.gitattributes` file
+    /// in the specified commit.
+    /// </summary>
+    AttributesFromCommit = git_blob_filter_flag_t.GIT_BLOB_FILTER_ATTTRIBUTES_FROM_COMMIT,
 }
 
 /// <summary>
@@ -50,6 +57,23 @@ public class BlobFilterOptions
         set
         {
             nativeOptions.flags = (git_blob_filter_flag_t)((int)value);
+        }
+    }
+
+    public unsafe ObjectId CommitId
+    {
+        get
+        {
+            return ObjectId.FromNative(nativeOptions.commit_id);
+        }
+        set
+        {
+            git_oid src = value.ToNative();
+
+            fixed (git_oid* dest = &nativeOptions.commit_id)
+            {
+                ObjectId.NativeCopy(&src, dest);
+            }
         }
     }
 

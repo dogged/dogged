@@ -36,6 +36,68 @@ public enum FilterFlags
     /// in the HEAD commit.
     /// </summary>
 	AttributesFromHead = git_filter_flags_t.GIT_FILTER_ATTRIBUTES_FROM_HEAD,
+
+    /// <summary>
+    /// When set, filters will be loaded from a `.gitattributes` file
+    /// in a given commit.
+    /// </summary>
+	AttributesFromCommit = git_filter_flags_t.GIT_FILTER_ATTRIBUTES_FROM_COMMIT,
+}
+
+/// <summary>
+/// The options used when applying filter options to a file.
+/// </summary>
+public class FilterOptions
+{
+    private git_filter_options nativeOptions;
+
+    /// <summary>
+    /// Create an options structure for blob content filtering.
+    /// </summary>
+    public FilterOptions()
+    {
+        nativeOptions = git_filter_options.GIT_FILTER_OPTIONS_INIT;
+    }
+
+    /// <summary>
+    /// Flags to control the functionality of content filtering.
+    /// </summary>
+    public FilterFlags Flags
+    {
+        get
+        {
+            return (FilterFlags)nativeOptions.flags;
+        }
+        set
+        {
+            nativeOptions.flags = (git_filter_flags_t)((int)value);
+        }
+    }
+
+    public unsafe ObjectId CommitId
+    {
+        get
+        {
+            return ObjectId.FromNative(nativeOptions.commit_id);
+        }
+        set
+        {
+            git_oid src = value.ToNative();
+
+            fixed (git_oid* dest = &nativeOptions.commit_id)
+            {
+                ObjectId.NativeCopy(&src, dest);
+            }
+        }
+    }
+
+    internal git_filter_options NativeOptions
+    {
+        get
+        {
+            return nativeOptions;
+        }
+    }
 }
 
 public class FilterList : NativeDisposable
@@ -43,19 +105,20 @@ public class FilterList : NativeDisposable
     private Repository repository;
     private unsafe git_filter_list* nativeFilterList;
 
-    public unsafe static FilterList Load(Repository repository, string path, Blob blob, FilterMode mode, FilterFlags flags)
+    public unsafe static FilterList Load(Repository repository, string path, Blob blob, FilterMode mode, FilterOptions options)
     {
         Ensure.ArgumentNotNull(repository, "repository");
         Ensure.ArgumentNotNull(path, "path");
         git_filter_list* filters = null;
+        var nativeOptions = options.NativeOptions;
 
-        Ensure.NativeSuccess(() => libgit2.git_filter_list_load(out filters, repository.NativeRepository, (blob != null) ? (git_blob*)blob.NativeObject : null, path, (git_filter_mode_t)mode, (uint)flags), repository);
+        Ensure.NativeSuccess(() => libgit2.git_filter_list_load_ext(out filters, repository.NativeRepository, (blob != null) ? (git_blob*)blob.NativeObject : null, path, (git_filter_mode_t)mode, ref nativeOptions), repository);
         return (filters != null) ? FilterList.FromNative(repository, filters) : null;
     }
 
-    public unsafe static FilterList Load(Repository repository, string path, FilterMode mode, FilterFlags flags)
+    public unsafe static FilterList Load(Repository repository, string path, FilterMode mode, FilterOptions options)
     {
-        return Load(repository, path, null, mode, flags);
+        return Load(repository, path, null, mode, options);
     }
 
     private unsafe FilterList(Repository repository, git_filter_list* nativeFilterList)

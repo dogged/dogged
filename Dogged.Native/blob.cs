@@ -24,6 +24,12 @@ namespace Dogged.Native
         /// in the HEAD commit.
         /// </summary>
         GIT_BLOB_FILTER_ATTTRIBUTES_FROM_HEAD = (1 << 2),
+
+        /// <summary>
+        /// When set, filters will be loaded from a `.gitattributes` file
+        /// in the specified commit.
+        /// </summary>
+        GIT_BLOB_FILTER_ATTTRIBUTES_FROM_COMMIT = (1 << 3),
     }
 
     /// <summary>
@@ -43,6 +49,12 @@ namespace Dogged.Native
         /// `git_blob_filter_flag_t` above.
         /// </summary>
         public git_blob_filter_flag_t flags;
+
+        /// <summary>
+        /// The commit to load attributes from, when
+        /// `GIT_BLOB_FILTER_ATTRIBUTES_FROM_COMMIT` is specified.
+        /// </summary>
+        public git_oid commit_id;
 
         /// <summary>
         /// Current version of the options structure.
