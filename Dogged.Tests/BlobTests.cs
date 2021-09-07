@@ -93,6 +93,43 @@ namespace Dogged.Tests
         }
 
         [Fact]
+        public void CanGetFilteredContentInBareRepoBySpecificCommit()
+        {
+            ObjectId id = new ObjectId("799770d1cff46753a57db7a066159b5610da6e3a");
+            BlobFilterOptions options = new BlobFilterOptions() {
+                Flags = BlobFilterFlags.CheckForBinary |
+                        BlobFilterFlags.NoSystemAttributes |
+                        BlobFilterFlags.AttributesFromCommit,
+                CommitId = new ObjectId("5afb6a14a864e30787857dd92af837e8cdd2cb1b")
+            };
+
+            using (Repository repo = SandboxRepository("crlf.git"))
+            using (Blob b = repo.Objects.Lookup<Blob>(id))
+            {
+                using (GitBuffer buf = b.GetFilteredContent("file.bin", options))
+                {
+                    Assert.Equal(15, buf.Length);
+                    Assert.True(buf.Content.SequenceEqual(new ReadOnlySpan<byte>(new byte[] { 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a })));
+                    Assert.Equal(15, buf.Content.Length);
+                }
+
+                using (GitBuffer buf = b.GetFilteredContent("file.crlf", options))
+                {
+                    Assert.Equal(15, buf.Length);
+                    Assert.True(buf.Content.SequenceEqual(new ReadOnlySpan<byte>(new byte[] { 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a })));
+                    Assert.Equal(15, buf.Content.Length);
+                }
+
+                using (GitBuffer buf = b.GetFilteredContent("file.lf", options))
+                {
+                    Assert.Equal(15, buf.Length);
+                    Assert.True(buf.Content.SequenceEqual(new ReadOnlySpan<byte>(new byte[] { 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a, 0x6c, 0x66, 0x0a })));
+                    Assert.Equal(15, buf.Content.Length);
+                }
+            }
+        }
+
+        [Fact]
         public void AttemptingToAccessDisposedBlobThrows()
         {
             Blob blob;

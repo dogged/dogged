@@ -9,7 +9,7 @@ namespace Dogged.Native
     /// <see cref="git_libgit2_init"/> function will be called to set up
     /// the native library.
     /// </summary>
-    public static class libgit2
+    public static partial class libgit2
     {
         private const string libgit2_dll = NativeLibrary.Filename;
 
@@ -262,6 +262,30 @@ namespace Dogged.Native
             [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path,
             git_filter_mode_t mode,
             uint flags);
+
+        /// <summary>
+        /// Load the filter list for a given path.
+        ///
+        /// <para>
+        /// This will return 0 (success) but set the output git_filter_list
+        /// to NULL if no filters are requested for the given file.
+        /// </para>
+        /// </summary>
+        /// <param name="filters">Output newly created git_filter_list (or NULL)</param>
+        /// <param name="repo">Repository object that contains path</param>
+        /// <param name="blob">The blob to which the filter will be applied (if known)</param>
+        /// <param name="path">Relative path of the file to be filtered</param>
+        /// <param name="mode">Filtering direction (WT->ODB or ODB->WT)</param>
+        /// <param name="flags">Combination of `git_filter_flag_t` flags</param>
+        /// <returns>0 on success (which could still return NULL if no filters are needed for the requested file) or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_filter_list_load_ext(
+            out git_filter_list* filters,
+            git_repository* repo,
+            git_blob* blob,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path,
+            git_filter_mode_t mode,
+            ref git_filter_options opts);
 
         #endregion
 

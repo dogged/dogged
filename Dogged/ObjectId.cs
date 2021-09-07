@@ -96,6 +96,11 @@ namespace Dogged
             return oid;
         }
 
+        internal unsafe static void NativeCopy(git_oid* src, git_oid* dest)
+        {
+            Buffer.MemoryCopy(src->id, dest->id, git_oid.GIT_OID_RAWSZ, git_oid.GIT_OID_RAWSZ);
+        }
+
         /// <summary>
         /// Return a hexadecimal string representation of the Object ID.
         /// </summary>
