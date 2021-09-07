@@ -892,6 +892,12 @@ references:
   commentId: T:Dogged.Native.git_blob_filter_flag_t
   fullName: Dogged.Native.git_blob_filter_flag_t
   nameWithType: git_blob_filter_flag_t
+- uid: Dogged.Native.git_blob_filter_flag_t.GIT_BLOB_FILTER_ATTTRIBUTES_FROM_COMMIT
+  name: GIT_BLOB_FILTER_ATTTRIBUTES_FROM_COMMIT
+  href: api/dogged.native/Dogged.Native.git_blob_filter_flag_t.html#Dogged_Native_git_blob_filter_flag_t_GIT_BLOB_FILTER_ATTTRIBUTES_FROM_COMMIT
+  commentId: F:Dogged.Native.git_blob_filter_flag_t.GIT_BLOB_FILTER_ATTTRIBUTES_FROM_COMMIT
+  fullName: Dogged.Native.git_blob_filter_flag_t.GIT_BLOB_FILTER_ATTTRIBUTES_FROM_COMMIT
+  nameWithType: git_blob_filter_flag_t.GIT_BLOB_FILTER_ATTTRIBUTES_FROM_COMMIT
 - uid: Dogged.Native.git_blob_filter_flag_t.GIT_BLOB_FILTER_ATTTRIBUTES_FROM_HEAD
   name: GIT_BLOB_FILTER_ATTTRIBUTES_FROM_HEAD
   href: api/dogged.native/Dogged.Native.git_blob_filter_flag_t.html#Dogged_Native_git_blob_filter_flag_t_GIT_BLOB_FILTER_ATTTRIBUTES_FROM_HEAD
@@ -916,6 +922,12 @@ references:
   commentId: T:Dogged.Native.git_blob_filter_options
   fullName: Dogged.Native.git_blob_filter_options
   nameWithType: git_blob_filter_options
+- uid: Dogged.Native.git_blob_filter_options.commit_id
+  name: commit_id
+  href: api/dogged.native/Dogged.Native.git_blob_filter_options.html#Dogged_Native_git_blob_filter_options_commit_id
+  commentId: F:Dogged.Native.git_blob_filter_options.commit_id
+  fullName: Dogged.Native.git_blob_filter_options.commit_id
+  nameWithType: git_blob_filter_options.commit_id
 - uid: Dogged.Native.git_blob_filter_options.flags
   name: flags
   href: api/dogged.native/Dogged.Native.git_blob_filter_options.html#Dogged_Native_git_blob_filter_options_flags
@@ -1536,6 +1548,12 @@ references:
   commentId: F:Dogged.Native.git_filter_flags_t.GIT_FILTER_ALLOW_UNSAFE
   fullName: Dogged.Native.git_filter_flags_t.GIT_FILTER_ALLOW_UNSAFE
   nameWithType: git_filter_flags_t.GIT_FILTER_ALLOW_UNSAFE
+- uid: Dogged.Native.git_filter_flags_t.GIT_FILTER_ATTRIBUTES_FROM_COMMIT
+  name: GIT_FILTER_ATTRIBUTES_FROM_COMMIT
+  href: api/dogged.native/Dogged.Native.git_filter_flags_t.html#Dogged_Native_git_filter_flags_t_GIT_FILTER_ATTRIBUTES_FROM_COMMIT
+  commentId: F:Dogged.Native.git_filter_flags_t.GIT_FILTER_ATTRIBUTES_FROM_COMMIT
+  fullName: Dogged.Native.git_filter_flags_t.GIT_FILTER_ATTRIBUTES_FROM_COMMIT
+  nameWithType: git_filter_flags_t.GIT_FILTER_ATTRIBUTES_FROM_COMMIT
 - uid: Dogged.Native.git_filter_flags_t.GIT_FILTER_ATTRIBUTES_FROM_HEAD
   name: GIT_FILTER_ATTRIBUTES_FROM_HEAD
   href: api/dogged.native/Dogged.Native.git_filter_flags_t.html#Dogged_Native_git_filter_flags_t_GIT_FILTER_ATTRIBUTES_FROM_HEAD
@@ -1590,6 +1608,56 @@ references:
   commentId: F:Dogged.Native.git_filter_mode_t.GIT_FILTER_TO_WORKTREE
   fullName: Dogged.Native.git_filter_mode_t.GIT_FILTER_TO_WORKTREE
   nameWithType: git_filter_mode_t.GIT_FILTER_TO_WORKTREE
+- uid: Dogged.Native.git_filter_options
+  name: git_filter_options
+  href: api/dogged.native/Dogged.Native.git_filter_options.html
+  commentId: T:Dogged.Native.git_filter_options
+  fullName: Dogged.Native.git_filter_options
+  nameWithType: git_filter_options
+- uid: Dogged.Native.git_filter_options.commit_id
+  name: commit_id
+  href: api/dogged.native/Dogged.Native.git_filter_options.html#Dogged_Native_git_filter_options_commit_id
+  commentId: F:Dogged.Native.git_filter_options.commit_id
+  fullName: Dogged.Native.git_filter_options.commit_id
+  nameWithType: git_filter_options.commit_id
+- uid: Dogged.Native.git_filter_options.flags
+  name: flags
+  href: api/dogged.native/Dogged.Native.git_filter_options.html#Dogged_Native_git_filter_options_flags
+  commentId: F:Dogged.Native.git_filter_options.flags
+  fullName: Dogged.Native.git_filter_options.flags
+  nameWithType: git_filter_options.flags
+- uid: Dogged.Native.git_filter_options.GIT_FILTER_OPTIONS_INIT
+  name: GIT_FILTER_OPTIONS_INIT
+  href: api/dogged.native/Dogged.Native.git_filter_options.html#Dogged_Native_git_filter_options_GIT_FILTER_OPTIONS_INIT
+  commentId: P:Dogged.Native.git_filter_options.GIT_FILTER_OPTIONS_INIT
+  fullName: Dogged.Native.git_filter_options.GIT_FILTER_OPTIONS_INIT
+  nameWithType: git_filter_options.GIT_FILTER_OPTIONS_INIT
+- uid: Dogged.Native.git_filter_options.GIT_FILTER_OPTIONS_INIT*
+  name: GIT_FILTER_OPTIONS_INIT
+  href: api/dogged.native/Dogged.Native.git_filter_options.html#Dogged_Native_git_filter_options_GIT_FILTER_OPTIONS_INIT_
+  commentId: Overload:Dogged.Native.git_filter_options.GIT_FILTER_OPTIONS_INIT
+  isSpec: "True"
+  fullName: Dogged.Native.git_filter_options.GIT_FILTER_OPTIONS_INIT
+  nameWithType: git_filter_options.GIT_FILTER_OPTIONS_INIT
+- uid: Dogged.Native.git_filter_options.GIT_FILTER_OPTIONS_VERSION
+  name: GIT_FILTER_OPTIONS_VERSION
+  href: api/dogged.native/Dogged.Native.git_filter_options.html#Dogged_Native_git_filter_options_GIT_FILTER_OPTIONS_VERSION
+  commentId: P:Dogged.Native.git_filter_options.GIT_FILTER_OPTIONS_VERSION
+  fullName: Dogged.Native.git_filter_options.GIT_FILTER_OPTIONS_VERSION
+  nameWithType: git_filter_options.GIT_FILTER_OPTIONS_VERSION
+- uid: Dogged.Native.git_filter_options.GIT_FILTER_OPTIONS_VERSION*
+  name: GIT_FILTER_OPTIONS_VERSION
+  href: api/dogged.native/Dogged.Native.git_filter_options.html#Dogged_Native_git_filter_options_GIT_FILTER_OPTIONS_VERSION_
+  commentId: Overload:Dogged.Native.git_filter_options.GIT_FILTER_OPTIONS_VERSION
+  isSpec: "True"
+  fullName: Dogged.Native.git_filter_options.GIT_FILTER_OPTIONS_VERSION
+  nameWithType: git_filter_options.GIT_FILTER_OPTIONS_VERSION
+- uid: Dogged.Native.git_filter_options.version
+  name: version
+  href: api/dogged.native/Dogged.Native.git_filter_options.html#Dogged_Native_git_filter_options_version
+  commentId: F:Dogged.Native.git_filter_options.version
+  fullName: Dogged.Native.git_filter_options.version
+  nameWithType: git_filter_options.version
 - uid: Dogged.Native.git_index
   name: git_index
   href: api/dogged.native/Dogged.Native.git_index.html
@@ -2415,6 +2483,21 @@ references:
   commentId: Overload:Dogged.Native.libgit2.git_filter_list_load
   fullName: Dogged.Native.libgit2.git_filter_list_load
   nameWithType: libgit2.git_filter_list_load
+- uid: Dogged.Native.libgit2.git_filter_list_load_ext(Dogged.Native.git_filter_list*@,Dogged.Native.git_repository*,Dogged.Native.git_blob*,System.String,Dogged.Native.git_filter_mode_t,Dogged.Native.git_filter_options@)
+  name: git_filter_list_load_ext(out git_filter_list*, git_repository*, git_blob*, String, git_filter_mode_t, ref git_filter_options)
+  href: api/dogged.native/Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_filter_list_load_ext_Dogged_Native_git_filter_list___Dogged_Native_git_repository__Dogged_Native_git_blob__System_String_Dogged_Native_git_filter_mode_t_Dogged_Native_git_filter_options__
+  commentId: M:Dogged.Native.libgit2.git_filter_list_load_ext(Dogged.Native.git_filter_list*@,Dogged.Native.git_repository*,Dogged.Native.git_blob*,System.String,Dogged.Native.git_filter_mode_t,Dogged.Native.git_filter_options@)
+  name.vb: git_filter_list_load_ext(ByRef git_filter_list*, git_repository*, git_blob*, String, git_filter_mode_t, ByRef git_filter_options)
+  fullName: Dogged.Native.libgit2.git_filter_list_load_ext(out Dogged.Native.git_filter_list*, Dogged.Native.git_repository*, Dogged.Native.git_blob*, System.String, Dogged.Native.git_filter_mode_t, ref Dogged.Native.git_filter_options)
+  fullName.vb: Dogged.Native.libgit2.git_filter_list_load_ext(ByRef Dogged.Native.git_filter_list*, Dogged.Native.git_repository*, Dogged.Native.git_blob*, System.String, Dogged.Native.git_filter_mode_t, ByRef Dogged.Native.git_filter_options)
+  nameWithType: libgit2.git_filter_list_load_ext(out git_filter_list*, git_repository*, git_blob*, String, git_filter_mode_t, ref git_filter_options)
+  nameWithType.vb: libgit2.git_filter_list_load_ext(ByRef git_filter_list*, git_repository*, git_blob*, String, git_filter_mode_t, ByRef git_filter_options)
+- uid: Dogged.Native.libgit2.git_filter_list_load_ext*
+  name: git_filter_list_load_ext
+  href: api/dogged.native/Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_filter_list_load_ext_
+  commentId: Overload:Dogged.Native.libgit2.git_filter_list_load_ext
+  fullName: Dogged.Native.libgit2.git_filter_list_load_ext
+  nameWithType: libgit2.git_filter_list_load_ext
 - uid: Dogged.Native.libgit2.git_index_entrycount(Dogged.Native.git_index*)
   name: git_index_entrycount(git_index*)
   href: api/dogged.native/Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_index_entrycount_Dogged_Native_git_index__
@@ -2826,6 +2909,21 @@ references:
   commentId: Overload:Dogged.Native.libgit2.git_odb_write
   fullName: Dogged.Native.libgit2.git_odb_write
   nameWithType: libgit2.git_odb_write
+- uid: Dogged.Native.libgit2.git_oid_cpy(Dogged.Native.git_oid@,Dogged.Native.git_oid@)
+  name: git_oid_cpy(ref git_oid, ref git_oid)
+  href: api/dogged.native/Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_oid_cpy_Dogged_Native_git_oid__Dogged_Native_git_oid__
+  commentId: M:Dogged.Native.libgit2.git_oid_cpy(Dogged.Native.git_oid@,Dogged.Native.git_oid@)
+  name.vb: git_oid_cpy(ByRef git_oid, ByRef git_oid)
+  fullName: Dogged.Native.libgit2.git_oid_cpy(ref Dogged.Native.git_oid, ref Dogged.Native.git_oid)
+  fullName.vb: Dogged.Native.libgit2.git_oid_cpy(ByRef Dogged.Native.git_oid, ByRef Dogged.Native.git_oid)
+  nameWithType: libgit2.git_oid_cpy(ref git_oid, ref git_oid)
+  nameWithType.vb: libgit2.git_oid_cpy(ByRef git_oid, ByRef git_oid)
+- uid: Dogged.Native.libgit2.git_oid_cpy*
+  name: git_oid_cpy
+  href: api/dogged.native/Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_oid_cpy_
+  commentId: Overload:Dogged.Native.libgit2.git_oid_cpy
+  fullName: Dogged.Native.libgit2.git_oid_cpy
+  nameWithType: libgit2.git_oid_cpy
 - uid: Dogged.Native.libgit2.git_reference_free(Dogged.Native.git_reference*)
   name: git_reference_free(git_reference*)
   href: api/dogged.native/Dogged.Native.libgit2.html#Dogged_Native_libgit2_git_reference_free_Dogged_Native_git_reference__

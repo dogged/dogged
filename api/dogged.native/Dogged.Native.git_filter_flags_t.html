@@ -77,7 +77,8 @@
   
   <h1 id="Dogged_Native_git_filter_flags_t" data-uid="Dogged.Native.git_filter_flags_t" class="text-break">Enum git_filter_flags_t
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Filtering options.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Dogged.Native.html">Dogged.Native</a></h6>
   <h6><strong>Assembly</strong>: Dogged.Native.dll</h6>
@@ -98,6 +99,13 @@
       <tr>
         <td id="Dogged_Native_git_filter_flags_t_GIT_FILTER_ALLOW_UNSAFE">GIT_FILTER_ALLOW_UNSAFE</td>
         <td><p>Don't error for <code>safecrlf</code> violations, allow them to continue.</p>
+</td>
+      </tr>
+      <tr>
+        <td id="Dogged_Native_git_filter_flags_t_GIT_FILTER_ATTRIBUTES_FROM_COMMIT">GIT_FILTER_ATTRIBUTES_FROM_COMMIT</td>
+        <td><p>When set, filters will be loaded from a <code>.gitattributes</code> file
+in a given commit.  This can only be specified in a
+<code>git_filter_options</code>.</p>
 </td>
       </tr>
       <tr>
@@ -129,7 +137,7 @@ system-wide <code>gitattributes</code> in <code>/etc</code> (or system equivalen
                     <a href="https://github.com/dogged/dogged/new/main/apiSpec/new?filename=Dogged_Native_git_filter_flags_t.md&amp;value=---%0Auid%3A%20Dogged.Native.git_filter_flags_t%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/dogged/dogged/blob/main/Dogged.Native/filter.cs/#L23" class="contribution-link">View Source</a>
+                    <a href="https://github.com/dogged/dogged/blob/main/Dogged.Native/filter.cs/#L26" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
