@@ -922,12 +922,12 @@ references:
   commentId: T:Dogged.Native.git_blob_filter_options
   fullName: Dogged.Native.git_blob_filter_options
   nameWithType: git_blob_filter_options
-- uid: Dogged.Native.git_blob_filter_options.commit_id
-  name: commit_id
-  href: api/dogged.native/Dogged.Native.git_blob_filter_options.html#Dogged_Native_git_blob_filter_options_commit_id
-  commentId: F:Dogged.Native.git_blob_filter_options.commit_id
-  fullName: Dogged.Native.git_blob_filter_options.commit_id
-  nameWithType: git_blob_filter_options.commit_id
+- uid: Dogged.Native.git_blob_filter_options.attr_commit_id
+  name: attr_commit_id
+  href: api/dogged.native/Dogged.Native.git_blob_filter_options.html#Dogged_Native_git_blob_filter_options_attr_commit_id
+  commentId: F:Dogged.Native.git_blob_filter_options.attr_commit_id
+  fullName: Dogged.Native.git_blob_filter_options.attr_commit_id
+  nameWithType: git_blob_filter_options.attr_commit_id
 - uid: Dogged.Native.git_blob_filter_options.flags
   name: flags
   href: api/dogged.native/Dogged.Native.git_blob_filter_options.html#Dogged_Native_git_blob_filter_options_flags
@@ -960,6 +960,12 @@ references:
   isSpec: "True"
   fullName: Dogged.Native.git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_VERSION
   nameWithType: git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_VERSION
+- uid: Dogged.Native.git_blob_filter_options.reserved
+  name: reserved
+  href: api/dogged.native/Dogged.Native.git_blob_filter_options.html#Dogged_Native_git_blob_filter_options_reserved
+  commentId: F:Dogged.Native.git_blob_filter_options.reserved
+  fullName: Dogged.Native.git_blob_filter_options.reserved
+  nameWithType: git_blob_filter_options.reserved
 - uid: Dogged.Native.git_blob_filter_options.version
   name: version
   href: api/dogged.native/Dogged.Native.git_blob_filter_options.html#Dogged_Native_git_blob_filter_options_version
@@ -1614,12 +1620,12 @@ references:
   commentId: T:Dogged.Native.git_filter_options
   fullName: Dogged.Native.git_filter_options
   nameWithType: git_filter_options
-- uid: Dogged.Native.git_filter_options.commit_id
-  name: commit_id
-  href: api/dogged.native/Dogged.Native.git_filter_options.html#Dogged_Native_git_filter_options_commit_id
-  commentId: F:Dogged.Native.git_filter_options.commit_id
-  fullName: Dogged.Native.git_filter_options.commit_id
-  nameWithType: git_filter_options.commit_id
+- uid: Dogged.Native.git_filter_options.attr_commit_id
+  name: attr_commit_id
+  href: api/dogged.native/Dogged.Native.git_filter_options.html#Dogged_Native_git_filter_options_attr_commit_id
+  commentId: F:Dogged.Native.git_filter_options.attr_commit_id
+  fullName: Dogged.Native.git_filter_options.attr_commit_id
+  nameWithType: git_filter_options.attr_commit_id
 - uid: Dogged.Native.git_filter_options.flags
   name: flags
   href: api/dogged.native/Dogged.Native.git_filter_options.html#Dogged_Native_git_filter_options_flags
@@ -1652,6 +1658,12 @@ references:
   isSpec: "True"
   fullName: Dogged.Native.git_filter_options.GIT_FILTER_OPTIONS_VERSION
   nameWithType: git_filter_options.GIT_FILTER_OPTIONS_VERSION
+- uid: Dogged.Native.git_filter_options.reserved
+  name: reserved
+  href: api/dogged.native/Dogged.Native.git_filter_options.html#Dogged_Native_git_filter_options_reserved
+  commentId: F:Dogged.Native.git_filter_options.reserved
+  fullName: Dogged.Native.git_filter_options.reserved
+  nameWithType: git_filter_options.reserved
 - uid: Dogged.Native.git_filter_options.version
   name: version
   href: api/dogged.native/Dogged.Native.git_filter_options.html#Dogged_Native_git_filter_options_version
