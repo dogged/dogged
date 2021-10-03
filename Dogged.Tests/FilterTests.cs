@@ -161,7 +161,7 @@ namespace Dogged.Tests
             var options = new FilterOptions
             {
                 Flags = FilterFlags.NoSystemAttributes | FilterFlags.AttributesFromCommit,
-                CommitId = new ObjectId("b8986fec0f7bde90f78ac72706e782d82f24f2f0")
+                AttributeCommitId = new ObjectId("b8986fec0f7bde90f78ac72706e782d82f24f2f0")
             };
 
             using (Repository repo = SandboxRepository("crlf.git"))
@@ -182,7 +182,7 @@ namespace Dogged.Tests
             var options = new FilterOptions
             {
                 Flags = FilterFlags.NoSystemAttributes | FilterFlags.AttributesFromCommit,
-                CommitId = new ObjectId("5afb6a14a864e30787857dd92af837e8cdd2cb1b")
+                AttributeCommitId = new ObjectId("5afb6a14a864e30787857dd92af837e8cdd2cb1b")
             };
 
             using (Repository repo = SandboxRepository("crlf.git"))

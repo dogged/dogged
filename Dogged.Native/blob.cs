@@ -50,11 +50,13 @@ namespace Dogged.Native
         /// </summary>
         public git_blob_filter_flag_t flags;
 
+        public IntPtr reserved;
+
         /// <summary>
         /// The commit to load attributes from, when
         /// `GIT_BLOB_FILTER_ATTRIBUTES_FROM_COMMIT` is specified.
         /// </summary>
-        public git_oid commit_id;
+        public git_oid attr_commit_id;
 
         /// <summary>
         /// Current version of the options structure.
