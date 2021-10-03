@@ -60,17 +60,17 @@ public class BlobFilterOptions
         }
     }
 
-    public unsafe ObjectId CommitId
+    public unsafe ObjectId AttributeCommitId
     {
         get
         {
-            return ObjectId.FromNative(nativeOptions.commit_id);
+            return ObjectId.FromNative(nativeOptions.attr_commit_id);
         }
         set
         {
             git_oid src = value.ToNative();
 
-            fixed (git_oid* dest = &nativeOptions.commit_id)
+            fixed (git_oid* dest = &nativeOptions.attr_commit_id)
             {
                 ObjectId.NativeCopy(&src, dest);
             }

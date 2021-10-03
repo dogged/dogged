@@ -100,7 +100,7 @@ namespace Dogged.Tests
                 Flags = BlobFilterFlags.CheckForBinary |
                         BlobFilterFlags.NoSystemAttributes |
                         BlobFilterFlags.AttributesFromCommit,
-                CommitId = new ObjectId("5afb6a14a864e30787857dd92af837e8cdd2cb1b")
+                AttributeCommitId = new ObjectId("5afb6a14a864e30787857dd92af837e8cdd2cb1b")
             };
 
             using (Repository repo = SandboxRepository("crlf.git"))
