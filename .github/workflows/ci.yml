@@ -16,9 +16,9 @@ jobs:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
       name: 'Check out source'
-    - uses: gittools/actions/gitversion/setup@v0.9.6
+    - uses: gittools/actions/gitversion/setup@v0.9.11
       with:
         versionSpec: '5.x'
       name: 'Setup GitVersion'
