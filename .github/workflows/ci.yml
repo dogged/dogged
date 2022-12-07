@@ -16,30 +16,36 @@ jobs:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
       name: 'Check out source'
-    - uses: gittools/actions/gitversion/setup@v0.9.6
+      with:
+        fetch-depth: 0
+    - uses: gittools/actions/gitversion/setup@v0.9.15
       with:
         versionSpec: '5.x'
       name: 'Setup GitVersion'
-    - run: |
-        $version = dotnet-gitversion /UpdateAssemblyInfo | ConvertFrom-Json
-        Write-Output ("BUILD_NUMBER=" + $version.LegacySemVer) >> $Env:GITHUB_ENV
+    - uses: gittools/actions/gitversion/execute@v0.9.15
+      id: gitversion
       name: 'Update Version'
+      with:
+        updateAssemblyInfo: true
+    - run: |
+        Write-Output ("BUILD_NUMBER=${{ steps.gitversion.outputs.legacySemVer }}") >> $Env:GITHUB_ENV
+      name: 'Setup Build Number'
       shell: pwsh
-    - uses: actions/setup-dotnet@v1
+    - uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '3.1.x'
       name: 'Setup .NET 3.1'
-    - uses: actions/setup-dotnet@v1
+    - uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 3.1.404
       name: 'Setup .NET Core 3.1'
-    - uses: actions/setup-dotnet@v1
+    - uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '5.0.x'
       name: 'Setup .NET 5.0'
-    - uses: actions/setup-dotnet@v1
+    - uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '6.0.x'
       name: 'Setup .NET 6.0'
@@ -62,13 +68,13 @@ jobs:
       shell: pwsh
       name: Package
       if: matrix.os == 'windows-latest'
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v3
       with:
         name: Dogged-${{ env.BUILD_NUMBER }}.nupkg
         path: ${{ github.workspace }}/package/Dogged.${{ env.BUILD_NUMBER }}.nupkg
       if: matrix.os == 'windows-latest'
       name: 'Upload Dogged Package'
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v3
       with:
         name: Dogged.Native-${{ env.BUILD_NUMBER }}.nupkg
         path: ${{ github.workspace }}/package/Dogged.Native.${{ env.BUILD_NUMBER }}.nupkg
@@ -79,11 +85,11 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: 'Check out source'
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     # Check out the `docs` branch into the `Documentation/_site` directory
     - name: 'Check out documentation branch'
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         ref: 'docs'
         path: 'Documentation/_site'
@@ -96,7 +102,7 @@ jobs:
       working-directory: Documentation
 
     - name: 'Upload documentation'
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
         name: docs
         path: ${{ github.workspace }}/Documentation/_site
