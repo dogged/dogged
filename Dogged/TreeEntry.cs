@@ -16,6 +16,7 @@ namespace Dogged
         private readonly LazyNative<FileMode> mode;
         private readonly LazyNative<ObjectId> id;
         private readonly LazyNative<string> name;
+        private readonly LazyNative<GitObject> gitObject;
 
         private unsafe TreeEntry(Tree parent, git_tree_entry* nativeEntry)
         {
@@ -33,6 +34,13 @@ namespace Dogged
                 return ObjectId.FromNative(*oid);
             }, parent);
             name = new LazyNative<string>(() => libgit2.git_tree_entry_name(nativeEntry), parent);
+            gitObject = new LazyNative<GitObject>(() => {
+                git_repository* repo = libgit2.git_tree_owner(parent.NativeTree);
+                git_object* obj = null;
+
+                Ensure.NativeSuccess(() => libgit2.git_tree_entry_to_object(out obj, repo, nativeEntry), parent);
+                return GitObject.FromNative(obj);
+            }, parent);
         }
 
         internal unsafe static TreeEntry FromNative(Tree parent, git_tree_entry* nativeEntry)
@@ -92,6 +100,17 @@ namespace Dogged
             get
             {
                 return name.Value;
+            }
+        }
+
+        /// <summary>
+        /// Gets the git object of the tree entry.
+        /// </summary>
+        public GitObject GitObject
+        {
+            get
+            {
+                return gitObject.Value;
             }
         }
     }
