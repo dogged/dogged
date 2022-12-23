@@ -169,6 +169,35 @@ namespace Dogged.Native
 
         #endregion
 
+        // diff
+        #region git_diff
+
+        /// <summary>
+        /// Free a previously allocated diff.
+        /// </summary>
+        /// <param name="diff">The diff to free.</param>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe void git_diff_free(git_diff* diff);
+
+        /// <summary>
+        /// Create a diff with the difference between two tree objects.
+        /// </summary>
+        /// <param name="diff">Pointer to the new diff.</param>
+        /// <param name="repo">The repo containing the tress.</param>
+        /// <param name="oldTree">The tree to diff from.</param>
+        /// <param name="newTree">The tree to diff to.</param>
+        /// <param name="options">The diff options.</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_diff_tree_to_tree(
+            out git_diff* diff,
+            git_repository* repo,
+            git_tree* oldTree,
+            git_tree* newTree,
+            git_diff_options* options);
+
+        #endregion
+
         // Error handling
         #region git_error
 
@@ -720,6 +749,21 @@ namespace Dogged.Native
         /// <param name="pathspec">The pathspec object.</param>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe void git_pathspec_free(
+            git_pathspec* pathspec);
+
+        /// <summary>
+        /// Match a pathspec against files in a diff.
+        /// </summary>
+        /// <param name="matchList">Pointer to list of matches.</param>
+        /// <param name="diff">The diff to match against.</param>
+        /// <param name="flags">Options to control the match.</param>
+        /// <param name="pathspec">The pathspec to match.</param>
+        /// <returns>0 on success, -1 on error, GIT_ENOTFOUND if no matches and the GIT_PATHSPEC_NO_MATCH_ERROR flag is used.</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_pathspec_match_diff(
+            ref git_pathspec_match_list* matchList,
+            git_diff* diff,
+            git_pathspec_flag_t flags,
             git_pathspec* pathspec);
 
         /// <summary>

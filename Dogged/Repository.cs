@@ -126,6 +126,26 @@ namespace Dogged
             return new Repository(nativeRepository);
         }
 
+        /// <summary>
+        /// Creates a diff between two trees.
+        /// </summary>
+        /// <param name="oldTree">The old tree.</param>
+        /// <param name="newTree">The new tree.</param>
+        /// <returns>The diff between the trees.</returns>
+        public unsafe Diff Diff(Tree oldTree, Tree newTree)
+        {
+            if (oldTree == null && newTree == null)
+            {
+                throw new NotSupportedException("both trees cannot be empty");
+            }
+
+            git_diff* diff = null;
+            git_tree* nativeOldTree = oldTree != null ? oldTree.NativeTree : null;
+            git_tree* nativeNewTree = newTree != null ? newTree.NativeTree : null;
+            Ensure.NativeSuccess(() => libgit2.git_diff_tree_to_tree(out diff, NativeRepository, nativeOldTree, nativeNewTree, null), this);
+            return Dogged.Diff.FromNative(diff);
+        }
+
         internal unsafe git_repository* NativeRepository
         {
             get

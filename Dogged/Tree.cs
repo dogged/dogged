@@ -31,7 +31,7 @@ namespace Dogged
             return new Tree(nativeTree, id);
         }
 
-        private unsafe git_tree* NativeTree
+        internal unsafe git_tree* NativeTree
         {
             get
             {
