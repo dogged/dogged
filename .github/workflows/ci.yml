@@ -21,19 +21,23 @@ jobs:
       name: 'Check out source'
       with:
         fetch-depth: 0
-    - uses: gittools/actions/gitversion/setup@v0.9.15
-      with:
-        versionSpec: '5.x'
-      name: 'Setup GitVersion'
-    - uses: gittools/actions/gitversion/execute@v0.9.15
-      id: gitversion
-      name: 'Update Version'
-      with:
-        updateAssemblyInfo: true
     - run: |
-        Write-Output ("BUILD_NUMBER=${{ steps.gitversion.outputs.legacySemVer }}") >> $Env:GITHUB_ENV
-      name: 'Setup Build Number'
-      shell: pwsh
+        if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
+          SHA=$(git rev-parse --short HEAD)
+          VERSION="$(git describe --tags | \
+            sed -e "s/^v//" | \
+            sed -e "s/-g[0-9a-f]*$//" | \
+            sed -e "s/-[0-9]*$//")-pr${{ github.event.number }}-${SHA}"
+        else
+          VERSION=$(git describe --tags | \
+            sed -e "s/^v//" | \
+            sed -e "s/-g[0-9a-f]*$//" | \
+            sed -e "s/-\([0-9]*\)$/\.\1/")
+        fi
+        echo "Building version ${VERSION}"
+        echo "VERSION=${VERSION}" >> ${GITHUB_ENV}
+      shell: bash
+      name: 'Update Version'
     - uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '3.1.x'
@@ -48,7 +52,8 @@ jobs:
       name: 'Setup .NET 7.0'
     - run: |
         dotnet restore
-        dotnet build --no-restore --configuration Release
+        dotnet build --no-restore --configuration Release "-p:PackageVersion=${{ env.VERSION }}"
+      shell: bash
       name: Build
     - run: |
         set +e
@@ -61,20 +66,20 @@ jobs:
       name: Test
     - run: |
         mkdir ${{ github.workspace }}\package
-        dotnet pack --no-build -c Release --output "${{ github.workspace }}\package" "-p:Version=${{ env.BUILD_NUMBER }}" "-p:PackageVersion=${{ env.BUILD_NUMBER }}"
+        dotnet pack --no-build -c Release --output "${{ github.workspace }}\package" "-p:Version=${{ env.VERSION }}" "-p:PackageVersion=${{ env.VERSION }}"
       shell: pwsh
       name: Package
       if: matrix.os == 'windows-latest'
     - uses: actions/upload-artifact@v3
       with:
-        name: Dogged-${{ env.BUILD_NUMBER }}.nupkg
-        path: ${{ github.workspace }}/package/Dogged.${{ env.BUILD_NUMBER }}.nupkg
+        name: Dogged-${{ env.VERSION }}.nupkg
+        path: ${{ github.workspace }}/package/Dogged.${{ env.VERSION }}.nupkg
       if: matrix.os == 'windows-latest'
       name: 'Upload Dogged Package'
     - uses: actions/upload-artifact@v3
       with:
-        name: Dogged.Native-${{ env.BUILD_NUMBER }}.nupkg
-        path: ${{ github.workspace }}/package/Dogged.Native.${{ env.BUILD_NUMBER }}.nupkg
+        name: Dogged.Native-${{ env.VERSION }}.nupkg
+        path: ${{ github.workspace }}/package/Dogged.Native.${{ env.VERSION }}.nupkg
       if: matrix.os == 'windows-latest'
       name: 'Upload Dogged.Native Package'
 
