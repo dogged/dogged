@@ -14,38 +14,46 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
+      fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
       name: 'Check out source'
-    - uses: gittools/actions/gitversion/setup@v0.9.6
       with:
-        versionSpec: '5.x'
-      name: 'Setup GitVersion'
+        fetch-depth: 0
     - run: |
-        $version = dotnet-gitversion /UpdateAssemblyInfo | ConvertFrom-Json
-        Write-Output ("BUILD_NUMBER=" + $version.LegacySemVer) >> $Env:GITHUB_ENV
+        if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
+          SHA=$(git rev-parse --short HEAD)
+          VERSION="$(git describe --tags | \
+            sed -e "s/^v//" | \
+            sed -e "s/-g[0-9a-f]*$//" | \
+            sed -e "s/-[0-9]*$//")-pr${{ github.event.number }}-${SHA}"
+        else
+          VERSION=$(git describe --tags | \
+            sed -e "s/^v//" | \
+            sed -e "s/-g[0-9a-f]*$//" | \
+            sed -e "s/-\([0-9]*\)$/\.\1/")
+        fi
+        echo "Building version ${VERSION}"
+        echo "VERSION=${VERSION}" >> ${GITHUB_ENV}
+      shell: bash
       name: 'Update Version'
-      shell: pwsh
-    - uses: actions/setup-dotnet@v1
+    - uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '3.1.x'
-      name: 'Setup .NET 3.1'
-    - uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.404
       name: 'Setup .NET Core 3.1'
-    - uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '5.0.x'
-      name: 'Setup .NET 5.0'
-    - uses: actions/setup-dotnet@v1
+    - uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '6.0.x'
       name: 'Setup .NET 6.0'
+    - uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '7.0.x'
+      name: 'Setup .NET 7.0'
     - run: |
         dotnet restore
-        dotnet build --no-restore --configuration Release
+        dotnet build --no-restore --configuration Release "-p:PackageVersion=${{ env.VERSION }}"
+      shell: bash
       name: Build
     - run: |
         set +e
@@ -58,20 +66,21 @@ jobs:
       name: Test
     - run: |
         mkdir ${{ github.workspace }}\package
-        dotnet pack --no-build -c Release --output "${{ github.workspace }}\package" "-p:Version=${{ env.BUILD_NUMBER }}" "-p:PackageVersion=${{ env.BUILD_NUMBER }}"
+        dotnet pack Dogged.Native/Dogged.Native.csproj --no-build -c Release --output "${{ github.workspace }}\package" "-p:Version=${{ env.VERSION }}" "-p:PackageVersion=${{ env.VERSION }}"
+        dotnet pack Dogged/Dogged.csproj --no-build -c Release --output "${{ github.workspace }}\package" "-p:Version=${{ env.VERSION }}" "-p:PackageVersion=${{ env.VERSION }}"
       shell: pwsh
       name: Package
       if: matrix.os == 'windows-latest'
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v3
       with:
-        name: Dogged-${{ env.BUILD_NUMBER }}.nupkg
-        path: ${{ github.workspace }}/package/Dogged.${{ env.BUILD_NUMBER }}.nupkg
+        name: Dogged-${{ env.VERSION }}.nupkg
+        path: ${{ github.workspace }}/package/Dogged.${{ env.VERSION }}.nupkg
       if: matrix.os == 'windows-latest'
       name: 'Upload Dogged Package'
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v3
       with:
-        name: Dogged.Native-${{ env.BUILD_NUMBER }}.nupkg
-        path: ${{ github.workspace }}/package/Dogged.Native.${{ env.BUILD_NUMBER }}.nupkg
+        name: Dogged.Native-${{ env.VERSION }}.nupkg
+        path: ${{ github.workspace }}/package/Dogged.Native.${{ env.VERSION }}.nupkg
       if: matrix.os == 'windows-latest'
       name: 'Upload Dogged.Native Package'
 
@@ -79,11 +88,11 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: 'Check out source'
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     # Check out the `docs` branch into the `Documentation/_site` directory
     - name: 'Check out documentation branch'
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         ref: 'docs'
         path: 'Documentation/_site'
@@ -96,7 +105,7 @@ jobs:
       working-directory: Documentation
 
     - name: 'Upload documentation'
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
         name: docs
         path: ${{ github.workspace }}/Documentation/_site
