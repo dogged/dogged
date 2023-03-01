@@ -66,7 +66,8 @@ jobs:
       name: Test
     - run: |
         mkdir ${{ github.workspace }}\package
-        dotnet pack --no-build -c Release --output "${{ github.workspace }}\package" "-p:Version=${{ env.VERSION }}" "-p:PackageVersion=${{ env.VERSION }}"
+        dotnet pack Dogged.Native/Dogged.Native.csproj --no-build -c Release --output "${{ github.workspace }}\package" "-p:Version=${{ env.VERSION }}" "-p:PackageVersion=${{ env.VERSION }}"
+        dotnet pack Dogged/Dogged.csproj --no-build -c Release --output "${{ github.workspace }}\package" "-p:Version=${{ env.VERSION }}" "-p:PackageVersion=${{ env.VERSION }}"
       shell: pwsh
       name: Package
       if: matrix.os == 'windows-latest'
