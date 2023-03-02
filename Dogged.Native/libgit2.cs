@@ -13,6 +13,8 @@ namespace Dogged.Native
     {
         private const string libgit2_dll = NativeLibrary.Filename;
 
+        private static readonly bool isMacArm;
+
         private static NativeInitializer nativeInitializer;
 
         /// <summary>
@@ -20,6 +22,7 @@ namespace Dogged.Native
         /// </summary>
         static libgit2()
         {
+            isMacArm = (RuntimeInformation.ProcessArchitecture == Architecture.Arm64 && RuntimeInformation.IsOSPlatform(OSPlatform.OSX));
             nativeInitializer = new NativeInitializer();
         }
 
@@ -416,11 +419,21 @@ namespace Dogged.Native
         /// <param name="option">The option value to get or set</param>
         /// <param name="...">The options to set</param>
         /// <returns>0 on success or an error code</returns>
-        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern unsafe int git_libgit2_opts(git_libgit2_opt_t option, git_config_level_t level, git_buf buf);
+        public static int git_libgit2_opts(git_libgit2_opt_t option, git_config_level_t level, git_buf buf) { return isMacArm ? git_libgit2_opts_mac_arm(option, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, level, buf) : git_libgit2_opts_std(option, level, buf); }
+        public static int git_libgit2_opts(git_libgit2_opt_t option, git_config_level_t level, string path) { return isMacArm ? git_libgit2_opts_mac_arm(option, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, level, path) : git_libgit2_opts_std(option, level, path); }
 
-        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern unsafe int git_libgit2_opts(git_libgit2_opt_t option, git_config_level_t level, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path);
+        // Standard varargs conventions.
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl, EntryPoint = "git_libgit2_opts")]
+        public static extern unsafe int git_libgit2_opts_std(git_libgit2_opt_t option, git_config_level_t level, git_buf buf);
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl, EntryPoint = "git_libgit2_opts")]
+        public static extern unsafe int git_libgit2_opts_std(git_libgit2_opt_t option, git_config_level_t level, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path);
+
+        // macOS on arm64 uses different calling conventions for PInvoke
+        // because everything is terrible.
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl, EntryPoint = "git_libgit2_opts")]
+        public static extern unsafe int git_libgit2_opts_mac_arm(git_libgit2_opt_t option, IntPtr dummy1, IntPtr dummy2, IntPtr dummy3, IntPtr dummy4, IntPtr dummy5, IntPtr dummy6, IntPtr dummy7, git_config_level_t level, git_buf buf);
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl, EntryPoint = "git_libgit2_opts")]
+        public static extern unsafe int git_libgit2_opts_mac_arm(git_libgit2_opt_t option, IntPtr dummy1, IntPtr dummy2, IntPtr dummy3, IntPtr dummy4, IntPtr dummy5, IntPtr dummy6, IntPtr dummy7, git_config_level_t level, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path);
 
         /// <summary>
         /// Shutdown the global state.
