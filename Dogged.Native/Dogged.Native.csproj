@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dogged.Native.Binaries" Version="[1.6.2]" />
+    <PackageReference Include="Dogged.Native.Binaries" Version="[1.6.2.4]" />
   </ItemGroup>
 
   <Import Project="..\Targets\GenerateNativeLibrary.targets" />
