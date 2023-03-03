@@ -11,6 +11,7 @@ namespace Dogged
         private LazyNative<Signature> author;
         private LazyNative<Signature> committer;
         private readonly LazyNative<ObjectId> treeId;
+        private readonly Lazy<CommitParentCollection> parents;
 
         private unsafe Commit(git_commit* nativeCommit, ObjectId id) :
             base((git_object*)nativeCommit, id)
@@ -28,6 +29,7 @@ namespace Dogged
                 Ensure.NativePointerNotNull(oid);
                 return ObjectId.FromNative(*oid);
             }, this);
+            parents = new Lazy<CommitParentCollection>(() => new CommitParentCollection(this));
         }
 
         internal unsafe static Commit FromNative(git_commit* nativeCommit, ObjectId id = null)
@@ -35,7 +37,7 @@ namespace Dogged
             return new Commit(nativeCommit, id);
         }
 
-        private unsafe git_commit* NativeCommit
+        internal unsafe git_commit* NativeCommit
         {
             get
             {
@@ -98,6 +100,28 @@ namespace Dogged
                 Ensure.NativePointerNotNull(tree);
 
                 return Tree.FromNative(tree);
+            }
+        }
+
+        /// <summary>
+        /// Gets the message for this commit.
+        /// </summary>
+        public unsafe string Message
+        {
+            get
+            {
+                return libgit2.git_commit_message(NativeCommit);
+            }
+        }
+
+        /// <summary>
+        /// An accessor for parent commits.
+        /// </summary>
+        public CommitParentCollection Parents
+        {
+            get
+            {
+                return parents.Value;
             }
         }
     }

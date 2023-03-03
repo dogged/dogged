@@ -25,6 +25,11 @@ namespace Dogged.Tests
                 Assert.Equal("Scott Chacon", c.Author.Name);
                 Assert.Equal("schacon@gmail.com", c.Author.Email);
                 Assert.Equal(DateTimeOffset.FromUnixTimeSeconds(1274813907), c.Author.When);
+                Assert.Equal("Merge branch 'br2'\n", c.Message);
+
+                Assert.Equal(2, c.Parents.Count);
+                Assert.Equal(new ObjectId("9fd738e8f7967c078dceed8190330fc8648ee56a"), c.Parents[0].Id);
+                Assert.Equal(new ObjectId("c47800c7266a2be04c571c04d5a6614691ea99bd"), c.Parents[1].Id);
 
                 Assert.Equal(new ObjectId("1810dff58d8a660512d4832e740f692884338ccd"), c.TreeId);
             }

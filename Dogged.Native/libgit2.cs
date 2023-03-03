@@ -148,6 +148,33 @@ namespace Dogged.Native
         public static extern unsafe int git_commit_lookup(out git_commit* obj, git_repository* repo, ref git_oid id);
 
         /// <summary>
+        /// Get the message of the commit.
+        /// </summary>
+        /// <param name="commit">The commit to examine</param>
+        /// <returns>The commit message string.</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        [return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.FromNative, MarshalTypeRef = typeof(Utf8Marshaler))]
+        public static extern unsafe string git_commit_message(git_commit* commit);
+
+        /// <summary>
+        /// Get the number of parents for the commit.
+        /// </summary>
+        /// <param name="commit">The commit to examine</param>
+        /// <returns>The number of parent commits.</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe UIntPtr git_commit_parentcount(git_commit* commit);
+
+        /// <summary>
+        /// Get the specified parent for the commit.
+        /// </summary>
+        /// <param name="parent">Pointer to the parent commit</param>
+        /// <param name="commit">The commit to examine</param>
+        /// <param name="n">The position of the parent commit</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_commit_parent(out git_commit* parent, git_commit* commit, UIntPtr n);
+
+        /// <summary>
         /// Get the tree that the given commit points to.  This tree must be
         /// freed when it is no longer needed.
         /// </summary>
