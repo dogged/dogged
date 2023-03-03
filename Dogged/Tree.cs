@@ -31,7 +31,7 @@ namespace Dogged
             return new Tree(nativeTree, id);
         }
 
-        private unsafe git_tree* NativeTree
+        internal unsafe git_tree* NativeTree
         {
             get
             {
@@ -120,6 +120,31 @@ namespace Dogged
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        /// <summary>
+        /// Match a pathspec against files in a tree.
+        /// </summary>
+        /// <param name="pathSpec">The pathspec to match.</param>
+        /// <returns>True if any matches found, otherwise, false</returns>
+        public unsafe bool IsMatch(PathSpec pathSpec)
+        {
+            return IsMatch(pathSpec, PathSpecFlags.Default);
+        }
+
+        /// <summary>
+        /// Match a pathspec against files in a tree.
+        /// </summary>
+        /// <param name="pathSpec">The pathspec to match.</param>
+        /// <param name="flags">Options to control the match.</param>
+        /// <returns>True if any matches found, otherwise, false</returns>
+        public unsafe bool IsMatch(PathSpec pathSpec, PathSpecFlags flags)
+        {
+            flags |= PathSpecFlags.NoMatchError;
+
+            git_pathspec_match_list* matchList = null;
+            int ret = Ensure.NativeCall(() => libgit2.git_pathspec_match_tree(ref matchList, NativeTree, (git_pathspec_flag_t)flags, pathSpec.NativePathspec), this);
+            return ret == 0;
         }
     }
 }
