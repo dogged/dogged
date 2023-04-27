@@ -1001,6 +1001,156 @@ namespace Dogged.Native
 
         #endregion
 
+        // revwalk - traverse the commits of a repository
+        #region git_revwalk
+
+        /// <summary>
+        /// Allocate a new revision walker to iterate through a repo.
+        /// </summary>
+        /// <param name="revwalk">Pointer to the new revision walker.</param>
+        /// <param name="repo">The repo to walk through.</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_revwalk_new(
+            out git_revwalk* revwalk,
+            git_repository* repo);
+
+        /// <summary>
+        /// Free a revision walker previously allocated.
+        /// </summary>
+        /// <param name="revwalk">The revision walker to free.</param>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe void git_revwalk_free(git_revwalk* revwalk);
+
+        /// <summary>
+        /// Mark a commit (and its ancestors) uninteresting for the output.
+        /// </summary>
+        /// <param name="revwalk">The revision walker.</param>
+        /// <param name="oid">The commit that will be ignored during the traversal.</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_revwalk_hide(git_revwalk* revwalk, ref git_oid oid);
+
+        /// <summary>
+        /// Hides the repository's HEAD.
+        /// </summary>
+        /// <param name="revwalk">The revision walker.</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_revwalk_hide_head(git_revwalk* revwalk);
+
+        /// <summary>
+        /// Hides matching references.
+        /// </summary>
+        /// <param name="revwalk">The revision walker.</param>
+        /// <param name="glob">The glob pattern references should match.</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_revwalk_hide_glob(
+            git_revwalk* revwalk,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string glob);
+
+        /// <summary>
+        /// Hide the OID pointed to by a reference.
+        /// </summary>
+        /// <param name="revwalk">The revision walker.</param>
+        /// <param name="refname">The reference to hide.</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_revwalk_hide_ref(
+            git_revwalk* revwalk,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string refname);
+
+        /// <summary>
+        /// Get the next commit from the revision walk.
+        /// </summary>
+        /// <param name="oid">Pointer where to store the oid of the next commit.</param>
+        /// <param name="revwalk">The revision walker.</param>
+        /// <returns>0 if the next commit was found; GIT_ITEROVER if there are no commits left to iterate</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_revwalk_next(ref git_oid oid, git_revwalk* revwalk);
+
+        /// <summary>
+        /// Add a new root for the traversal.
+        /// </summary>
+        /// <param name="revwalk">The revision walker.</param>
+        /// <param name="oid">The commit to start from.</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_revwalk_push(git_revwalk* revwalk, ref git_oid oid);
+
+        /// <summary>
+        /// Push the repository's HEAD.
+        /// </summary>
+        /// <param name="revwalk">The revision walker.</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_revwalk_push_head(git_revwalk* revwalk);
+
+        /// <summary>
+        /// Push matching references.
+        /// </summary>
+        /// <param name="revwalk">The revision walker.</param>
+        /// <param name="glob">The glob pattern references should match.</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_revwalk_push_glob(
+            git_revwalk* revwalk,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string glob);
+
+        /// <summary>
+        /// Push and hide the respective endpoints of the given range.
+        /// </summary>
+        /// <param name="revwalk">The revision walker.</param>
+        /// <param name="range">The range.</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_revwalk_push_range(
+            git_revwalk* revwalk,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string range);
+
+        /// <summary>
+        /// Push the OID pointed to by a reference.
+        /// </summary>
+        /// <param name="revwalk">The revision walker.</param>
+        /// <param name="refname">The range.</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_revwalk_push_ref(
+            git_revwalk* revwalk,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string refname);
+
+        /// <summary>
+        /// Simplify the history by first-parent.
+        /// </summary>
+        /// <param name="revwalk">The revision walker.</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_revwalk_simplify_first_parent(git_revwalk* revwalk);
+
+        /// <summary>
+        /// Change the sorting mode when iterating through the repository's contents.
+        /// </summary>
+        /// <param name="revwalk">The revision walker.</param>
+        /// <param name="sortMode">The sorting flags.</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_revwalk_sorting(git_revwalk* revwalk, git_sort_t sortMode);
+
+        /// <summary>
+        /// Reset the revision walker for reuse.
+        /// </summary>
+        /// <remarks>
+        /// This will clear all the pushed and hidden commits, and leave the walker in a blank state (just like at creation)
+        /// ready to receive new commit pushes and start a new walk. The revision walk is automatically reset when a walk is over.
+        /// </remarks>
+        /// <param name="revwalk">The revision walker.</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_revwalk_reset(git_revwalk* revwalk);
+
+        #endregion
+
         // tree - a folder in a repository that contains blobs or other trees
         #region git_tree
 
