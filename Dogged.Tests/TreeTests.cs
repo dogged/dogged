@@ -157,5 +157,30 @@ namespace Dogged.Tests
                 Assert.Throws<ObjectDisposedException>(() => entry.Name);
             }
         }
+
+        [Fact]
+        public void GetContentsOfTreeEntry()
+        {
+            using (Repository repo = SandboxRepository("testrepo"))
+            {
+                var currObject = repo.HeadCommit.Tree["new.txt"].GitObject;
+                Assert.IsType<Blob>(currObject);
+                var currBlob = currObject as Blob;
+
+                var postChangeObject = repo.Objects.Lookup<Commit>(new ObjectId("9fd738e8f7967c078dceed8190330fc8648ee56a")).Tree["new.txt"].GitObject;
+                Assert.IsType<Blob>(postChangeObject);
+                var postChangeBlob = postChangeObject as Blob;
+
+                Assert.Equal(currBlob.Id, postChangeBlob.Id);
+                Assert.True(currBlob.RawContent.SequenceEqual(postChangeBlob.RawContent));
+
+                var preChangeObject = repo.Objects.Lookup<Commit>(new ObjectId("4a202b346bb0fb0db7eff3cffeb3c70babbd2045")).Tree["new.txt"].GitObject;
+                Assert.IsType<Blob>(preChangeObject);
+                var preChangeBlob = preChangeObject as Blob;
+
+                Assert.NotEqual(currBlob.Id, preChangeBlob.Id);
+                Assert.False(currBlob.RawContent.SequenceEqual(preChangeBlob.RawContent));
+            }
+        }
     }
 }

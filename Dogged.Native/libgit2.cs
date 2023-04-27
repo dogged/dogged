@@ -1043,6 +1043,16 @@ namespace Dogged.Native
         public static extern unsafe uint git_tree_entry_filemode(git_tree_entry* entry);
 
         /// <summary>
+        /// Convert a tree entry to the git_object it points to.
+        /// </summary>
+        /// <param name="object">Pointer to the object.</param>
+        /// <param name="repo">The repository.</param>
+        /// <param name="entry">The tree entry.</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_tree_entry_to_object(out git_object* object_out, git_repository* repo, git_tree_entry* entry);
+
+        /// <summary>
         /// Get the object id of the given tree entry.
         /// </summary>
         /// <param name="entry">The tree entry to query</param>
@@ -1076,6 +1086,14 @@ namespace Dogged.Native
         /// <returns>0 on success or an error code</returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe int git_tree_lookup(out git_tree* obj, git_repository* repo, ref git_oid id);
+
+        /// <summary>
+        /// Get the repository that contains the tree.
+        /// </summary>
+        /// <param name="tree">The tree.</param>
+        /// <returns>Repository that contains this tree.</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe git_repository* git_tree_owner(git_tree* tree);
     }
 
     #endregion
