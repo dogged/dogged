@@ -186,11 +186,11 @@ namespace Dogged
         /// has not been disposed.
         /// </summary>
         /// <param name="wrapper">The native object wrapper to validate.</param>
-        public unsafe static void NotDisposed(NativeDisposable wrapper)
+        public unsafe static void NotDisposed(KnownDisposable obj)
         {
-            if (wrapper.IsDisposed)
+            if (obj.IsDisposed)
             {
-                throw new ObjectDisposedException(wrapper.GetType().Name);
+                throw new ObjectDisposedException(obj.GetType().Name);
             }
         }
 
@@ -215,7 +215,7 @@ namespace Dogged
         /// </summary>
         /// <param name="call">The function to invoke.</param>
         /// <param name="obj">The object to validate and keep alive.</param>
-        public static T NativeCall<T>(Func<T> call, NativeDisposable obj)
+        public static T NativeCall<T>(Func<T> call, KnownDisposable obj)
         {
             Ensure.NotDisposed(obj);
             T ret = call();
@@ -292,7 +292,7 @@ namespace Dogged
         /// <param name="call">The function call to invoke.</param>
         /// <param name="obj">The object to validate and keep alive.</param>
         /// <param name="customExceptions">Any custom exceptions that should be thrown for a particular libgit2 error code.</param>
-        public static void NativeSuccess(Func<int> call, NativeDisposable obj, Dictionary<git_error_code, Func<string, Exception>> customExceptions = null)
+        public static void NativeSuccess(Func<int> call, KnownDisposable obj, Dictionary<git_error_code, Func<string, Exception>> customExceptions = null)
         {
             NativeSuccess(NativeCall<int>(call, obj));
         }

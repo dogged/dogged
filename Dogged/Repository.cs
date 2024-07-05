@@ -17,6 +17,8 @@ namespace Dogged
 
         private readonly LazyNative<bool> isBare;
 
+        private readonly LazyRefcountedNative<Index> index;
+
         private readonly Lazy<ObjectCollection> objects;
         private readonly Lazy<ReferenceCollection> references;
 
@@ -36,6 +38,12 @@ namespace Dogged
             workdir = new LazyNative<string>(() => libgit2.git_repository_workdir(this.nativeRepository), this);
 
             isBare = new LazyNative<bool>(() => libgit2.git_repository_is_bare(this.nativeRepository) == 0 ? false : true, this);
+
+            index = new LazyRefcountedNative<Index>(() => {
+                git_index* index = null;
+                Ensure.NativeSuccess(() => libgit2.git_repository_index(out index, nativeRepository), this);
+                return Index.FromNative(index);
+            }, this);
 
             objects = new Lazy<ObjectCollection>(() => new ObjectCollection(this));
             references = new Lazy<ReferenceCollection>(() => new ReferenceCollection(this));
@@ -225,9 +233,7 @@ namespace Dogged
         {
             get
             {
-                git_index* index = null;
-                Ensure.NativeSuccess(() => libgit2.git_repository_index(out index, nativeRepository), this);
-                return Index.FromNative(index);
+                return index.Value;
             }
         }
 
@@ -292,6 +298,8 @@ namespace Dogged
 
         internal unsafe override void Dispose(bool disposing)
         {
+            index.Dispose();
+
             if (nativeRepository != null)
             {
                 libgit2.git_repository_free(nativeRepository);

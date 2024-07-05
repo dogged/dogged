@@ -33,11 +33,27 @@ namespace Dogged
             this.nativeObject = nativeObject;
         }
 
+        protected bool HasValue
+        {
+            get
+            {
+                return hasValue;
+            }
+        }
+
+        protected T Clear()
+        {
+            T ret = value;
+            hasValue = false;
+            value = default(T);
+            return ret;
+        }
+
         /// <summary>
         /// Gets the value of this object, invoking the value factory if
         /// the value has not yet been read.
         /// </summary>
-        public T Value
+        public virtual T Value
         {
             get
             {

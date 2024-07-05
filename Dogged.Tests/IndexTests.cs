@@ -23,6 +23,21 @@ namespace Dogged.Tests
         }
 
         [Fact]
+        public void CanGetTheSameIndexFromRepositoryManyTimes()
+        {
+            using (Repository repo = SandboxRepository("testrepo"))
+            {
+                Index first = repo.Index;
+                Index second = repo.Index;
+
+                Assert.Equal(first, second);
+
+                first.Dispose();
+                second.Dispose();
+            }
+        }
+
+        [Fact]
         public void GetIndexEntryCount()
         {
             using (Repository repo = SandboxRepository("testrepo"))

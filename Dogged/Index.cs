@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Dogged.Native;
 
 namespace Dogged
@@ -10,14 +11,23 @@ namespace Dogged
     /// The repository has an index which acts as the staging area for
     /// changes to be committed and a cache of in-working tree files.
     /// </summary>
-    public class Index : NativeDisposable, IEnumerable<IndexEntry>
+    public class Index : RefcountedDisposable, IEnumerable<IndexEntry>
     {
         private unsafe git_index* nativeIndex;
+
+        public unsafe Index()
+        {
+            Ensure.NativeSuccess(libgit2.git_index_new(out this.nativeIndex));
+
+            Acquire();
+        }
 
         private unsafe Index(git_index* nativeIndex)
         {
             Ensure.ArgumentNotNull(nativeIndex, "index");
             this.nativeIndex = nativeIndex;
+
+            Acquire();
         }
 
         internal unsafe static Index FromNative(git_index* nativeIndex)
@@ -131,6 +141,8 @@ namespace Dogged
 
         internal unsafe override void Dispose(bool disposing)
         {
+            Debug.Assert(nativeIndex != null);
+
             if (nativeIndex != null)
             {
                 libgit2.git_index_free(nativeIndex);
@@ -213,6 +225,8 @@ namespace Dogged
 
         internal unsafe override void Dispose(bool disposing)
         {
+            Debug.Assert(nativeIterator != null);
+
             if (nativeIterator != null)
             {
                 libgit2.git_index_iterator_free(nativeIterator);

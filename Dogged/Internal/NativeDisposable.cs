@@ -8,15 +8,14 @@ namespace Dogged
     /// Disposable pattern for objects that manage the lifecycle of
     /// native resources.
     /// </summary>
-    public abstract class NativeDisposable : IDisposable
+    public abstract class NativeDisposable : KnownDisposable
     {
-        internal abstract bool IsDisposed { get; }
         internal abstract void Dispose(bool disposing);
 
         /// <summary>
         /// Disposes the native resources associated with this object.
         /// </summary>
-        public void Dispose()
+        public override void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
