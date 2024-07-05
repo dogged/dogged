@@ -98,8 +98,8 @@ namespace Dogged.Tests
             using (Repository repo = SandboxRepository("super"))
             using (Index index = repo.Index)
             {
-                Assert.Equal(expected[0], repo.Index.First());
-                Assert.Equal(expected[1], repo.Index.Last());
+                Assert.Equal(expected[0], index.First());
+                Assert.Equal(expected[1], index.Last());
             }
         }
 
