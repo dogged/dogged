@@ -152,5 +152,12 @@ namespace Dogged.Tests
             Assert.Throws<ObjectDisposedException>(() => index[42]);
             Assert.Throws<ObjectDisposedException>(() => index.First());
         }
+
+        [Fact]
+        public void CanSetANewINdex()
+        {
+            using (Repository repo = SandboxRepository("testrepo.git"))
+            new Index();
+        }
     }
 }

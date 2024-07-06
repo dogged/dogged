@@ -293,6 +293,23 @@ namespace Dogged.Native
         #region git_index
 
         /// <summary>
+        /// Create an in-memory index object.
+        ///
+        /// <para>
+        /// This index object cannot be read/written to the filesystem,
+        /// but may be used to perform in-memory index operations.
+        /// </para>
+        ///
+        /// <para>
+        /// The index must be freed once it's no longer in use.
+        /// </para>
+        /// </summary>
+        /// <param name="index">the pointer for the new index</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_index_new(out git_index *index);
+
+        /// <summary>
         /// Get a pointer to an entry in the index for the given path at the
         /// given stage level.
         ///
