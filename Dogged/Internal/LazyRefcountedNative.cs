@@ -10,32 +10,23 @@ namespace Dogged
     /// </summary>
     internal class LazyRefcountedNative<T> : LazyNative<T> where T : RefcountedDisposable
     {
-        public LazyRefcountedNative(Func<T> valueFactory, NativeDisposable nativeObject) : base(valueFactory, nativeObject)
+        public LazyRefcountedNative(NativeDisposable nativeObject) : base(nativeObject) { }
+
+        public override T Get(Func<T> valueFactory)
         {
+            T value = base.Get(valueFactory);
+            value.Acquire();
+            return value;
         }
 
-        /// <summary>
-        /// Gets the value of this object, invoking the value factory if
-        /// the value has not yet been read.
-        /// </summary>
-        public override T Value
-        {
-            get
-            {
-                T value = base.Value;
-                value.Acquire();
-                return value;
-            }
-        }
-
-        public void Replace(T value)
+        public override void Set(T value)
         {
             Dispose();
 
             if (value != null)
             {
                 value.Acquire();
-                Value = value;
+                base.Set(value);
             }
         }
 

@@ -15,19 +15,9 @@ namespace Dogged
         private unsafe Commit(git_commit* nativeCommit, ObjectId id) :
             base((git_object*)nativeCommit, id)
         {
-            author = new LazyNative<Signature>(() => {
-                git_signature* author = libgit2.git_commit_author(NativeCommit);
-                return Signature.FromNative(author);
-            }, this);
-            committer = new LazyNative<Signature>(() => {
-                git_signature* signature = libgit2.git_commit_committer(NativeCommit);
-                return Signature.FromNative(signature);
-            }, this);
-            treeId = new LazyNative<ObjectId>(() => {
-                git_oid* oid = libgit2.git_commit_tree_id(NativeCommit);
-                Ensure.NativePointerNotNull(oid);
-                return ObjectId.FromNative(*oid);
-            }, this);
+            author = new LazyNative<Signature>(this);
+            committer = new LazyNative<Signature>(this);
+            treeId = new LazyNative<ObjectId>(this);
         }
 
         internal unsafe static Commit FromNative(git_commit* nativeCommit, ObjectId id = null)
@@ -55,33 +45,43 @@ namespace Dogged
         /// <summary>
         /// Gets the signature of the committer of this commit.
         /// </summary>
-        public Signature Committer
+        public unsafe Signature Committer
         {
             get
             {
-                return committer.Value;
+                return committer.Get(() => {
+                    git_signature* signature = libgit2.git_commit_committer(NativeCommit);
+                    return Signature.FromNative(signature);
+                });
             }
         }
 
         /// <summary>
         /// Gets the signature of the author of this commit.
         /// </summary>
-        public Signature Author
+        public unsafe Signature Author
         {
             get
             {
-                return author.Value;
+                return author.Get(() => {
+                    git_signature* author = libgit2.git_commit_author(NativeCommit);
+                    return Signature.FromNative(author);
+                });
             }
         }
 
         /// <summary>
         /// Gets the object ID of the tree that this commit points to.
         /// </summary>
-        public ObjectId TreeId
+        public unsafe ObjectId TreeId
         {
             get
             {
-                return treeId.Value;
+                return treeId.Get(() => {
+                    git_oid* oid = libgit2.git_commit_tree_id(NativeCommit);
+                    Ensure.NativePointerNotNull(oid);
+                    return ObjectId.FromNative(*oid);
+                });
             }
         }
 

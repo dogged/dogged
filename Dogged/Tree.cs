@@ -20,10 +20,7 @@ namespace Dogged
         private unsafe Tree(git_tree* nativeTree, ObjectId id) :
             base((git_object*)nativeTree, id)
         {
-            count = new LazyNative<int>(() => {
-                UIntPtr count = Ensure.NativeCall<UIntPtr>(() => libgit2.git_tree_entrycount(NativeTree), this);
-                return Ensure.CastToInt(count, "count");
-            }, this);
+            count = new LazyNative<int>(this);
         }
 
         internal unsafe static Tree FromNative(git_tree* nativeTree, ObjectId id = null)
@@ -55,7 +52,10 @@ namespace Dogged
         {
             get
             {
-                return count.Value;
+                return count.Get(() => {
+                    UIntPtr count = Ensure.NativeCall<UIntPtr>(() => libgit2.git_tree_entrycount(NativeTree), this);
+                    return Ensure.CastToInt(count, "count");
+                });
             }
         }
 

@@ -21,20 +21,9 @@ namespace Dogged
 
             this.nativeObject = nativeObject;
 
-            id = new LazyNative<ObjectId>(() => {
-                git_oid* oid = libgit2.git_odb_object_id(nativeObject);
-                Ensure.NativePointerNotNull(oid);
-                return ObjectId.FromNative(*oid);
-            }, this);
-            type = new LazyNative<ObjectType>(() => {
-                git_object_t type = libgit2.git_odb_object_type(nativeObject);
-                Ensure.EnumDefined(typeof(ObjectType), (int)type, "object type");
-                return (ObjectType)type;
-            }, this);
-            size = new LazyNative<long>(() => {
-                UIntPtr size = libgit2.git_odb_object_size(nativeObject);
-                return Ensure.CastToLong(size, "size");
-            }, this);
+            id = new LazyNative<ObjectId>(this);
+            type = new LazyNative<ObjectType>(this);
+            size = new LazyNative<long>(this);
         }
 
         internal unsafe static ObjectDatabaseObject FromNative(git_odb_object* nativeObject)
@@ -42,27 +31,38 @@ namespace Dogged
             return new ObjectDatabaseObject(nativeObject);
         }
 
-        public ObjectId Id
+        public unsafe ObjectId Id
         {
             get
             {
-                return id.Value;
+                return id.Get(() => {
+                    git_oid* oid = libgit2.git_odb_object_id(nativeObject);
+                    Ensure.NativePointerNotNull(oid);
+                    return ObjectId.FromNative(*oid);
+                });
             }
         }
 
-        public ObjectType Type
+        public unsafe ObjectType Type
         {
             get
             {
-                return type.Value;
+                return type.Get(() => {
+                    git_object_t type = libgit2.git_odb_object_type(nativeObject);
+                    Ensure.EnumDefined(typeof(ObjectType), (int)type, "object type");
+                    return (ObjectType)type;
+                });
             }
         }
 
-        public long Size
+        public unsafe long Size
         {
             get
             {
-                return size.Value;
+                return size.Get(() => {
+                    UIntPtr size = libgit2.git_odb_object_size(nativeObject);
+                    return Ensure.CastToLong(size, "size");
+                });
             }
         }
 

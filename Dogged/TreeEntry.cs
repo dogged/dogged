@@ -25,14 +25,9 @@ namespace Dogged
             this.parent = parent;
             this.nativeEntry = nativeEntry;
 
-            mode = new LazyNative<FileMode>(() => (FileMode)libgit2.git_tree_entry_filemode(nativeEntry), parent);
-
-            id = new LazyNative<ObjectId>(() => {
-                git_oid* oid = libgit2.git_tree_entry_id(nativeEntry);
-                Ensure.NativePointerNotNull(oid);
-                return ObjectId.FromNative(*oid);
-            }, parent);
-            name = new LazyNative<string>(() => libgit2.git_tree_entry_name(nativeEntry), parent);
+            mode = new LazyNative<FileMode>(parent);
+            id = new LazyNative<ObjectId>(parent);
+            name = new LazyNative<string>(parent);
         }
 
         internal unsafe static TreeEntry FromNative(Tree parent, git_tree_entry* nativeEntry)
@@ -43,11 +38,11 @@ namespace Dogged
         /// <summary>
         /// Gets the file mode for the tree entry.
         /// </summary>
-        public FileMode Mode
+        public unsafe FileMode Mode
         {
             get
             {
-                return mode.Value;
+                return mode.Get(() => (FileMode)libgit2.git_tree_entry_filemode(nativeEntry));
             }
         }
 
@@ -58,11 +53,13 @@ namespace Dogged
         {
             get
             {
-                if (mode.Value == FileMode.Commit)
+                FileMode mode = Mode;
+
+                if (mode == FileMode.Commit)
                 {
                     return ObjectType.Commit;
                 }
-                else if (mode.Value == FileMode.Tree)
+                else if (mode == FileMode.Tree)
                 {
                     return ObjectType.Tree;
                 }
@@ -76,22 +73,26 @@ namespace Dogged
         /// <summary>
         /// Gets the object id of the tree entry.
         /// </summary>
-        public ObjectId Id
+        public unsafe ObjectId Id
         {
             get
             {
-                return id.Value;
+                return id.Get(() => {
+                    git_oid* oid = libgit2.git_tree_entry_id(nativeEntry);
+                    Ensure.NativePointerNotNull(oid);
+                    return ObjectId.FromNative(*oid);
+                });
             }
         }
 
         /// <summary>
         /// Gets the filename of the tree entry.
         /// </summary>
-        public string Name
+        public unsafe string Name
         {
             get
             {
-                return name.Value;
+                return name.Get(() => libgit2.git_tree_entry_name(nativeEntry));
             }
         }
     }

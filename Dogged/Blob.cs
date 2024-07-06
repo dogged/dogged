@@ -15,8 +15,8 @@ namespace Dogged
         private unsafe Blob(git_blob* nativeBlob, ObjectId id) :
             base((git_object*)nativeBlob, id)
         {
-            rawSize = new LazyNative<long>(() => libgit2.git_blob_rawsize(nativeBlob), this);
-            isBinary = new LazyNative<bool>(() => libgit2.git_blob_is_binary(nativeBlob) == 0 ? false : true, this);
+            rawSize = new LazyNative<long>(this);
+            isBinary = new LazyNative<bool>(this);
         }
 
         internal unsafe static Blob FromNative(git_blob* nativeBlob, ObjectId id = null)
@@ -41,11 +41,11 @@ namespace Dogged
             }
         }
 
-        public long RawSize
+        public unsafe long RawSize
         {
             get
             {
-                return rawSize.Value;
+                return rawSize.Get(() => libgit2.git_blob_rawsize(NativeBlob));
             }
         }
 
@@ -81,11 +81,11 @@ namespace Dogged
             return buf;
         }
 
-        public bool IsBinary
+        public unsafe bool IsBinary
         {
             get
             {
-                return isBinary.Value;
+                return isBinary.Get(() => libgit2.git_blob_is_binary(NativeBlob) == 0 ? false : true);
             }
         }
     }

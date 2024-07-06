@@ -15,8 +15,6 @@ namespace Dogged
         private readonly LazyNative<string> path;
         private readonly LazyNative<string> workdir;
 
-        private readonly LazyNative<bool> isBare;
-
         private readonly LazyRefcountedNative<Index> index;
         private readonly LazyRefcountedNative<ObjectDatabase> objectDatabase;
 
@@ -35,22 +33,11 @@ namespace Dogged
             Ensure.NativePointerNotNull(nativeRepository);
             this.nativeRepository = nativeRepository;
 
-            path = new LazyNative<string>(() => libgit2.git_repository_path(this.nativeRepository), this);
-            workdir = new LazyNative<string>(() => libgit2.git_repository_workdir(this.nativeRepository), this);
+            path = new LazyNative<string>(this);
+            workdir = new LazyNative<string>(this);
 
-            isBare = new LazyNative<bool>(() => libgit2.git_repository_is_bare(this.nativeRepository) == 0 ? false : true, this);
-
-            index = new LazyRefcountedNative<Index>(() => {
-                git_index* index = null;
-                Ensure.NativeSuccess(() => libgit2.git_repository_index(out index, nativeRepository), this);
-                return Index.FromNative(index);
-            }, this);
-
-            objectDatabase = new LazyRefcountedNative<ObjectDatabase>(() => {
-                git_odb* odb = null;
-                Ensure.NativeSuccess(() => libgit2.git_repository_odb(out odb, nativeRepository), this);
-                return ObjectDatabase.FromNative(odb);
-            }, this);
+            index = new LazyRefcountedNative<Index>(this);
+            objectDatabase = new LazyRefcountedNative<ObjectDatabase>(this);
 
             objects = new Lazy<ObjectCollection>(() => new ObjectCollection(this));
             references = new Lazy<ReferenceCollection>(() => new ReferenceCollection(this));
@@ -153,7 +140,7 @@ namespace Dogged
         {
             get
             {
-                return path.Value;
+                return path.Get(() => libgit2.git_repository_path(this.nativeRepository));
             }
         }
 
@@ -161,7 +148,7 @@ namespace Dogged
         {
             get
             {
-                return workdir.Value;
+                return workdir.Get(() => libgit2.git_repository_workdir(this.nativeRepository));
             }
         }
 
@@ -172,7 +159,7 @@ namespace Dogged
         {
             get
             {
-                return isBare.Value;
+                return Ensure.NativeCall<int>(() => libgit2.git_repository_is_bare(this.nativeRepository), this) == 0 ? false : true;
             }
         }
 
@@ -240,13 +227,17 @@ namespace Dogged
         {
             get
             {
-                return index.Value;
+                return index.Get(() => {
+                    git_index* index = null;
+                    Ensure.NativeSuccess(() => libgit2.git_repository_index(out index, nativeRepository), this);
+                    return Index.FromNative(index);
+                });
             }
 
             set
             {
-                index.Replace(value);
                 libgit2.git_repository_set_index(nativeRepository, value != null ? value.NativeIndex : null);
+                index.Set(value);
             }
         }
 
@@ -291,13 +282,17 @@ namespace Dogged
         {
             get
             {
-                return objectDatabase.Value;
+                return objectDatabase.Get(() => {
+                    git_odb* odb = null;
+                    Ensure.NativeSuccess(() => libgit2.git_repository_odb(out odb, nativeRepository), this);
+                    return ObjectDatabase.FromNative(odb);
+                });
             }
 
             set
             {
-                objectDatabase.Replace(value);
                 libgit2.git_repository_set_odb(nativeRepository, value != null ? value.NativeOdb : null);
+                objectDatabase.Set(value);
             }
         }
 

@@ -16,9 +16,7 @@ namespace Dogged
             Ensure.ArgumentNotNull(nativeReference, "reference");
             NativeReference = nativeReference;
 
-            name = new LazyNative<string>(() => {
-                return Ensure.NativeObjectNotNull(libgit2.git_reference_name(NativeReference));
-            }, this);
+            name = new LazyNative<string>(this);
         }
 
         protected Reference() { }
@@ -48,7 +46,7 @@ namespace Dogged
         {
             get
             {
-                return name.Value;
+                return name.Get(() => libgit2.git_reference_name(NativeReference));
             }
         }
 
@@ -126,11 +124,7 @@ namespace Dogged
 
         private unsafe DirectReference(git_reference* nativeReference) : base(nativeReference)
         {
-            target = new LazyNative<ObjectId>(() => {
-                git_oid* oid = libgit2.git_reference_target(NativeReference);
-                Ensure.NativePointerNotNull(oid);
-                return ObjectId.FromNative(*oid);
-            }, this);
+            target = new LazyNative<ObjectId>(this);
         }
 
         /// <summary>
@@ -140,7 +134,11 @@ namespace Dogged
         {
             get
             {
-                return target.Value;
+                return target.Get(() => {
+                    git_oid* oid = libgit2.git_reference_target(NativeReference);
+                    Ensure.NativePointerNotNull(oid);
+                    return ObjectId.FromNative(*oid);
+                });
             }
         }
 
@@ -161,9 +159,7 @@ namespace Dogged
 
         private unsafe SymbolicReference(git_reference* nativeReference) : base(nativeReference)
         {
-            target = new LazyNative<string>(() => {
-                return Ensure.NativeObjectNotNull(libgit2.git_reference_symbolic_target(NativeReference));
-            }, this);
+            target = new LazyNative<string>(this);
         }
 
         /// <summary>
@@ -173,7 +169,9 @@ namespace Dogged
         {
             get
             {
-                return target.Value;
+                return target.Get(() => {
+                    return Ensure.NativeObjectNotNull(libgit2.git_reference_symbolic_target(NativeReference));
+                });
             }
         }
 
