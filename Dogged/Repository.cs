@@ -18,6 +18,7 @@ namespace Dogged
         private readonly LazyNative<bool> isBare;
 
         private readonly LazyRefcountedNative<Index> index;
+        private readonly LazyRefcountedNative<ObjectDatabase> objectDatabase;
 
         private readonly Lazy<ObjectCollection> objects;
         private readonly Lazy<ReferenceCollection> references;
@@ -43,6 +44,12 @@ namespace Dogged
                 git_index* index = null;
                 Ensure.NativeSuccess(() => libgit2.git_repository_index(out index, nativeRepository), this);
                 return Index.FromNative(index);
+            }, this);
+
+            objectDatabase = new LazyRefcountedNative<ObjectDatabase>(() => {
+                git_odb* odb = null;
+                Ensure.NativeSuccess(() => libgit2.git_repository_odb(out odb, nativeRepository), this);
+                return ObjectDatabase.FromNative(odb);
             }, this);
 
             objects = new Lazy<ObjectCollection>(() => new ObjectCollection(this));
@@ -289,13 +296,18 @@ namespace Dogged
         {
             get
             {
-                git_odb* odb = null;
-                Ensure.NativeSuccess(() => libgit2.git_repository_odb(out odb, nativeRepository), this);
-                return ObjectDatabase.FromNative(odb);
+                return objectDatabase.Value;
             }
+
             set
             {
-                libgit2.git_repository_set_odb(nativeRepository, value.NativeOdb);
+                if (value != null)
+                {
+                    value.Acquire();
+                }
+
+                libgit2.git_repository_set_odb(nativeRepository, value != null ? value.NativeOdb : null);
+                objectDatabase.Value = value;
             }
         }
 
@@ -310,6 +322,7 @@ namespace Dogged
         internal unsafe override void Dispose(bool disposing)
         {
             index.Dispose();
+            objectDatabase.Dispose();
 
             if (nativeRepository != null)
             {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Dogged.Native;
 
 namespace Dogged
@@ -9,7 +10,7 @@ namespace Dogged
     /// An object database stores the objects (commit, trees, blobs, tags,
     /// etc) for a repository.
     /// </summary>
-    public class ObjectDatabase : NativeDisposable
+    public class ObjectDatabase : RefcountedDisposable
     {
         private unsafe git_odb* nativeOdb;
 
@@ -19,12 +20,16 @@ namespace Dogged
 
             Ensure.NativeSuccess(libgit2.git_odb_new(out nativeOdb));
             this.nativeOdb = nativeOdb;
+
+            Acquire();
         }
 
         private unsafe ObjectDatabase(git_odb* nativeOdb)
         {
             Ensure.ArgumentNotNull(nativeOdb, "odb");
             this.nativeOdb = nativeOdb;
+
+            Acquire();
         }
 
         internal unsafe git_odb* NativeOdb
@@ -166,6 +171,8 @@ namespace Dogged
 
         internal unsafe override void Dispose(bool disposing)
         {
+            Debug.Assert(nativeOdb != null);
+
             if (nativeOdb != null)
             {
                 libgit2.git_odb_free(nativeOdb);
