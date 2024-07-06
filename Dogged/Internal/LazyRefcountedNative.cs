@@ -28,6 +28,17 @@ namespace Dogged
             }
         }
 
+        public void Replace(T value)
+        {
+            Dispose();
+
+            if (value != null)
+            {
+                value.Acquire();
+                Value = value;
+            }
+        }
+
         public void Dispose()
         {
             if (HasValue)

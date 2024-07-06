@@ -245,13 +245,8 @@ namespace Dogged
 
             set
             {
-                if (value != null)
-                {
-                    value.Acquire();
-                }
-
+                index.Replace(value);
                 libgit2.git_repository_set_index(nativeRepository, value != null ? value.NativeIndex : null);
-                index.Value = value;
             }
         }
 
@@ -301,13 +296,8 @@ namespace Dogged
 
             set
             {
-                if (value != null)
-                {
-                    value.Acquire();
-                }
-
+                objectDatabase.Replace(value);
                 libgit2.git_repository_set_odb(nativeRepository, value != null ? value.NativeOdb : null);
-                objectDatabase.Value = value;
             }
         }
 

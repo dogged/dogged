@@ -163,5 +163,21 @@ namespace Dogged.Tests
                 Assert.Equal(0, index.Count);
             }
         }
+
+        [Fact]
+        public void CanUseExistingIndexAndSetNewIndex()
+        {
+            using (Repository repo = SandboxRepository("testrepo.git"))
+            using (Index originalIndex = repo.Index)
+            {
+                using (Index newIndex = new Index())
+                {
+                    repo.Index = newIndex;
+
+                    Assert.Equal(0, newIndex.Count);
+                    Assert.Equal(109, originalIndex.Count);
+                }
+            }
+        }
     }
 }
