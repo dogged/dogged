@@ -876,6 +876,24 @@ namespace Dogged.Native
         public static extern unsafe string git_repository_path(git_repository* repository);
 
         /// <summary>
+        /// Set the index file for this repository
+        ///
+        /// <para>
+        /// This index will be used for all index-related operations
+        /// involving this repository.
+        /// </para>
+        ///
+        /// <para>
+        /// The repository will keep a reference to the index file;
+        /// the user must still free the index after setting it
+        /// to the repository, or it will leak.
+        /// </para>
+        /// <param name="repo">The repository to configure</param>
+        /// <param name="odb">The object database to set</param>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe void git_repository_set_index(git_repository* repo, git_index* index);
+
+        /// <summary>
         /// Set the Object Database for this repository
         ///
         /// <para>

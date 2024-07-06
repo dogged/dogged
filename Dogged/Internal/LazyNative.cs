@@ -67,6 +67,22 @@ namespace Dogged
 
                 return value;
             }
+
+            internal set
+            {
+                Ensure.NotDisposed(nativeObject);
+
+                if (value == null || value.Equals(default(T)))
+                {
+                    hasValue = false;
+                    this.value = default(T);
+                }
+                else
+                {
+                    hasValue = true;
+                    this.value = value;
+                }
+            }
         }
     }
 }

@@ -35,6 +35,14 @@ namespace Dogged
             return new Index(nativeIndex);
         }
 
+        internal unsafe git_index* NativeIndex
+        {
+            get
+            {
+                return nativeIndex;
+            }
+        }
+
         /// <summary>
         /// Gets the number of entries in the index.
         /// </summary>

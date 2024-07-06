@@ -154,10 +154,14 @@ namespace Dogged.Tests
         }
 
         [Fact]
-        public void CanSetANewINdex()
+        public void CanSetANewIndex()
         {
             using (Repository repo = SandboxRepository("testrepo.git"))
-            new Index();
+            using (Index index = new Index())
+            {
+                repo.Index = index;
+                Assert.Equal(0, index.Count);
+            }
         }
     }
 }

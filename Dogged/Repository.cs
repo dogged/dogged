@@ -227,13 +227,24 @@ namespace Dogged
         }
 
         /// <summary>
-        /// Describes the repository's index.
+        /// Describes or sets the repository's index.
         /// </summary>
         public unsafe Index Index
         {
             get
             {
                 return index.Value;
+            }
+
+            set
+            {
+                if (value != null)
+                {
+                    value.Acquire();
+                }
+
+                libgit2.git_repository_set_index(nativeRepository, value != null ? value.NativeIndex : null);
+                index.Value = value;
             }
         }
 
