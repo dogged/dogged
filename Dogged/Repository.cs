@@ -47,6 +47,11 @@ namespace Dogged
             references = new Lazy<ReferenceCollection>(() => new ReferenceCollection(this));
         }
 
+        public static Repository Open(string path)
+        {
+            return Open(path, new RepositoryOpenOptions());
+        }
+
         /// <summary>
         /// Opens the Git repository at the given <paramref name="path"/>.
         /// This can be either a path to the repository's working tree,
@@ -55,12 +60,13 @@ namespace Dogged
         /// </summary>
         /// <param name="path">The path to the repository or a repository's working tree.</param>
         /// <returns>The repository</returns>
-        public unsafe static Repository Open(string path)
+        public unsafe static Repository Open(string path, RepositoryOpenOptions options)
         {
             Ensure.ArgumentNotNull(path, "path");
+            Ensure.ArgumentNotNull(options, "options");
 
             git_repository *nativeRepository;
-            Ensure.NativeSuccess(libgit2.git_repository_open(out nativeRepository, path), exceptionMap);
+            Ensure.NativeSuccess(libgit2.git_repository_open_ext(out nativeRepository, path, (uint)options.NativeFlags, options.NativeCeilingDirectories), exceptionMap);
 
             return new Repository(nativeRepository);
         }
