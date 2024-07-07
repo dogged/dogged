@@ -52,7 +52,7 @@ namespace Dogged.Tests
             using (var repository = Repository.Open(resourcePath))
             {
                 repositoryPath = repository.Path;
-                workdirPath = repository.Workdir;
+                workdirPath = repository.WorkingDirectory;
             }
 
             Assert.Equal(repositoryPath, Repository.Discover(repositoryPath));

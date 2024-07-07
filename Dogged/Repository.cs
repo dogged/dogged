@@ -142,7 +142,7 @@ namespace Dogged
             }
         }
 
-        public unsafe string Workdir
+        public unsafe string WorkingDirectory
         {
             get
             {

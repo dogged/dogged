@@ -44,7 +44,7 @@ namespace Dogged.Tests
                     Assert.Equal(10, buf.Content.Length);
                 }
 
-                string attributesPath = string.Format("{0}/.gitattributes", repo.Workdir);
+                string attributesPath = string.Format("{0}/.gitattributes", repo.WorkingDirectory);
                 File.WriteAllLines(attributesPath, new string[] { "* text eol=crlf" });
 
                 using (GitBuffer buf = b.GetFilteredContent("foo.txt"))

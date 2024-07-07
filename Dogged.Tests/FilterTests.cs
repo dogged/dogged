@@ -35,7 +35,7 @@ namespace Dogged.Tests
 
             using (Repository repo = SandboxRepository("testrepo"))
             {
-                string attributesPath = string.Format("{0}/.gitattributes", repo.Workdir);
+                string attributesPath = string.Format("{0}/.gitattributes", repo.WorkingDirectory);
                 File.WriteAllLines(attributesPath, new string[] { "* text eol=crlf" });
 
                 using (Blob b = repo.Objects.Lookup<Blob>(id))
@@ -66,10 +66,10 @@ namespace Dogged.Tests
 
             using (Repository repo = SandboxRepository("testrepo"))
             {
-                string attributesPath = string.Format("{0}/.gitattributes", repo.Workdir);
+                string attributesPath = string.Format("{0}/.gitattributes", repo.WorkingDirectory);
                 File.WriteAllLines(attributesPath, new string[] { "* text eol=crlf" });
 
-                string filePath = string.Format("{0}/foo.txt", repo.Workdir);
+                string filePath = string.Format("{0}/foo.txt", repo.WorkingDirectory);
                 File.WriteAllBytes(filePath, new byte[] { 0x68, 0x65, 0x79, 0x20, 0x74, 0x68, 0x65, 0x72, 0x65, 0x0d, 0x0a });
 
                 using (Blob b = repo.Objects.Lookup<Blob>(id))
@@ -93,7 +93,7 @@ namespace Dogged.Tests
 
             using (Repository repo = SandboxRepository("testrepo"))
             {
-                string attributesPath = string.Format("{0}/.gitattributes", repo.Workdir);
+                string attributesPath = string.Format("{0}/.gitattributes", repo.WorkingDirectory);
                 File.WriteAllLines(attributesPath, new string[] { "* text eol=crlf" });
 
                 using (Blob b = repo.Objects.Lookup<Blob>(id))
