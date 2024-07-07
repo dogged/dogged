@@ -18,8 +18,15 @@ namespace Dogged
         public unsafe Index()
         {
             Ensure.NativeSuccess(libgit2.git_index_new(out this.nativeIndex));
-
             Acquire();
+        }
+
+        public static unsafe Index Open(string path)
+        {
+            git_index* nativeIndex;
+
+            Ensure.NativeSuccess(libgit2.git_index_open(out nativeIndex, path));
+            return new Index(nativeIndex);
         }
 
         private unsafe Index(git_index* nativeIndex)

@@ -179,5 +179,17 @@ namespace Dogged.Tests
                 }
             }
         }
+
+        [Fact]
+        public void CanOpenAnExistingIndex()
+        {
+            var repoPath = SandboxResource("testrepo.git");
+            var indexPath = Path.Combine(repoPath, "index");
+
+            using (Index index = Index.Open(indexPath))
+            {
+                Assert.Equal(109, index.Count);
+            }
+        }
     }
 }

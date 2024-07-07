@@ -310,6 +310,34 @@ namespace Dogged.Native
         public static extern unsafe int git_index_new(out git_index *index);
 
         /// <summary>
+        /// Create a new bare Git index object as a memory representation
+        /// of the Git index file in 'index_path', without a repository
+        /// to back it.
+        ///
+        /// <para>
+        /// Since there is no ODB or working directory behind this index,
+        /// any Index methods which rely on these (e.g. index_add_bypath)
+        /// will fail with the GIT_ERROR error code.
+        /// </para>
+        ///
+        /// <para>
+        /// If you need to access the index of an actual repository,
+        /// use the `git_repository_index` wrapper.
+        /// </para>
+        ///
+        /// <para>
+        /// The index must be freed once it's no longer in use.
+        /// </para>
+        /// </summary>
+        /// <param name="index">the pointer for the new index</param>
+        /// <param name="path">the path to the index file in disk</param>
+        /// <returns>0 or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_index_open(
+            out git_index *index,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path);
+
+        /// <summary>
         /// Get a pointer to an entry in the index for the given path at the
         /// given stage level.
         ///
