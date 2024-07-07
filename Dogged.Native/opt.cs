@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 
 namespace Dogged.Native
 {
@@ -341,5 +342,44 @@ namespace Dogged.Native
         /// </para>
         /// </summary>
         GIT_OPT_DISABLE_PACK_KEEP_FILE_CHECKS
+    }
+
+    public static partial class libgit2
+    {
+        /// <summary>
+        /// Get or set a global configuration option for libgit2.
+        /// </summary>
+        /// <param name="option">The option value to get or set</param>
+        /// <param name="...">The options to set</param>
+        /// <returns>0 on success or an error code</returns>
+
+        // macOS arm64 requires padding before varargs, we'll set up the
+        // PInvoke methods with the extra padding as private, then use a
+        // public C# method to proxy to them. This gives us a consistent
+        // API between macOS arm64 and everything else.
+        // see https://github.com/dotnet/runtime/issues/48796
+#if MACOS_ARM64
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        private static extern unsafe int git_libgit2_opts(git_libgit2_opt_t option, IntPtr padding1, IntPtr padding2, IntPtr padding3, IntPtr padding4, IntPtr padding5, IntPtr padding6, IntPtr padding7, git_config_level_t level, git_buf buf);
+
+        public static int git_libgit2_opts(git_libgit2_opt_t option, git_config_level_t level, git_buf buf)
+        {
+            return git_libgit2_opts(option, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, level, buf);
+        }
+
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        private static extern unsafe int git_libgit2_opts(git_libgit2_opt_t option, IntPtr padding1, IntPtr padding2, IntPtr padding3, IntPtr padding4, IntPtr padding5, IntPtr padding6, IntPtr padding7, git_config_level_t level, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path);
+
+        public static int git_libgit2_opts(git_libgit2_opt_t option, git_config_level_t level, string path)
+        {
+            return git_libgit2_opts(option, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, level, path);
+        }
+#else
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_libgit2_opts(git_libgit2_opt_t option, git_config_level_t level, git_buf buf);
+
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_libgit2_opts(git_libgit2_opt_t option, git_config_level_t level, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path);
+#endif
     }
 }

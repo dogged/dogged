@@ -157,4 +157,139 @@ namespace Dogged.Native
         /// </summary>
         GIT_INDEX_ENTRY_SKIP_WORKTREE = (1 << 14),
     }
+
+    public static partial class libgit2
+    {
+        /// <summary>
+        /// Create an in-memory index object.
+        ///
+        /// <para>
+        /// This index object cannot be read/written to the filesystem,
+        /// but may be used to perform in-memory index operations.
+        /// </para>
+        ///
+        /// <para>
+        /// The index must be freed once it's no longer in use.
+        /// </para>
+        /// </summary>
+        /// <param name="index">the pointer for the new index</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_index_new(out git_index *index);
+
+        /// <summary>
+        /// Create a new bare Git index object as a memory representation
+        /// of the Git index file in 'index_path', without a repository
+        /// to back it.
+        ///
+        /// <para>
+        /// Since there is no ODB or working directory behind this index,
+        /// any Index methods which rely on these (e.g. index_add_bypath)
+        /// will fail with the GIT_ERROR error code.
+        /// </para>
+        ///
+        /// <para>
+        /// If you need to access the index of an actual repository,
+        /// use the `git_repository_index` wrapper.
+        /// </para>
+        ///
+        /// <para>
+        /// The index must be freed once it's no longer in use.
+        /// </para>
+        /// </summary>
+        /// <param name="index">the pointer for the new index</param>
+        /// <param name="path">the path to the index file in disk</param>
+        /// <returns>0 or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_index_open(
+            out git_index *index,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path);
+
+        /// <summary>
+        /// Get a pointer to an entry in the index for the given path at the
+        /// given stage level.
+        ///
+        /// <para>
+        /// A "stage level" is a construct for handling conflicted files
+        /// during a merge; generally, files are in stage level 0
+        /// (sometimes called the "main index"); if a file is in conflict
+        /// after a merge, there will be no entry at stage level 0, instead
+        /// there will be entries at stages 1-3 representing the conflicting
+        /// contents of the common ancestor, the file in "our" branch and
+        /// the file in "their" branch.
+        /// </para>
+        ///
+        /// <para>
+        /// The entry is not modifiable and should not be freed.  Because the
+        /// `git_index_entry` struct is a publicly defined struct, you should
+        /// be able to make your own permanent copy of the data if necessary.
+        /// </para>
+        /// </summary>
+        /// <param name="index">The index to read the entry from</param>
+        /// <param name="path">The path for the index entry</param>
+        /// <param name="stage">The stage level to query</param>
+        /// <returns>A pointer to the entry or NULL if out of bounds</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe git_index_entry* git_index_get_bypath(
+            git_index* index,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path,
+            int stage);
+
+        /// <summary>
+        /// Get a pointer to an entry in the index at the the given position.
+        ///
+        /// <para>
+        /// The entry is not modifiable and should not be freed.  Because the
+        /// `git_index_entry` struct is a publicly defined struct, you should
+        /// be able to make your own permanent copy of the data if necessary.
+        /// </para>
+        /// </summary>
+        /// <param name="index">The index to read the entry from</param>
+        /// <param name="n">The position of the index entry</param>
+        /// <returns>A pointer to the entry or NULL if out of bounds</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe git_index_entry* git_index_get_byindex(git_index* index, UIntPtr n);
+
+        /// <summary>
+        /// Get the count of entries currently in the index.
+        /// </summary>
+        /// <param name="index">The index to read the entry from</param>
+        /// <returns>Count of the current entries</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe UIntPtr git_index_entrycount(git_index* index);
+
+        /// <summary>
+        /// Free an existing index object.
+        /// </summary>
+        /// <param name="index">The index to free</param>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe void git_index_free(git_index* index);
+
+        /// <summary>
+        /// Create a new index iterator; this will take a snapshot of the
+        /// given index for iteration.
+        /// </summary>
+        /// <param name="iterator">Pointer to the iterator that was created</param>
+        /// <param name="index">The index to iterate over</param>
+        /// <returns>0 on success or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_index_iterator_new(out git_index_iterator* iterator, git_index* index);
+
+        /// <summary>
+        /// Get the next index entry in the iterator.  This entry is owned
+        /// by the iterator and should not be freed.
+        /// </summary>
+        /// <param name="entry">Pointer to the entry in the index</param>
+        /// <param name="iterator">The iterator to query</param>
+        /// <returns>0 on success, GIT_ITEROVER on successful completion of iteration, or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_index_iterator_next(out git_index_entry* entry, git_index_iterator* iterator);
+
+        /// <summary>
+        /// Free an existing index iterator.
+        /// </summary>
+        /// <param name="iterator">The iterator to free</param>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe void git_index_iterator_free(git_index_iterator* iterator);
+    }
 }

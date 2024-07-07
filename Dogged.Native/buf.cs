@@ -10,4 +10,10 @@ namespace Dogged.Native
         public UIntPtr asize;
         public UIntPtr size;
     }
+
+    public static partial class libgit2
+    {
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe void git_buf_dispose(git_buf buf);
+    }
 }

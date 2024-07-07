@@ -246,4 +246,16 @@ namespace Dogged.Native
         /// <summary>The error category.</summary>
         public git_error_t category;
     }
+
+    public static partial class libgit2
+    {
+        /// <summary>
+        /// Returns the information (class and message) for the last error
+        /// that occurred on the current thread.  This information is
+        /// undefined if the last libgit2 function did not return an error.
+        /// </summary>
+        /// <returns>A pointer to a <see cref="git_error"/> that describes the error.</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe git_error* git_error_last();
+    }
 }
