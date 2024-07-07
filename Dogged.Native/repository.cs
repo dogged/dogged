@@ -137,6 +137,18 @@ namespace Dogged.Native
             out git_repository* repo,
             [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path);
 
+
+        /// <summary>
+        /// Get the path of this repository
+        ///
+        /// <para>
+        /// This is the path of the `.git` folder for normal
+        /// repositories, or of the repository itself for bare
+        /// repositories.
+        /// </para>
+        /// </summary>
+        /// <param name="repo">A repository object</param>
+        /// <returns>the path to the repository</returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.FromNative, MarshalTypeRef = typeof(Utf8Marshaler))]
         public static extern unsafe string git_repository_path(git_repository* repository);
