@@ -15,6 +15,8 @@ namespace Dogged
         private readonly LazyNative<string> path;
         private readonly LazyNative<string> workdir;
 
+        private readonly LazyNative<RepositoryIdentity> identity;
+
         private readonly LazyRefcountedNative<Index> index;
         private readonly LazyRefcountedNative<ObjectDatabase> objectDatabase;
 
@@ -35,6 +37,8 @@ namespace Dogged
 
             path = new LazyNative<string>(this);
             workdir = new LazyNative<string>(this);
+
+            identity = new LazyNative<RepositoryIdentity>(this);
 
             index = new LazyRefcountedNative<Index>(this);
             objectDatabase = new LazyRefcountedNative<ObjectDatabase>(this);
@@ -173,6 +177,26 @@ namespace Dogged
             {
                 int ret = Ensure.NativeCall<int>(() => libgit2.git_repository_head_detached(nativeRepository), this);
                 return Ensure.NativeBoolean(ret);
+            }
+        }
+
+        public unsafe RepositoryIdentity Identity
+        {
+            get
+            {
+                return identity.Get(() => {
+                    return Ensure.NativeCall(() => {
+                        string name, email;
+                        Ensure.NativeSuccess(libgit2.git_repository_ident(out name, out email, nativeRepository));
+                        return new RepositoryIdentity(name, email);
+                    }, this);
+                });
+            }
+
+            set
+            {
+                Ensure.NativeSuccess(libgit2.git_repository_set_ident(nativeRepository, value.Name, value.Email));
+                identity.Set(value);
             }
         }
 

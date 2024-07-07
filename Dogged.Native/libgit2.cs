@@ -932,6 +932,52 @@ namespace Dogged.Native
         [return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.FromNative, MarshalTypeRef = typeof(Utf8Marshaler))]
         public static extern unsafe string git_repository_workdir(git_repository* repository);
 
+        /// <summary>
+        ///  Retrieve the configured identity to use for reflogs
+        ///
+        ///  <para>
+        ///   The memory is owned by the repository and must not be
+        ///   freed by the user.
+        ///  </para>
+        /// </summary>
+        /// <param name="name">
+        ///  where to store the pointer to the name
+        /// </param>
+        /// <param name="email">
+        ///  where to store the pointer to the email
+        /// </param>
+        /// <param name="repo">the repository</param>
+        /// <returns>0 or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_repository_ident(
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.FromNative, MarshalTypeRef = typeof(Utf8Marshaler))] out string name,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.FromNative, MarshalTypeRef = typeof(Utf8Marshaler))] out string email,
+            git_repository* repo);
+
+        /// <summary>
+        ///  Set the identity to be used for writing reflogs
+        ///
+        ///  <para>
+        ///   If both are set, this name and email will be used to
+        ///   write to the reflog. Pass NULL to unset. When unset, the
+        ///   identity will be taken from the repository's
+        ///   configuration.
+        ///  </para>
+        /// </summary>
+        /// <param name="repo">the repository to configure</param>
+        /// <param name="name">
+        ///  the name to use for the reflog entries
+        /// </param>
+        /// <param name="email">
+        ///  the email to use for the reflog entries
+        /// </param>
+        /// <returns>0 or an error code.</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_repository_set_ident(
+            git_repository* repo,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string name,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string email);
+
         #endregion
 
         // reference - a branch or tag

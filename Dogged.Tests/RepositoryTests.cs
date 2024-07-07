@@ -154,5 +154,31 @@ namespace Dogged.Tests
             Assert.Throws<ObjectDisposedException>(() => repo.Index);
             Assert.Throws<ObjectDisposedException>(() => repo.Head);
         }
+
+        [Fact]
+        public void CanGetNoIdentityByDefault()
+        {
+            Repository repo;
+
+            using (repo = SandboxRepository("testrepo.git"))
+            {
+                Assert.Null(repo.Identity.Name);
+                Assert.Null(repo.Identity.Email);
+            }
+        }
+
+        [Fact]
+        public void CanSetIdentity()
+        {
+            Repository repo;
+
+            using (repo = SandboxRepository("testrepo.git"))
+            {
+                repo.Identity = new RepositoryIdentity("User Name", "user@example.com");
+
+                Assert.Equal("User Name", repo.Identity.Name);
+                Assert.Equal("user@example.com", repo.Identity.Email);
+            }
+        }
     }
 }
