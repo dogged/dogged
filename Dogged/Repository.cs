@@ -154,6 +154,12 @@ namespace Dogged
             {
                 return workdir.Get(() => libgit2.git_repository_workdir(this.nativeRepository));
             }
+
+            set
+            {
+                Ensure.NativeSuccess(libgit2.git_repository_set_workdir(nativeRepository, value, 0));
+                workdir.Clear();
+            }
         }
 
         /// <summary>

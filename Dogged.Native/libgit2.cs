@@ -913,6 +913,31 @@ namespace Dogged.Native
         public static extern unsafe void git_repository_set_odb(git_repository* repo, git_odb* odb);
 
         /// <summary>
+        /// Set the path to the working directory for this repository
+        ///
+        /// <para>
+        /// The working directory doesn't need to be the same one
+        /// that contains the `.git` folder for this repository.
+        /// </para>
+        ///
+        /// <para>
+        /// If this repository is bare, setting its working directory
+        /// will turn it into a normal repository, capable of performing
+        /// all the common workdir operations (checkout, status, index
+        /// manipulation, etc).
+        /// </para>
+        /// </summary>
+        /// <param name="repo">A repository object</param>
+        /// <param name="workdir">The path to a working directory</param>
+        /// <param name="update_gitlink">Create/update gitlink in workdir and set config "core.worktree" (if workdir is not the parent of the .git directory)</Param>
+        /// <returns>0 or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_repository_set_workdir(
+            git_repository* repo,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string workdir,
+            int update_gitlink);
+
+        /// <summary>
         /// Close a previously opened repository and free any native memory
         /// that was allocated.
         ///
