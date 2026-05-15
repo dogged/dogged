@@ -22,6 +22,11 @@ jobs:
       with:
         fetch-depth: 0
     - run: |
+        wget http://security.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2.24_amd64.deb
+        sudo dpkg -i libssl1.1_1.1.1f-1ubuntu2.24_amd64.deb
+      working-directory: /tmp
+      if: matrix.os == 'ubuntu-latest'
+    - run: |
         if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
           SHA=$(git rev-parse --short HEAD)
           VERSION="$(git describe --tags | \
