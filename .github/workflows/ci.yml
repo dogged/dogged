@@ -17,7 +17,7 @@ jobs:
       fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v6
       name: 'Check out source'
       with:
         fetch-depth: 0
@@ -38,15 +38,15 @@ jobs:
         echo "VERSION=${VERSION}" >> ${GITHUB_ENV}
       shell: bash
       name: 'Update Version'
-    - uses: actions/setup-dotnet@v3
+    - uses: actions/setup-dotnet@v5
       with:
         dotnet-version: '3.1.x'
       name: 'Setup .NET Core 3.1'
-    - uses: actions/setup-dotnet@v3
+    - uses: actions/setup-dotnet@v5
       with:
         dotnet-version: '6.0.x'
       name: 'Setup .NET 6.0'
-    - uses: actions/setup-dotnet@v3
+    - uses: actions/setup-dotnet@v5
       with:
         dotnet-version: '7.0.x'
       name: 'Setup .NET 7.0'
@@ -71,13 +71,13 @@ jobs:
       shell: pwsh
       name: Package
       if: matrix.os == 'windows-latest'
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v7
       with:
         name: Dogged-${{ env.VERSION }}.nupkg
         path: ${{ github.workspace }}/package/Dogged.${{ env.VERSION }}.nupkg
       if: matrix.os == 'windows-latest'
       name: 'Upload Dogged Package'
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v7
       with:
         name: Dogged.Native-${{ env.VERSION }}.nupkg
         path: ${{ github.workspace }}/package/Dogged.Native.${{ env.VERSION }}.nupkg
@@ -88,11 +88,11 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: 'Check out source'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v6
 
     # Check out the `docs` branch into the `Documentation/_site` directory
     - name: 'Check out documentation branch'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v6
       with:
         ref: 'docs'
         path: 'Documentation/_site'
@@ -105,7 +105,7 @@ jobs:
       working-directory: Documentation
 
     - name: 'Upload documentation'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v7
       with:
         name: docs
         path: ${{ github.workspace }}/Documentation/_site
