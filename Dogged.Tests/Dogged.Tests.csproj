@@ -5,6 +5,10 @@
 
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
+    <SuppressTfmSupportBuildErrors>true</SuppressTfmSupportBuildErrors>
+
+    <!-- Our ancient xunit depends on an ancient Json with vulnerabilities -->
+    <NoWarn>$(NoWarn);NU1903</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(NETCoreSdkRuntimeIdentifier)' == 'osx-arm64'">
@@ -22,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
   </ItemGroup>
