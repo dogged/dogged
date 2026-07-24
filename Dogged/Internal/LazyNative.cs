@@ -45,7 +45,8 @@ namespace Dogged
 
                 if (!hasValue)
                 {
-                    value = Ensure.NativeCall<T>(valueFactory, nativeObject);
+                    value = valueFactory();
+                    GC.KeepAlive(nativeObject);
                     hasValue = true;
                 }
 

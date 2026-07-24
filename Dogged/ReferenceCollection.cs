@@ -26,10 +26,9 @@ namespace Dogged
         {
             Ensure.ArgumentNotNull(name, "name");
 
-            git_reference* reference = null;
-
-            Ensure.NativeSuccess(() => libgit2.git_reference_lookup(out reference, repository.NativeRepository, name), repository);
-            Ensure.NativePointerNotNull(reference);
+            ReferenceHandle reference;
+            Ensure.NativeSuccess(libgit2.git_reference_lookup(out reference, repository.NativeRepository, name));
+            Ensure.NativeHandleIsValid(reference);
 
             return Reference.FromNative(reference);
         }
@@ -45,8 +44,10 @@ namespace Dogged
         /// <returns>An enumerator of <see cref="IndexEntry"/> objects</returns>
         public unsafe IEnumerator<Reference> GetEnumerator()
         {
-            git_reference_iterator* iterator = null;
-            Ensure.NativeSuccess(() => libgit2.git_reference_iterator_new(out iterator, repository.NativeRepository), repository);
+            ReferenceIteratorHandle iterator;
+            Ensure.NativeSuccess(libgit2.git_reference_iterator_new(out iterator, repository.NativeRepository));
+            Ensure.NativeHandleIsValid(iterator);
+
             return ReferenceEnumerator.FromNative(iterator);
         }
 
@@ -61,17 +62,17 @@ namespace Dogged
     /// </summary>
     public class ReferenceEnumerator : NativeDisposable, IEnumerator<Reference>
     {
-        private unsafe git_reference_iterator* nativeIterator;
+        private unsafe ReferenceIteratorHandle nativeIterator;
 
         private Reference current;
 
-        private unsafe ReferenceEnumerator(git_reference_iterator* nativeIterator)
+        private unsafe ReferenceEnumerator(ReferenceIteratorHandle nativeIterator)
         {
-            Ensure.ArgumentNotNull(nativeIterator, "iterator");
+            Ensure.ArgumentNotNullOrInvalid(nativeIterator, "iterator");
             this.nativeIterator = nativeIterator;
         }
 
-        internal unsafe static ReferenceEnumerator FromNative(git_reference_iterator* nativeIterator)
+        internal unsafe static ReferenceEnumerator FromNative(ReferenceIteratorHandle nativeIterator)
         {
             return new ReferenceEnumerator(nativeIterator);
         }
@@ -89,8 +90,9 @@ namespace Dogged
 
         public unsafe bool MoveNext()
         {
-            git_reference *reference = null;
-            int ret = Ensure.NativeCall(() => libgit2.git_reference_next(out reference, nativeIterator), this);
+            ReferenceHandle reference;
+
+            int ret = libgit2.git_reference_next(out reference, nativeIterator);
 
             if (ret == (int)git_error_code.GIT_ITEROVER)
             {
@@ -130,7 +132,7 @@ namespace Dogged
         {
             if (nativeIterator != null)
             {
-                libgit2.git_reference_iterator_free(nativeIterator);
+                nativeIterator.Dispose();
                 nativeIterator = null;
             }
         }

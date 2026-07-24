@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+
 using Dogged.Native;
 using Dogged.Native.Services;
 
@@ -49,6 +51,20 @@ namespace Dogged
         public unsafe static void ArgumentNotNull(void* o, string name)
         {
             if (o == null)
+            {
+                throw new ArgumentNullException(name);
+            }
+        }
+
+        /// <summary>
+        /// Ensure that the given pointer is not null. Used to validate
+        /// values used or provided by native methods.
+        /// </summary>
+        /// <param name="o">The object to validate.</param>
+        /// <param name="name">The name of the object to use in messages.</param>
+        public unsafe static void ArgumentNotNullOrInvalid(SafeHandle h, string name)
+        {
+            if (h == null || h.IsInvalid)
             {
                 throw new ArgumentNullException(name);
             }
@@ -209,21 +225,6 @@ namespace Dogged
         }
 
         /// <summary>
-        /// Safely executes the given native function call for a given
-        /// object, ensuring that the object is not disposed and that it
-        /// will be kept alive until the end of the call.
-        /// </summary>
-        /// <param name="call">The function to invoke.</param>
-        /// <param name="obj">The object to validate and keep alive.</param>
-        public static T NativeCall<T>(Func<T> call, NativeDisposable obj)
-        {
-            Ensure.NotDisposed(obj);
-            T ret = call();
-            GC.KeepAlive(obj);
-            return ret;
-        }
-
-        /// <summary>
         /// Ensures that the given native return code corresponds to a
         /// boolean.  If the return code is negative, indicating native
         /// function call failure, an exception will be thrown.  Otherwise,
@@ -271,6 +272,13 @@ namespace Dogged
             return nativeResult;
         }
 
+        public static unsafe void NativeHandleIsValid(SafeHandle nativeHandle, string name = null)
+        {
+            if (nativeHandle == null || nativeHandle.IsInvalid) {
+                throw new ObjectDisposedException(string.Format("{0} handle is invalid", name != null ? name : "native"));
+            }
+        }
+
         /// <summary>
         /// Ensure that the given return code from a native function indicates
         /// success; ie that it is non-negative.
@@ -283,18 +291,6 @@ namespace Dogged
             {
                 HandleNativeError(nativeReturnCode, customExceptions);
             }
-        }
-
-        /// <summary>
-        /// Invoke the given function and ensure that its return code
-        /// indicates success; ie that it is non-negative.
-        /// </summary>
-        /// <param name="call">The function call to invoke.</param>
-        /// <param name="obj">The object to validate and keep alive.</param>
-        /// <param name="customExceptions">Any custom exceptions that should be thrown for a particular libgit2 error code.</param>
-        public static void NativeSuccess(Func<int> call, NativeDisposable obj, Dictionary<git_error_code, Func<string, Exception>> customExceptions = null)
-        {
-            NativeSuccess(NativeCall<int>(call, obj));
         }
 
         /// <summary>

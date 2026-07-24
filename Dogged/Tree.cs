@@ -12,30 +12,38 @@ namespace Dogged
     {
         private readonly LazyNative<int> count;
 
-        private unsafe Tree(git_tree* nativeTree) :
+        private unsafe Tree(TreeHandle nativeTree) :
             this(nativeTree, null)
         {
         }
 
-        private unsafe Tree(git_tree* nativeTree, ObjectId id) :
-            base((git_object*)nativeTree, id)
+        private unsafe Tree(TreeHandle nativeTree, ObjectId id) :
+            base(nativeTree, id)
         {
             count = new LazyNative<int>(() => {
-                UIntPtr count = Ensure.NativeCall<UIntPtr>(() => libgit2.git_tree_entrycount(NativeTree), this);
+                UIntPtr count = libgit2.git_tree_entrycount(NativeTree);
                 return Ensure.CastToInt(count, "count");
             }, this);
         }
 
-        internal unsafe static Tree FromNative(git_tree* nativeTree, ObjectId id = null)
+        internal unsafe static Tree FromNative(TreeHandle nativeTree, ObjectId id = null)
         {
             return new Tree(nativeTree, id);
         }
 
-        private unsafe git_tree* NativeTree
+        internal unsafe static new Tree FromNative(ObjectHandle nativeObject, ObjectId id = null)
+        {
+            TreeHandle nativeTree = new TreeHandle((git_tree*)nativeObject.DangerousGetHandle());
+            nativeObject.SetHandleAsInvalid();
+
+            return FromNative(nativeTree, id);
+        }
+
+        internal unsafe TreeHandle NativeTree
         {
             get
             {
-                return (git_tree*)NativeObject;
+                return (TreeHandle)NativeObject;
             }
         }
 
@@ -66,7 +74,7 @@ namespace Dogged
         {
             get
             {
-                Ensure.NotDisposed(NativeTree, "tree");
+                Ensure.NativeHandleIsValid(NativeTree, "tree");
                 Ensure.ArgumentConformsTo(() => position >= 0, "position", "position must not be negative");
 
                 git_tree_entry* entry = libgit2.git_tree_entry_byindex(NativeTree, (UIntPtr)position);
@@ -88,7 +96,7 @@ namespace Dogged
         {
             get
             {
-                Ensure.NotDisposed(NativeTree, "tree");
+                Ensure.NativeHandleIsValid(NativeTree, "tree");
                 Ensure.ArgumentNotNull(name, "name");
 
                 git_tree_entry* entry = libgit2.git_tree_entry_byname(NativeTree, name);

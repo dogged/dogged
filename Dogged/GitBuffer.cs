@@ -9,18 +9,18 @@ namespace Dogged
     /// </summary>
     public class GitBuffer : NativeDisposable
     {
-        private git_buf nativeObject = new git_buf();
+        internal git_buf nativeObject = new git_buf();
         private bool disposed = false;
 
         internal unsafe GitBuffer()
         {
         }
 
-        internal git_buf NativeBuffer
+        internal ref git_buf NativeBuffer
         {
             get
             {
-                return nativeObject;
+                return ref nativeObject;
             }
         }
 
@@ -61,7 +61,7 @@ namespace Dogged
         internal unsafe override void Dispose(bool disposing)
         {
             if (!disposed) {
-                libgit2.git_buf_dispose(nativeObject);
+                libgit2.git_buf_dispose(ref nativeObject);
                 disposed = true;
             }
         }

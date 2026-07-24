@@ -11,23 +11,23 @@ namespace Dogged
     /// </summary>
     public class ObjectDatabase : NativeDisposable
     {
-        private unsafe git_odb* nativeOdb;
+        private unsafe OdbHandle nativeOdb;
 
         public unsafe ObjectDatabase()
         {
-            git_odb *nativeOdb;
+            OdbHandle nativeOdb;
 
             Ensure.NativeSuccess(libgit2.git_odb_new(out nativeOdb));
             this.nativeOdb = nativeOdb;
         }
 
-        private unsafe ObjectDatabase(git_odb* nativeOdb)
+        private unsafe ObjectDatabase(OdbHandle nativeOdb)
         {
-            Ensure.ArgumentNotNull(nativeOdb, "odb");
+            Ensure.ArgumentNotNullOrInvalid(nativeOdb, "odb");
             this.nativeOdb = nativeOdb;
         }
 
-        internal unsafe git_odb* NativeOdb
+        internal unsafe OdbHandle NativeOdb
         {
             get
             {
@@ -48,10 +48,13 @@ namespace Dogged
         public unsafe void AddBackend(ObjectDatabaseBackend backend, int priority)
         {
             Ensure.ArgumentNotNull(backend, "backend");
-            Ensure.NativeSuccess(() => libgit2.git_odb_add_backend(nativeOdb, backend.NativeObject, priority), this);
+
+            git_odb_backend* nativeBackend = backend.NativeObject;
+            Ensure.NativeSuccess(libgit2.git_odb_add_backend(nativeOdb, ref *nativeBackend, priority));
+            GC.KeepAlive(backend);
         }
 
-        internal unsafe static ObjectDatabase FromNative(git_odb* nativeOdb)
+        internal unsafe static ObjectDatabase FromNative(OdbHandle nativeOdb)
         {
             return new ObjectDatabase(nativeOdb);
         }
@@ -70,10 +73,9 @@ namespace Dogged
             git_object_t type = git_object_t.GIT_OBJECT_INVALID;
 
             Ensure.ArgumentNotNull(id, "id");
-
             git_oid oid = id.ToNative();
 
-            Ensure.NativeSuccess(() => libgit2.git_odb_read_header(out size, out type, nativeOdb, ref oid), this);
+            Ensure.NativeSuccess(libgit2.git_odb_read_header(out size, out type, nativeOdb, ref oid));
             Ensure.EnumDefined(typeof(ObjectType), (int)type, "object type");
 
             return (Ensure.CastToLong(size, "size"), (ObjectType)type);
@@ -87,10 +89,10 @@ namespace Dogged
         {
             Ensure.ArgumentNotNull(id, "id");
 
+            OdbObjectHandle obj = null;
             git_oid oid = id.ToNative();
-            git_odb_object* obj = null;
 
-            Ensure.NativeSuccess(() => libgit2.git_odb_read(out obj, nativeOdb, ref oid), this);
+            Ensure.NativeSuccess(libgit2.git_odb_read(out obj, nativeOdb, ref oid));
             return ObjectDatabaseObject.FromNative(obj);
         }
 
@@ -105,12 +107,11 @@ namespace Dogged
             git_oid id;
             UIntPtr length = Ensure.CastToUIntPtr(data.LongLength, "data.Length");
 
-            Ensure.NativeSuccess(() => {
-                fixed (byte* ptr = data)
-                {
-                    return libgit2.git_odb_write(ref id, nativeOdb, ptr, length, (git_object_t)type);
-                }
-            }, this);
+            fixed (byte* ptr = data)
+            {
+                Ensure.NativeSuccess(libgit2.git_odb_write(ref id, nativeOdb, ptr, length, (git_object_t)type));
+                GC.KeepAlive(this);
+            }
 
             return ObjectId.FromNative(id);
         }
@@ -125,7 +126,7 @@ namespace Dogged
         {
             Exception caught = null;
 
-            git_odb_foreach_cb cb = (id, payload) => {
+            git_odb_foreach_cb cb = (ref git_oid id, IntPtr payload) => {
                 try
                 {
                     if (action.Invoke(ObjectId.FromNative(id)))
@@ -141,7 +142,7 @@ namespace Dogged
                 return (int)git_error_code.GIT_EUSER;
             };
 
-            int ret = Ensure.NativeCall(() => libgit2.git_odb_foreach(nativeOdb, cb, IntPtr.Zero), this);
+            int ret = libgit2.git_odb_foreach(nativeOdb, cb, IntPtr.Zero);
 
             if (ret == (int)git_error_code.GIT_EUSER)
             {
@@ -168,7 +169,7 @@ namespace Dogged
         {
             if (nativeOdb != null)
             {
-                libgit2.git_odb_free(nativeOdb);
+                nativeOdb.Dispose();
                 nativeOdb = null;
             }
         }

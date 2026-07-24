@@ -49,7 +49,7 @@ namespace Dogged
 
             fixed(byte* dest = this.oid.id)
             {
-                Buffer.MemoryCopy(id, dest, git_oid.GIT_OID_RAWSZ, git_oid.GIT_OID_RAWSZ);
+                Buffer.MemoryCopy(id, dest, git_oid.GIT_OID_SHA1_SIZE, git_oid.GIT_OID_SHA1_SIZE);
             }
         }
 
@@ -59,7 +59,7 @@ namespace Dogged
         public unsafe ObjectId(string hex)
         {
             Ensure.ArgumentNotNull(hex, "hex");
-            Ensure.ArgumentConformsTo(() => hex.Length == git_oid.GIT_OID_HEXSZ, "id length is invalid", "hex");
+            Ensure.ArgumentConformsTo(() => hex.Length == git_oid.GIT_OID_SHA1_HEXSIZE, "id length is invalid", "hex");
 
             for (int i = 0; i < hex.Length; i++)
             {
@@ -98,7 +98,7 @@ namespace Dogged
 
         internal unsafe static void NativeCopy(git_oid* src, git_oid* dest)
         {
-            Buffer.MemoryCopy(src->id, dest->id, git_oid.GIT_OID_RAWSZ, git_oid.GIT_OID_RAWSZ);
+            Buffer.MemoryCopy(src->id, dest->id, git_oid.GIT_OID_SHA1_SIZE, git_oid.GIT_OID_SHA1_SIZE);
         }
 
         /// <summary>
@@ -108,11 +108,11 @@ namespace Dogged
         {
             if (hex == null)
             {
-                char[] hexChars = new char[git_oid.GIT_OID_HEXSZ];
+                char[] hexChars = new char[git_oid.GIT_OID_SHA1_HEXSIZE];
 
                 fixed(byte* id = oid.id)
                 {
-                    for (int i = 0; i < git_oid.GIT_OID_RAWSZ; i++)
+                    for (int i = 0; i < git_oid.GIT_OID_SHA1_SIZE; i++)
                     {
                         hexChars[i*2]     = ToHex[id[i] >> 4];
                         hexChars[(i*2)+1] = ToHex[id[i] & 0x0f];

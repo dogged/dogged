@@ -29,18 +29,18 @@ namespace Dogged
             Ensure.ArgumentNotNull(id, "id");
 
             git_oid oid = id.ToNative();
-            git_object* obj = null;
+            ObjectHandle nativeObject;
 
-            Ensure.NativeSuccess(() => libgit2.git_object_lookup(out obj, repository.NativeRepository, ref oid, git_object_t.GIT_OBJECT_ANY), repository);
-            Ensure.NativePointerNotNull(obj);
+            Ensure.NativeSuccess(libgit2.git_object_lookup(out nativeObject, repository.NativeRepository, ref oid, git_object_t.GIT_OBJECT_ANY));
+            Ensure.NativeHandleIsValid(nativeObject);
 
             try
             {
-                return GitObject.FromNative(obj, id);
+                return GitObject.FromNative(nativeObject, id);
             }
             catch (Exception)
             {
-                libgit2.git_object_free(obj);
+                nativeObject.Dispose();
                 throw;
             }
         }
@@ -59,25 +59,25 @@ namespace Dogged
 
             if (typeof(T) == typeof(Commit))
             {
-                git_commit* obj = null;
-                Ensure.NativeSuccess(() => libgit2.git_commit_lookup(out obj, repository.NativeRepository, ref oid), repository);
-                return (T)(object)Commit.FromNative(obj, id);
+                CommitHandle nativeCommit;
+                Ensure.NativeSuccess(libgit2.git_commit_lookup(out nativeCommit, repository.NativeRepository, ref oid));
+                return (T)(GitObject)Commit.FromNative(nativeCommit, id);
             }
             else if (typeof(T) == typeof(Tree))
             {
-                git_tree* obj = null;
-                Ensure.NativeSuccess(() => libgit2.git_tree_lookup(out obj, repository.NativeRepository, ref oid), repository);
-                return (T)(object)Tree.FromNative(obj, id);
+                TreeHandle nativeTree;
+                Ensure.NativeSuccess(libgit2.git_tree_lookup(out nativeTree, repository.NativeRepository, ref oid));
+                return (T)(GitObject)Tree.FromNative(nativeTree, id);
             }
             else if (typeof(T) == typeof(Blob))
             {
-                git_blob* obj = null;
-                Ensure.NativeSuccess(() => libgit2.git_blob_lookup(out obj, repository.NativeRepository, ref oid), repository);
-                return (T)(object)Blob.FromNative(obj, id);
+                BlobHandle nativeBlob;
+                Ensure.NativeSuccess(libgit2.git_blob_lookup(out nativeBlob, repository.NativeRepository, ref oid));
+                return (T)(GitObject)Blob.FromNative(nativeBlob, id);
             }
             else if (typeof(T) == typeof(GitObject))
             {
-                return (T)(object)Lookup(id);
+                return (T)(GitObject)Lookup(id);
             }
 
             throw new InvalidOperationException("unknown object type");

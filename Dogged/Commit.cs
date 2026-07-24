@@ -12,8 +12,8 @@ namespace Dogged
         private LazyNative<Signature> committer;
         private readonly LazyNative<ObjectId> treeId;
 
-        private unsafe Commit(git_commit* nativeCommit, ObjectId id) :
-            base((git_object*)nativeCommit, id)
+        private unsafe Commit(CommitHandle nativeCommit, ObjectId id) :
+            base(nativeCommit, id)
         {
             author = new LazyNative<Signature>(() => {
                 git_signature* author = libgit2.git_commit_author(NativeCommit);
@@ -30,16 +30,24 @@ namespace Dogged
             }, this);
         }
 
-        internal unsafe static Commit FromNative(git_commit* nativeCommit, ObjectId id = null)
+        internal unsafe static Commit FromNative(CommitHandle nativeCommit, ObjectId id = null)
         {
             return new Commit(nativeCommit, id);
         }
 
-        private unsafe git_commit* NativeCommit
+        internal unsafe static new Commit FromNative(ObjectHandle nativeObject, ObjectId id = null)
+        {
+            CommitHandle nativeCommit = new CommitHandle((git_commit*)nativeObject.DangerousGetHandle());
+            nativeObject.SetHandleAsInvalid();
+
+            return FromNative(nativeCommit, id);
+        }
+
+        internal unsafe CommitHandle NativeCommit
         {
             get
             {
-                return (git_commit*)NativeObject;
+                return (CommitHandle)NativeObject;
             }
         }
 
@@ -92,10 +100,11 @@ namespace Dogged
         {
             get
             {
-                git_tree* tree = null;
+                TreeHandle tree = null;
 
-                Ensure.NativeSuccess(() => libgit2.git_commit_tree(out tree, NativeCommit), this);
-                Ensure.NativePointerNotNull(tree);
+                Ensure.NativeHandleIsValid(NativeCommit, "commit");
+                Ensure.NativeSuccess(libgit2.git_commit_tree(out tree, NativeCommit));
+                Ensure.NativeHandleIsValid(tree);
 
                 return Tree.FromNative(tree);
             }

@@ -9,15 +9,15 @@ namespace Dogged
     /// </summary>
     public class ObjectDatabaseObject : NativeDisposable
     {
-        private unsafe git_odb_object* nativeObject;
+        private unsafe OdbObjectHandle nativeObject;
 
         private readonly LazyNative<ObjectId> id;
         private readonly LazyNative<ObjectType> type;
         private readonly LazyNative<long> size;
 
-        private unsafe ObjectDatabaseObject(git_odb_object* nativeObject)
+        private unsafe ObjectDatabaseObject(OdbObjectHandle nativeObject)
         {
-            Ensure.NativePointerNotNull(nativeObject);
+            Ensure.NativeHandleIsValid(nativeObject);
 
             this.nativeObject = nativeObject;
 
@@ -37,7 +37,7 @@ namespace Dogged
             }, this);
         }
 
-        internal unsafe static ObjectDatabaseObject FromNative(git_odb_object* nativeObject)
+        internal unsafe static ObjectDatabaseObject FromNative(OdbObjectHandle nativeObject)
         {
             return new ObjectDatabaseObject(nativeObject);
         }
@@ -88,7 +88,7 @@ namespace Dogged
         {
             if (nativeObject != null)
             {
-                libgit2.git_odb_object_free(nativeObject);
+                nativeObject.Dispose();
                 nativeObject = null;
             }
         }

@@ -8,12 +8,12 @@ namespace Dogged
     /// </summary>
     public abstract class GitObject : NativeDisposable
     {
-        private unsafe git_object* nativeObject;
+        private unsafe ObjectHandle nativeObject;
         private ObjectId id;
 
-        internal unsafe GitObject(git_object* nativeObject, ObjectId id = null)
+        internal unsafe GitObject(ObjectHandle nativeObject, ObjectId id = null)
         {
-            Ensure.NativePointerNotNull(nativeObject);
+            Ensure.NativeHandleIsValid(nativeObject);
 
             this.nativeObject = nativeObject;
             this.id = id;
@@ -45,35 +45,35 @@ namespace Dogged
             }
         }
 
-        internal unsafe static T FromNative<T>(git_object* obj, ObjectId id = null) where T : GitObject
+        internal unsafe static T FromNative<T>(ObjectHandle obj, ObjectId id = null) where T : GitObject
         {
-            Ensure.ArgumentNotNull(obj, nameof(obj));
+            Ensure.NativeHandleIsValid(obj, nameof(obj));
 
             if (typeof(T) == typeof(Commit))
             {
-                return (T)(object)Commit.FromNative((git_commit*)obj, id);
+                return (T)(object)Commit.FromNative(obj, id);
             }
             else if (typeof(T) == typeof(Tree))
             {
-                return (T)(object)Tree.FromNative((git_tree*)obj, id);
+                return (T)(object)Tree.FromNative(obj, id);
             }
             else if (typeof(T) == typeof(Blob))
             {
-                return (T)(object)Blob.FromNative((git_blob*)obj, id);
+                return (T)(object)Blob.FromNative(obj, id);
             }
 
             throw new InvalidOperationException("unknown object type");
         }
 
-        internal unsafe static GitObject DuplicateNative(git_object* obj, ObjectId id = null)
+        internal unsafe static GitObject DuplicateNative(ObjectHandle obj, ObjectId id = null)
         {
             // git_object_dup will increase its internal refcount
             // on the object, so that the caller can dispose it
             // independently of this object.
-            git_object* dup = null;
+            ObjectHandle dup = null;
 
             Ensure.NativeSuccess(libgit2.git_object_dup(out dup, obj));
-            Ensure.NativePointerNotNull(dup);
+            Ensure.NativeHandleIsValid(dup);
 
             try
             {
@@ -81,21 +81,21 @@ namespace Dogged
             }
             catch (Exception)
             {
-                libgit2.git_object_free(dup);
+                dup.Dispose();
                 throw;
             }
         }
 
-        internal unsafe static GitObject FromNative(git_object* obj, ObjectId id = null)
+        internal unsafe static GitObject FromNative(ObjectHandle obj, ObjectId id = null)
         {
             switch (libgit2.git_object_type(obj))
             {
                 case git_object_t.GIT_OBJECT_COMMIT:
-                    return Commit.FromNative((git_commit*)obj, id);
+                    return Commit.FromNative(obj, id);
                 case git_object_t.GIT_OBJECT_TREE:
-                    return Tree.FromNative((git_tree*)obj, id);
+                    return Tree.FromNative(obj, id);
                 case git_object_t.GIT_OBJECT_BLOB:
-                    return Blob.FromNative((git_blob*)obj, id);
+                    return Blob.FromNative(obj, id);
             }
 
             throw new InvalidOperationException("unknown object type");
@@ -119,7 +119,7 @@ namespace Dogged
             return git_object_t.GIT_OBJECT_INVALID;
         }
 
-        internal unsafe git_object* NativeObject
+        internal unsafe ObjectHandle NativeObject
         {
             get
             {
@@ -139,7 +139,7 @@ namespace Dogged
         {
             if (nativeObject != null)
             {
-                libgit2.git_object_free(nativeObject);
+                nativeObject.Dispose();
                 nativeObject = null;
             }
         }

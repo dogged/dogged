@@ -12,23 +12,31 @@ namespace Dogged
         private readonly LazyNative<long> rawSize;
         private readonly LazyNative<bool> isBinary;
 
-        private unsafe Blob(git_blob* nativeBlob, ObjectId id) :
-            base((git_object*)nativeBlob, id)
+        private unsafe Blob(BlobHandle nativeBlob, ObjectId id) :
+            base(nativeBlob, id)
         {
             rawSize = new LazyNative<long>(() => libgit2.git_blob_rawsize(nativeBlob), this);
             isBinary = new LazyNative<bool>(() => libgit2.git_blob_is_binary(nativeBlob) == 0 ? false : true, this);
         }
 
-        internal unsafe static Blob FromNative(git_blob* nativeBlob, ObjectId id = null)
+        internal unsafe static Blob FromNative(BlobHandle nativeBlob, ObjectId id = null)
         {
             return new Blob(nativeBlob, id);
         }
 
-        private unsafe git_blob* NativeBlob
+        internal unsafe static new Blob FromNative(ObjectHandle nativeObject, ObjectId id = null)
+        {
+            BlobHandle nativeBlob = new BlobHandle((git_blob*)nativeObject.DangerousGetHandle());
+            nativeObject.SetHandleAsInvalid();
+
+            return FromNative(nativeBlob, id);
+        }
+
+        internal unsafe BlobHandle NativeBlob
         {
             get
             {
-                return (git_blob*)NativeObject;
+                return (BlobHandle)NativeObject;
             }
         }
 
@@ -71,12 +79,8 @@ namespace Dogged
             Ensure.ArgumentNotNull(options, "options");
 
             GitBuffer buf = new GitBuffer();
-            git_buf nativeBuffer = buf.NativeBuffer;
-
-            Ensure.NativeSuccess(() => {
-                git_blob_filter_options nativeOptions = options.NativeOptions;
-                return libgit2.git_blob_filter(nativeBuffer, NativeBlob, path, &nativeOptions);
-            }, this);
+            git_blob_filter_options nativeOptions = options.NativeOptions;
+            Ensure.NativeSuccess(libgit2.git_blob_filter(ref buf.NativeBuffer, NativeBlob, path, ref nativeOptions));
 
             return buf;
         }

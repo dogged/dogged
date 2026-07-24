@@ -82,8 +82,8 @@ namespace Dogged
 
             var flags = IndexEntryFlags.None;
             flags |= (nativeEntry->flags & (ushort)git_index_entry_flag_t.GIT_INDEX_ENTRY_VALID) != 0 ? IndexEntryFlags.Valid : 0;
-            flags |= (nativeEntry->extended_flags & (ushort)git_index_entry_extended_flag_t.GIT_INDEX_ENTRY_INTENT_TO_ADD) != 0 ? IndexEntryFlags.IntentToAdd : 0;
-            flags |= (nativeEntry->extended_flags & (ushort)git_index_entry_extended_flag_t.GIT_INDEX_ENTRY_SKIP_WORKTREE) != 0? IndexEntryFlags.SkipWorktree : 0;
+            flags |= (nativeEntry->flags_extended & (ushort)git_index_entry_extended_flag_t.GIT_INDEX_ENTRY_INTENT_TO_ADD) != 0 ? IndexEntryFlags.IntentToAdd : 0;
+            flags |= (nativeEntry->flags_extended & (ushort)git_index_entry_extended_flag_t.GIT_INDEX_ENTRY_SKIP_WORKTREE) != 0 ? IndexEntryFlags.SkipWorktree : 0;
 
             return new IndexEntry(
                 path: Utf8Converter.FromNative(nativeEntry->path),

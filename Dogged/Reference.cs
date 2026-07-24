@@ -11,7 +11,7 @@ namespace Dogged
     {
         private readonly LazyNative<string> name;
 
-        internal unsafe Reference(git_reference *nativeReference)
+        internal unsafe Reference(ReferenceHandle nativeReference)
         {
             Ensure.ArgumentNotNull(nativeReference, "reference");
             NativeReference = nativeReference;
@@ -23,7 +23,7 @@ namespace Dogged
 
         protected Reference() { }
 
-        internal unsafe static Reference FromNative(git_reference* nativeReference)
+        internal unsafe static Reference FromNative(ReferenceHandle nativeReference)
         {
             switch (libgit2.git_reference_type(nativeReference))
             {
@@ -33,11 +33,11 @@ namespace Dogged
                     return SymbolicReference.FromNative(nativeReference);
             }
 
-            libgit2.git_reference_free(nativeReference);
+            nativeReference.Dispose();
             throw new InvalidOperationException("unknown reference type");
         }
 
-        internal unsafe git_reference* NativeReference { get; private set; }
+        internal unsafe ReferenceHandle NativeReference { get; private set; }
 
         /// <summary>
         /// Gets the fully-qualified name of the reference.  For branches,
@@ -54,12 +54,11 @@ namespace Dogged
 
         public unsafe GitObject Peel()
         {
-            Ensure.NotDisposed(NativeReference, "reference");
+            Ensure.NativeHandleIsValid(NativeReference, "reference");
 
-            git_object* obj = null;
-
-            Ensure.NativeSuccess(() => libgit2.git_reference_peel(out obj, NativeReference, git_object_t.GIT_OBJECT_ANY), this);
-            Ensure.NativePointerNotNull(obj);
+            ObjectHandle obj = null;
+            Ensure.NativeSuccess(libgit2.git_reference_peel(out obj, NativeReference, git_object_t.GIT_OBJECT_ANY));
+            Ensure.NativeHandleIsValid(obj, "object");
 
             try
             {
@@ -67,25 +66,25 @@ namespace Dogged
             }
             catch (Exception)
             {
-                libgit2.git_object_free(obj);
+                obj.Dispose();
                 throw;
             }
         }
 
         public unsafe T Peel<T>() where T : GitObject
         {
-            Ensure.NotDisposed(NativeReference, "reference");
+            Ensure.NativeHandleIsValid(NativeReference, "reference");
 
             git_object_t type = GitObject.GetType<T>();
-            git_object* obj = null;
+            ObjectHandle obj = null;
 
             if (type == git_object_t.GIT_OBJECT_INVALID)
             {
                 throw new InvalidOperationException("unknown object type");
             }
 
-            Ensure.NativeSuccess(() => libgit2.git_reference_peel(out obj, NativeReference, type), this);
-            Ensure.NativePointerNotNull(obj);
+            Ensure.NativeSuccess(libgit2.git_reference_peel(out obj, NativeReference, type));
+            Ensure.NativeHandleIsValid(obj, "object");
 
             try
             {
@@ -93,7 +92,7 @@ namespace Dogged
             }
             catch (Exception)
             {
-                libgit2.git_object_free(obj);
+                obj.Dispose();
                 throw;
             }
         }
@@ -110,7 +109,7 @@ namespace Dogged
         {
             if (NativeReference != null)
             {
-                libgit2.git_reference_free(NativeReference);
+                NativeReference.Dispose();
                 NativeReference = null;
             }
         }
@@ -124,7 +123,7 @@ namespace Dogged
     {
         private readonly LazyNative<ObjectId> target;
 
-        private unsafe DirectReference(git_reference* nativeReference) : base(nativeReference)
+        private unsafe DirectReference(ReferenceHandle nativeReference) : base(nativeReference)
         {
             target = new LazyNative<ObjectId>(() => {
                 git_oid* oid = libgit2.git_reference_target(NativeReference);
@@ -144,7 +143,7 @@ namespace Dogged
             }
         }
 
-        internal unsafe static new DirectReference FromNative(git_reference* nativeReference)
+        internal unsafe static new DirectReference FromNative(ReferenceHandle nativeReference)
         {
             return new DirectReference(nativeReference);
         }
@@ -159,7 +158,7 @@ namespace Dogged
     {
         private readonly LazyNative<string> target;
 
-        private unsafe SymbolicReference(git_reference* nativeReference) : base(nativeReference)
+        private unsafe SymbolicReference(ReferenceHandle nativeReference) : base(nativeReference)
         {
             target = new LazyNative<string>(() => {
                 return Ensure.NativeObjectNotNull(libgit2.git_reference_symbolic_target(NativeReference));
@@ -177,7 +176,7 @@ namespace Dogged
             }
         }
 
-        internal unsafe static new SymbolicReference FromNative(git_reference* nativeReference)
+        internal unsafe static new SymbolicReference FromNative(ReferenceHandle nativeReference)
         {
             return new SymbolicReference(nativeReference);
         }

@@ -21,13 +21,13 @@ public enum BlobFilterFlags
     /// When set, filters will be loaded from a `.gitattributes` file
     /// in the HEAD commit.
     /// </summary>
-    AttributesFromHead = git_blob_filter_flag_t.GIT_BLOB_FILTER_ATTTRIBUTES_FROM_HEAD,
+    AttributesFromHead = git_blob_filter_flag_t.GIT_BLOB_FILTER_ATTRIBUTES_FROM_HEAD,
 
     /// <summary>
     /// When set, filters will be loaded from a `.gitattributes` file
     /// in the specified commit.
     /// </summary>
-    AttributesFromCommit = git_blob_filter_flag_t.GIT_BLOB_FILTER_ATTTRIBUTES_FROM_COMMIT,
+    AttributesFromCommit = git_blob_filter_flag_t.GIT_BLOB_FILTER_ATTRIBUTES_FROM_COMMIT,
 }
 
 /// <summary>
@@ -42,7 +42,8 @@ public class BlobFilterOptions
     /// </summary>
     public BlobFilterOptions()
     {
-        nativeOptions = git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_INIT;
+        libgit2.git_blob_filter_options_init(ref nativeOptions,
+            git_blob_filter_options.GIT_BLOB_FILTER_OPTIONS_VERSION);
     }
 
     /// <summary>

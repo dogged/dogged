@@ -1,5 +1,7 @@
 using Dogged.Native;
 
+using System;
+
 namespace Dogged
 {
     /// <summary>
@@ -33,22 +35,33 @@ namespace Dogged
 
         public unsafe static RevisionSpec Parse(Repository repository, string spec)
         {
-            RevisionSpec obj = new RevisionSpec();
+            RevisionSpec rs = new RevisionSpec();
 
-            Ensure.NativeSuccess(() => libgit2.git_revparse(obj.nativeObject, repository.NativeRepository, spec), repository);
-            return obj;
+            Ensure.NativeSuccess(libgit2.git_revparse(ref rs.nativeObject, repository.NativeRepository, spec));
+
+            return rs;
         }
 
         public unsafe GitObject From
         {
             get
             {
-                if (nativeObject.from != null)
+                if (nativeObject.from == null)
                 {
-                    return Ensure.NativeCall(() => GitObject.DuplicateNative(nativeObject.from), this);
+                    return null;
                 }
 
-                return null;
+                ObjectHandle dup = new ObjectHandle(nativeObject.from);
+
+                try
+                {
+                    return GitObject.DuplicateNative(dup);
+                }
+                finally
+                {
+                    dup.SetHandleAsInvalid();
+                    GC.KeepAlive(this);
+                }
             }
         }
 
@@ -56,12 +69,22 @@ namespace Dogged
         {
             get
             {
-                if (nativeObject.to != null)
+                if (nativeObject.to == null)
                 {
-                    return Ensure.NativeCall(() => GitObject.DuplicateNative(nativeObject.to), this);
+                    return null;
                 }
 
-                return null;
+                ObjectHandle dup = new ObjectHandle(nativeObject.to);
+
+                try
+                {
+                    return GitObject.DuplicateNative(dup);
+                }
+                finally
+                {
+                    dup.SetHandleAsInvalid();
+                    GC.KeepAlive(this);
+                }
             }
         }
 

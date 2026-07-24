@@ -1,4 +1,5 @@
 using System;
+
 using Dogged;
 using Dogged.Native;
 
@@ -23,25 +24,25 @@ public enum FilterFlags
     /// <summary>
     /// Don't error for `safecrlf` violations, allow them to continue.
     /// </summary>
-	AllowUnsafe = git_filter_flags_t.GIT_FILTER_ALLOW_UNSAFE,
+	AllowUnsafe = git_filter_flag_t.GIT_FILTER_ALLOW_UNSAFE,
 
     /// <summary>
     /// When set, filters will no load configuration from the
     /// system-wide `gitattributes` in `/etc` (or system equivalent).
     /// </summary>
-	NoSystemAttributes = git_filter_flags_t.GIT_FILTER_NO_SYSTEM_ATTRIBUTES,
+	NoSystemAttributes = git_filter_flag_t.GIT_FILTER_NO_SYSTEM_ATTRIBUTES,
 
     /// <summary>
     /// When set, filters will be loaded from a `.gitattributes` file
     /// in the HEAD commit.
     /// </summary>
-	AttributesFromHead = git_filter_flags_t.GIT_FILTER_ATTRIBUTES_FROM_HEAD,
+	AttributesFromHead = git_filter_flag_t.GIT_FILTER_ATTRIBUTES_FROM_HEAD,
 
     /// <summary>
     /// When set, filters will be loaded from a `.gitattributes` file
     /// in a given commit.
     /// </summary>
-	AttributesFromCommit = git_filter_flags_t.GIT_FILTER_ATTRIBUTES_FROM_COMMIT,
+	AttributesFromCommit = git_filter_flag_t.GIT_FILTER_ATTRIBUTES_FROM_COMMIT,
 }
 
 /// <summary>
@@ -56,7 +57,8 @@ public class FilterOptions
     /// </summary>
     public FilterOptions()
     {
-        nativeOptions = git_filter_options.GIT_FILTER_OPTIONS_INIT;
+        libgit2.git_filter_options_init(ref nativeOptions,
+            git_filter_options.GIT_FILTER_OPTIONS_VERSION);
     }
 
     /// <summary>
@@ -70,7 +72,7 @@ public class FilterOptions
         }
         set
         {
-            nativeOptions.flags = (git_filter_flags_t)((int)value);
+            nativeOptions.flags = (git_filter_flag_t)((int)value);
         }
     }
 
@@ -103,17 +105,27 @@ public class FilterOptions
 public class FilterList : NativeDisposable
 {
     private Repository repository;
-    private unsafe git_filter_list* nativeFilterList;
+    private unsafe FilterListHandle filterListHandle;
 
     public unsafe static FilterList Load(Repository repository, string path, Blob blob, FilterMode mode, FilterOptions options)
     {
         Ensure.ArgumentNotNull(repository, "repository");
         Ensure.ArgumentNotNull(path, "path");
-        git_filter_list* filters = null;
+
+        FilterListHandle filterListHandle = null;
+
         var nativeOptions = options.NativeOptions;
 
-        Ensure.NativeSuccess(() => libgit2.git_filter_list_load_ext(out filters, repository.NativeRepository, (blob != null) ? (git_blob*)blob.NativeObject : null, path, (git_filter_mode_t)mode, ref nativeOptions), repository);
-        return (filters != null) ? FilterList.FromNative(repository, filters) : null;
+        Ensure.NativeSuccess(libgit2.git_filter_list_load_ext(
+            out filterListHandle,
+            repository.NativeRepository,
+            (blob != null) ? blob.NativeBlob : null,
+            path,
+            (git_filter_mode_t)mode,
+            ref nativeOptions));
+
+        Ensure.ArgumentNotNull(filterListHandle, "filterListHandle");
+        return (!filterListHandle.IsInvalid) ? FilterList.FromNative(repository, filterListHandle) : null;
     }
 
     public unsafe static FilterList Load(Repository repository, string path, FilterMode mode, FilterOptions options)
@@ -121,18 +133,21 @@ public class FilterList : NativeDisposable
         return Load(repository, path, null, mode, options);
     }
 
-    private unsafe FilterList(Repository repository, git_filter_list* nativeFilterList)
+    private unsafe FilterList(Repository repository, FilterListHandle filterListHandle)
     {
         Ensure.ArgumentNotNull(repository, "repository");
-        Ensure.ArgumentNotNull(nativeFilterList, "nativeFilterList");
+        Ensure.ArgumentNotNullOrInvalid(filterListHandle, "filterListHandle");
 
         this.repository = repository;
-        this.nativeFilterList = nativeFilterList;
+        this.filterListHandle = filterListHandle;
     }
 
-    internal unsafe static FilterList FromNative(Repository repository, git_filter_list* nativeFilterList)
+    internal unsafe static FilterList FromNative(Repository repository, FilterListHandle filterListHandle)
     {
-        return new FilterList(repository, nativeFilterList);
+        Ensure.ArgumentNotNull(repository, "repository");
+        Ensure.ArgumentNotNullOrInvalid(filterListHandle, "filterListHandle");
+
+        return new FilterList(repository, filterListHandle);
     }
 
     public unsafe GitBuffer Apply(Blob blob)
@@ -140,7 +155,7 @@ public class FilterList : NativeDisposable
         Ensure.ArgumentNotNull(blob, "blob");
         GitBuffer ret = new GitBuffer();
 
-        Ensure.NativeSuccess(() => libgit2.git_filter_list_apply_to_blob(ret.NativeBuffer, nativeFilterList, (git_blob*)blob.NativeObject), this);
+        Ensure.NativeSuccess(libgit2.git_filter_list_apply_to_blob(ref ret.NativeBuffer, filterListHandle, blob.NativeBlob));
         return ret;
     }
 
@@ -149,7 +164,22 @@ public class FilterList : NativeDisposable
         Ensure.ArgumentNotNull(buffer, "buffer");
         GitBuffer ret = new GitBuffer();
 
-        Ensure.NativeSuccess(() => libgit2.git_filter_list_apply_to_data(ret.NativeBuffer, nativeFilterList, buffer.NativeBuffer), this);
+        fixed (byte* ptr = buffer.Content) {
+            Ensure.NativeSuccess(libgit2.git_filter_list_apply_to_buffer(ref ret.NativeBuffer, filterListHandle, ptr, (UIntPtr)buffer.Length));
+        }
+
+        return ret;
+    }
+
+    public unsafe GitBuffer Apply(byte[] buffer)
+    {
+        Ensure.ArgumentNotNull(buffer, "buffer");
+        GitBuffer ret = new GitBuffer();
+
+        fixed (byte* ptr = buffer) {
+                Ensure.NativeSuccess(libgit2.git_filter_list_apply_to_buffer(ref ret.NativeBuffer, filterListHandle, ptr, (UIntPtr)buffer.Length));
+        }
+
         return ret;
     }
 
@@ -158,7 +188,8 @@ public class FilterList : NativeDisposable
         Ensure.ArgumentNotNull(path, "path");
         GitBuffer ret = new GitBuffer();
 
-        Ensure.NativeSuccess(() => libgit2.git_filter_list_apply_to_file(ret.NativeBuffer, nativeFilterList, repository.NativeRepository, path), this);
+        Ensure.NativeSuccess(libgit2.git_filter_list_apply_to_file(ref ret.NativeBuffer, filterListHandle, repository.NativeRepository, path));
+
         return ret;
     }
 
@@ -166,16 +197,16 @@ public class FilterList : NativeDisposable
     {
         get
         {
-            return (nativeFilterList == null);
+            return (filterListHandle == null);
         }
     }
 
     internal unsafe override void Dispose(bool disposing)
     {
-        if (nativeFilterList != null)
+        if (filterListHandle != null)
         {
-            libgit2.git_filter_list_free(nativeFilterList);
-            nativeFilterList = null;
+            filterListHandle.Dispose();
+            filterListHandle = null;
         }
     }
 }

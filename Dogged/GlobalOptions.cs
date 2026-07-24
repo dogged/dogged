@@ -13,9 +13,9 @@ namespace Dogged
         public unsafe static string GetSearchPath(ConfigurationLevel level)
         {
             GitBuffer buf = new GitBuffer();
-            git_buf nativeBuffer = buf.NativeBuffer;
+            ref git_buf nativeBuffer = ref buf.NativeBuffer;
 
-            Ensure.NativeSuccess(libgit2.git_libgit2_opts(git_libgit2_opt_t.GIT_OPT_GET_SEARCH_PATH, (git_config_level_t)level, nativeBuffer));
+            Ensure.NativeSuccess(libgit2.git_libgit2_opts(git_libgit2_opt_t.GIT_OPT_GET_SEARCH_PATH, (git_config_level_t)level, ref nativeBuffer));
 
             fixed (byte* bp = buf.Content)
             {
@@ -23,9 +23,9 @@ namespace Dogged
             }
         }
 
-        public unsafe static void SetSearchPath(ConfigurationLevel level, string paths)
+        public unsafe static void SetSearchPath(ConfigurationLevel level, string path)
         {
-            Ensure.NativeSuccess(libgit2.git_libgit2_opts(git_libgit2_opt_t.GIT_OPT_SET_SEARCH_PATH, (git_config_level_t)level, paths));
+            Ensure.NativeSuccess(libgit2.git_libgit2_opts(git_libgit2_opt_t.GIT_OPT_SET_SEARCH_PATH, (git_config_level_t)level, path));
         }
     }
 }

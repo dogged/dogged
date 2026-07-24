@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+
 using Dogged.Native;
 
 namespace Dogged
@@ -10,7 +11,7 @@ namespace Dogged
     /// </summary>
     public class Repository : NativeDisposable
     {
-        private unsafe git_repository* nativeRepository;
+        private unsafe RepositoryHandle repositoryHandle;
 
         private readonly LazyNative<string> path;
         private readonly LazyNative<string> workdir;
@@ -27,15 +28,15 @@ namespace Dogged
             { git_error_code.GIT_ENOTFOUND, (m) => new RepositoryNotFoundException(m) }
         };
 
-        private unsafe Repository(git_repository* nativeRepository)
+        private unsafe Repository(RepositoryHandle repositoryHandle)
         {
-            Ensure.NativePointerNotNull(nativeRepository);
-            this.nativeRepository = nativeRepository;
+            Ensure.NativeHandleIsValid(repositoryHandle);
+            this.repositoryHandle = repositoryHandle;
 
-            path = new LazyNative<string>(() => libgit2.git_repository_path(this.nativeRepository), this);
-            workdir = new LazyNative<string>(() => libgit2.git_repository_workdir(this.nativeRepository), this);
+            path = new LazyNative<string>(() => libgit2.git_repository_path(this.repositoryHandle), this);
+            workdir = new LazyNative<string>(() => libgit2.git_repository_workdir(this.repositoryHandle), this);
 
-            isBare = new LazyNative<bool>(() => libgit2.git_repository_is_bare(this.nativeRepository) == 0 ? false : true, this);
+            isBare = new LazyNative<bool>(() => libgit2.git_repository_is_bare(this.repositoryHandle) == 0 ? false : true, this);
 
             objects = new Lazy<ObjectCollection>(() => new ObjectCollection(this));
             references = new Lazy<ReferenceCollection>(() => new ReferenceCollection(this));
@@ -53,10 +54,10 @@ namespace Dogged
         {
             Ensure.ArgumentNotNull(path, "path");
 
-            git_repository *nativeRepository;
-            Ensure.NativeSuccess(libgit2.git_repository_open(out nativeRepository, path), exceptionMap);
+            RepositoryHandle repositoryHandle;
+            Ensure.NativeSuccess(libgit2.git_repository_open(out repositoryHandle, path), exceptionMap);
 
-            return new Repository(nativeRepository);
+            return new Repository(repositoryHandle);
         }
 
         /// <summary>
@@ -71,10 +72,8 @@ namespace Dogged
         {
             Ensure.ArgumentNotNull(path, "path");
 
-            git_repository *nativeRepository = null;
-
             using (var buf = new GitBuffer()) {
-                Ensure.NativeSuccess(libgit2.git_repository_discover(buf.NativeBuffer, path, acrossFilesystems ? 1 : 0, null), exceptionMap);
+                Ensure.NativeSuccess(libgit2.git_repository_discover(ref buf.NativeBuffer, path, acrossFilesystems ? 1 : 0, null), exceptionMap);
                 return buf.ToString();
             }
         }
@@ -89,10 +88,10 @@ namespace Dogged
         {
             Ensure.ArgumentNotNull(path, "path");
 
-            git_repository* nativeRepository;
-            Ensure.NativeSuccess(libgit2.git_repository_init(out nativeRepository, path, bare ? (uint)1 : 0));
+            RepositoryHandle repositoryHandle;
+            Ensure.NativeSuccess(libgit2.git_repository_init(out repositoryHandle, path, bare ? (uint)1 : 0));
 
-            return new Repository(nativeRepository);
+            return new Repository(repositoryHandle);
         }
 
         /// <summary>
@@ -106,10 +105,14 @@ namespace Dogged
             Ensure.ArgumentNotNull(remotePath, "remotePath");
             Ensure.ArgumentNotNull(localPath, "localPath");
 
-            git_repository* nativeRepository;
-            Ensure.NativeSuccess(libgit2.git_clone(out nativeRepository, remotePath, localPath, null));
+            CloneOptions options = new CloneOptions();
 
-            return new Repository(nativeRepository);
+            RepositoryHandle repositoryHandle;
+            git_clone_options nativeOptions = options.NativeOptions;
+
+            Ensure.NativeSuccess(libgit2.git_clone(out repositoryHandle, remotePath, localPath, ref nativeOptions));
+
+            return new Repository(repositoryHandle);
         }
 
         /// <summary>
@@ -120,17 +123,17 @@ namespace Dogged
         /// <returns>The newly created repository</returns>
         public unsafe static Repository CreateCustomRepository()
         {
-            git_repository* nativeRepository;
-            Ensure.NativeSuccess(libgit2.git_repository_new(out nativeRepository));
+            RepositoryHandle repositoryHandle;
+            Ensure.NativeSuccess(libgit2.git_repository_new(out repositoryHandle));
 
-            return new Repository(nativeRepository);
+            return new Repository(repositoryHandle);
         }
 
-        internal unsafe git_repository* NativeRepository
+        internal unsafe RepositoryHandle NativeRepository
         {
             get
             {
-                return nativeRepository;
+                return repositoryHandle;
             }
         }
 
@@ -169,8 +172,8 @@ namespace Dogged
         {
             get
             {
-                int ret = Ensure.NativeCall<int>(() => libgit2.git_repository_head_detached(nativeRepository), this);
-                return Ensure.NativeBoolean(ret);
+                Ensure.NativeHandleIsValid(repositoryHandle);
+                return Ensure.NativeBoolean(libgit2.git_repository_head_detached(repositoryHandle));
             }
         }
 
@@ -182,8 +185,9 @@ namespace Dogged
         {
             get
             {
-                git_reference* reference = null;
-                Ensure.NativeSuccess(() => libgit2.git_repository_head(out reference, nativeRepository), this);
+                ReferenceHandle reference = null;
+                Ensure.NativeHandleIsValid(repositoryHandle);
+                Ensure.NativeSuccess(libgit2.git_repository_head(out reference, repositoryHandle));
 
                 try
                 {
@@ -198,7 +202,7 @@ namespace Dogged
                 }
                 catch (Exception)
                 {
-                    libgit2.git_reference_free(reference);
+                    reference.Dispose();
                     throw;
                 }
             }
@@ -225,8 +229,9 @@ namespace Dogged
         {
             get
             {
-                git_index* index = null;
-                Ensure.NativeSuccess(() => libgit2.git_repository_index(out index, nativeRepository), this);
+                IndexHandle index = null;
+                Ensure.NativeHandleIsValid(repositoryHandle);
+                Ensure.NativeSuccess(libgit2.git_repository_index(out index, repositoryHandle));
                 return Index.FromNative(index);
             }
         }
@@ -272,13 +277,15 @@ namespace Dogged
         {
             get
             {
-                git_odb* odb = null;
-                Ensure.NativeSuccess(() => libgit2.git_repository_odb(out odb, nativeRepository), this);
+                OdbHandle odb = null;
+                Ensure.NativeHandleIsValid(repositoryHandle);
+                Ensure.NativeSuccess(libgit2.git_repository_odb(out odb, repositoryHandle));
                 return ObjectDatabase.FromNative(odb);
             }
             set
             {
-                libgit2.git_repository_set_odb(nativeRepository, value.NativeOdb);
+                Ensure.NativeHandleIsValid(repositoryHandle);
+                libgit2.git_repository_set_odb(repositoryHandle, value.NativeOdb);
             }
         }
 
@@ -286,16 +293,16 @@ namespace Dogged
         {
             get
             {
-                return (nativeRepository == null);
+                return (repositoryHandle == null);
             }
         }
 
         internal unsafe override void Dispose(bool disposing)
         {
-            if (nativeRepository != null)
+            if (repositoryHandle != null)
             {
-                libgit2.git_repository_free(nativeRepository);
-                nativeRepository = null;
+                repositoryHandle.Dispose();
+                repositoryHandle = null;
             }
         }
     }

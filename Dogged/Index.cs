@@ -12,15 +12,15 @@ namespace Dogged
     /// </summary>
     public class Index : NativeDisposable, IEnumerable<IndexEntry>
     {
-        private unsafe git_index* nativeIndex;
+        private unsafe IndexHandle nativeIndex;
 
-        private unsafe Index(git_index* nativeIndex)
+        private unsafe Index(IndexHandle nativeIndex)
         {
-            Ensure.ArgumentNotNull(nativeIndex, "index");
+            Ensure.ArgumentNotNullOrInvalid(nativeIndex, "index");
             this.nativeIndex = nativeIndex;
         }
 
-        internal unsafe static Index FromNative(git_index* nativeIndex)
+        internal unsafe static Index FromNative(IndexHandle nativeIndex)
         {
             return new Index(nativeIndex);
         }
@@ -32,7 +32,8 @@ namespace Dogged
         {
             get
             {
-                UIntPtr count = Ensure.NativeCall<UIntPtr>(() => libgit2.git_index_entrycount(nativeIndex), this);
+                Ensure.NativeHandleIsValid(nativeIndex, "index");
+                UIntPtr count = libgit2.git_index_entrycount(nativeIndex);
                 return Ensure.CastToInt(count, "count");
             }
         }
@@ -44,7 +45,7 @@ namespace Dogged
         {
             get
             {
-                Ensure.NotDisposed(nativeIndex, "index");
+                Ensure.NativeHandleIsValid(nativeIndex, "index");
                 Ensure.ArgumentConformsTo(() => position >= 0, "position", "position must not be negative");
 
                 git_index_entry* entry = libgit2.git_index_get_byindex(nativeIndex, (UIntPtr)position);
@@ -88,7 +89,7 @@ namespace Dogged
         {
             get
             {
-                Ensure.NotDisposed(nativeIndex, "index");
+                Ensure.NativeHandleIsValid(nativeIndex, "index");
                 Ensure.ArgumentNotNull(path, "path");
 
                 git_index_entry* entry = libgit2.git_index_get_bypath(nativeIndex, path, stage);
@@ -111,8 +112,9 @@ namespace Dogged
         /// <returns>An enumerator of <see cref="IndexEntry"/> objects</returns>
         public unsafe IEnumerator<IndexEntry> GetEnumerator()
         {
-            git_index_iterator* iterator = null;
-            Ensure.NativeSuccess(() => libgit2.git_index_iterator_new(out iterator, nativeIndex), this);
+            IndexIteratorHandle iterator = null;
+            Ensure.NativeHandleIsValid(nativeIndex, "index");
+            Ensure.NativeSuccess(libgit2.git_index_iterator_new(out iterator, nativeIndex));
             return IndexEnumerator.FromNative(iterator);
         }
 
@@ -125,7 +127,7 @@ namespace Dogged
         {
             get
             {
-                return (nativeIndex == null);
+                return (nativeIndex == null || nativeIndex.IsInvalid);
             }
         }
 
@@ -133,7 +135,7 @@ namespace Dogged
         {
             if (nativeIndex != null)
             {
-                libgit2.git_index_free(nativeIndex);
+                nativeIndex.Dispose();
                 nativeIndex = null;
             }
         }
@@ -146,17 +148,17 @@ namespace Dogged
     /// </summary>
     public class IndexEnumerator : NativeDisposable, IEnumerator<IndexEntry>
     {
-        private unsafe git_index_iterator* nativeIterator;
+        private unsafe IndexIteratorHandle nativeIterator;
 
         private IndexEntry current;
 
-        private unsafe IndexEnumerator(git_index_iterator* nativeIterator)
+        private unsafe IndexEnumerator(IndexIteratorHandle nativeIterator)
         {
-            Ensure.ArgumentNotNull(nativeIterator, "iterator");
+            Ensure.ArgumentNotNullOrInvalid(nativeIterator, "iterator");
             this.nativeIterator = nativeIterator;
         }
 
-        internal unsafe static IndexEnumerator FromNative(git_index_iterator* nativeIterator)
+        internal unsafe static IndexEnumerator FromNative(IndexIteratorHandle nativeIterator)
         {
             return new IndexEnumerator(nativeIterator);
         }
@@ -175,7 +177,7 @@ namespace Dogged
         public unsafe bool MoveNext()
         {
             git_index_entry *entry = null;
-            int ret = Ensure.NativeCall(() => libgit2.git_index_iterator_next(out entry, nativeIterator), this);
+            int ret = libgit2.git_index_iterator_next(out entry, nativeIterator);
 
             if (ret == (int)git_error_code.GIT_ITEROVER)
             {
@@ -215,7 +217,7 @@ namespace Dogged
         {
             if (nativeIterator != null)
             {
-                libgit2.git_index_iterator_free(nativeIterator);
+                nativeIterator.Dispose();
                 nativeIterator = null;
             }
         }
