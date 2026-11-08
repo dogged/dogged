@@ -70,7 +70,7 @@ namespace Dogged.Native
             BlobHandle blob,
             [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path,
             git_filter_mode_t mode,
-            git_filter_flag_t flags);
+            uint flags);
 
         /// <summary>
         ///  Load the filter list for a given path.

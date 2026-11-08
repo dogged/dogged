@@ -74,11 +74,13 @@ namespace Dogged.Native
         /// <param name="objects_dir">
         ///  the path to a git objects directory.
         /// </param>
+        /// <param name="options">options for opening the graph</param>
         /// <returns>Zero on success; -1 on failure.</returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe int git_commit_graph_open(
             out CommitGraphHandle cgraph_out,
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string objects_dir);
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string objects_dir,
+            ref git_commit_graph_open_options options);
 
         /// <summary>
         ///  Frees commit-graph data. This should only be called when

@@ -104,7 +104,7 @@ namespace Dogged
         /// <returns>The id of the object written to the database</returns>
         public unsafe ObjectId Write(byte[] data, ObjectType type)
         {
-            git_oid id;
+            git_oid id = new git_oid();
             UIntPtr length = Ensure.CastToUIntPtr(data.LongLength, "data.Length");
 
             fixed (byte* ptr = data)

@@ -13,7 +13,7 @@ namespace Dogged.Tests
         [Fact]
         public void CanLookupCommit()
         {
-            ObjectId id = new ObjectId("be3563ae3f795b2b4353bcce3a527ad0a4f7f644");
+            ObjectId id = new ObjectId("be3563ae3f795b2b4353bcce3a527ad0a4f7f644", ObjectIdType.SHA1);
 
             using (Repository repo = SandboxRepository("testrepo"))
             using (Commit c = repo.Objects.Lookup<Commit>(id))
@@ -26,7 +26,7 @@ namespace Dogged.Tests
                 Assert.Equal("schacon@gmail.com", c.Author.Email);
                 Assert.Equal(DateTimeOffset.FromUnixTimeSeconds(1274813907), c.Author.When);
 
-                Assert.Equal(new ObjectId("1810dff58d8a660512d4832e740f692884338ccd"), c.TreeId);
+                Assert.Equal(new ObjectId("1810dff58d8a660512d4832e740f692884338ccd", ObjectIdType.SHA1), c.TreeId);
             }
         }
 
@@ -36,7 +36,7 @@ namespace Dogged.Tests
             Commit commit;
 
             using (Repository repo = SandboxRepository("testrepo"))
-            using (commit = repo.Objects.Lookup<Commit>(new ObjectId("be3563ae3f795b2b4353bcce3a527ad0a4f7f644")))
+            using (commit = repo.Objects.Lookup<Commit>(new ObjectId("be3563ae3f795b2b4353bcce3a527ad0a4f7f644", ObjectIdType.SHA1)))
             {
             }
 
@@ -53,12 +53,12 @@ namespace Dogged.Tests
             Tree tree;
 
             using (Repository repo = SandboxRepository("testrepo"))
-            using (Commit commit = repo.Objects.Lookup<Commit>(new ObjectId("be3563ae3f795b2b4353bcce3a527ad0a4f7f644")))
+            using (Commit commit = repo.Objects.Lookup<Commit>(new ObjectId("be3563ae3f795b2b4353bcce3a527ad0a4f7f644", ObjectIdType.SHA1)))
             {
                 tree = commit.Tree;
             }
 
-            Assert.Equal(new ObjectId("1810dff58d8a660512d4832e740f692884338ccd"), tree.Id);
+            Assert.Equal(new ObjectId("1810dff58d8a660512d4832e740f692884338ccd", ObjectIdType.SHA1), tree.Id);
             tree.Dispose();
         }
     }

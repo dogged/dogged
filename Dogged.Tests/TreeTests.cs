@@ -29,22 +29,22 @@ namespace Dogged.Tests
         };
 
         private TreeEntryData[] entries = {
-            new TreeEntryData(FileMode.Blob, ObjectType.Blob, new ObjectId("a8233120f6ad708f843d861ce2b7228ec4e3dec6"), "README"),
-            new TreeEntryData(FileMode.Blob, ObjectType.Blob, new ObjectId("3697d64be941a53d4ae8f6a271e4e3fa56b022cc"), "branch_file.txt"),
-            new TreeEntryData(FileMode.Link, ObjectType.Blob, new ObjectId("c0528fd6cc988c0a40ce0be11bc192fc8dc5346e"), "link_to_new.txt"),
-            new TreeEntryData(FileMode.Blob, ObjectType.Blob, new ObjectId("a71586c1dfe8a71c6cbf6c129f404c5642ff31bd"), "new.txt"),
+            new TreeEntryData(FileMode.Blob, ObjectType.Blob, new ObjectId("a8233120f6ad708f843d861ce2b7228ec4e3dec6", ObjectIdType.SHA1), "README"),
+            new TreeEntryData(FileMode.Blob, ObjectType.Blob, new ObjectId("3697d64be941a53d4ae8f6a271e4e3fa56b022cc", ObjectIdType.SHA1), "branch_file.txt"),
+            new TreeEntryData(FileMode.Link, ObjectType.Blob, new ObjectId("c0528fd6cc988c0a40ce0be11bc192fc8dc5346e", ObjectIdType.SHA1), "link_to_new.txt"),
+            new TreeEntryData(FileMode.Blob, ObjectType.Blob, new ObjectId("a71586c1dfe8a71c6cbf6c129f404c5642ff31bd", ObjectIdType.SHA1), "new.txt"),
         };
 
         [Theory]
-        [InlineData("45dd856fdd4d89b884c340ba0e047752d9b085d6")]
-        public void CanLookupTree(string hex)
+        [InlineData("45dd856fdd4d89b884c340ba0e047752d9b085d6", ObjectIdType.SHA1)]
+        public void CanLookupTree(string hex, ObjectIdType idType)
         {
             using (Repository repo = SandboxRepository("testrepo"))
-            using (Tree t = repo.Objects.Lookup<Tree>(new ObjectId(hex)))
+            using (Tree t = repo.Objects.Lookup<Tree>(new ObjectId(hex, idType)))
             {
                 Assert.NotNull(t);
                 Assert.Equal(ObjectType.Tree, t.Type);
-                Assert.Equal(new ObjectId(hex), t.Id);
+                Assert.Equal(new ObjectId(hex, idType), t.Id);
             }
         }
 
@@ -52,7 +52,7 @@ namespace Dogged.Tests
         public void CanGetTreeEntryByIndex()
         {
             using (Repository repo = SandboxRepository("testrepo"))
-            using (Tree t = repo.Objects.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6")))
+            using (Tree t = repo.Objects.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6", ObjectIdType.SHA1)))
             {
                 Assert.Equal(4, t.Count);
 
@@ -73,7 +73,7 @@ namespace Dogged.Tests
         public void CanLookupTreeEntryByName()
         {
             using (Repository repo = SandboxRepository("testrepo"))
-            using (Tree t = repo.Objects.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6")))
+            using (Tree t = repo.Objects.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6", ObjectIdType.SHA1)))
             {
                 foreach (var expected in entries)
                 {
@@ -92,7 +92,7 @@ namespace Dogged.Tests
         public void CanIterateTreeEntries()
         {
             using (Repository repo = SandboxRepository("testrepo"))
-            using (Tree t = repo.Objects.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6")))
+            using (Tree t = repo.Objects.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6", ObjectIdType.SHA1)))
             {
                 int i = 0;
 
@@ -112,7 +112,7 @@ namespace Dogged.Tests
         public void AttemptToGetInvalidTreeEntryThrows()
         {
             using (Repository repo = SandboxRepository("testrepo"))
-            using (Tree t = repo.Objects.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6")))
+            using (Tree t = repo.Objects.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6", ObjectIdType.SHA1)))
             {
                 Assert.Throws<ArgumentException>(() => t[-1]);
                 Assert.Throws<IndexOutOfRangeException>(() => t[4]);
@@ -125,7 +125,7 @@ namespace Dogged.Tests
             Tree tree;
 
             using (Repository repo = SandboxRepository("testrepo"))
-            using (tree = repo.Objects.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6")))
+            using (tree = repo.Objects.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6", ObjectIdType.SHA1)))
             {
             }
 
@@ -141,7 +141,7 @@ namespace Dogged.Tests
             List<TreeEntry> entries = new List<TreeEntry>();
 
             using (Repository repo = SandboxRepository("testrepo"))
-            using (Tree t = repo.Objects.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6")))
+            using (Tree t = repo.Objects.Lookup<Tree>(new ObjectId("45dd856fdd4d89b884c340ba0e047752d9b085d6", ObjectIdType.SHA1)))
             {
                 foreach (var entry in t)
                 {

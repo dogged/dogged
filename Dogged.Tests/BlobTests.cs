@@ -14,7 +14,7 @@ namespace Dogged.Tests
         [Fact]
         public void CanLookupBlob()
         {
-            ObjectId id = new ObjectId("a8233120f6ad708f843d861ce2b7228ec4e3dec6");
+            ObjectId id = new ObjectId("a8233120f6ad708f843d861ce2b7228ec4e3dec6", ObjectIdType.SHA1);
 
             using (Repository repo = SandboxRepository("testrepo"))
             using (Blob b = repo.Objects.Lookup<Blob>(id))
@@ -32,7 +32,7 @@ namespace Dogged.Tests
         [Fact]
         public void CanGetFilteredContent()
         {
-            ObjectId id = new ObjectId("a8233120f6ad708f843d861ce2b7228ec4e3dec6");
+            ObjectId id = new ObjectId("a8233120f6ad708f843d861ce2b7228ec4e3dec6", ObjectIdType.SHA1);
 
             using (Repository repo = SandboxRepository("testrepo"))
             using (Blob b = repo.Objects.Lookup<Blob>(id))
@@ -59,7 +59,7 @@ namespace Dogged.Tests
         [Fact]
         public void CanGetFilteredContentInBareRepo()
         {
-            ObjectId id = new ObjectId("799770d1cff46753a57db7a066159b5610da6e3a");
+            ObjectId id = new ObjectId("799770d1cff46753a57db7a066159b5610da6e3a", ObjectIdType.SHA1);
             BlobFilterOptions options = new BlobFilterOptions() {
                 Flags = BlobFilterFlags.CheckForBinary |
                         BlobFilterFlags.NoSystemAttributes |
@@ -95,12 +95,12 @@ namespace Dogged.Tests
         [Fact]
         public void CanGetFilteredContentInBareRepoBySpecificCommit()
         {
-            ObjectId id = new ObjectId("799770d1cff46753a57db7a066159b5610da6e3a");
+            ObjectId id = new ObjectId("799770d1cff46753a57db7a066159b5610da6e3a", ObjectIdType.SHA1);
             BlobFilterOptions options = new BlobFilterOptions() {
                 Flags = BlobFilterFlags.CheckForBinary |
                         BlobFilterFlags.NoSystemAttributes |
                         BlobFilterFlags.AttributesFromCommit,
-                AttributeCommitId = new ObjectId("5afb6a14a864e30787857dd92af837e8cdd2cb1b")
+                AttributeCommitId = new ObjectId("5afb6a14a864e30787857dd92af837e8cdd2cb1b", ObjectIdType.SHA1)
             };
 
             using (Repository repo = SandboxRepository("crlf.git"))
@@ -135,7 +135,7 @@ namespace Dogged.Tests
             Blob blob;
 
             using (Repository repo = SandboxRepository("testrepo"))
-            using (blob = repo.Objects.Lookup<Blob>(new ObjectId("a8233120f6ad708f843d861ce2b7228ec4e3dec6")))
+            using (blob = repo.Objects.Lookup<Blob>(new ObjectId("a8233120f6ad708f843d861ce2b7228ec4e3dec6", ObjectIdType.SHA1)))
             {
             }
 

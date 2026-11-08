@@ -84,6 +84,24 @@ namespace Dogged.Native
         public uint version;
 
         /// <summary>
+        ///  permissions to use creating packfile or 0 for defaults
+        /// </summary>
+        public uint mode;
+
+        /// <summary>
+        ///  the type of object ids in the packfile or 0 for SHA1
+        /// </summary>
+        public git_oid_t oid_type;
+
+        /// <summary>
+        ///  object database from which to read base objects when fixing
+        ///  thin packs. This can be NULL if there are no thin packs; if
+        ///  a thin pack is encountered, an error will be returned if
+        ///  there are bases missing.
+        /// </summary>
+        public IntPtr odb;
+
+        /// <summary>
         ///  progress_cb function to call with progress information
         /// </summary>
         public git_indexer_progress_cb progress_cb;
@@ -125,25 +143,14 @@ namespace Dogged.Native
         /// <param name="path">
         ///  to the directory where the packfile should be stored
         /// </param>
-        /// <param name="mode">
-        ///  permissions to use creating packfile or 0 for defaults
-        /// </param>
-        /// <param name="odb">
-        ///  object database from which to read base objects when fixing
-        ///  thin packs. Pass NULL if no thin pack is expected (an error
-        ///  will be returned if there are bases missing)
-        /// </param>
         /// <param name="opts">
-        ///  Optional structure containing additional options. See
-        ///  `git_indexer_options` above.
+        ///  the options to create the indexer with
         /// </param>
         /// <returns>0 or an error code.</returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe int git_indexer_new(
-            out git_indexer* _out,
+            git_indexer** _out,
             [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path,
-            uint mode,
-            git_odb* odb,
             ref git_indexer_options opts);
 
         /// <summary>

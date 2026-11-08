@@ -83,6 +83,30 @@ namespace Dogged.Native
             IntPtr payload);
 
         /// <summary>
+        ///  Create an instance of the bundle transport.
+        ///
+        ///  <para>
+        ///   The bundle transport reads references and objects from a
+        ///   git bundle file on the local filesystem. It supports
+        ///   fetching and cloning; it does not support pushing or
+        ///   shallow operations.
+        ///  </para>
+        /// </summary>
+        /// <param name="_out">The newly created transport (out)</param>
+        /// <param name="owner">
+        ///  The git_remote which will own this transport
+        /// </param>
+        /// <param name="payload">
+        ///  You must pass NULL for this parameter.
+        /// </param>
+        /// <returns>0 or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_transport_bundle(
+            out git_transport* _out,
+            RemoteHandle owner,
+            IntPtr payload);
+
+        /// <summary>
         ///  Create an instance of the smart transport.
         /// </summary>
         /// <param name="_out">The newly created transport (out)</param>

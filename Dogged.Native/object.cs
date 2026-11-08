@@ -432,12 +432,16 @@ namespace Dogged.Native
         /// <param name="object_type">
         ///  The type of the object in the buffer
         /// </param>
+        /// <param name="oid_type">
+        ///  The object ID type for the OIDs in the given buffer
+        /// </param>
         /// <returns>0 on success or an error code</returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe int git_object_rawcontent_is_valid(
-            out int valid,
+            int* valid,
             [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string buf,
             UIntPtr len,
-            git_object_t object_type);
+            git_object_t object_type,
+            git_oid_t oid_type);
     }
 }

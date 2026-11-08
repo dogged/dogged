@@ -126,7 +126,7 @@ namespace Dogged.Tests
                     Assert.NotNull(head);
                     Assert.IsType<DirectReference>(head);
                     Assert.Equal("refs/heads/master", head.Name);
-                    Assert.Equal(new ObjectId("099fabac3a9ea935598528c27f866e34089c2eff"), ((DirectReference)head).Target);
+                    Assert.Equal(new ObjectId("099fabac3a9ea935598528c27f866e34089c2eff", ObjectIdType.SHA1), ((DirectReference)head).Target);
                 }
             }
         }
@@ -137,7 +137,7 @@ namespace Dogged.Tests
             using (Repository repo = SandboxRepository("testrepo"))
             using (Commit commit = repo.HeadCommit)
             {
-                Assert.Equal(new ObjectId("099fabac3a9ea935598528c27f866e34089c2eff"), commit.Id);
+                Assert.Equal(new ObjectId("099fabac3a9ea935598528c27f866e34089c2eff", ObjectIdType.SHA1), commit.Id);
             }
         }
 

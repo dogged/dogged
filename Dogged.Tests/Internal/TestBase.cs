@@ -13,7 +13,6 @@ namespace Dogged.Tests
             var dummyConfigPath = Path.Combine(TemporaryDirectory, "__config__");
             Directory.CreateDirectory(dummyConfigPath);
 
-            GlobalOptions.SetSearchPath(ConfigurationLevel.ProgramData, dummyConfigPath);
             GlobalOptions.SetSearchPath(ConfigurationLevel.Global, dummyConfigPath);
             GlobalOptions.SetSearchPath(ConfigurationLevel.XDG, dummyConfigPath);
             GlobalOptions.SetSearchPath(ConfigurationLevel.System, dummyConfigPath);

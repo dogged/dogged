@@ -16,7 +16,7 @@ namespace Dogged.Tests
         [Fact]
         public void NoFilterReturnedWhenNotConfigured()
         {
-            var id = new ObjectId("a8233120f6ad708f843d861ce2b7228ec4e3dec6");
+            var id = new ObjectId("a8233120f6ad708f843d861ce2b7228ec4e3dec6", ObjectIdType.SHA1);
             var options = new FilterOptions { Flags = FilterFlags.NoSystemAttributes };
 
             using (Repository repo = SandboxRepository("testrepo"))
@@ -30,7 +30,7 @@ namespace Dogged.Tests
         [Fact]
         public void CanFilterBufferToOdb()
         {
-            var id = new ObjectId("a8233120f6ad708f843d861ce2b7228ec4e3dec6");
+            var id = new ObjectId("a8233120f6ad708f843d861ce2b7228ec4e3dec6", ObjectIdType.SHA1);
             var options = new FilterOptions { Flags = FilterFlags.NoSystemAttributes };
 
             using (Repository repo = SandboxRepository("testrepo"))
@@ -61,7 +61,7 @@ namespace Dogged.Tests
         [Fact]
         public void CanFilterFileToOdb()
         {
-            var id = new ObjectId("a8233120f6ad708f843d861ce2b7228ec4e3dec6");
+            var id = new ObjectId("a8233120f6ad708f843d861ce2b7228ec4e3dec6", ObjectIdType.SHA1);
             var options = new FilterOptions { Flags = FilterFlags.NoSystemAttributes };
 
             using (Repository repo = SandboxRepository("testrepo"))
@@ -88,7 +88,7 @@ namespace Dogged.Tests
         [Fact]
         public void CanFilterBlobToWorkdir()
         {
-            var id = new ObjectId("a8233120f6ad708f843d861ce2b7228ec4e3dec6");
+            var id = new ObjectId("a8233120f6ad708f843d861ce2b7228ec4e3dec6", ObjectIdType.SHA1);
             var options = new FilterOptions { Flags = FilterFlags.NoSystemAttributes };
 
             using (Repository repo = SandboxRepository("testrepo"))
@@ -110,7 +110,7 @@ namespace Dogged.Tests
         [Fact]
         public void CanFilterBufferToOdbInBareRepository()
         {
-            var id = new ObjectId("799770d1cff46753a57db7a066159b5610da6e3a");
+            var id = new ObjectId("799770d1cff46753a57db7a066159b5610da6e3a", ObjectIdType.SHA1);
             var options = new FilterOptions { Flags = FilterFlags.NoSystemAttributes | FilterFlags.AttributesFromHead };
 
             var blobFilterOptions = new BlobFilterOptions();
@@ -140,7 +140,7 @@ namespace Dogged.Tests
         [Fact]
         public void CanFilterBlobToWorkdirInBareRepository()
         {
-            var id = new ObjectId("799770d1cff46753a57db7a066159b5610da6e3a");
+            var id = new ObjectId("799770d1cff46753a57db7a066159b5610da6e3a", ObjectIdType.SHA1);
             var options = new FilterOptions { Flags = FilterFlags.NoSystemAttributes | FilterFlags.AttributesFromHead };
 
             using (Repository repo = SandboxRepository("crlf.git"))
@@ -157,11 +157,11 @@ namespace Dogged.Tests
         [Fact]
         public void CanFilterBlobAtSpecificCommit()
         {
-            var id = new ObjectId("055c8729cdcc372500a08db659c045e16c4409fb");
+            var id = new ObjectId("055c8729cdcc372500a08db659c045e16c4409fb", ObjectIdType.SHA1);
             var options = new FilterOptions
             {
                 Flags = FilterFlags.NoSystemAttributes | FilterFlags.AttributesFromCommit,
-                AttributeCommitId = new ObjectId("b8986fec0f7bde90f78ac72706e782d82f24f2f0")
+                AttributeCommitId = new ObjectId("b8986fec0f7bde90f78ac72706e782d82f24f2f0", ObjectIdType.SHA1)
             };
 
             using (Repository repo = SandboxRepository("crlf.git"))
@@ -178,11 +178,11 @@ namespace Dogged.Tests
         [Fact]
         public void CanFilterBlobAtSpecificCommitWithNoAttributesFile()
         {
-            var id = new ObjectId("799770d1cff46753a57db7a066159b5610da6e3a");
+            var id = new ObjectId("799770d1cff46753a57db7a066159b5610da6e3a", ObjectIdType.SHA1);
             var options = new FilterOptions
             {
                 Flags = FilterFlags.NoSystemAttributes | FilterFlags.AttributesFromCommit,
-                AttributeCommitId = new ObjectId("5afb6a14a864e30787857dd92af837e8cdd2cb1b")
+                AttributeCommitId = new ObjectId("5afb6a14a864e30787857dd92af837e8cdd2cb1b", ObjectIdType.SHA1)
             };
 
             using (Repository repo = SandboxRepository("crlf.git"))

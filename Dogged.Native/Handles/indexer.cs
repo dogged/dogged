@@ -39,25 +39,14 @@ namespace Dogged.Native
         /// <param name="path">
         ///  to the directory where the packfile should be stored
         /// </param>
-        /// <param name="mode">
-        ///  permissions to use creating packfile or 0 for defaults
-        /// </param>
-        /// <param name="odb">
-        ///  object database from which to read base objects when fixing
-        ///  thin packs. Pass NULL if no thin pack is expected (an error
-        ///  will be returned if there are bases missing)
-        /// </param>
         /// <param name="opts">
-        ///  Optional structure containing additional options. See
-        ///  `git_indexer_options` above.
+        ///  the options to create the indexer with
         /// </param>
         /// <returns>0 or an error code.</returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe int git_indexer_new(
-            out IndexerHandle _out,
+            IndexerHandle _out,
             [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string path,
-            uint mode,
-            OdbHandle odb,
             ref git_indexer_options opts);
 
         /// <summary>

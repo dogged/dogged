@@ -219,6 +219,12 @@ namespace Dogged.Native
         public IntPtr origin_url;
 
         /// <summary>
+        ///  Type of object IDs to use for this repository, or 0 for
+        ///  default (currently SHA1).
+        /// </summary>
+        public git_oid_t oid_type;
+
+        /// <summary>
         ///  Type of the reference database to use for this repository,
         ///  or 0 for default (currently "files").
         /// </summary>

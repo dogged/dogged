@@ -86,6 +86,19 @@ namespace Dogged.Native
             out git_repository* _out);
 
         /// <summary>
+        ///  Create a new repository with no backends.
+        /// </summary>
+        /// <param name="_out">The blank repository</param>
+        /// <param name="opts">
+        ///  the options for repository creation, or NULL for defaults
+        /// </param>
+        /// <returns>0 on success, or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_repository_new_ext(
+            out git_repository* _out,
+            ref git_repository_new_options opts);
+
+        /// <summary>
         ///  Reset all the internal state in a repository.
         ///
         ///  <para>

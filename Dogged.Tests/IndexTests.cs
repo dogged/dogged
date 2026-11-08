@@ -41,7 +41,7 @@ namespace Dogged.Tests
                 IndexEntry entry = index[0];
 
                 Assert.Equal(FileMode.Blob, entry.Mode);
-                Assert.Equal(new ObjectId("fd8430bc864cfcd5f10e5590f8a447e01b942bfe"), entry.Id);
+                Assert.Equal(new ObjectId("fd8430bc864cfcd5f10e5590f8a447e01b942bfe", ObjectIdType.SHA1), entry.Id);
                 Assert.Equal(".HEADER", entry.Path);
             }
         }
@@ -69,7 +69,7 @@ namespace Dogged.Tests
                 IndexEntry entry = index[".HEADER"];
 
                 Assert.Equal(FileMode.Blob, entry.Mode);
-                Assert.Equal(new ObjectId("fd8430bc864cfcd5f10e5590f8a447e01b942bfe"), entry.Id);
+                Assert.Equal(new ObjectId("fd8430bc864cfcd5f10e5590f8a447e01b942bfe", ObjectIdType.SHA1), entry.Id);
                 Assert.Equal(".HEADER", entry.Path);
             }
         }
@@ -91,8 +91,8 @@ namespace Dogged.Tests
         public void EnumerateIndexEntries()
         {
             IndexEntry[] expected = new[] {
-                new IndexEntry(".gitmodules", FileMode.Blob, new ObjectId("51589c218bf77a8da9e9d8dbc097d76a742726c4")),
-                new IndexEntry("sub", FileMode.Commit, new ObjectId("b7a59b3f4ea13b985f8a1e0d3757d5cd3331add8"))
+                new IndexEntry(".gitmodules", FileMode.Blob, new ObjectId("51589c218bf77a8da9e9d8dbc097d76a742726c4", ObjectIdType.SHA1)),
+                new IndexEntry("sub", FileMode.Commit, new ObjectId("b7a59b3f4ea13b985f8a1e0d3757d5cd3331add8", ObjectIdType.SHA1))
             };
 
             using (Repository repo = SandboxRepository("super"))
@@ -107,8 +107,8 @@ namespace Dogged.Tests
         public void AttemptsToResetIndexEnumeratorThrows()
         {
             IndexEntry[] expected = new[] {
-                new IndexEntry(".gitmodules", FileMode.Blob, new ObjectId("51589c218bf77a8da9e9d8dbc097d76a742726c4")),
-                new IndexEntry("sub", FileMode.Commit, new ObjectId("b7a59b3f4ea13b985f8a1e0d3757d5cd3331add8"))
+                new IndexEntry(".gitmodules", FileMode.Blob, new ObjectId("51589c218bf77a8da9e9d8dbc097d76a742726c4", ObjectIdType.SHA1)),
+                new IndexEntry("sub", FileMode.Commit, new ObjectId("b7a59b3f4ea13b985f8a1e0d3757d5cd3331add8", ObjectIdType.SHA1))
             };
 
             using (Repository repo = SandboxRepository("super"))

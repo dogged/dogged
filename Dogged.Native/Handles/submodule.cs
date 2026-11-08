@@ -107,7 +107,9 @@ namespace Dogged.Native
         /// <returns>
         ///  0 on success, GIT_ENOTFOUND if submodule does not exist,
         ///  GIT_EEXISTS if a repository is found in working directory
-        ///  only, -1 on other errors.
+        ///  only, GIT_EINVALID if the submodule configuration is not
+        ///  valid, or GIT_EINVALIDSPEC if the submodule name is not
+        ///  valid -1 on other errors.
         /// </returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe int git_submodule_lookup(

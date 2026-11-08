@@ -82,8 +82,6 @@ const types = {
 const values = {
     'git_oid': {
         'GIT_OID_DEFAULT': 'git_oid_t.GIT_OID_SHA1',
-        'GIT_OID_MAX_SIZE': 'GIT_OID_SHA1_SIZE',
-        'GIT_OID_MAX_HEXSIZE': 'GIT_OID_SHA1_HEXSIZE',
     },
 };
 

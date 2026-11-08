@@ -10,11 +10,6 @@ namespace Dogged
     public enum ConfigurationLevel
     {
         /// <summary>
-        /// System-wide on Windows, for compatibility with portable git
-        /// </summary>
-        ProgramData = 1,
-
-        /// <summary>
         /// System-wide configuration file; /etc/gitconfig on Linux
         /// systems.
         /// </summary>

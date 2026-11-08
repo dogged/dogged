@@ -134,6 +134,8 @@ namespace Dogged.Native
         GIT_OPT_SET_USER_AGENT_PRODUCT,
         GIT_OPT_GET_USER_AGENT_PRODUCT,
         GIT_OPT_ADD_SSL_X509_CERT,
+        GIT_OPT_GET_PACK_MAX_OBJECT_SIZE,
+        GIT_OPT_SET_PACK_MAX_OBJECT_SIZE,
     }
 
     /// <summary>

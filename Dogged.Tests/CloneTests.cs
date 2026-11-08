@@ -22,7 +22,7 @@ namespace Dogged.Tests
                 Assert.False(repo.IsBare);
                 using (Commit commit = repo.HeadCommit)
                 {
-                    Assert.Equal(new ObjectId("099fabac3a9ea935598528c27f866e34089c2eff"), commit.Id);
+                    Assert.Equal(new ObjectId("099fabac3a9ea935598528c27f866e34089c2eff", ObjectIdType.SHA1), commit.Id);
                 }
             }
         }

@@ -137,6 +137,21 @@ namespace Dogged.Native
             out git_odb* odb);
 
         /// <summary>
+        ///  Create a new object database with no backends.
+        /// </summary>
+        /// <param name="odb">
+        ///  location to store the database pointer, if opened.
+        /// </param>
+        /// <param name="opts">
+        ///  the options for this object database or NULL for defaults
+        /// </param>
+        /// <returns>0 or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_odb_new_ext(
+            out git_odb* odb,
+            ref git_odb_options opts);
+
+        /// <summary>
         ///  Create a new object database and automatically add the two
         ///  default backends:
         ///
@@ -164,6 +179,27 @@ namespace Dogged.Native
         public static extern unsafe int git_odb_open(
             out git_odb* odb_out,
             [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string objects_dir);
+
+        /// <summary>
+        ///  Create a new object database and automatically add loose and
+        ///  packed backends.
+        /// </summary>
+        /// <param name="odb_out">
+        ///  location to store the database pointer, if opened. Set to
+        ///  NULL if the open failed.
+        /// </param>
+        /// <param name="objects_dir">
+        ///  path of the backends' "objects" directory.
+        /// </param>
+        /// <param name="opts">
+        ///  the options for this object database or NULL for defaults
+        /// </param>
+        /// <returns>0 or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_odb_open_ext(
+            out git_odb* odb_out,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string objects_dir,
+            ref git_odb_options opts);
 
         /// <summary>
         ///  Add an on-disk alternate to an existing Object DB.

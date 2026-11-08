@@ -118,6 +118,25 @@ namespace Dogged.Native
             [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string index_path);
 
         /// <summary>
+        ///  Creates a new bare Git index object, without a repository to
+        ///  back it. This index object is capable of storing SHA256
+        ///  objects.
+        /// </summary>
+        /// <param name="index_out">the pointer for the new index</param>
+        /// <param name="index_path">
+        ///  the path to the index file in disk
+        /// </param>
+        /// <param name="opts">
+        ///  the options for opening the index, or NULL
+        /// </param>
+        /// <returns>0 or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_index_open_ext(
+            IndexHandle index_out,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string index_path,
+            ref git_index_options opts);
+
+        /// <summary>
         ///  Create an in-memory index object.
         ///
         ///  <para>
@@ -135,6 +154,19 @@ namespace Dogged.Native
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe int git_index_new(
             out IndexHandle index_out);
+
+        /// <summary>
+        ///  Create an in-memory index object.
+        /// </summary>
+        /// <param name="index_out">the pointer for the new index</param>
+        /// <param name="opts">
+        ///  the options for opening the index, or NULL
+        /// </param>
+        /// <returns>0 or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_index_new_ext(
+            IndexHandle index_out,
+            ref git_index_options opts);
 
         /// <summary>
         ///  Free an existing index object.
@@ -942,5 +974,63 @@ namespace Dogged.Native
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe void git_index_conflict_iterator_free(
             IntPtr iterator);
+
+        /// <summary>
+        ///  Look up an index extension by its signature
+        /// </summary>
+        /// <param name="_out">
+        ///  the extension's data (not including the header)
+        /// </param>
+        /// <param name="index">an existing index object</param>
+        /// <param name="signature">
+        ///  the 4 character signature of the desired extension
+        /// </param>
+        /// <returns>
+        ///  0 (no error), GIT_ENOTFOUND (extension not present), or an
+        ///  error code
+        /// </returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_index_extension_lookup(
+            ref git_buf _out,
+            IndexHandle index,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string signature);
+
+        /// <summary>
+        ///  Add an extension to the index
+        /// </summary>
+        /// <param name="index">an existing index object</param>
+        /// <param name="signature">
+        ///  the 4 character signature of the desired extension
+        /// </param>
+        /// <param name="data">
+        ///  the contents of the extension (not including the header)
+        /// </param>
+        /// <param name="data_len">the length of the data</param>
+        /// <returns>
+        ///  0 (no error), GIT_EEXISTS (extension already present), or an
+        ///  error code
+        /// </returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_index_extension_add(
+            IndexHandle index,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string signature,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string data,
+            UIntPtr data_len);
+
+        /// <summary>
+        ///  Remove an index extension by its signature
+        /// </summary>
+        /// <param name="index">an existing index object</param>
+        /// <param name="signature">
+        ///  the 4 character signature of the desired extension
+        /// </param>
+        /// <returns>
+        ///  0 (no error), GIT_ENOTFOUND (extension not present), or an
+        ///  error code
+        /// </returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_index_extension_remove(
+            IndexHandle index,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string signature);
     }
 }

@@ -40,12 +40,6 @@ namespace Dogged.Native
     public enum git_config_level_t
     {
         /// <summary>
-        ///  System-wide on Windows, for compatibility with "Portable
-        ///  Git".
-        /// </summary>
-        GIT_CONFIG_LEVEL_PROGRAMDATA = 1,
-
-        /// <summary>
         ///  System-wide configuration file; `/etc/gitconfig` on Linux.
         /// </summary>
         GIT_CONFIG_LEVEL_SYSTEM = 2,
@@ -252,26 +246,6 @@ namespace Dogged.Native
         /// </returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe int git_config_find_system(
-            ref git_buf _out);
-
-        /// <summary>
-        ///  Locate the path to the configuration file in ProgramData
-        ///
-        ///  <para>
-        ///   Look for the file in `%PROGRAMDATA%\Git\config ` used by
-        ///   portable git.
-        ///  </para>
-        /// </summary>
-        /// <param name="_out">
-        ///  Pointer to a user-allocated git_buf in which to store the
-        ///  path
-        /// </param>
-        /// <returns>
-        ///  0 if a ProgramData configuration file has been found. Its
-        ///  path will be stored in `out`.
-        /// </returns>
-        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern unsafe int git_config_find_programdata(
             ref git_buf _out);
 
         /// <summary>

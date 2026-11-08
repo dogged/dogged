@@ -1,9 +1,26 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Dogged.Native;
 
 namespace Dogged
 {
+    /// <summary>
+    /// The type of an object ID.
+    /// </summary>
+    public enum ObjectIdType
+    {
+        /// <summary>
+        /// A SHA-1 object ID
+        /// </summary>
+        SHA1 = 1,
+
+        /// <summary>
+        /// A SHA-256 object ID
+        /// </summary>
+        SHA256 = 2
+    }
+
     /// <summary>
     /// An object id; a unique identifier for a Git object including a
     /// commit, tree, blob and tag.
@@ -35,6 +52,35 @@ namespace Dogged
             -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, // f0
         };
 
+        public static int Size(ObjectIdType type)
+        {
+            switch (type)
+            {
+                case ObjectIdType.SHA1:
+                    return git_oid.GIT_OID_SHA1_SIZE;
+
+                case ObjectIdType.SHA256:
+                    return git_oid.GIT_OID_SHA256_SIZE;
+            }
+
+            throw new InvalidOperationException("unknown object type");
+        }
+
+        public static int HexSize(ObjectIdType type)
+        {
+            switch (type)
+            {
+                case ObjectIdType.SHA1:
+                    return git_oid.GIT_OID_SHA1_HEXSIZE;
+
+                case ObjectIdType.SHA256:
+                    return git_oid.GIT_OID_SHA256_HEXSIZE;
+            }
+
+            throw new InvalidOperationException("unknown object type");
+        }
+
+
         /// <summary>
         /// The "null oid" consisting of all zeros.
         /// </summary>
@@ -43,23 +89,28 @@ namespace Dogged
         private readonly git_oid oid = new git_oid();
         private string hex;
 
-        private unsafe ObjectId(byte* id)
+        private unsafe ObjectId(byte *id, byte type)
         {
             Ensure.ArgumentNotNull(id, "id");
 
+            this.oid.type = type;
+
             fixed(byte* dest = this.oid.id)
             {
-                Buffer.MemoryCopy(id, dest, git_oid.GIT_OID_SHA1_SIZE, git_oid.GIT_OID_SHA1_SIZE);
+                Buffer.MemoryCopy(id, dest, git_oid.GIT_OID_MAX_SIZE, git_oid.GIT_OID_MAX_SIZE);
             }
         }
 
         /// <summary>
         /// Create an Object ID from the given hexadecimal string.
         /// </summary>
-        public unsafe ObjectId(string hex)
+        public unsafe ObjectId(string hex, ObjectIdType type)
         {
             Ensure.ArgumentNotNull(hex, "hex");
-            Ensure.ArgumentConformsTo(() => hex.Length == git_oid.GIT_OID_SHA1_HEXSIZE, "id length is invalid", "hex");
+            Ensure.ArgumentConformsTo(() => hex.Length == HexSize(type), "id length is invalid", "hex");
+            Ensure.ArgumentNotNull(type, "type");
+
+            oid.type = (byte)type;
 
             for (int i = 0; i < hex.Length; i++)
             {
@@ -75,6 +126,14 @@ namespace Dogged
                     id[i / 2] |= (byte)(b << (i % 2 == 0 ? 4 : 0));
                 }
             }
+
+            fixed(byte* id = oid.id)
+            {
+                for (int i = Size(type); i < git_oid.GIT_OID_MAX_SIZE; i++)
+                {
+                    oid.id[i] = 0;
+                }
+            }
         }
 
         private ObjectId() { }
@@ -82,13 +141,29 @@ namespace Dogged
         internal unsafe static ObjectId FromNative(git_oid nativeOid)
         {
             Ensure.ArgumentNotNull(nativeOid, "nativeOid");
-            return new ObjectId(nativeOid.id);
+
+            var id = new ObjectId();
+
+            fixed (git_oid *dest = &id.oid)
+            {
+                NativeCopy(&nativeOid, dest);
+            }
+
+            return id;
         }
 
         internal unsafe static ObjectId FromNative(git_oid* nativeOid)
         {
             Ensure.ArgumentNotNull(nativeOid, "nativeOid");
-            return new ObjectId(nativeOid->id);
+
+            var id = new ObjectId();
+
+            fixed (git_oid *dest = &id.oid)
+            {
+                NativeCopy(nativeOid, dest);
+            }
+
+            return id;
         }
 
         internal git_oid ToNative()
@@ -98,7 +173,18 @@ namespace Dogged
 
         internal unsafe static void NativeCopy(git_oid* src, git_oid* dest)
         {
-            Buffer.MemoryCopy(src->id, dest->id, git_oid.GIT_OID_SHA1_SIZE, git_oid.GIT_OID_SHA1_SIZE);
+            Buffer.MemoryCopy(src, dest, sizeof(git_oid), sizeof(git_oid));
+        }
+
+        /// <summary>
+        /// Return the type of Object ID.
+        /// </summary>
+        public ObjectIdType Type
+        {
+            get
+            {
+                return (ObjectIdType)oid.type;
+            }
         }
 
         /// <summary>
@@ -108,11 +194,12 @@ namespace Dogged
         {
             if (hex == null)
             {
-                char[] hexChars = new char[git_oid.GIT_OID_SHA1_HEXSIZE];
+                int size = Size((ObjectIdType)oid.type);
+                char[] hexChars = new char[HexSize((ObjectIdType)oid.type)];
 
                 fixed(byte* id = oid.id)
                 {
-                    for (int i = 0; i < git_oid.GIT_OID_SHA1_SIZE; i++)
+                    for (int i = 0; i < size; i++)
                     {
                         hexChars[i*2]     = ToHex[id[i] >> 4];
                         hexChars[(i*2)+1] = ToHex[id[i] & 0x0f];
@@ -129,7 +216,8 @@ namespace Dogged
         {
             fixed(byte* id = oid.id)
             {
-                return (id[0] << 24) | (id[1] << 16) | (id[2] << 8) | id[3];
+                return ((id[0] << 24) | (id[1] << 16) | (id[2] << 8) | id[3]) +
+                       (oid.type - 1);
             }
         }
 
@@ -150,6 +238,11 @@ namespace Dogged
                 return true;
             }
 
+            if (this.oid.type != other.oid.type)
+            {
+                return false;
+            }
+
             // Pinning + loop unrolling inspired by
             // https://stackoverflow.com/a/38002854
             fixed(byte* b0 = this.oid.id)
@@ -157,7 +250,8 @@ namespace Dogged
             {
                 if (*(ulong*)b0 != *(ulong*)b1) return false;
                 if (*(ulong*)(b0 + 8) != *(ulong*)(b1 + 8)) return false;
-                if (*(uint*)(b0 + 16) != *(uint*)(b1 + 16)) return false;
+                if (*(ulong*)(b0 + 16) != *(ulong*)(b1 + 16)) return false;
+                if (*(ulong*)(b0 + 24) != *(ulong*)(b1 + 24)) return false;
             }
 
             return true;

@@ -109,6 +109,8 @@ namespace Dogged.Native
 
         public IntPtr hash_ctx;
 
+        public git_oid_t oid_type;
+
         public long declared_size;
 
         public long received_bytes;
@@ -220,19 +222,18 @@ namespace Dogged.Native
         /// <param name="objects_dir">
         ///  the Git repository's objects directory
         /// </param>
+        /// <param name="opts">
+        ///  the options to use when creating the pack backend
+        /// </param>
         /// <returns>0 or an error code</returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe int git_odb_backend_pack(
             out git_odb_backend* _out,
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string objects_dir);
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string objects_dir,
+            ref git_odb_backend_pack_options opts);
 
         /// <summary>
-        ///  Create a backend out of a single packfile
-        ///
-        ///  <para>
-        ///   This can be useful for inspecting the contents of a
-        ///   single packfile.
-        ///  </para>
+        ///  Create a backend for a single packfile.
         /// </summary>
         /// <param name="_out">
         ///  location to store the odb backend pointer
@@ -240,11 +241,15 @@ namespace Dogged.Native
         /// <param name="index_file">
         ///  path to the packfile's .idx file
         /// </param>
+        /// <param name="opts">
+        ///  the options to use when creating the pack backend
+        /// </param>
         /// <returns>0 or an error code</returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe int git_odb_backend_one_pack(
             out git_odb_backend* _out,
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string index_file);
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string index_file,
+            ref git_odb_backend_pack_options opts);
 
         /// <summary>
         ///  Create a backend for loose objects
@@ -255,28 +260,14 @@ namespace Dogged.Native
         /// <param name="objects_dir">
         ///  the Git repository's objects directory
         /// </param>
-        /// <param name="compression_level">
-        ///  zlib compression level (0-9), or -1 for the default
-        /// </param>
-        /// <param name="do_fsync">
-        ///  if non-zero, perform an fsync on write
-        /// </param>
-        /// <param name="dir_mode">
-        ///  permission to use when creating directories, or 0 for
-        ///  default
-        /// </param>
-        /// <param name="file_mode">
-        ///  permission to use when creating directories, or 0 for
-        ///  default
+        /// <param name="opts">
+        ///  options for the loose object backend or NULL
         /// </param>
         /// <returns>0 or an error code</returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe int git_odb_backend_loose(
             out git_odb_backend* _out,
             [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string objects_dir,
-            int compression_level,
-            int do_fsync,
-            uint dir_mode,
-            uint file_mode);
+            ref git_odb_backend_loose_options opts);
     }
 }

@@ -48,7 +48,7 @@ namespace Dogged.Tests
                 Assert.NotNull(reference);
                 Assert.IsType<DirectReference>(reference);
                 Assert.Equal("refs/heads/master", reference.Name);
-                Assert.Equal(new ObjectId("099fabac3a9ea935598528c27f866e34089c2eff"), ((DirectReference)reference).Target);
+                Assert.Equal(new ObjectId("099fabac3a9ea935598528c27f866e34089c2eff", ObjectIdType.SHA1), ((DirectReference)reference).Target);
             }
         }
 
@@ -96,7 +96,7 @@ namespace Dogged.Tests
                 {
                     var commit = reference.Peel<Commit>();
                     Assert.IsType<Commit>(commit);
-                    Assert.Equal(new ObjectId("099fabac3a9ea935598528c27f866e34089c2eff"), commit.Id);
+                    Assert.Equal(new ObjectId("099fabac3a9ea935598528c27f866e34089c2eff", ObjectIdType.SHA1), commit.Id);
                 }
             }
         }
@@ -110,7 +110,7 @@ namespace Dogged.Tests
                 {
                     var blob = reference.Peel<Blob>();
                     Assert.IsType<Blob>(blob);
-                    Assert.Equal(new ObjectId("1385f264afb75a56a5bec74243be9b367ba4ca08"), blob.Id);
+                    Assert.Equal(new ObjectId("1385f264afb75a56a5bec74243be9b367ba4ca08", ObjectIdType.SHA1), blob.Id);
                 }
             }
         }

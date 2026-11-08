@@ -711,6 +711,43 @@ namespace Dogged.Native
             UIntPtr content_len);
 
         /// <summary>
+        ///  Read the contents of a git patch file into a `git_diff`
+        ///  object.
+        ///
+        ///  <para>
+        ///   The diff object produced is similar to the one that
+        ///   would be produced if you actually produced it
+        ///   computationally by comparing two trees, however there
+        ///   may be subtle differences. For example, a patch file
+        ///   likely contains abbreviated object IDs, so the object
+        ///   IDs in a `git_diff_delta` produced by this function will
+        ///   also be abbreviated.
+        ///  </para>
+        ///
+        ///  <para>
+        ///   This function will only read patch files created by a
+        ///   git implementation, it will not read unified diffs
+        ///   produced by the `diff` program, nor any other types of
+        ///   patch files.
+        ///  </para>
+        /// </summary>
+        /// <param name="_out">
+        ///  A pointer to a git_diff pointer that will be allocated.
+        /// </param>
+        /// <param name="content">The contents of a patch file</param>
+        /// <param name="content_len">
+        ///  The length of the patch file contents
+        /// </param>
+        /// <param name="opts">Options controlling diff parsing</param>
+        /// <returns>0 or an error code</returns>
+        [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern unsafe int git_diff_from_buffer_ext(
+            DiffHandle _out,
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string content,
+            UIntPtr content_len,
+            ref git_diff_parse_options opts);
+
+        /// <summary>
         ///  Accumulate diff statistics for all patches.
         /// </summary>
         /// <param name="_out">

@@ -21,6 +21,11 @@ namespace Dogged.Native
 
 
         public uint version;
+
+        /// <summary>
+        ///  The object ID type that this commit graph contains.
+        /// </summary>
+        public git_oid_t oid_type;
     }
 
     /// <summary>
@@ -62,11 +67,15 @@ namespace Dogged.Native
         ///  `multi-pack-index` file will be written in this directory,
         ///  too.
         /// </param>
+        /// <param name="options">
+        ///  the options to create the writer with
+        /// </param>
         /// <returns>0 or an error code</returns>
         [DllImport(libgit2_dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern unsafe int git_midx_writer_new(
             out git_midx_writer* _out,
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string pack_dir);
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = Utf8Marshaler.ToNative, MarshalTypeRef = typeof(Utf8Marshaler))] string pack_dir,
+            ref git_midx_writer_options options);
 
         /// <summary>
         ///  Free the multi-pack-index writer and its resources.

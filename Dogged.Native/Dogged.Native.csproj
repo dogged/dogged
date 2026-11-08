@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dogged.Native.Binaries" Version="[1.9.3-pr18-2d8db9a]" />
+    <PackageReference Include="Dogged.Native.Binaries" Version="[1.9.3-pr19-8f2f264]" />
   </ItemGroup>
 
   <Import Project="..\Targets\GenerateNativeLibrary.targets" />
